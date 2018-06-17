@@ -1,0 +1,549 @@
+---------------------------------------------------------------
+[ 2018-06-10T20:41:57+08:00 ] 127.0.0.1 GET /
+[ info ] hy.me/ [运行时间：0.110681s][吞吐率：9.03req/s] [内存消耗：1,678.48kb] [文件加载：64]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:41:57+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] hy.me/index/index/welcome.html [运行时间：0.031716s][吞吐率：31.53req/s] [内存消耗：1,619.34kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:41:58+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.061573s][吞吐率：16.24req/s] [内存消耗：1,148.85kb] [文件加载：49]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-10T20:42:00+08:00 ] 127.0.0.1 GET /index/agreement/agreement.html
+[ info ] hy.me/index/agreement/agreement.html [运行时间：0.079061s][吞吐率：12.65req/s] [内存消耗：1,763.43kb] [文件加载：64]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\agreement\agreement.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:42:04+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinterior.html
+[ info ] hy.me/index/blueprint/blueprintinterior.html [运行时间：0.083278s][吞吐率：12.01req/s] [内存消耗：1,620.80kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-interior.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:42:18+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] hy.me/index/blueprint/blueprintinfo.html [运行时间：0.079983s][吞吐率：12.50req/s] [内存消耗：1,620.74kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:43:07+08:00 ] 127.0.0.1 GET /index/mould/mould.html
+[ info ] hy.me/index/mould/mould.html [运行时间：0.099907s][吞吐率：10.01req/s] [内存消耗：1,619.03kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\mould\mould.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:44:20+08:00 ] 127.0.0.1 GET /index/blueprint/order-view.html
+[ info ] hy.me/index/blueprint/order-view.html [运行时间：0.049407s][吞吐率：20.24req/s] [内存消耗：1,672.90kb] [文件加载：65]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[ 2018-06-10T20:46:08+08:00 ] 127.0.0.1 GET /index/material/material.html
+[ info ] hy.me/index/material/material.html [运行时间：0.332009s][吞吐率：3.01req/s] [内存消耗：1,619.13kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\material\material.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:46:09+08:00 ] 127.0.0.1 GET /index/agreement/agreement.html
+[ info ] hy.me/index/agreement/agreement.html [运行时间：0.034902s][吞吐率：28.65req/s] [内存消耗：1,619.13kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\agreement\agreement.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:46:17+08:00 ] 127.0.0.1 GET /index/agreement/agreement.html
+[ info ] hy.me/index/agreement/agreement.html [运行时间：0.041435s][吞吐率：24.13req/s] [内存消耗：1,619.13kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\agreement\agreement.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:46:31+08:00 ] 127.0.0.1 GET /index/order/order.html
+[ info ] hy.me/index/order/order.html [运行时间：0.078839s][吞吐率：12.68req/s] [内存消耗：1,619.03kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\order\order.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:51:04+08:00 ] 127.0.0.1 GET /index/task/intask.html
+[ info ] hy.me/index/task/intask.html [运行时间：0.344072s][吞吐率：2.91req/s] [内存消耗：1,621.96kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\task\in-task.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T20:55:19+08:00 ] 127.0.0.1 GET /index/order/order.html
+[ info ] hy.me/index/order/order.html [运行时间：0.039849s][吞吐率：25.09req/s] [内存消耗：1,619.03kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\order\order.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:08:58+08:00 ] 127.0.0.1 GET /index/agreement/agreement.html
+[ info ] hy.me/index/agreement/agreement.html [运行时间：0.040886s][吞吐率：24.46req/s] [内存消耗：1,619.13kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\agreement\agreement.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:11:11+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] hy.me/index/blueprint/blueprintinfo.html [运行时间：0.032141s][吞吐率：31.11req/s] [内存消耗：1,620.74kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:13:28+08:00 ] 127.0.0.1 GET /
+[ info ] hy.me/ [运行时间：0.079911s][吞吐率：12.51req/s] [内存消耗：1,835.51kb] [文件加载：66]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:13:28+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] hy.me/index/index/welcome.html [运行时间：0.052609s][吞吐率：19.01req/s] [内存消耗：1,619.88kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528634518',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:13:31+08:00 ] 127.0.0.1 GET /index/order/order.html
+[ info ] hy.me/index/order/order.html [运行时间：0.039091s][吞吐率：25.58req/s] [内存消耗：1,619.03kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\order\order.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:14:29+08:00 ] 127.0.0.1 GET /index/task/intask.html
+[ info ] hy.me/index/task/intask.html [运行时间：0.043267s][吞吐率：23.11req/s] [内存消耗：1,621.96kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\task\in-task.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:14:34+08:00 ] 127.0.0.1 GET /index/mould/mould.html
+[ info ] hy.me/index/mould/mould.html [运行时间：0.030297s][吞吐率：33.01req/s] [内存消耗：1,619.03kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\mould\mould.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:14:36+08:00 ] 127.0.0.1 GET /index/task/classes.html
+[ info ] hy.me/index/task/classes.html [运行时间：0.077653s][吞吐率：12.88req/s] [内存消耗：1,621.96kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\task\classes.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:14:36+08:00 ] 127.0.0.1 GET /index/task/sendgoodsinquiry.html
+[ info ] hy.me/index/task/sendgoodsinquiry.html [运行时间：0.052256s][吞吐率：19.14req/s] [内存消耗：1,622.07kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\task\send-goods-inquiry.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:14:37+08:00 ] 127.0.0.1 GET /index/task/sendgoodsgather.html
+[ info ] hy.me/index/task/sendgoodsgather.html [运行时间：0.072749s][吞吐率：13.75req/s] [内存消耗：1,622.04kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\task\send-goods-gather.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:14:38+08:00 ] 127.0.0.1 GET /index/task/evidence.html
+[ info ] hy.me/index/task/evidence.html [运行时间：0.055250s][吞吐率：18.10req/s] [内存消耗：1,621.95kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\task\evidence.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-06-10T21:15:57+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] hy.me/index/blueprint/blueprintinfo.html [运行时间：0.041857s][吞吐率：23.89req/s] [内存消耗：1,620.74kb] [文件加载：62]
+[ info ] [ LANG ] D:\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_5a0192f8207da980c77f112b59310c12=1528634518; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1528636409',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+) ]

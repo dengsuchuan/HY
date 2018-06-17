@@ -1,0 +1,476 @@
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /
+[ info ] qy.me/ [运行时间：0.463926s][吞吐率：2.16req/s] [内存消耗：3,055.70kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\index\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014314s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.015890s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001357s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.002641s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.002048s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000402s ]
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg [运行时间：0.039126s][吞吐率：25.56req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg [运行时间：0.040569s][吞吐率：24.65req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg [运行时间：0.043747s][吞吐率：22.86req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/0cf9683f0413943a903466c1977a2666.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/0cf9683f0413943a903466c1977a2666.jpg [运行时间：0.029872s][吞吐率：33.48req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/b226187ad7ad31e19847e826857a5d5e.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/b226187ad7ad31e19847e826857a5d5e.jpg [运行时间：0.032259s][吞吐率：31.00req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg [运行时间：0.038852s][吞吐率：25.74req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg [运行时间：0.022279s][吞吐率：44.89req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/aa66a25ea9024676792b8f632dad81c3.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/aa66a25ea9024676792b8f632dad81c3.jpg [运行时间：0.031674s][吞吐率：31.57req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg [运行时间：0.034746s][吞吐率：28.78req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T13:47:18+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/b226187ad7ad31e19847e826857a5d5e.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/b226187ad7ad31e19847e826857a5d5e.jpg [运行时间：0.042842s][吞吐率：23.34req/s] [内存消耗：1,269.77kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:17:28+08:00 ] 127.0.0.1 GET /
+[ info ] qy.me/ [运行时间：0.091204s][吞吐率：10.96req/s] [内存消耗：3,055.69kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\index\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011954s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.003556s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.002364s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000831s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.002603s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000272s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:17:28+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/0cf9683f0413943a903466c1977a2666.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/0cf9683f0413943a903466c1977a2666.jpg [运行时间：0.024177s][吞吐率：41.36req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:17:28+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg [运行时间：0.020666s][吞吐率：48.39req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:17:28+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg [运行时间：0.017929s][吞吐率：55.78req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:17:28+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/aa66a25ea9024676792b8f632dad81c3.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/aa66a25ea9024676792b8f632dad81c3.jpg [运行时间：0.017925s][吞吐率：55.79req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:17:28+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg [运行时间：0.020440s][吞吐率：48.92req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:17:29+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/b226187ad7ad31e19847e826857a5d5e.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/b226187ad7ad31e19847e826857a5d5e.jpg [运行时间：0.028185s][吞吐率：35.48req/s] [内存消耗：1,269.38kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:47:04+08:00 ] 127.0.0.1 GET /index/product/index.html
+[ info ] qy.me/index/product/index.html [运行时间：0.075288s][吞吐率：13.28req/s] [内存消耗：3,028.95kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\product\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011009s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.002993s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.002757s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001384s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000443s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:06+08:00 ] 127.0.0.1 GET /index/news/index.html
+[ info ] qy.me/index/news/index.html [运行时间：0.104055s][吞吐率：9.61req/s] [内存消耗：3,022.99kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/product/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853625',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\news\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001641s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.002409s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.003690s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.002798s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000530s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:06+08:00 ] 127.0.0.1 GET /index/cases/index.html
+[ info ] qy.me/index/cases/index.html [运行时间：0.106212s][吞吐率：9.42req/s] [内存消耗：3,028.96kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/news/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853627',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\cases\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000928s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.001559s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.001344s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001257s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000291s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:09+08:00 ] 127.0.0.1 GET /index/about/index.html
+[ info ] qy.me/index/about/index.html [运行时间：0.102797s][吞吐率：9.73req/s] [内存消耗：3,020.96kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/cases/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853627',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\about\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001405s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.001547s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.001336s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001188s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000240s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:09+08:00 ] 127.0.0.1 GET /index/message/index.html
+[ info ] qy.me/index/message/index.html [运行时间：0.127470s][吞吐率：7.84req/s] [内存消耗：3,020.97kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/about/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853629',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\message\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009771s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.002910s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.001966s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001341s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000346s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:10+08:00 ] 127.0.0.1 GET /index/service/index.html
+[ info ] qy.me/index/service/index.html [运行时间：0.097570s][吞吐率：10.25req/s] [内存消耗：3,024.97kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/message/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853630',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\service\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009810s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.001487s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.001218s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001122s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000407s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:11+08:00 ] 127.0.0.1 GET /index/cases/index.html
+[ info ] qy.me/index/cases/index.html [运行时间：0.055174s][吞吐率：18.12req/s] [内存消耗：3,029.12kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/service/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; ftqyme=1; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853631',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\cases\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000860s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.001439s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000417s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.001610s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000498s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001174s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000264s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:11+08:00 ] 127.0.0.1 GET /index/news/index.html
+[ info ] qy.me/index/news/index.html [运行时间：0.067452s][吞吐率：14.83req/s] [内存消耗：3,023.15kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/cases/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; ftqyme=1; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853631',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\news\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010964s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.001666s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.002904s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000694s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.002079s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000657s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /index/product/index.html
+[ info ] qy.me/index/product/index.html [运行时间：0.058671s][吞吐率：17.04req/s] [内存消耗：3,029.13kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/news/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; ftqyme=1; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853632',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\product\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011149s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.001486s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.001473s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000344s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001444s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000278s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /index/index/index.html
+[ info ] qy.me/index/index/index.html [运行时间：0.075327s][吞吐率：13.28req/s] [内存消耗：3,056.96kb] [文件加载：82]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'qy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'dnt' => '1',
+  'referer' => 'http://qy.me/index/product/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1527851851; ftqyme=1; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1527853632',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\WebServer\www\project\Enterprise\application\index\view\index\index.html [ array (
+  0 => 'webInfo',
+  1 => 'contact',
+  2 => 'link',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001943s ] mysql:host=127.0.0.1;dbname=qy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_webinfo` [ RunTime:0.005336s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_webinfo` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000957s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_contact` [ RunTime:0.002032s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_contact` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `qy_link` [ RunTime:0.001313s ]
+[ sql ] [ SQL ] SELECT * FROM `qy_link` [ RunTime:0.000453s ]
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/0cf9683f0413943a903466c1977a2666.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/0cf9683f0413943a903466c1977a2666.jpg [运行时间：0.042352s][吞吐率：23.61req/s] [内存消耗：1,269.93kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/d721972dd024f27f438bbffa8cb2dd2c.jpg [运行时间：0.047586s][吞吐率：21.01req/s] [内存消耗：1,269.93kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/28c7fbf571679e369f53449b1049126a.jpg [运行时间：0.053915s][吞吐率：18.55req/s] [内存消耗：1,269.93kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/aa66a25ea9024676792b8f632dad81c3.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/aa66a25ea9024676792b8f632dad81c3.jpg [运行时间：0.057780s][吞吐率：17.31req/s] [内存消耗：1,269.93kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-06-01T19:47:12+08:00 ] 127.0.0.1 GET /static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg
+[ info ] qy.me/static/index/d/file/2015-12-13/04cbcf6dafd5b4e9a70a5e45d36954c0.jpg [运行时间：0.079767s][吞吐率：12.54req/s] [内存消耗：1,269.93kb] [文件加载：55]
+[ info ] [ LANG ] D:\WebServer\www\project\Enterprise\thinkphp\lang\zh-cn.php
