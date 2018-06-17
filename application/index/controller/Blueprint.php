@@ -11,6 +11,7 @@ class Blueprint extends Base
        $blueprintInfoCount = $blueprintInfo->total();
        $this->assign('blueprintInfo',$blueprintInfo);
        $this->assign('blueprintInfoCount',$blueprintInfoCount);
+       //添加注释
        return $this->view->fetch('blueprint-info');
     }
 
