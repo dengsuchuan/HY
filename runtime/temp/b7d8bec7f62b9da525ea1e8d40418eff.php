@@ -1,4 +1,4 @@
-<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1529425653;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1529428137;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -65,7 +65,7 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加外图','<?php echo url('index/blueprint/addDrawingExterna'); ?>',500,400)"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：<?php echo htmlentities($blueprintOutsideCount); ?> 条</span>
       </xblock>
       <div class="container-wrap">
@@ -88,7 +88,9 @@
                 <td>
                   <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
                 </td>
-                <td><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></td>
+                <td>
+                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></span> 添加明细','<?php echo url('index/blueprint/addDrawingDetial'); ?>',600)" href="javascript:;"><i class="layui-icon"><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></i></a>
+                </td>
                 <td><?php echo htmlentities($blueprintOutsideList['create_time']); ?></td>
                 <td><?php echo htmlentities($blueprintOutsideList['remark']); ?></td>
                 <td class="td-manage">
@@ -130,7 +132,6 @@
 
       function delAll (argument) {
         var data = tableCheck.getData();
-  
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
             layer.msg('删除成功', {icon: 1});

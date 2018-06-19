@@ -1,4 +1,4 @@
-<?php /*a:2:{s:81:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-infos.html";i:1529172103;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:81:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-infos.html";i:1529424503;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -47,7 +47,6 @@
   <body>
     <div class="x-body">
         <form class="layui-form">
-
             <div class="layui-form-item">
                 <label class="layui-form-label">明细编号</label>
                 <div class="layui-input-block">
@@ -256,12 +255,6 @@
         
       });
   </script>
-    <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();</script>
   </body>
 
 </html>

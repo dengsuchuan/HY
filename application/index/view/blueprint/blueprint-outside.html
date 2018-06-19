@@ -20,7 +20,7 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加外图','{:url(\'index/blueprint/addDrawingExterna\')}',500,400)"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：{$blueprintOutsideCount} 条</span>
       </xblock>
       <div class="container-wrap">
@@ -43,7 +43,9 @@
                 <td>
                   <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
                 </td>
-                <td>{$blueprintOutsideList.drawing_external_id}</td>
+                <td>
+                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\')}',600)" href="javascript:;"><i class="layui-icon">{$blueprintOutsideList.drawing_external_id}</i></a>
+                </td>
                 <td>{$blueprintOutsideList.create_time}</td>
                 <td>{$blueprintOutsideList.remark}</td>
                 <td class="td-manage">
@@ -85,7 +87,6 @@
 
       function delAll (argument) {
         var data = tableCheck.getData();
-  
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
             layer.msg('删除成功', {icon: 1});
