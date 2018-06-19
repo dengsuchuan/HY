@@ -1,4 +1,4 @@
-<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1528387566;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1529425565;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -66,34 +66,40 @@
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <span class="x-right" style="line-height:40px">共有数据：<?php echo htmlentities($blueprintOutsideCount); ?> 条</span>
       </xblock>
-      <table class="layui-table">
-        <thead>
-          <tr>
-            <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
-            <th>外来图号</th>
-            <th>建档日期</th>
-            <th>备注</th>
-            <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
-            <td>M10008-001</td>
-            <td>2011/1/29</td>
-            <td>备注</td>
-            <td class="td-manage">
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                </th>
+                <th>外来图号</th>
+                <th>建档日期</th>
+                <th>备注</th>
+                <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if(is_array($blueprintOutside) || $blueprintOutside instanceof \think\Collection || $blueprintOutside instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintOutside;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintOutsideList): $mod = ($i % 2 );++$i;?>
+            <tr>
+                <td>
+                  <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                </td>
+                <td><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></td>
+                <td><?php echo htmlentities($blueprintOutsideList['create_time']); ?></td>
+                <td><?php echo htmlentities($blueprintOutsideList['remark']); ?></td>
+                <td class="td-manage">
+                  <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                </td>
+              </tr>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <div class="page">
         <div>
           <a class="prev" href="">&lt;&lt;</a>

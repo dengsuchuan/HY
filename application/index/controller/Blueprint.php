@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
+use app\index\model\BlueprintOutside;
 
 class Blueprint extends Base
 {
@@ -15,10 +16,17 @@ class Blueprint extends Base
     }
 
     public function blueprintInterior(){
+
         return $this->view->fetch('blueprint-interior');
     }
 
     public function blueprintOutside(){
+        //$blueprintOutside = BlueprintOutside::order('create_time','desc')->paginate(25);
+        //$blueprintOutside = BlueprintOutside::all();
+        $blueprintOutside = BlueprintOutside::order('create_time','desc')->paginate(25);
+        $blueprintOutsideCount = $blueprintOutside->total();
+        $this->assign('blueprintOutside',$blueprintOutside);
+        $this->assign('blueprintOutsideCount',$blueprintOutsideCount);
         return $this->view->fetch('blueprint-outside');
     }
 
