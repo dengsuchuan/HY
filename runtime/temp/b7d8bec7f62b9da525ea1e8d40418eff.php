@@ -1,4 +1,4 @@
-<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1529425565;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1529425653;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -101,14 +101,7 @@
         </div>
       </div>
       <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
+        <?php echo $blueprintOutside; ?>
       </div>
 
     </div>
