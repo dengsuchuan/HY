@@ -1,4 +1,4 @@
-<?php /*a:2:{s:80:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1529173694;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:80:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1529862233;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -57,17 +57,26 @@
     <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-  <div class="layui-row">
-    <form class="layui-form layui-col-md12 x-so">
-      <input type="text" name="username"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
-      <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-    </form>
-  </div>
   <xblock>
-    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-    <span class="x-right" style="line-height:40px">共有数据：<?php echo htmlentities($blueprintInfoCount); ?>条</span>
+      <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
+      <button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
+      <script>
+        $(function () {
+            $("#find").click(function () {
+                var findText = $("#findText").val();
+                if(findText.length > 1){
+                    window.location.href="<?php echo url('index/blueprint/blueprintInfo'); ?>";
+                }else{
+                    layer.msg('请输入查找的关键字!',{icon:0,time:2000});
+                }
+
+            });
+        })
+      </script>
+    <!--<span class="x-right" style="line-height:40px">共：<?php echo htmlentities($blueprintInfoCount); ?>条数据</span>-->
   </xblock>
-  <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+  <!------------------------------------------------------------------------------------------------------------------->
   <div class="container-wrap">
     <div class="box-1">
       <table class="layui-table">

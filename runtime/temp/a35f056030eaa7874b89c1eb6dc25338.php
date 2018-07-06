@@ -1,4 +1,4 @@
-<?php /*a:5:{s:67:"D:\WebServer\www\project\Hy\application\index\view\index\index.html";i:1528384499;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;s:66:"D:\WebServer\www\project\Hy\application\index\view\public\top.html";i:1528384174;s:67:"D:\WebServer\www\project\Hy\application\index\view\public\left.html";i:1528770677;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\footer.html";i:1528384409;}*/ ?>
+<?php /*a:5:{s:67:"D:\WebServer\www\project\Hy\application\index\view\index\index.html";i:1528384499;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;s:66:"D:\WebServer\www\project\Hy\application\index\view\public\top.html";i:1528384174;s:67:"D:\WebServer\www\project\Hy\application\index\view\public\left.html";i:1529861470;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\footer.html";i:1528384409;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
