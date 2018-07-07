@@ -1,4 +1,4 @@
-<?php /*a:5:{s:67:"D:\WebServer\www\project\Hy\application\index\view\index\index.html";i:1528384499;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;s:66:"D:\WebServer\www\project\Hy\application\index\view\public\top.html";i:1528384174;s:67:"D:\WebServer\www\project\Hy\application\index\view\public\left.html";i:1530880106;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\footer.html";i:1528384409;}*/ ?>
+<?php /*a:5:{s:67:"D:\WebServer\www\project\Hy\application\index\view\index\index.html";i:1528384499;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;s:66:"D:\WebServer\www\project\Hy\application\index\view\public\top.html";i:1528384174;s:67:"D:\WebServer\www\project\Hy\application\index\view\public\left.html";i:1530881224;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\footer.html";i:1528384409;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -170,12 +170,6 @@
                         <a _href="<?php echo url('index/blueprint/blueprintOutside'); ?>">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>外部图纸</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="<?php echo url('index/blueprint/test'); ?>">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>test</cite>
                         </a>
                     </li >
                 </ul>

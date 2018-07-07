@@ -5,8 +5,17 @@
           <div class="layui-form-item">
               <label for="drawing_external_id" class="layui-form-label">外来图号</label>
               <div class="layui-input-inline">
-                  <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input">
+                  <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="">
               </div>
+              <button type="button" class="layui-btn" id="createId">生成</button>
+              <script>
+                  $(function () {
+                      $("#createId").click(function () {
+                          $("#drawing_external_id").val("{$createId}");
+                      });
+                  });
+              </script>
+
           </div>
           <div class="layui-form-item">
               <label for="remark" class="layui-form-label">备注</label>

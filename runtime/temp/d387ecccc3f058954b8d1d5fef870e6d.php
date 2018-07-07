@@ -1,4 +1,4 @@
-<?php /*a:2:{s:81:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-infos.html";i:1529890286;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:81:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-infos.html";i:1530882258;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -229,7 +229,12 @@
                 </div>
             </div>
 
-
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label"></label>
+                <button  class="layui-btn">
+                    确认修改
+                </button>
+            </div>
       </form>
     </div>
     <script>

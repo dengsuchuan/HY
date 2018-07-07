@@ -1,4 +1,4 @@
-<?php /*a:2:{s:80:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1530879750;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:80:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1530881434;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -60,7 +60,36 @@
 <div class="x-body">
   <xblock>
     <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
+    <div class="layui-input-inline">
+      <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
+      <form class="layui-form" action="">
+        <div class="layui-input-inline">
+          <select name="modules" lay-verify="required" lay-search="" id="findText">
+            <option value="">请输入关键字...</option>
+
+            <optgroup label="外图明细">
+              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+              <option value="<?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></option>
+              <?php endforeach; endif; else: echo "" ;endif; ?>
+            </optgroup>
+
+            <optgroup label="公司编号">
+              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+              <option value="<?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></option>
+              <?php endforeach; endif; else: echo "" ;endif; ?>
+            </optgroup>
+
+            <optgroup label="外图编号">
+              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+              <option value="<?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></option>
+              <?php endforeach; endif; else: echo "" ;endif; ?>
+            </optgroup>
+
+
+          </select>
+        </div>
+      </form>
+    </div>
     <button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
     <script>
       $(function () {

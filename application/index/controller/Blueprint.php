@@ -41,8 +41,12 @@ class Blueprint extends Base
     }
     //--|--|添加外图视图生成器
     public function addDrawingExterna(){
+        $blueprintOutside = BlueprintOutside::field("W180706-")->select();
+
+        $this->assign("blueprintOutsideList",$blueprintOutside);
         return $this->view->fetch("add-drawing-externa");
     }
+
     //--|--|添加图纸明细控制器
     public function addDrawingDetial(){
         return $this->view->fetch('add-drawing-detial');
