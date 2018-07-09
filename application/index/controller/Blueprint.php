@@ -39,6 +39,7 @@ class Blueprint extends Base
         $this->assign('blueprintOutside',$blueprintOutside);
         $this->assign('blueprintOutsideCount',$blueprintOutsideCount);
         return $this->view->fetch('blueprint-outside');
+
     }
     //--|--|添加外图视图生成器
     public function addDrawingExterna(){
