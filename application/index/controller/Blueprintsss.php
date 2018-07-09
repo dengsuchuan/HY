@@ -6,7 +6,6 @@ use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
 use think\facade\Request;
 
-
 class Blueprint extends Base
 {
     //--|图纸明细控制器以及相关子控制器
