@@ -1,4 +1,4 @@
-<?php /*a:2:{s:80:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1530976369;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:80:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1530976716;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -57,7 +57,7 @@
     <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 
-<div class="x-body">
+<div class="x-body" >
   <xblock>
     <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="layui-input-inline">
