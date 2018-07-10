@@ -23,19 +23,19 @@
           <select name="modules" lay-verify="required" lay-search="" id="findText">
             <option value="">请输入关键字...</option>
             <optgroup label="外图明细">
-              {volist name="$blueprintInfo" id="blueprintInfoList"}
+              {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
               <option value="{$blueprintInfoList.drawing_detail_id}">{$blueprintInfoList.drawing_detail_id}</option>
               {/volist}
             </optgroup>
 
             <optgroup label="公司编号">
-              {volist name="$blueprintInfo" id="blueprintInfoList"}
+              {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
               <option value="{$blueprintInfoList.drawing_internal_id}">{$blueprintInfoList.drawing_internal_id}</option>
               {/volist}
             </optgroup>
 
             <optgroup label="外图编号">
-              {volist name="$blueprintInfo" id="blueprintInfoList"}
+              {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
               <option value="{$blueprintInfoList.drawing_externa_id}">{$blueprintInfoList.drawing_externa_id}</option>
               {/volist}
             </optgroup>
