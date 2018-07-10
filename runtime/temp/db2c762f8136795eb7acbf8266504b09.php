@@ -1,4 +1,4 @@
-<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1531232830;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1531233487;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -60,6 +60,7 @@
 <div class="x-body" >
   <xblock>
     <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
     <div class="layui-input-inline">
       <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
       <form class="layui-form" action="<?php echo url('index/Blueprint/blueprintInfo'); ?>" method="post">

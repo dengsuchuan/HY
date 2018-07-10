@@ -9000,3 +9000,364 @@
 [ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = 'W180706-11' LIMIT 1 [ RunTime:0.024833s ]
 [ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = 'W180706-12' LIMIT 1 [ RunTime:0.024402s ]
 >>>>>>> origin/master
+---------------------------------------------------------------
+[ 2018-07-10T22:42:22+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.306181s][吞吐率：3.27req/s] [内存消耗：3,509.57kb] [文件加载：83]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.047842s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.032912s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.030996s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.036821s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:25+08:00 ] 127.0.0.1 POST /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.185530s][吞吐率：5.39req/s] [内存消耗：3,128.71kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://h.cn',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+  'modules' => 'M05064',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.044851s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.034000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05064' OR `drawing_internal_id` = 'M05064'  OR `drawing_externa_id` = 'M05064' LIMIT 1 [ RunTime:0.029951s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05064' OR `drawing_internal_id` = 'M05064'  OR `drawing_externa_id` = 'M05064' ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.036872s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:27+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.185503s][吞吐率：5.39req/s] [内存消耗：3,312.04kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.044848s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.031012s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.028053s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.035778s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:29+08:00 ] 127.0.0.1 POST /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.182480s][吞吐率：5.48req/s] [内存消耗：3,128.73kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://h.cn',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+  'modules' => 'M05327',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.047847s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.034902s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05327' OR `drawing_internal_id` = 'M05327'  OR `drawing_externa_id` = 'M05327' LIMIT 1 [ RunTime:0.029006s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05327' OR `drawing_internal_id` = 'M05327'  OR `drawing_externa_id` = 'M05327' ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.033910s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:30+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.186498s][吞吐率：5.36req/s] [内存消耗：3,312.04kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.042886s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.034916s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.028047s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.035782s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:38+08:00 ] 127.0.0.1 POST /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.179517s][吞吐率：5.57req/s] [内存消耗：3,128.73kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://h.cn',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+  'modules' => 'M05063',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.044924s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.031899s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05063' OR `drawing_internal_id` = 'M05063'  OR `drawing_externa_id` = 'M05063' LIMIT 1 [ RunTime:0.028864s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05063' OR `drawing_internal_id` = 'M05063'  OR `drawing_externa_id` = 'M05063' ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.036969s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:40+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.201462s][吞吐率：4.96req/s] [内存消耗：3,312.04kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.050961s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033912s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.031999s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.039808s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:42:56+08:00 ] 127.0.0.1 POST /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.184509s][吞吐率：5.42req/s] [内存消耗：3,128.73kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://h.cn',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+  'modules' => 'M05063',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.046876s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.031921s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05063' OR `drawing_internal_id` = 'M05063'  OR `drawing_externa_id` = 'M05063' LIMIT 1 [ RunTime:0.030918s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05063' OR `drawing_internal_id` = 'M05063'  OR `drawing_externa_id` = 'M05063' ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.033908s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:43:21+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.202427s][吞吐率：4.94req/s] [内存消耗：3,312.04kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.047889s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033987s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.030916s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.039893s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:43:22+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.187467s][吞吐率：5.33req/s] [内存消耗：3,312.04kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.043851s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033910s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.029010s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.036814s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:43:24+08:00 ] 127.0.0.1 POST /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.206445s][吞吐率：4.84req/s] [内存消耗：3,128.73kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://h.cn',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+  'modules' => 'M05063',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.048852s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.035965s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05063' OR `drawing_internal_id` = 'M05063'  OR `drawing_externa_id` = 'M05063' LIMIT 1 [ RunTime:0.035903s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05063' OR `drawing_internal_id` = 'M05063'  OR `drawing_externa_id` = 'M05063' ORDER BY `create_time` DESC LIMIT 0,10 [ RunTime:0.045850s ]
+---------------------------------------------------------------
+[ 2018-07-10T22:43:32+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.200464s][吞吐率：4.99req/s] [内存消耗：3,312.04kb] [文件加载：81]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.048007s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033861s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.031885s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.039893s ]
