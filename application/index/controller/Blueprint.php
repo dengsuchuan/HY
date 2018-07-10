@@ -19,14 +19,18 @@ class Blueprint extends Base
                 ->whereOr(['drawing_externa_id'=>$data['modules']])
                 ->paginate(5);
             $blueprintInfoCount = $blueprintInfo->total();
+            $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
             $this->assign('blueprintInfo', $blueprintInfo);
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
+            $this->assign('blueprintKeyInfo', $blueprintKeyInfo);
             return $this->view->fetch('blueprint-info');
         }
         $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
+        $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
         $blueprintInfoCount = $blueprintInfo->total();
         $this->assign('blueprintInfo', $blueprintInfo);
         $this->assign('blueprintInfoCount', $blueprintInfoCount);
+        $this->assign('blueprintKeyInfo', $blueprintKeyInfo);
         return $this->view->fetch('blueprint-info');
     }
 
