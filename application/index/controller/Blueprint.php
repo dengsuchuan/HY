@@ -12,6 +12,7 @@ class Blueprint extends Base
     public function blueprintInfo(){
         //判断是否为post提交请求。如果是，就代表是搜索。
         if(Request::isPost()){
+
             $data = Request::post();
             $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
                 ->where(['drawing_detail_id'=>$data['modules']])
