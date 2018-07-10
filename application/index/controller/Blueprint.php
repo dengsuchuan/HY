@@ -69,7 +69,7 @@ class Blueprint extends Base
     //--|--|添加外图视图生成器
     public function addDrawingExterna(){
         //获取数据库中W180706-x的数量实现自动生成编号
-        $blueprintOutside = BlueprintOutside::where('drawing_external_id',"LIKE","W180706-%")
+        $blueprintOutside = BlueprintOutside::where('drawing_external_id',"LIKE","W180706-1%")
             ->order("drawing_external_id",'DESC')
             ->find();
         if($blueprintOutside){
@@ -82,7 +82,7 @@ class Blueprint extends Base
         }
 
         $arrayTemp = explode("-", $drawingExternalId);
-        $numberTemp = $arrayTemp[1]+1;
+        $numberTemp = ++$arrayTemp[1];
 
         $this->assign("createId","W180706-".$numberTemp);
         return $this->view->fetch("add-drawing-externa");
