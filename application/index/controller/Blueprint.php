@@ -10,12 +10,26 @@ class Blueprint extends Base
 {
     //--|图纸明细控制器以及相关子控制器
     public function blueprintInfo(){
+        //判断是否为post提交请求。如果是，就代表是搜索。
+        if(Request::isPost()){
+            $data = Request::post();
+            $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
+                ->where(['drawing_detail_id'=>$data['modules']])
+                ->whereOr(['drawing_internal_id'=>$data['modules']])
+                ->whereOr(['drawing_externa_id'=>$data['modules']])
+                ->paginate(25);
+            $blueprintInfoCount = $blueprintInfo->total();
+            $this->assign('blueprintInfo', $blueprintInfo);
+            $this->assign('blueprintInfoCount', $blueprintInfoCount);
+            return $this->view->fetch('blueprint-info');
+        }
         $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
         $blueprintInfoCount = $blueprintInfo->total();
         $this->assign('blueprintInfo', $blueprintInfo);
         $this->assign('blueprintInfoCount', $blueprintInfoCount);
         return $this->view->fetch('blueprint-info');
     }
+
     //--|--|明细具体项目详情
     public function blueprintInfos()
     {
