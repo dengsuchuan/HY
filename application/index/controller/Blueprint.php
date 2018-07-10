@@ -1,11 +1,9 @@
 <?php
 namespace app\index\controller;
-
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
 use think\facade\Request;
-
 class Blueprint extends Base
 {
     //--|图纸明细控制器以及相关子控制器
@@ -50,9 +48,7 @@ class Blueprint extends Base
             $res = BlueprintInfo::update($data, ['id' => $id]);
             if ($res) {
                 return json(1);
-
             } else {
-
                 return json(0);
             }
         }
@@ -67,10 +63,7 @@ class Blueprint extends Base
     //--|--|工艺管理里面的工序详情
     public function sequence(){
         return $this->view->fetch('sequence');
-
     }
-
-
     //--|外图控制器以及子控制器
     public function blueprintOutside(){
         $blueprintOutside = BlueprintOutside::order('create_time','desc')->paginate(25);
@@ -78,7 +71,6 @@ class Blueprint extends Base
         $this->assign('blueprintOutside',$blueprintOutside);
         $this->assign('blueprintOutsideCount',$blueprintOutsideCount);
         return $this->view->fetch('blueprint-outside');
-
     }
     //--|--|添加外图视图生成器
     public function addDrawingExterna(){
@@ -92,7 +84,6 @@ class Blueprint extends Base
         $this->assign("createId",$str.$i);
         return $this->view->fetch("add-drawing-externa");
     }
-
     public function addDrawingExternalId(){//传入编号和备注
         if(Request::isAjax()){
             //获取提交过来的所有数据
@@ -104,20 +95,13 @@ class Blueprint extends Base
                 return json(0);
             }
         }
-    }
 
+    }
     //--|--|添加图纸明细控制器
     public function addDrawingDetial(){
         return $this->view->fetch('add-drawing-detial');
     }
-
-
     public function blueprintInterior(){
-
         return $this->view->fetch('blueprint-interior');
     }
-
-
-
-
 }
