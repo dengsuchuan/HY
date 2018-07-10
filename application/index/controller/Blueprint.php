@@ -3,6 +3,7 @@ namespace app\index\controller;
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
+use app\index\model\Material;
 use think\facade\Request;
 class Blueprint extends Base
 {
@@ -85,6 +86,7 @@ class Blueprint extends Base
         do{
             ++$i;  //第一次就为1，排除编号0
         }while($model->get(["drawing_external_id"=>$str.$i])); //如果存在就继续算下去
+
         $this->assign("createId",$str.$i);
         return $this->view->fetch("add-drawing-externa");
     }
@@ -102,9 +104,33 @@ class Blueprint extends Base
 
     }
     //--|--|添加图纸明细控制器
-    public function addDrawingDetial(){
+    public function addDrawingDetial($id){//从视图传来
+
+        $detailArray[] =[];
+        /*------------------------------------------*/
+        //获取数据库中$id的数量实现自动生成图纸明细编号
+        $model = new BlueprintInfo();//可实例化，也可不实例化
+        $i = 0;//编号
+        $str = $id."-";//可以设置来之数据库的一个自定义字符串
+        do{
+            ++$i;  //第一次就为1，排除编号0
+        }while($model->get(["drawing_detail_id"=>$str.$i])); //如果存在就继续算下去
+        /*------------------------------------------*/
+
+        $material = Material::all();//获取所有材料
+
+        $detailArray = [
+            'drawing_detail_id'=>$str.$i,//这个是图纸明细的编号，每次自动递增
+            'drawing_external_id'=>$id,//外图编号
+            'material'=>$material//获取所有材料
+        ];
+
+        $this->assign("detailArray",$detailArray);
+
+
         return $this->view->fetch('add-drawing-detial');
     }
+
     public function blueprintInterior(){
         return $this->view->fetch('blueprint-interior');
     }

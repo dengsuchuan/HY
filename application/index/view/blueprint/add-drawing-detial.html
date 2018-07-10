@@ -5,7 +5,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">明细编号</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" title="无法编辑" value="">
+                <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -17,7 +17,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">外图编号</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
+                <input type="text" class="layui-input" value="{$detailArray.drawing_external_id}"  >
             </div>
         </div>
         <div class="layui-form-item">
@@ -29,7 +29,14 @@
         <div class="layui-form-item">
             <label class="layui-form-label">材料类型</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <select name="modules" lay-verify="required" lay-search="" id="findText">
+                        <option value="">请输入关键字...</option>
+                        {volist name="$detailArray.material" id="materialList"}
+                        <option value="{$materialList.material_id}">{$materialList.material_id}</option>
+                        {/volist}
+                    </select>
+                </div>
             </div>
         </div>
         <div class="layui-form-item">
@@ -138,18 +145,6 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">最后修改人</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">创建时间</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">修改时间</label>
             <div class="layui-input-block">
                 <input type="text" class="layui-input" value=" "  >
             </div>
