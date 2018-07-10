@@ -6,16 +6,9 @@
               <label for="drawing_external_id" class="layui-form-label">外来图号</label>
               <div class="layui-input-inline">
                   <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="">
+                  <p id="pLog" style="color:red"></p>
               </div>
               <button type="button" class="layui-btn" id="createId">生成</button>
-              <script>
-                  $(function () {
-                      $("#createId").click(function () {
-                          $("#drawing_external_id").val("{$createId}");
-                      });
-                  });
-              </script>
-
           </div>
           <div class="layui-form-item">
               <label for="remark" class="layui-form-label">备注</label>
@@ -23,51 +16,52 @@
                   <input type="text" id="remark" name="remark" lay-verify="required" autocomplete="off" class="layui-input">
               </div>
           </div>
-
           <div class="layui-form-item">
               <label class="layui-form-label">
               </label>
-              <button  class="layui-btn" lay-filter="add" lay-submit="">
+              <button class="layui-btn" lay-submit lay-filter="addId">
                   增加
               </button>
           </div>
       </form>
     </div>
     <script>
-        layui.use(['form','layer'], function(){
-            $ = layui.jquery;
-          var form = layui.form
-          ,layer = layui.layer;
-        
-          //自定义验证规则
-          form.verify({
-            nikename: function(value){
-              if(value.length < 5){
-                return '昵称至少得5个字符啊';
-              }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,repass: function(value){
-                if($('#L_pass').val()!=$('#L_repass').val()){
-                    return '两次密码不一致';
-                }
-            }
-          });
+        $(function () {
+            //自动生成编号
+            $("#createId").click(function () {
+                $("#drawing_external_id").val("{$createId}");
+                layer.msg('现在是自动生成的外图编号<br>书写自定义编号时请不要占用自动生成编号<br>此提示显示3秒', {
+                    time: 3000, //20s后自动关闭
+                });
+                $("#pLog").text("当前是自动生成编号状态，请勿修改");
+            });
+        });
+
+
+        layui.use(['form'], function(){
+          $ = layui.jquery;
+          var form = layui.form,layer = layui.layer;
 
           //监听提交
-          form.on('submit(add)', function(data){
-            console.log(data);
-            //发异步，把数据提交给php
-            layer.alert("增加成功", {icon: 6},function () {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
-            });
-            return false;
+          form.on('submit(addId)', function(data){
+            //console.log(data);
+              $.post("{:url('index/Blueprint/addDrawingExternalId')}",data.field,function(info){
+                  if(info == 1){
+                      layer.alert("添加成功", {icon: 6},function () {
+                          window.parent.location.reload();  //刷新父级页面
+                          // 获得frame索引
+                          var index = parent.layer.getFrameIndex(window.name);
+                          //关闭当前弹出层
+                          parent.layer.close(index);
+                      });
+                  }else{
+                      layer.alert("添加失败", {icon: 5});
+                  }
+              },'json');
+              return false;
           });
-          
-          
+
+
         });
     </script>
     <script>var _hmt = _hmt || []; (function() {

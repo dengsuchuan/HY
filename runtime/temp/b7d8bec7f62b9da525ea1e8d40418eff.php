@@ -1,4 +1,4 @@
-<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1530868947;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
+<?php /*a:2:{s:83:"D:\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-outside.html";i:1530976702;s:69:"D:\WebServer\www\project\Hy\application\index\view\public\header.html";i:1528981768;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@
 
     </style>
 </head>
-  <body>
+  <body >
     <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
