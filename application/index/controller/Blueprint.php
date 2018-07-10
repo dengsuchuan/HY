@@ -36,7 +36,9 @@ class Blueprint extends Base
             $res = BlueprintInfo::update($data, ['id' => $id]);
             if ($res) {
                 return json(1);
+
             } else {
+
                 return json(0);
             }
         }
