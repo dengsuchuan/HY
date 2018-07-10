@@ -35,7 +35,9 @@ class Blueprint extends Base
             //执行更新操作  使用的模型更新  成功失败都会返回为当前模型的所以数据
             $res = BlueprintInfo::update($data, ['id' => $id]);
             if ($res) {
+
                 return json(1);
+
             } else {
                 return json(0);
             }
