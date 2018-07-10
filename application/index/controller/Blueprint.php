@@ -37,7 +37,6 @@ class Blueprint extends Base
             if ($res) {
                 return json(1);
             } else {
-
                 return json(0);
             }
         }
