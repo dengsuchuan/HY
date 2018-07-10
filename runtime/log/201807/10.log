@@ -227,3 +227,356 @@
 [ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.026811s ]
 [ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.025484s ]
 [ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.029324s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:24:41+08:00 ] 127.0.0.1 GET /
+[ info ] h.cn/ [运行时间：0.764983s][吞吐率：1.31req/s] [内存消耗：1,684.77kb] [文件加载：64]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-10T18:24:41+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] h.cn/index/index/welcome.html [运行时间：0.039891s][吞吐率：25.07req/s] [内存消耗：1,620.98kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-10T18:24:41+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] h.cn/static/index/favicon.ico [运行时间：0.125663s][吞吐率：7.96req/s] [内存消耗：1,193.84kb] [文件加载：49]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-07-10T18:24:44+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.646271s][吞吐率：1.55req/s] [内存消耗：3,499.77kb] [文件加载：82]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.048963s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.032818s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.031037s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.039775s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:24:47+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.282202s][吞吐率：3.54req/s] [内存消耗：2,976.60kb] [文件加载：78]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.049956s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033862s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.031917s ]
+[ error ] [0]类的属性不存在:app\index\model\BlueprintInfo->id[D:\code\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-07-10T18:24:52+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.162597s][吞吐率：6.15req/s] [内存消耗：2,976.60kb] [文件加载：78]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.047848s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.034902s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.032909s ]
+[ error ] [0]类的属性不存在:app\index\model\BlueprintInfo->id[D:\code\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-07-10T18:25:21+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.168572s][吞吐率：5.93req/s] [内存消耗：2,976.60kb] [文件加载：78]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.050866s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.032911s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.036924s ]
+[ error ] [0]类的属性不存在:app\index\model\BlueprintInfo->id[D:\code\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-07-10T18:26:24+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.275243s][吞吐率：3.63req/s] [内存消耗：3,170.10kb] [文件加载：79]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.045872s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.031912s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.034954s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:26:36+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.274262s][吞吐率：3.65req/s] [内存消耗：3,149.32kb] [文件加载：80]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.046914s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.032846s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.034906s ]
+[ error ] [0]类的属性不存在:app\index\model\BlueprintInfo->id[D:\code\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-07-10T18:27:09+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.402953s][吞吐率：2.48req/s] [内存消耗：2,903.03kb] [文件加载：74]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.265290s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033909s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.035905s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:27:38+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.276262s][吞吐率：3.62req/s] [内存消耗：3,170.95kb] [文件加载：79]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.048870s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.034910s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.035899s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:27:42+08:00 ] 127.0.0.1 POST /index/blueprint/blueprintinfos.html
+[ info ] h.cn/index/blueprint/blueprintinfos.html [运行时间：0.168517s][吞吐率：5.93req/s] [内存消耗：2,947.31kb] [文件加载：75]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'content-length' => '487',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://h.cn',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfos/id/M05316.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => '295',
+  'drawing_detail_id' => 'M05316',
+  'drawing_internal_id' => 'P16004-319',
+  'drawing_externa_id' => 'D04.03-294D',
+  'drawing_name' => '检测区承力轨',
+  'material' => '',
+  'heat_treatment' => '',
+  'drawing_type' => '零件',
+  'client_id' => '294',
+  'material_type' => '0',
+  'thickness_Dia' => '0',
+  'length_dim' => '0',
+  'width_dim' => '0',
+  'layout_qty' => '0',
+  'material_requirements' => '',
+  'product_mfg_cost' => '0.00',
+  'product_quotation' => '0.00',
+  'product_real_price' => '0.00',
+  'create_name' => '杨世晖',
+  'modify_name' => '杨世晖',
+  'remark' => 'ADA ',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.043883s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.032919s ]
+[ sql ] [ SQL ] UPDATE `hy_drawing_detial`  SET `drawing_detail_id` = 'M05316' , `drawing_internal_id` = 'P16004-319' , `drawing_externa_id` = 'D04.03-294D' , `drawing_name` = '检测区承力轨' , `material` = '' , `heat_treatment` = '' , `drawing_type` = '零件' , `client_id` = '294' , `material_type` = 0 , `thickness_Dia` = 0 , `length_dim` = 0 , `width_dim` = 0 , `layout_qty` = 0 , `material_requirements` = '' , `product_mfg_cost` = 0 , `product_quotation` = 0 , `product_real_price` = 0 , `create_name` = '杨世晖' , `modify_name` = '杨世晖' , `remark` = 'ADA ' , `if_batch` = 0 , `if_thickness` = 0 , `if_length` = 0 , `if_width` = 0 , `update_time` = 1531218462  WHERE  `id` = '295' [ RunTime:0.039893s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:27:43+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfo.html
+[ info ] h.cn/index/blueprint/blueprintinfo.html [运行时间：0.205450s][吞吐率：4.87req/s] [内存消耗：3,302.70kb] [文件加载：80]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-info.html [ array (
+  0 => 'blueprintInfo',
+  1 => 'blueprintInfoCount',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.047874s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033920s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_drawing_detial` LIMIT 1 [ RunTime:0.029992s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.038890s ]
+---------------------------------------------------------------
+[ 2018-07-10T18:27:44+08:00 ] 127.0.0.1 GET /index/blueprint/blueprintinfos/id/M05316.html
+[ info ] h.cn/index/blueprint/blueprintinfos/id/M05316.html [运行时间：0.171519s][吞吐率：5.83req/s] [内存消耗：3,000.08kb] [文件加载：77]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinfo.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'M05316',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\blueprint\blueprint-infos.html [ array (
+  0 => 'blueprintInfo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.051861s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.033911s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `drawing_detail_id` = 'M05316' LIMIT 1 [ RunTime:0.042847s ]
