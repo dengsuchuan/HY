@@ -1,4 +1,4 @@
-<?php /*a:2:{s:86:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-info.html";i:1531208279;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
+<?php /*a:2:{s:86:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-info.html";i:1531219348;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -133,7 +133,7 @@
       <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
       <tr>
         <td>
-          <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='<?php echo htmlentities($blueprintInfoList['Id']); ?>'><i class="layui-icon">&#xe605;</i></div>
+          <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='<?php echo htmlentities($blueprintInfoList['id']); ?>'><i class="layui-icon">&#xe605;</i></div>
         </td>
         <td><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></td>
         <td><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></td>

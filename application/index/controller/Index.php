@@ -33,7 +33,7 @@ class Index extends Base
             $sum++;
             //写入日志
         }
-        if($sum>0) {   //产生有效时间再记录日志
+        if($sum>0) {   //产生有效事件再记录日志
             $model->save([
                 "date" => time(),
                 "msg" => "删除" . $Ary['table'] . "表中记录" . $sum . "条"
