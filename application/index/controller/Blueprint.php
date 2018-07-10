@@ -17,7 +17,7 @@ class Blueprint extends Base
                 ->where(['drawing_detail_id'=>$data['modules']])
                 ->whereOr(['drawing_internal_id'=>$data['modules']])
                 ->whereOr(['drawing_externa_id'=>$data['modules']])
-                ->paginate(10);
+                ->paginate(5);
             $blueprintInfoCount = $blueprintInfo->total();
             $this->assign('blueprintInfo', $blueprintInfo);
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
