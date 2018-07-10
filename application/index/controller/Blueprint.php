@@ -69,22 +69,13 @@ class Blueprint extends Base
     //--|--|添加外图视图生成器
     public function addDrawingExterna(){
         //获取数据库中W180706-x的数量实现自动生成编号
-        $blueprintOutside = BlueprintOutside::where('drawing_external_id',"LIKE","W180706-1%")
-            ->order("drawing_external_id",'DESC')
-            ->find();
-        if($blueprintOutside){
-            $stdClassTemp = json_decode($blueprintOutside);
-            $stdClassJson  =json_encode($stdClassTemp); //把她转换为json字符串
-            $stdClassArray = json_decode($stdClassJson,true); //再把json字符串格式化为数组
-            $drawingExternalId = $stdClassArray['drawing_external_id'];
-        }else{
-            $drawingExternalId = "W180706-0";
-        }
-
-        $arrayTemp = explode("-", $drawingExternalId);
-        $numberTemp = ++$arrayTemp[1];
-
-        $this->assign("createId","W180706-".$numberTemp);
+        $model = new BlueprintOutside();//可实例化，也可不实例化
+        $i = 0;//编号
+        $str = "W180706-";//可以设置来之数据库的一个自定义字符串
+        do{
+            ++$i;  //第一次就为1，排除编号0
+        }while($model->get(["drawing_external_id"=>$str.$i])); //如果存在就继续算下去
+        $this->assign("createId",$str.$i);
         return $this->view->fetch("add-drawing-externa");
     }
 
