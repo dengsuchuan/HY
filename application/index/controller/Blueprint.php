@@ -51,6 +51,7 @@ class Blueprint extends Base
     //--|--|工艺管理里面的工序详情
     public function sequence(){
         return $this->view->fetch('sequence');
+
     }
 
 
