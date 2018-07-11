@@ -4,6 +4,7 @@ use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
 use app\index\model\Material;
+use app\index\model\ProductProcess;
 use think\facade\Request;
 class Blueprint extends Base
 {
@@ -62,6 +63,11 @@ class Blueprint extends Base
     }
     //--|--|工艺管理详情
     public function process(){
+        $drawing_detail_id = input('drawing_detail_id');  //获取图纸明细编号
+        $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+        $this->assign([
+           'processInfo'    =>  $processInfo,
+        ]);
         return $this->view->fetch('process');
     }
     //--|--|工艺管理里面的工序详情

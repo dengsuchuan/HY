@@ -22,17 +22,19 @@
             </tr>
           </thead>
           <tbody>
+          {volist name="processInfo" id="processInfoList"}
             <tr>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
+              <td>{$processInfoList.process_id}</td>
+              <td>{$processInfoList.process_type}</td>
+              <td>{$processInfoList.process_content}</td>
+              <td>{$processInfoList.process_quota}</td>
+              <td>{$processInfoList.if_check}</td>
+              <td>{$processInfoList.drawing_detial_id}</td>
+              <td>{$processInfoList.process_quoted_price}</td>
+              <td>{$processInfoList.quota_quotation}</td>
+              <td>{$processInfoList.process_real_price}</td>
             </tr>
+          {/volist}
           </tbody>
         </table>
       </div>

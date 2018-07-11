@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1529297217;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531324446;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -67,17 +67,19 @@
             </tr>
           </thead>
           <tbody>
+          <?php if(is_array($processInfo) || $processInfo instanceof \think\Collection || $processInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $processInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$processInfoList): $mod = ($i % 2 );++$i;?>
             <tr>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
+              <td><?php echo htmlentities($processInfoList['process_id']); ?></td>
+              <td><?php echo htmlentities($processInfoList['process_type']); ?></td>
+              <td><?php echo htmlentities($processInfoList['process_content']); ?></td>
+              <td><?php echo htmlentities($processInfoList['process_quota']); ?></td>
+              <td><?php echo htmlentities($processInfoList['if_check']); ?></td>
+              <td><?php echo htmlentities($processInfoList['drawing_detial_id']); ?></td>
+              <td><?php echo htmlentities($processInfoList['process_quoted_price']); ?></td>
+              <td><?php echo htmlentities($processInfoList['quota_quotation']); ?></td>
+              <td><?php echo htmlentities($processInfoList['process_real_price']); ?></td>
             </tr>
+          <?php endforeach; endif; else: echo "" ;endif; ?>
           </tbody>
         </table>
       </div>

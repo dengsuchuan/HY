@@ -1,4 +1,4 @@
-<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1531233487;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1531323738;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -68,22 +68,23 @@
           <select name="modules" lay-verify="required" lay-search="" id="findText">
             <option value="">请输入关键字...</option>
             <optgroup label="外图明细">
-              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+              <?php if(is_array($blueprintKeyInfo) || $blueprintKeyInfo instanceof \think\Collection || $blueprintKeyInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintKeyInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
               <option value="<?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></option>
               <?php endforeach; endif; else: echo "" ;endif; ?>
             </optgroup>
 
             <optgroup label="公司编号">
-              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+              <?php if(is_array($blueprintKeyInfo) || $blueprintKeyInfo instanceof \think\Collection || $blueprintKeyInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintKeyInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
               <option value="<?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></option>
               <?php endforeach; endif; else: echo "" ;endif; ?>
             </optgroup>
 
             <optgroup label="外图编号">
-              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+              <?php if(is_array($blueprintKeyInfo) || $blueprintKeyInfo instanceof \think\Collection || $blueprintKeyInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintKeyInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
               <option value="<?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></option>
               <?php endforeach; endif; else: echo "" ;endif; ?>
             </optgroup>
+
           </select>
         </div>
         <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
@@ -150,7 +151,7 @@
           <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
           <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
           <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>
-          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process'); ?>')" href="javascript:;"><i class="layui-icon">工</i></a>
+          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><i class="layui-icon">工</i></a>
         </td>
       </tr>
       <?php endforeach; endif; else: echo "" ;endif; ?>
