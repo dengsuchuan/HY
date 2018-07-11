@@ -81,7 +81,7 @@ class Blueprint extends Base
         //获取数据库中W180706-x的数量实现自动生成编号
         $model = new BlueprintOutside();//可实例化，也可不实例化
         $i = 0;//编号
-        $str = "W180706-";//可以设置来之数据库的一个自定义字符串
+        $str = "W".date('y').date('m').date('d')."-";//可以设置来之数据库的一个自定义字符串
         do{
             ++$i;  //第一次就为1，排除编号0
         }while($model->get(["drawing_external_id"=>$str.$i])); //如果存在就继续算下去
