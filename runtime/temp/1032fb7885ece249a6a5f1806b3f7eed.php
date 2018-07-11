@@ -1,4 +1,49 @@
-﻿{include file="public/header" /}
+<?php /*a:2:{s:90:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531285738;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>恒易管理</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/index/css/font.css">
+    <link rel="stylesheet" href="/static/index/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/index/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/index/js/xadmin.js"></script>
+    <style>
+        .container-wrap {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            overflow-x: scroll; /* 1 */
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+            -webkit-overflow-scrolling: touch; /* 2 */
+            text-align: justify; /* 3 */
+        &::-webkit-scrollbar {
+             display: none;
+         }
+        }
+
+        .container > div {
+            display: inline-block;
+            height: 50px;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+        .box-1 {
+            width:100%;
+        }
+
+    </style>
+</head>
   <body>
     <div class="x-nav">
       <span class="layui-breadcrumb">
@@ -23,7 +68,7 @@
                 $("#find").click(function () {
                     var findText = $("#findText").val();
                     if(findText.length > 1){
-                        window.location.href="{:url('index/blueprint/blueprintInfo')}";
+                        window.location.href="<?php echo url('index/blueprint/blueprintInfo'); ?>";
                     }else{
                         layer.msg('请输入查找的关键字!',{icon:0,time:2000});
                     }
@@ -48,7 +93,7 @@
         <tbody>
           <tr>
             <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>M10008-001</td>
             <td>2011/1/29</td>
@@ -107,7 +152,7 @@
                 type:"POST",
                 dataType:"json",
                 data:{
-                    table:"",  //表名
+                    table:"hy_drawing_Internal",  //表名
                     data:data   //数据
                 },
                 success:function (res) {

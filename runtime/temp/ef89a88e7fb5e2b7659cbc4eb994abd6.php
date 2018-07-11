@@ -1,4 +1,49 @@
-﻿{include file="public/header" /}
+<?php /*a:2:{s:89:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-outside.html";i:1531285321;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>恒易管理</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/index/css/font.css">
+    <link rel="stylesheet" href="/static/index/css/xadmin.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/index/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/index/js/xadmin.js"></script>
+    <style>
+        .container-wrap {
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            overflow-x: scroll; /* 1 */
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+            -webkit-overflow-scrolling: touch; /* 2 */
+            text-align: justify; /* 3 */
+        &::-webkit-scrollbar {
+             display: none;
+         }
+        }
+
+        .container > div {
+            display: inline-block;
+            height: 50px;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+        .box-1 {
+            width:100%;
+        }
+
+    </style>
+</head>
   <body >
     <div class="x-nav">
       <span class="layui-breadcrumb">
@@ -14,7 +59,7 @@
     <div class="x-body">
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加外图','{:url(\'index/blueprint/addDrawingExterna\')}',500,400)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加外图','<?php echo url('index/blueprint/addDrawingExterna'); ?>',500,400)"><i class="layui-icon"></i>添加</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
         <button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
@@ -23,7 +68,7 @@
                 $("#find").click(function () {
                     var findText = $("#findText").val();
                     if(findText.length > 1){
-                        window.location.href="{:url('index/blueprint/blueprintInfo')}";
+                        window.location.href="<?php echo url('index/blueprint/blueprintInfo'); ?>";
                     }else{
                         layer.msg('请输入查找的关键字!',{icon:0,time:2000});
                     }
@@ -46,27 +91,27 @@
                 </tr>
             </thead>
             <tbody>
-            {volist name="$blueprintOutside" id="blueprintOutsideList"}
+            <?php if(is_array($blueprintOutside) || $blueprintOutside instanceof \think\Collection || $blueprintOutside instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintOutside;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintOutsideList): $mod = ($i % 2 );++$i;?>
             <tr>
                 <td>
-                  <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>
+                  <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='<?php echo htmlentities($blueprintOutsideList['id']); ?>'><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td>
-                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}',600)" href="javascript:;"><i class="layui-icon">{$blueprintOutsideList.drawing_external_id}</i></a>
+                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></span> 添加明细','<?php echo url('index/blueprint/addDrawingDetial', ['id' => $blueprintOutsideList['drawing_external_id']]); ?>',600)" href="javascript:;"><i class="layui-icon"><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></i></a>
                 </td>
-                <td>{$blueprintOutsideList.create_time}</td>
-                <td>{$blueprintOutsideList.remark}</td>
+                <td><?php echo htmlentities($blueprintOutsideList['create_time']); ?></td>
+                <td><?php echo htmlentities($blueprintOutsideList['remark']); ?></td>
                 <td class="td-manage">
                   <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
                 </td>
               </tr>
-            {/volist}
+            <?php endforeach; endif; else: echo "" ;endif; ?>
             </tbody>
           </table>
         </div>
       </div>
       <div class="page">
-        {$blueprintOutside|raw}
+        <?php echo $blueprintOutside; ?>
       </div>
 
     </div>
