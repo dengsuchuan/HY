@@ -65,11 +65,49 @@ class Blueprint extends Base
     //--|--|工艺管理详情
     public function process(){
         $drawing_detail_id = input('drawing_detail_id');  //获取图纸明细编号
+        //获取工艺/工序信息
         $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+        $count = count($processInfo);
         $this->assign([
-           'processInfo'    =>  $processInfo,
+           'processInfo'           =>  $processInfo,
+            'drawing_detail_id'    =>  $drawing_detail_id,
+            'count'                =>  $count
         ]);
         return $this->view->fetch('process');
+    }
+    //--|--|添加工艺
+    public function addProcess(){
+        //如果是ajax提交则代表为入库操作
+        if(Request::isAjax()){
+            $data = Request::post();
+            $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+            $info = ProductProcess::create($data);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $drawing_detail_id = input('id');  //获取图纸明细编号
+        $drawing_detail_ids = input('id');  //获取图纸明细编号
+        //获取当前图纸明细的工艺记录
+        $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->field('id,process_id')->select();
+        //统计工艺条数
+        $count = count($processInfo);
+        //生成工艺编号
+        if($count == 0){
+            $drawing_detail_id.= '-P01';
+        }else{
+            $processInfo = $processInfo[--$count];
+            $code = intval(substr($processInfo['process_id'],strpos($processInfo['process_id'],'P')+1));
+            $code++;
+            $drawing_detail_id = $code<10 ? $drawing_detail_id .= '-P0'.$code:$drawing_detail_id .= '-P'.$code;
+        }
+        $this->assign([
+            'drawing_detail_id'    =>  $drawing_detail_id,
+            'drawing_detail_ids'   =>  $drawing_detail_ids,
+        ]);
+        return $this->view->fetch('add-process');
     }
     //--|--|工艺管理里面的工序详情
     public function sequence(){

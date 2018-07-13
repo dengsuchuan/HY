@@ -1,4 +1,4 @@
-<?php /*a:2:{s:66:"D:\code\Hy\application\index\view\blueprint\blueprint-outside.html";i:1531144738;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:66:"D:\code\Hy\application\index\view\blueprint\blueprint-outside.html";i:1531323516;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -94,10 +94,10 @@
             <?php if(is_array($blueprintOutside) || $blueprintOutside instanceof \think\Collection || $blueprintOutside instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintOutside;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintOutsideList): $mod = ($i % 2 );++$i;?>
             <tr>
                 <td>
-                  <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                  <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='<?php echo htmlentities($blueprintOutsideList['id']); ?>'><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td>
-                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></span> 添加明细','<?php echo url('index/blueprint/addDrawingDetial'); ?>',600)" href="javascript:;"><i class="layui-icon"><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></i></a>
+                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></span> 添加明细','<?php echo url('index/blueprint/addDrawingDetial', ['id' => $blueprintOutsideList['drawing_external_id']]); ?>',600)" href="javascript:;"><i class="layui-icon"><?php echo htmlentities($blueprintOutsideList['drawing_external_id']); ?></i></a>
                 </td>
                 <td><?php echo htmlentities($blueprintOutsideList['create_time']); ?></td>
                 <td><?php echo htmlentities($blueprintOutsideList['remark']); ?></td>
@@ -142,8 +142,19 @@
         var data = tableCheck.getData();
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
+            $.ajax({
+                url:"/index/index/delall",
+                type:"POST",
+                dataType:"json",
+                data:{
+                    table:"hy_drawing_external",  //表名
+                    data:data   //数据
+                },
+                success:function (res) {
+                    layer.msg(res.message, {icon: 1});
+                    $(".layui-form-checked").not('.header').parents('tr').remove();
+                },
+            });
         });
       }
     </script>

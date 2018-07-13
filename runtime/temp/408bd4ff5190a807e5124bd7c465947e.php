@@ -1,4 +1,4 @@
-<?php /*a:2:{s:64:"D:\code\Hy\application\index\view\blueprint\blueprint-infos.html";i:1531220095;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:64:"D:\code\Hy\application\index\view\blueprint\blueprint-infos.html";i:1531220261;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -48,6 +48,9 @@
     <div class="x-body">
         <form class="layui-form"  >
             <input type="hidden" class="layui-input" name="id" title="无法编辑" value="<?php echo htmlentities($blueprintInfo['id']); ?>"  >
+
+
+
             <div class="layui-form-item">
                 <label class="layui-form-label">明细编号</label>
                 <div class="layui-input-block">

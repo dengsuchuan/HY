@@ -1,4 +1,4 @@
-<?php /*a:2:{s:68:"D:\code\Hy\application\index\view\blueprint\add-drawing-externa.html";i:1531217397;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:68:"D:\code\Hy\application\index\view\blueprint\add-drawing-externa.html";i:1531488111;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -62,8 +62,7 @@
               </div>
           </div>
           <div class="layui-form-item">
-              <label class="layui-form-label">
-              </label>
+              <label class="layui-form-label"></label>
               <button class="layui-btn" lay-submit lay-filter="addId">
                   增加
               </button>

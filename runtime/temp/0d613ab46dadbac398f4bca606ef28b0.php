@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531324446;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531494195;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -49,35 +49,52 @@
   <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
     <legend>工艺信息</legend>
   </fieldset>
+  <xblock>
+    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+    <button class="layui-btn" onclick="x_admin_show('工序信息','<?php echo url('index/blueprint/addProcess',['id'=>$drawing_detail_id]); ?>',500,500)"><i class="layui-icon"></i>添加</button>
+    <span class="x-right" style="line-height:40px">共有数据：<?php echo htmlentities($count); ?> 条</span>
+  </xblock>
   <div class="layui-row">
     <div class="container-wrap">
       <div class="box-1">
         <table class="layui-table">
           <thead>
             <tr>
+              <th>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+              </th>
               <th>工艺编号</th>
               <th>工艺类型</th>
               <th>工艺说明</th>
               <th>工序定额</th>
               <th>是否检验</th>
-              <th>图纸明细编号</th>
               <th>工序报价</th>
               <th>定额报价</th>
               <th>外协实际价格</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody>
           <?php if(is_array($processInfo) || $processInfo instanceof \think\Collection || $processInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $processInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$processInfoList): $mod = ($i % 2 );++$i;?>
             <tr>
+              <td>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
+              </td>
               <td><?php echo htmlentities($processInfoList['process_id']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_type']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_content']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_quota']); ?></td>
-              <td><?php echo htmlentities($processInfoList['if_check']); ?></td>
-              <td><?php echo htmlentities($processInfoList['drawing_detial_id']); ?></td>
+              <td>
+                <?php if($processInfoList['if_check'] == 1): ?>
+                <span class="layui-badge layui-bg-blue">是</span>
+                <?php else: ?>
+                <span class="layui-badge layui-bg-gray">否</span>
+                <?php endif; ?>
+              </td>
               <td><?php echo htmlentities($processInfoList['process_quoted_price']); ?></td>
               <td><?php echo htmlentities($processInfoList['quota_quotation']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_real_price']); ?></td>
+              <td></td>
             </tr>
           <?php endforeach; endif; else: echo "" ;endif; ?>
           </tbody>
@@ -87,36 +104,5 @@
   </div>
 </div>
 
-<div class="x-body">
-  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
-    <legend>工序信息</legend>
-  </fieldset>
-  <div class="layui-row">
-    <div class="container-wrap">
-      <div class="box-1">
-        <table class="layui-table">
-          <thead>
-            <tr>
-              <th>序号</th>
-              <th>工序</th>
-              <th>定额</th>
-              <th>工艺内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a title="序号#" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>P001</span> 的工序详情','<?php echo url('index/blueprint/sequence'); ?>')" href="javascript:;"><i class="layui-icon">P01</i></a>
-              </td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 </html>

@@ -4,35 +4,52 @@
   <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
     <legend>工艺信息</legend>
   </fieldset>
+  <xblock>
+    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+    <button class="layui-btn" onclick="x_admin_show('工序信息','{:url(\'index/blueprint/addProcess\',[\'id\'=>$drawing_detail_id])}',500,500)"><i class="layui-icon"></i>添加</button>
+    <span class="x-right" style="line-height:40px">共有数据：{$count} 条</span>
+  </xblock>
   <div class="layui-row">
     <div class="container-wrap">
       <div class="box-1">
         <table class="layui-table">
           <thead>
             <tr>
+              <th>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+              </th>
               <th>工艺编号</th>
               <th>工艺类型</th>
               <th>工艺说明</th>
               <th>工序定额</th>
               <th>是否检验</th>
-              <th>图纸明细编号</th>
               <th>工序报价</th>
               <th>定额报价</th>
               <th>外协实际价格</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody>
           {volist name="processInfo" id="processInfoList"}
             <tr>
+              <td>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
+              </td>
               <td>{$processInfoList.process_id}</td>
               <td>{$processInfoList.process_type}</td>
               <td>{$processInfoList.process_content}</td>
               <td>{$processInfoList.process_quota}</td>
-              <td>{$processInfoList.if_check}</td>
-              <td>{$processInfoList.drawing_detial_id}</td>
+              <td>
+                {if $processInfoList.if_check == 1}
+                <span class="layui-badge layui-bg-blue">是</span>
+                {else}
+                <span class="layui-badge layui-bg-gray">否</span>
+                {/if}
+              </td>
               <td>{$processInfoList.process_quoted_price}</td>
               <td>{$processInfoList.quota_quotation}</td>
               <td>{$processInfoList.process_real_price}</td>
+              <td></td>
             </tr>
           {/volist}
           </tbody>
@@ -42,36 +59,5 @@
   </div>
 </div>
 
-<div class="x-body">
-  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
-    <legend>工序信息</legend>
-  </fieldset>
-  <div class="layui-row">
-    <div class="container-wrap">
-      <div class="box-1">
-        <table class="layui-table">
-          <thead>
-            <tr>
-              <th>序号</th>
-              <th>工序</th>
-              <th>定额</th>
-              <th>工艺内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a title="序号#" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>P001</span> 的工序详情','{:url(\'index/blueprint/sequence\')}')" href="javascript:;"><i class="layui-icon">P01</i></a>
-              </td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-              <td>工艺编号</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 </html>

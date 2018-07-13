@@ -1,4 +1,4 @@
-<?php /*a:2:{s:67:"D:\code\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531144738;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:67:"D:\code\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531323516;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -147,8 +147,19 @@
   
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
+            $.ajax({
+                url:"/index/index/delall",
+                type:"POST",
+                dataType:"json",
+                data:{
+                    table:"",  //表名
+                    data:data   //数据
+                },
+                success:function (res) {
+                    layer.msg(res.message, {icon: 1});
+                    $(".layui-form-checked").not('.header').parents('tr').remove();
+                },
+            });
         });
       }
     </script>
