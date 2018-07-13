@@ -1,4 +1,4 @@
-<?php /*a:2:{s:86:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-info.html";i:1531285262;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
+<?php /*a:2:{s:86:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-info.html";i:1531441012;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -151,7 +151,7 @@
           <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
           <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
           <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>
-          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process'); ?>')" href="javascript:;"><i class="layui-icon">工</i></a>
+          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><i class="layui-icon">工</i></a>
         </td>
       </tr>
       <?php endforeach; endif; else: echo "" ;endif; ?>

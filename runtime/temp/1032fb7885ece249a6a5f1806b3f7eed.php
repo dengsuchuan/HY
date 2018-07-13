@@ -1,4 +1,4 @@
-<?php /*a:2:{s:90:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531285738;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
+<?php /*a:2:{s:90:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531451588;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -85,15 +85,16 @@
             </th>
             <th>产品图号</th>
             <th>建档日期</th>
-            <th>模具工装编号</th>
-            <th>备注</th>
+            <th>所属产品编号</th>
+            <th>所属磨具分类编号</th>
             <th>操作</th>
             </tr>
         </thead>
         <tbody>
+        <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($i % 2 );++$i;?>
           <tr>
             <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>M10008-001</td>
             <td>2011/1/29</td>
@@ -103,17 +104,11 @@
               <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
             </td>
           </tr>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
         </tbody>
       </table>
       <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
+        <?php echo htmlentities($page); ?>
       </div>
 
     </div>
@@ -152,7 +147,7 @@
                 type:"POST",
                 dataType:"json",
                 data:{
-                    table:"hy_drawing_Internal",  //表名
+                    table:"",  //表名
                     data:data   //数据
                 },
                 success:function (res) {

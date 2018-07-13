@@ -1,4 +1,4 @@
-<?php /*a:2:{s:87:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-infos.html";i:1531219452;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
+<?php /*a:2:{s:87:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\blueprint\blueprint-infos.html";i:1531222015;s:75:"D:\Vc_PHP\Apache24\htdocs\2018\Hy\application\index\view\public\header.html";i:1531208093;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -47,11 +47,9 @@
   <body>
     <div class="x-body">
         <form class="layui-form"  >
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <input type="hidden" class="layui-input" name="id" title="无法编辑" value="<?php echo htmlentities($blueprintInfo['id']); ?>"  >
-                </div>
-            </div>
+            <input type="hidden" class="layui-input" name="id" title="无法编辑" value="<?php echo htmlentities($blueprintInfo['id']); ?>"  >
+
+
 
             <div class="layui-form-item">
                 <label class="layui-form-label">明细编号</label>
