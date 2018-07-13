@@ -6,6 +6,7 @@ use app\index\model\BlueprintOutside;
 use app\index\model\Material;
 use app\index\model\ProductProcess;
 use think\facade\Request;
+
 class Blueprint extends Base
 {
     //--|图纸明细控制器以及相关子控制器
@@ -95,18 +96,46 @@ class Blueprint extends Base
         $this->assign("createId",$str.$i);
         return $this->view->fetch("add-drawing-externa");
     }
+
+    //获取M和P的值
+    public function getMP(){
+        if(Request::isAjax()){
+            $data = Request::post("action");
+            if($data == "M"){
+                return "M";
+            }else{
+                return "P";
+            }
+        }
+
+
+//获取数据库中M和P的数量实现自动生公司编号
+//        $model = new BlueprintOutside();//可实例化，也可不实例化
+//        $i = 0;//编号
+//        $str = "W".date('y').date('m').date('d')."-";//可以设置来之数据库的一个自定义字符串
+//        do{
+//            ++$i;  //第一次就为1，排除编号0
+//        }while($model->get(["drawing_external_id"=>$str.$i])); //如果存在就继续算下去
+    }
+
     public function addDrawingExternalId(){//传入编号和备注
         if(Request::isAjax()){
             //获取提交过来的所有数据
             $data = Request::post();
-            $res = BlueprintOutside::create($data);
+
+            //抛出异常  并  进行处理
+            try {
+                $res = BlueprintOutside::create($data);
+            } catch (\Exception $e) {
+                $res = 0;
+            }
+
             if($res){
                 return json(1);
             }else{
                 return json(0);
             }
         }
-
     }
     //--|--|添加图纸明细控制器
     public function addDrawingDetial($id){//从视图传来

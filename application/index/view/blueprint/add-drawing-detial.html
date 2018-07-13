@@ -10,9 +10,54 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">公司编号</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" title="无法编辑" value=" "  >
+            <div class="layui-input-inline">
+                <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="">
             </div>
+            <button type="button" class="layui-btn" id="createP">P</button>
+            <button type="button" class="layui-btn" id="createM">M</button>
+            <script>
+                $(function () {
+
+                    $("#createP").on("click",function () {
+                        //获取P的值
+                        $.ajax({
+                            type:"post", //请求方式
+                            url:"{:url('index/Blueprint/getMP')}", //发送请求地址
+                            data:{ //发送给数据库的数据
+                                action:"P"
+                            },
+                            //请求成功后的回调函数有两个参数
+                            success:function(data,){
+                                alert(data);
+                            },
+                            error:function () {
+
+                            }
+                        });
+                    });
+
+
+                    $("#createM").click(function () {
+                        //获取M的值
+                        $.ajax({
+                            type:"post", //请求方式
+                            url:"{:url('index/Blueprint/getMP')}", //发送请求地址
+                            data:{ //发送给数据库的数据
+                                action:"M"
+                            },
+                            //请求成功后的回调函数有两个参数
+                            success:function(data,){
+                                alert(data);
+                            },
+                            error:function () {
+
+                            }
+                        });
+
+                    });
+                });
+            </script>
+
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">外图编号</label>
