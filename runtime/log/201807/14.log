@@ -1,0 +1,471 @@
+---------------------------------------------------------------
+[ 2018-07-14T11:35:57+08:00 ] 127.0.0.1 GET /
+[ info ] h.cn/ [运行时间：0.669732s][吞吐率：1.49req/s] [内存消耗：1,685.19kb] [文件加载：64]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:35:57+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] h.cn/index/index/welcome.html [运行时间：0.043882s][吞吐率：22.79req/s] [内存消耗：1,621.48kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:35:57+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] h.cn/static/index/favicon.ico [运行时间：0.122994s][吞吐率：8.13req/s] [内存消耗：1,193.84kb] [文件加载：49]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-07-14T11:36:01+08:00 ] 127.0.0.1 GET /index/personnel/adminlist.html
+[ info ] h.cn/index/personnel/adminlist.html [运行时间：0.061891s][吞吐率：16.16req/s] [内存消耗：1,618.69kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\personnel\admin-list.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:36:03+08:00 ] 127.0.0.1 GET /index/personnel/workerlist.html
+[ info ] h.cn/index/personnel/workerlist.html [运行时间：0.045712s][吞吐率：21.88req/s] [内存消耗：1,618.65kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\personnel\worker-list.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:36:05+08:00 ] 127.0.0.1 GET /index/personnel/authorityclass.html
+[ info ] h.cn/index/personnel/authorityclass.html [运行时间：0.050043s][吞吐率：19.98req/s] [内存消耗：1,618.71kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\personnel\authority-class.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:36:06+08:00 ] 127.0.0.1 GET /index/personnel/admin-add.html
+[ info ] h.cn/index/personnel/admin-add.html [运行时间：0.034449s][吞吐率：29.03req/s] [内存消耗：1,664.07kb] [文件加载：65]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/personnel/authorityclass.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[ 2018-07-14T11:36:12+08:00 ] 127.0.0.1 GET /index.html
+[ info ] h.cn/index.html [运行时间：0.031552s][吞吐率：31.69req/s] [内存消耗：1,685.39kb] [文件加载：64]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:36:13+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] h.cn/index/index/welcome.html [运行时间：0.034682s][吞吐率：28.83req/s] [内存消耗：1,621.53kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:36:13+08:00 ] 127.0.0.1 GET /index.html
+[ info ] h.cn/index.html [运行时间：0.030766s][吞吐率：32.50req/s] [内存消耗：1,685.38kb] [文件加载：64]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T11:36:13+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] h.cn/index/index/welcome.html [运行时间：0.033943s][吞吐率：29.46req/s] [内存消耗：1,621.53kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:42+08:00 ] 127.0.0.1 GET /
+[ info ] h.cn/ [运行时间：0.592748s][吞吐率：1.69req/s] [内存消耗：1,685.20kb] [文件加载：64]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:42+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] h.cn/index/index/welcome.html [运行时间：0.039044s][吞吐率：25.61req/s] [内存消耗：1,621.48kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:42+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] h.cn/static/index/favicon.ico [运行时间：0.114895s][吞吐率：8.70req/s] [内存消耗：1,193.84kb] [文件加载：49]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-07-14T13:11:45+08:00 ] 127.0.0.1 GET /index/storehouse/delivery.html
+[ info ] h.cn/index/storehouse/delivery.html [运行时间：0.060998s][吞吐率：16.39req/s] [内存消耗：1,617.35kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\storehouse\delivery.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:46+08:00 ] 127.0.0.1 GET /index/storehouse/order-add.html
+[ info ] h.cn/index/storehouse/order-add.html [运行时间：0.032915s][吞吐率：30.38req/s] [内存消耗：1,662.80kb] [文件加载：65]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/storehouse/delivery.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[ 2018-07-14T13:11:48+08:00 ] 127.0.0.1 GET /index/material/material.html
+[ info ] h.cn/index/material/material.html [运行时间：0.055775s][吞吐率：17.93req/s] [内存消耗：1,616.64kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\material\material.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:48+08:00 ] 127.0.0.1 GET /datum.html
+[ info ] h.cn/datum.html [运行时间：0.018919s][吞吐率：52.86req/s] [内存消耗：1,193.77kb] [文件加载：49]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-07-14T13:11:49+08:00 ] 127.0.0.1 GET /index/mould/mould.html
+[ info ] h.cn/index/mould/mould.html [运行时间：0.053874s][吞吐率：18.56req/s] [内存消耗：1,616.42kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\mould\mould.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:50+08:00 ] 127.0.0.1 GET /index/task/alreadytask.html
+[ info ] h.cn/index/task/alreadytask.html [运行时间：0.058306s][吞吐率：17.15req/s] [内存消耗：1,619.88kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\task\already-task.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:11:51+08:00 ] 127.0.0.1 GET /index/task/order-add.html
+[ info ] h.cn/index/task/order-add.html [运行时间：0.030918s][吞吐率：32.34req/s] [内存消耗：1,665.31kb] [文件加载：65]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/task/alreadytask.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[ 2018-07-14T13:52:01+08:00 ] 127.0.0.1 GET /
+[ info ] h.cn/ [运行时间：0.067851s][吞吐率：14.74req/s] [内存消耗：1,685.20kb] [文件加载：64]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\index.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:52:01+08:00 ] 127.0.0.1 GET /index/index/welcome.html
+[ info ] h.cn/index/index/welcome.html [运行时间：0.038193s][吞吐率：26.18req/s] [内存消耗：1,621.48kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\index\welcome.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T13:52:01+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] h.cn/static/index/favicon.ico [运行时间：0.033909s][吞吐率：29.49req/s] [内存消耗：1,193.84kb] [文件加载：49]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-07-14T13:56:08+08:00 ] 127.0.0.1 GET /index/material/material.html
+[ info ] h.cn/index/material/material.html [运行时间：0.035955s][吞吐率：27.81req/s] [内存消耗：1,616.64kb] [文件加载：62]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\code\Hy\application\index\view\material\material.html [ array (
+) ]
+---------------------------------------------------------------
+[ 2018-07-14T16:09:31+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] h.cn/static/index/favicon.ico [运行时间：0.030918s][吞吐率：32.34req/s] [内存消耗：1,192.55kb] [文件加载：49]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-07-14T16:18:47+08:00 ] 127.0.0.1 GET /index/blueprint/order-add.html
+[ info ] h.cn/index/blueprint/order-add.html [运行时间：0.053820s][吞吐率：18.58req/s] [内存消耗：1,693.67kb] [文件加载：65]
+[ info ] [ LANG ] D:\code\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'h.cn',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.33 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://h.cn/index/blueprint/blueprintinterior.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1531219042,1531488996,1531494804',
+)
+[ info ] [ PARAM ] array (
+)

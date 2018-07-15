@@ -1,4 +1,4 @@
-<?php /*a:2:{s:67:"D:\code\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531323516;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:67:"D:\code\Hy\application\index\view\blueprint\blueprint-interior.html";i:1531556230;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -58,7 +58,7 @@
     </div>
     <div class="x-body">
       <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>

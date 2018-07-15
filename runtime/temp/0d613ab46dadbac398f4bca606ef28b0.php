@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531494195;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531666066;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -71,6 +71,8 @@
               <th>工序报价</th>
               <th>定额报价</th>
               <th>外协实际价格</th>
+              <th>备注</th>
+              <th>排序</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -94,15 +96,45 @@
               <td><?php echo htmlentities($processInfoList['process_quoted_price']); ?></td>
               <td><?php echo htmlentities($processInfoList['quota_quotation']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_real_price']); ?></td>
-              <td></td>
+              <td><?php echo htmlentities($processInfoList['remark']); ?></td>
+              <td>
+                <div class="layui-input-inline listorder" style="width: 50px;">
+                  <input type="text" value="<?php echo htmlentities($processInfoList['sort']); ?>" size="3" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" class="layui-input"  name="listorder" >
+                </div>
+              </td>
+              <td>
+                <a title="详" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'></span> 的所有信息','{}',450)" href="javascript:;"><i class="layui-icon">详</i></a>
+                <a title="删" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'></span> 的所有信息','{}',450)" href="javascript:;"><i class="layui-icon">删</i></a>
+              </td>
             </tr>
           <?php endforeach; endif; else: echo "" ;endif; ?>
           </tbody>
         </table>
       </div>
     </div>
+    <div class="page">
+      <?php echo $processInfo; ?>
+    </div>
   </div>
 </div>
+<script>
+    //排序
+    $(".listorder input").blur(function () {
+        var listorder =  $(this).val();
+        var id = $(this).attr('attr-id');
+        var url = "<?php echo url('/index/Blueprint/updateSort'); ?>";
+        var postData ={"id":id,"listorder":listorder,'table':"product_process","value":"sort"};
+        $.post(url,postData,function (result) {
+            if(result == 1 ){
+                layer.alert("更新成功、排序对应工序编号", {icon: 6},function () {
+                    window.location.reload();  //刷新父级页面
+                });
+            }else {
+                layer.alert("更新失败", {icon: 5});
+            }
+        },"json")
+    });
 
+</script>
 </body>
 </html>
