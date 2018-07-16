@@ -119,6 +119,27 @@ class Blueprint extends Base
         ]);
         return $this->view->fetch('add-process');
     }
+    //工序详情页面
+    public function editProcess(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            unset($data['id']);
+            $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+            $info = ProductProcess::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $id = intval(input('id'));
+        $processRow = ProductProcess::get($id);
+        $this->assign([
+           'processRow'    =>  $processRow,
+        ]);
+        return $this->view->fetch('process-edit');
+    }
     //--|--|工艺管理里面的工序详情
     public function sequence(){
         return $this->view->fetch('sequence');
@@ -232,5 +253,24 @@ class Blueprint extends Base
                 return(0);
             }
         }
+    }
+    //工序一键排序
+    /**
+     * 1、获取对应图纸的所有工序。升序排序。
+     * 2、然后获取总条数，
+     * 3、然后1到总条数循环修改排序字段，
+     * 4、最后 修好工序编号
+     * */
+    public function onekeySort(){
+        $id = input('id');
+        $processList = ProductProcess::where(['drawing_detial_id'=>$id])->field('id,sort')->order('sort','asc')->select();
+        $i = 1;
+        foreach ($processList as $list){
+            $process_id = $list['sort']<10 ? $id .= '-P0'.$list['sort']:$id .= '-P'.$list['sort'];
+            ProductProcess::update(['sort'=>$i,'process_id'=>$process_id],['id'=>$list['id']]);
+            $id = input('id');
+            $i++;
+        }
+        return json(1);
     }
 }

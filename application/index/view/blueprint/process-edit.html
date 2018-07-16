@@ -1,0 +1,116 @@
+﻿{include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    <div class="layui-form-item">
+      <label for="process_id" class="layui-form-label">工艺编号</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_id" disabled="disabled" name="process_id" lay-verify="required" value="{$processRow.process_id}" autocomplete="off" class="layui-input">
+        <input type="hidden" id="id"  name="id"  value="{$processRow.id}" autocomplete="off" class="layui-input">
+        <p id="pLog" style="color:red"></p>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_type" class="layui-form-label">工艺类型</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_type" name="process_type" autocomplete="off" value="{$processRow.process_type}" class="layui-input"  >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_content" class="layui-form-label">工艺说明</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_content"  value="{$processRow.process_content}" name="process_content" autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_quota" class="layui-form-label">工序定额</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_quota" name="process_quota"   value="{$processRow.process_quota}"  autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">是否检验</label>
+      <div class="layui-input-block">
+        <input type="checkbox"      {if 1==$processRow.if_check}checked=""{/if}   name="if_check" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+        <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">明细编号</label>
+      <div class="layui-input-inline">
+        <input type="text" id="drawing_detial_id" value="{$processRow.drawing_detial_id}"  name="drawing_detial_id" lay-verify="required" autocomplete="off" class="layui-input"  disabled="disabled">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">工序报价</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_quoted_price" value="{$processRow.process_quoted_price}"   name="process_quoted_price"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">定额报价</label>
+      <div class="layui-input-inline">
+        <input type="text" id="quota_quotation"  value="{$processRow.quota_quotation}"  name="quota_quotation" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">外协报价</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_real_price"  value="{$processRow.process_real_price}"  name="process_real_price" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-inline">
+        <input type="text" id="remark" name="remark" value="{$processRow.remark}"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">创建人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="create_name" name="create_name"  value="{$processRow.create_name}" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId">
+        修改
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+
+
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Blueprint/editProcess')}",data.field,function(info){
+                if (info) {
+                    layer.alert("添加成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+<script>var _hmt = _hmt || []; (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script>
+</body>
+
+</html>

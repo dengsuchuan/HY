@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531666066;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531755723;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -52,6 +52,7 @@
   <xblock>
     <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
     <button class="layui-btn" onclick="x_admin_show('工序信息','<?php echo url('index/blueprint/addProcess',['id'=>$drawing_detail_id]); ?>',500,500)"><i class="layui-icon"></i>添加</button>
+    <button class="layui-btn" onclick ="sort('<?php echo htmlentities($drawing_detail_id); ?>')" >一键排序</button>
     <span class="x-right" style="line-height:40px">共有数据：<?php echo htmlentities($count); ?> 条</span>
   </xblock>
   <div class="layui-row">
@@ -103,7 +104,7 @@
                 </div>
               </td>
               <td>
-                <a title="详" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'></span> 的所有信息','{}',450)" href="javascript:;"><i class="layui-icon">详</i></a>
+                <a title="改" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">改</i></a>
                 <a title="删" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'></span> 的所有信息','{}',450)" href="javascript:;"><i class="layui-icon">删</i></a>
               </td>
             </tr>
@@ -134,7 +135,19 @@
             }
         },"json")
     });
-
+    function sort(id) {
+        var url = "<?php echo url('/index/Blueprint/onekeySort'); ?>";
+        var postData ={"id":id};
+        $.post(url,postData,function (result) {
+            if(result === 1 ){
+                layer.alert("排序成功", {icon: 6},function () {
+                    window.location.reload();  //刷新父级页面
+                });
+            }else {
+                layer.alert("排序失败", {icon: 5});
+            }
+        },"json")
+    }
 </script>
 </body>
 </html>
