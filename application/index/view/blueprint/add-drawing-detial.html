@@ -11,10 +11,29 @@
         <div class="layui-form-item">
             <label class="layui-form-label">公司编号</label>
             <div class="layui-input-inline">
-                <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value=""></option>
+                    <optgroup label="公司编号">
+                        {volist name="$companyArray" id="companyArrayMList"}
+                        <option value="{$companyArrayMList.companyid}">{$companyArrayMList.companyid}</option>
+                        {/volist}
+                    </optgroup>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" id="drawing_external_mes" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="默认描述" placeholder="描述">
             </div>
             <button type="button" class="layui-btn" id="createP">P</button>
             <button type="button" class="layui-btn" id="createM">M</button>
+            <button type="button" class="layui-btn" id="createPM">P M</button>
+            <div class="layui-inline">
+                <span id="tempId" style="font-size: 17px;"></span>
+                <!--<input type="hidden" id="companyM">-->
+                <!--<input type="hidden" id="companyP">-->
+                <input type="hidden" id="companyMP">
+
+            </div>
+
             <script>
                 $(function () {
 
@@ -27,8 +46,41 @@
                                 action:"P"
                             },
                             //请求成功后的回调函数有两个参数
-                            success:function(data,){
-                                alert(data);
+                            success:function(data){
+                                //alert(data.cou?"已存在":"不存在");
+                                if(data.cou){
+                                    layer.open({
+                                        content: "数据库中已存在当前日期的编号，是否生成新的编号?"
+                                        ,btn: ['跳过', '生成']
+                                        ,yes: function(index, layero){
+                                            layer.closeAll();
+                                            //按钮【按钮一】的回调
+                                        },btn2: function(index, layero){
+                                            //获取基础时间字符串
+                                            var mid = data.pids;
+                                            //写新的编辑框内容
+                                            //这里应该查找数据库里面有多少数据，然后找到最大的那个，然后+1，赋值到编辑框
+                                            console.log(pids)
+                                            $("#drawing_external_id").val(pids+"-"+"1");
+
+                                            //按钮【按钮二】的回调
+                                        },cancel: function(){
+                                            //右上角关闭回调
+                                        }
+                                    });
+                                }else{
+                                    //如果不存在M数据
+                                    //获取基础时间字符串
+                                    var pids = data.pids;
+                                    //获取填写的描述
+                                    var mes = $("#drawing_external_mes").val();
+                                    //将描述写到编辑框
+                                    $("#tempId").html();
+                                    $("#tempId").html("初始化公司编号:<span style='color:red;'>" + pids + "-" + "1" + "-" + "1</span>&nbsp;&nbsp;生成:<span style='color:red;'>"+pids + "-" + "1</span>&nbsp;&nbsp;描述:<span style='color:red;'>"+mes+"</span>");
+                                    $("#companyMP").val(pids + "-" + "1");
+                                }
+
+
                             },
                             error:function () {
 
@@ -37,7 +89,7 @@
                     });
 
 
-                    $("#createM").click(function () {
+                    $("#createM").on("click",function () {
                         //获取M的值
                         $.ajax({
                             type:"post", //请求方式
@@ -46,15 +98,72 @@
                                 action:"M"
                             },
                             //请求成功后的回调函数有两个参数
-                            success:function(data,){
-                                alert(data);
+                            success:function(data){
+                                //alert(data.cou?"已存在":"不存在");
+                                if(data.cou){
+                                    layer.open({
+                                        content: "数据库中已存在当前日期的编号，是否生成新的编号?"
+                                        ,btn: ['跳过', '生成']
+                                        ,yes: function(index, layero){
+                                            layer.closeAll();
+                                            //按钮【按钮一】的回调
+                                        },btn2: function(index, layero){
+                                            //获取基础时间字符串
+                                            var mid = data.mid;
+                                            //写新的编辑框内容
+                                            //这里应该查找数据库里面有多少数据，然后找到最大的那个，然后+1，赋值到编辑框
+                                            console.log(mid)
+                                            $("#drawing_external_id").val(mid+"-"+"1");
+
+                                            //按钮【按钮二】的回调
+                                        },cancel: function(){
+                                            //右上角关闭回调
+                                        }
+                                    });
+                                }else{//这里是M和P的数据
+                                    $.ajax({
+                                        type: "post", //请求方式
+                                        url: "{:url('index/Blueprint/getMP')}", //发送请求地址
+                                        data: { //发送给数据库的数据
+                                            action: "MP"
+                                        },
+                                        success:function () {
+
+                                        },
+                                        error:function () {
+
+                                        }
+                                    });
+
+
+
+
+
+                                    //获取基础时间字符串
+                                    var mid = data.mid;
+                                    var pids = data.pids;
+
+
+                                    //获取填写的描述
+                                    var mes = $("#drawing_external_mes").val();
+                                    //将描述写到编辑框
+                                    $("#tempId").html();
+                                    $("#tempId").html("初始化公司编号:<span style='color:red;'>" + mid + "-" + "1" + "-" + "1</span>&nbsp;&nbsp;生成:<span style='color:red;'>"+mid + "-" + "1</span>&nbsp;&nbsp;描述:<span style='color:red;'>"+mes+"</span>");
+                                    $("#companyMP").val(mid + "-" + "1");
+                                }
+
+
                             },
                             error:function () {
 
                             }
                         });
+                    })
 
-                    });
+
+                    $("#createPM").on("click",function () {
+
+                    })
                 });
             </script>
 
