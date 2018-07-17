@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531755723;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531789391;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -105,7 +105,7 @@
               </td>
               <td>
                 <a title="改" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">改</i></a>
-                <a title="删" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'></span> 的所有信息','{}',450)" href="javascript:;"><i class="layui-icon">删</i></a>
+                <a title="删" onclick="delete_process(this,'<?php echo htmlentities($processInfoList['id']); ?>')"><i class="layui-icon">删</i></a>
               </td>
             </tr>
           <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -147,6 +147,22 @@
                 layer.alert("排序失败", {icon: 5});
             }
         },"json")
+    }
+
+    /*删除*/
+    function delete_process(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "<?php echo url('/index/Blueprint/deleteProcess'); ?>";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1 ){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("排序失败", {icon: 5});
+                }
+            },"json");
+        });
     }
 </script>
 </body>

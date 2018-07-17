@@ -254,23 +254,34 @@ class Blueprint extends Base
             }
         }
     }
-    //工序一键排序
     /**
+     * 工序一键排序
      * 1、获取对应图纸的所有工序。升序排序。
      * 2、然后获取总条数，
      * 3、然后1到总条数循环修改排序字段，
-     * 4、最后 修好工序编号
+     * 4、最后 修改工序编号
      * */
     public function onekeySort(){
         $id = input('id');
         $processList = ProductProcess::where(['drawing_detial_id'=>$id])->field('id,sort')->order('sort','asc')->select();
-        $i = 1;
+        $top = 1;  //定义循环开始
         foreach ($processList as $list){
-            $process_id = $list['sort']<10 ? $id .= '-P0'.$list['sort']:$id .= '-P'.$list['sort'];
-            ProductProcess::update(['sort'=>$i,'process_id'=>$process_id],['id'=>$list['id']]);
+            $process_id = $top<10 ? $id .= '-P0'.$top : $id .= '-P'.$top;
+            ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
+
             $id = input('id');
-            $i++;
         }
         return json(1);
+    }
+    //删除工序
+    public function deleteProcess(){
+        $id = intval(input('id'));
+        $info = ProductProcess::where(['id'=>$id])->delete();
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+
     }
 }
