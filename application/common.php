@@ -14,3 +14,7 @@
 function msubstr($content) {
     return mb_substr(strip_tags(str_replace(['&nbsp;','nbsp;','&amp;','nbsp;'],'',$content)),0,450).'...';
 }
+function dd($value){
+    dump($value);
+    die;
+}

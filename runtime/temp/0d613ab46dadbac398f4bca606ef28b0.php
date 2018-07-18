@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531789391;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531879678;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -83,7 +83,13 @@
               <td>
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
               </td>
-              <td><?php echo htmlentities($processInfoList['process_id']); ?></td>
+              <td>
+                <?php echo htmlentities($processInfoList['process_id']); ?>
+                  <span class="layui-table-sort layui-inline">
+                    <i class="layui-edge layui-table-sort-asc" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" attr-drawing_detial_id="<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>"></i>
+                    <i class="layui-edge layui-table-sort-desc" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" attr-drawing_detial_id="<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>"></i>
+                  </span>
+              </td>
               <td><?php echo htmlentities($processInfoList['process_type']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_content']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_quota']); ?></td>
@@ -119,6 +125,38 @@
   </div>
 </div>
 <script>
+    //往上走
+    $(".layui-table-sort-asc").click(function () {
+        var url = "<?php echo url('/index/Blueprint/updateAsc'); ?>";
+        var id = $(this).attr('attr-id');
+        var drawing_detial_id = $(this).attr('attr-drawing_detial_id');
+        var postData ={"id":id,"drawing_detial_id":drawing_detial_id};
+        $.post(url,postData,function (result) {
+              if(result.error === 1000 ){
+                  layer.msg(result.msg,{icon:5,time:1000});
+              }else if(result.error === 1) {
+                  window.location.reload();  //刷新父级页面
+              }else {
+                  layer.msg(result.msg,{icon:5,time:1000});
+              }
+        },"json");
+    });
+    //往下走
+    $(".layui-table-sort-desc").click(function () {
+        var url = "<?php echo url('/index/Blueprint/updateDesc'); ?>";
+        var id = $(this).attr('attr-id');
+        var drawing_detial_id = $(this).attr('attr-drawing_detial_id');
+        var postData ={"id":id,"drawing_detial_id":drawing_detial_id};
+        $.post(url,postData,function (result) {
+            if(result.error === 1000 ){
+                layer.msg(result.msg,{icon:5,time:1000});
+            }else if(result.error === 1) {
+                window.location.reload();  //刷新父级页面
+            }else {
+                layer.msg(result.msg,{icon:5,time:1000});
+            }
+        },"json");
+    });
     //排序
     $(".listorder input").blur(function () {
         var listorder =  $(this).val();

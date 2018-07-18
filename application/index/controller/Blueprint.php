@@ -268,7 +268,6 @@ class Blueprint extends Base
         foreach ($processList as $list){
             $process_id = $top<10 ? $id .= '-P0'.$top : $id .= '-P'.$top;
             ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
-
             $id = input('id');
         }
         return json(1);
@@ -282,6 +281,81 @@ class Blueprint extends Base
         }else{
             return json(0);
         }
-
+    }
+    //点击小三角进行排序  Asc
+    public function updateAsc(){
+        $id = input('id');
+        $drawing_detial_id = input('drawing_detial_id');
+        //获取当前数据的排序
+        $Info = ProductProcess::where("id", "=", $id)->field('id,sort,process_id')->find();
+        $infoSort = $Info['sort'];
+        //获取上一条排序字段
+        $ascInfo = ProductProcess::where("sort", "<", $infoSort)->where(['drawing_detial_id'=>$drawing_detial_id])->order("sort", "desc")->find();
+        //如果是第一条数据
+        if($ascInfo == null){
+            return json([
+                'error' => 1000,
+                'msg'   =>  '已经是第一条数据'
+            ]);
+        }
+        //元数据的信息
+        $Ydata['yid'] = $Info['id'];
+        $Ydata['Ysort'] = $Info['sort'];
+        $Ydata['yprocessId'] = $Info['process_id'];
+        //上一条记录的信息
+        $Gdata['gid'] =  $ascInfo['id'];
+        $Gdata['gsort'] =  $ascInfo['sort'];
+        $Gdata['gprocessId'] =  $ascInfo['process_id'];
+        //更新数据 将上面的改成下面的
+        $info = ProductProcess::update(['sort'=>$Gdata['gsort'],'process_id'=>$Gdata['gprocessId']],['id'=> $Ydata['yid']]);
+        $info1 =  ProductProcess::update(['sort'=>$Ydata['Ysort'],'process_id'=>$Ydata['yprocessId']],['id'=>$Gdata['gid']]);
+        if($info && $info1){
+            return json([
+                'error' => 1,
+            ]);
+        }else{
+            return json([
+                'error' => 0,
+                'msg'   =>  '排序失败'
+            ]);
+        }
+    }
+    //点击小三角进行排序  Desc
+    public function updateDesc(){
+        $id = input('id');
+        $drawing_detial_id = input('drawing_detial_id');
+        //获取当前数据的排序
+        $Info = ProductProcess::where("id", "=", $id)->field('id,sort,process_id')->find();
+        $infoSort = $Info['sort'];
+        //获取上一条排序字段
+        $ascInfo = ProductProcess::where("sort", ">", $infoSort)->where(['drawing_detial_id'=>$drawing_detial_id])->order("sort", "asc")->find();
+        //如果是第一条数据
+        if($ascInfo == null){
+            return json([
+                'error' => 1000,
+                'msg'   =>  '已经是最后一条数据'
+            ]);
+        }
+        //元数据的信息
+        $Ydata['yid'] = $Info['id'];
+        $Ydata['Ysort'] = $Info['sort'];
+        $Ydata['yprocessId'] = $Info['process_id'];
+        //上一条记录的信息
+        $Gdata['gid'] =  $ascInfo['id'];
+        $Gdata['gsort'] =  $ascInfo['sort'];
+        $Gdata['gprocessId'] =  $ascInfo['process_id'];
+        //更新数据 将上面的改成下面的
+        $info = ProductProcess::update(['sort'=>$Gdata['gsort'],'process_id'=>$Gdata['gprocessId']],['id'=> $Ydata['yid']]);
+        $info1 =  ProductProcess::update(['sort'=>$Ydata['Ysort'],'process_id'=>$Ydata['yprocessId']],['id'=>$Gdata['gid']]);
+        if($info && $info1){
+            return json([
+                'error' => 1,
+            ]);
+        }else{
+            return json([
+                'error' => 0,
+                'msg'   =>  '排序失败'
+            ]);
+        }
     }
 }
