@@ -27,12 +27,72 @@
         </select>
       </div>
     </div>
+
+
     <div class="layui-form-item">
       <label for="process_content" class="layui-form-label">工艺说明</label>
-      <div class="layui-input-inline">
-        <input type="text" id="process_content"  value="{$processRow.process_content}" name="process_content" autocomplete="off" class="layui-input"  >
+      <div class="layui-input-block">
+        <textarea id="process_content" name="process_content" class="layui-textarea" >{$processRow.process_content}</textarea>
+        <div class="layui-btn-container layadmin-layer-demo" style="margin-top:5px; ">
+          <input   type="button" 	class="layui-btn layui-btn-xs" onclick="openModak()" style="width:50px;height: 20px;" value="☼">
+        </div>
+        <script>
+            function openModak(){
+                $("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值
+                layui.use(['layer'],function () {
+                    var layer = layui.layer,$=layui.$;
+                    layer.open({
+                        type:1,//类型
+                        area:['200px','200px'],//定义宽和高
+                        title:'特殊符号输入',//题目
+                        shadeClose:true,//点击遮罩层关闭
+                        content: $('#motaikunag')//打开的内容
+                    });
+                })
+            }
+        </script>
+        <div id="motaikunag" style="display: none;">
+          <table class="layui-table">
+            <tr>
+              <td onclick="inputTs('~')">~</td>
+              <td onclick="inputTs('!')">!</td>
+              <td onclick="inputTs('#')">#</td>
+              <td onclick="inputTs('$')">$</td>
+            </tr>
+            <tr>
+              <td onclick="inputTs('￥')">￥</td>
+              <td onclick="inputTs('%')">%</td>
+              <td onclick="inputTs('^')">^</td>
+              <td onclick="inputTs('&')">&</td>
+            </tr>
+            <tr>
+              <td onclick="inputTs('*')">*</td>
+              <td onclick="inputTs('\\')">\</td>
+              <td onclick="inputTs('/')">/</td>
+              <td onclick="inputTs('?')">?</td>
+            </tr>
+            <tr>
+              <td onclick="inputTs('￥')">￥</td>
+              <td onclick="inputTs('%')">%</td>
+              <td onclick="inputTs('^')">^</td>
+              <td onclick="inputTs('&')">&</td>
+            </tr>
+            <tr>
+              <td onclick="inputTs('*')">*</td>
+              <td onclick="inputTs('\\')">\</td>
+              <td onclick="inputTs('/')">/</td>
+              <td onclick="inputTs('?')">?</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
+    <script>
+        function inputTs(str) {
+            var count =  $("#process_content").val() + str;
+            $("#process_content").val(count);
+        }
+    </script>
     <div class="layui-form-item">
       <label for="process_quota" class="layui-form-label">工序定额</label>
       <div class="layui-input-inline">
