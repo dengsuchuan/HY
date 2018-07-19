@@ -168,7 +168,6 @@ class Blueprint extends Base
                     "mes"=>"存在",
                     "mid"=>$midArray,
                     "max"=>$maxMid,
-                    "tempMid"=>$tempMid,
                     "companyNumber"=>$tempMid
                 ];
             }else{
@@ -192,25 +191,58 @@ class Blueprint extends Base
 
                 //合成将要生成的P编号
                 $tempPid = $strP."-".($maxPid+1);
-                //合成新的公司编号
-                $companyNumber = $tempPid."-1";
 
                 $tempArray = [
                     "cou"=>count($pArray),
                     "mes"=>"存在",
                     "pids"=>$pidArray,
                     "max"=>$maxPid,
-                    "tempPid"=>$tempPid,
-                    "companyNumber"=>$companyNumber
+                    "companyNumber"=>$tempPid
                 ];
             }else{
-                $tempArray = ["cou"=>0,"mes"=>"不存在","pids"=>$strP];
+                $tempArray = ["cou"=>0,"mes"=>"不存在","companyNumber"=>$strP."-1"];
             }
             return $tempArray;
         }else{//获取有多少MP
             return "MP";
         }
     }
+
+    //拿到新的公司编号值
+    public function newM(){
+        if(Request::isAjax()){
+            $mid = Request::post("p");
+            $mArray = ComparnyM::where("mid","like",$mid."-%")->select(); //查找M的数据
+            if(count($mArray)){ /*count($mArray)等于0，则执行else的内容*/
+                //拆分字符串为数组
+                foreach ($mArray as $value){
+                    $midArray[] = explode("-",$value['mid']);
+                }
+                //拆分单独的序号出来
+                foreach ($midArray as $value){
+                    $midOrder[] = $value[1];
+                }
+                //找到最大的序号
+                $maxMid = max($midOrder);
+
+                //合成将要生成的M编号
+                $tempMid = $mid."-".($maxMid+1);
+                //合成新的公司编号
+                $companyNumber = $tempMid."-1";
+
+                $tempArray = [
+                    "companyNumber"=>$companyNumber
+                ];
+
+            }else{
+                $tempArray = ["companyNumber"=>$mid."-1"];
+            }
+
+            return $tempArray;
+
+        }
+    }
+
 
     public function addDrawingExternalId(){//传入编号和备注
         if(Request::isAjax()){
@@ -257,11 +289,15 @@ class Blueprint extends Base
         /*----------------公司编号处理----------------------*/
         //先获取所有的模具M
         $allM = ComparnyM::order("id","desc")->select();
+        $allP = ComparnyP::order("id","desc")->select();
         $this->assign("allM",$allM);
+        $this->assign("allP",$allP);
 
         $midArray = $this->getMP("M");
+        $pidArray = $this->getMP("P");
         //print_r($tempArray);
         $this->assign("midArray",$midArray);
+        $this->assign("pidArray",$pidArray);
 
 
 

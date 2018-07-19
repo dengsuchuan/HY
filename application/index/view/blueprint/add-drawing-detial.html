@@ -11,7 +11,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">公司编号</label>
             <div class="layui-input-inline" id="">
-                <input type="text" class="layui-input" id="customNumber"  placeholder="自定义分类编号">
+                <input type="text" class="layui-input" id="customNumber"  placeholder="自定义编号">
             </div>
             <button type="button" class="layui-btn layui-btn-normal" id="model">切换模式</button>
             <div class="layui-input-inline" id="voluntarily">
@@ -19,10 +19,16 @@
                     <option value=""></option>
                     <optgroup label="新增模具">
                         <option value="{$midArray.companyNumber}">{$midArray.companyNumber}</option>
+                        <option value="{$pidArray.companyNumber}">{$pidArray.companyNumber}</option>
                     </optgroup>
                     <optgroup label="所有模具">
                         {volist name="$allM" id="allMList"}
                         <option value="{$allMList.mid}">{$allMList.mid}</option>
+                        {/volist}
+                    </optgroup>
+                    <optgroup label="所有产品">
+                        {volist name="$allP" id="allPList"}
+                        <option value="{$allPList.pid}">{$allPList.pid}</option>
                         {/volist}
                     </optgroup>
                 </select>
@@ -30,14 +36,18 @@
             <div class="layui-input-inline" id="addMidNumber">
                 <input type="text" class="layui-input" placeholder="公司编号" id="addMidNumberInput">
             </div>
-            <button type="button" class="layui-btn" id="createM">创建新模具</button>
-            <button type="button" class="layui-btn">创建新产品</button>
+            <div class="layui-input-inline" id="mes">
+                <input type="text" class="layui-input" placeholder="描述">
+            </div>
+            <button type="button" class="layui-btn" id="createNumber">生成公司编号</button>
             <button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>
             <script>
                 $(function () {
                     $("#addMidNumber").hide();
                     $("#voluntarily").hide();
+                    $("#mes").hide();
 
+                    //切换模式
                     $("#model").on("click",function () {
                         $('#voluntarily').toggle(100);
                         $('#customNumber').toggle(100);
@@ -47,16 +57,41 @@
                         $("#selectMid").val("");
                     });
 
-                    $("#createM").on("click",function () {
-                        if($("#customNumber").val() || $("#selectMid").val()){
+                    //生成公司编号
+                    $("#createNumber").on("click",function () {
+                        var customNumber = $("#customNumber").val();
+                        var selectMid = $("#selectMid").val();
+
+                        if(customNumber || selectMid){
                             $("#addMidNumber").show();
-                            var mida = $("#customNumber").val();
-                            var midb = $("#selectMid").val();
-                            $("#addMidNumberInput").val(mida?mida:midb);
+                            $("#mes").show();
+                            var str = customNumber?customNumber:selectMid;
+                            var strSubstr = str.substr(0,1);
+                            var companyNumber = "";
+
+                            if(strSubstr === "M"){
+                                $.ajax({
+                                    type:"post", //请求方式
+                                    url:"{:url('index/Blueprint/newM')}", //发送请求地址
+                                    data:{ //发送给数据库的数据
+                                        p:str
+                                    },
+                                    //请求成功后的回调函数有两个参数
+                                    success:function(data){
+                                        companyNumber = data['companyNumber'];
+                                        $("#addMidNumberInput").val(companyNumber);
+                                    }
+                                });
+                            }else{
+                                $("#addMidNumberInput").val(str);
+                            }
+
                         }else{
                             layer.msg('基础编码不存在!',{icon:5,time:1000});
                         }
                     });
+
+
                 });
             </script>
         </div>
