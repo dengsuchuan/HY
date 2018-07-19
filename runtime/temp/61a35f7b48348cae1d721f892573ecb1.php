@@ -1,4 +1,4 @@
-<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1531973680;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1531976919;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -97,7 +97,7 @@
                         </tr>
                         <tr>
                             <td onclick="inputTs('○')">○</td>
-                            <td onclick="inputTs('%')">□</td>
+                            <td onclick="inputTs('☆')">☆</td>
                             <td onclick="inputTs('□')">□</td>
                             <td onclick="inputTs('≡')">≡</td>
                         </tr>
@@ -127,28 +127,22 @@
                             <td onclick="inputTs('≠')">≠</td>
                         </tr>
                         <tr>
-                            <td onclick="inputTs('☆')">☆</td>
                             <td onclick="inputTs('Ⅰ')">Ⅰ</td>
                             <td onclick="inputTs('Ⅱ')">Ⅱ</td>
                             <td onclick="inputTs('Ⅲ')">Ⅲ</td>
+                            <td onclick="inputTs('Ⅳ')">Ⅳ</td>
                         </tr>
                         <tr>
-                            <td onclick="inputTs('Ⅳ')">Ⅳ</td>
                             <td onclick="inputTs('Ⅴ')">Ⅴ</td>
                             <td onclick="inputTs('Ⅵ')">Ⅵ</td>
                             <td onclick="inputTs('Ⅶ')">Ⅶ</td>
+                            <td onclick="inputTs('Ⅷ')">Ⅷ</td>
                         </tr>
                         <tr>
-                            <td onclick="inputTs('Ⅷ')">Ⅷ</td>
                             <td onclick="inputTs('Ⅸ')">Ⅸ</td>
                             <td onclick="inputTs('Ⅹ')">Ⅹ</td>
                             <td onclick="inputTs('Ⅺ')">Ⅺ</td>
-                        </tr>
-                        <tr>
                             <td onclick="inputTs('Ⅷ')">Ⅻ</td>
-                            <td onclick="inputTs('')"></td>
-                            <td onclick="inputTs('')"></td>
-                            <td onclick="inputTs('')"></td>
                         </tr>
                     </table>
                 </div>
