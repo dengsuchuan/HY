@@ -189,7 +189,7 @@ class Blueprint extends Base
                 //找到最大的序号
                 $maxPid = max($pidOrder);
 
-                //合成将要生成的P编号
+                //合成将要生成的P编号//
                 $tempPid = $strP."-".($maxPid+1);
 
                 $tempArray = [
@@ -205,6 +205,7 @@ class Blueprint extends Base
             return $tempArray;
         }else{//获取有多少MP
             return "MP";
+
         }
     }
 
