@@ -52,7 +52,7 @@
                   <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td>
-                    <a title="序号#" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i class="layui-icon">{$blueprintOutsideList.drawing_external_id}</i></a>
+                    <a title="序号{$blueprintOutsideList.drawing_external_id}" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i class="layui-icon" style="color: #1E9FFF">{$blueprintOutsideList.drawing_external_id}</i></a>
                 </td>
                 <td>{$blueprintOutsideList.create_time}</td>
                 <td>{$blueprintOutsideList.remark}</td>

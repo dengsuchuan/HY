@@ -3,6 +3,8 @@ namespace app\index\controller;
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
+use app\index\model\ComparnyM;
+use app\index\model\ComparnyP;
 use app\index\model\Material;
 use app\index\model\ProductProcess;
 use think\facade\Request;
@@ -136,24 +138,78 @@ class Blueprint extends Base
     }
 
     //获取M和P的值
-    public function getMP(){
-        if(Request::isAjax()){
-            $data = Request::post("action");
-            if($data == "M"){
-                return "M";
+    public function getMP($data){
+        $strM = "M".date('y').date('m').date('d');
+        $strP = "P".date('y').date('m').date('d');
+        $mArray = ComparnyM::where("mid","like",$strM."-%")->select(); //查找M的数据
+        $pArray = ComparnyP::where("pid","like",$strP."-%")->select(); //查找P的数据
+
+        if($data == "M"){/*获取有多少M*/
+
+            if(count($mArray)){ /*count($mArray)等于0，则执行else的内容*/
+                //拆分字符串为数组
+                foreach ($mArray as $value){
+                    $midArray[] = explode("-",$value['mid']);
+                }
+                //拆分单独的序号出来
+                foreach ($midArray as $value){
+                    $midOrder[] = $value[1];
+                }
+                //找到最大的序号
+                $maxMid = max($midOrder);
+
+                //合成将要生成的M编号
+                $tempMid = $strM."-".($maxMid+1);
+                //合成新的公司编号
+                $companyNumber = $tempMid."-1";
+
+                $tempArray = [
+                    "cou"=>count($mArray),
+                    "mes"=>"存在",
+                    "mid"=>$midArray,
+                    "max"=>$maxMid,
+                    "tempMid"=>$tempMid,
+                    "companyNumber"=>$tempMid
+                ];
             }else{
-                return "P";
+                $tempArray = ["cou"=>0,"mes"=>"不存在","companyNumber"=>$strM."-1"];
             }
+            return $tempArray;
+
+
+        }else if ($data == "P"){//获取有多少P
+            if(count($pArray)){ /*count($mArray)等于0，则执行else的内容*/
+                //拆分字符串为数组
+                foreach ($pArray as $value){
+                    $pidArray[] = explode("-",$value['pid']);
+                }
+                //拆分单独的序号出来
+                foreach ($pidArray as $value){
+                    $pidOrder[] = $value[1];
+                }
+                //找到最大的序号
+                $maxPid = max($pidOrder);
+
+                //合成将要生成的P编号
+                $tempPid = $strP."-".($maxPid+1);
+                //合成新的公司编号
+                $companyNumber = $tempPid."-1";
+
+                $tempArray = [
+                    "cou"=>count($pArray),
+                    "mes"=>"存在",
+                    "pids"=>$pidArray,
+                    "max"=>$maxPid,
+                    "tempPid"=>$tempPid,
+                    "companyNumber"=>$companyNumber
+                ];
+            }else{
+                $tempArray = ["cou"=>0,"mes"=>"不存在","pids"=>$strP];
+            }
+            return $tempArray;
+        }else{//获取有多少MP
+            return "MP";
         }
-
-
-//获取数据库中M和P的数量实现自动生公司编号
-//        $model = new BlueprintOutside();//可实例化，也可不实例化
-//        $i = 0;//编号
-//        $str = "W".date('y').date('m').date('d')."-";//可以设置来之数据库的一个自定义字符串
-//        do{
-//            ++$i;  //第一次就为1，排除编号0
-//        }while($model->get(["drawing_external_id"=>$str.$i])); //如果存在就继续算下去
     }
 
     public function addDrawingExternalId(){//传入编号和备注
@@ -175,6 +231,7 @@ class Blueprint extends Base
             }
         }
     }
+
     //--|--|添加图纸明细控制器
     public function addDrawingDetial($id){//从视图传来
 
@@ -196,8 +253,21 @@ class Blueprint extends Base
             'drawing_external_id'=>$id,//外图编号
             'material'=>$material//获取所有材料
         ];
-
         $this->assign("detailArray",$detailArray);
+        /*----------------公司编号处理----------------------*/
+        //先获取所有的模具M
+        $allM = ComparnyM::order("id","desc")->select();
+        $this->assign("allM",$allM);
+
+        $midArray = $this->getMP("M");
+        //print_r($tempArray);
+        $this->assign("midArray",$midArray);
+
+
+
+
+        /*----------------公司编号处理----------------------*/
+
 
 
         return $this->view->fetch('add-drawing-detial');
