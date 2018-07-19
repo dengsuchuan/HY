@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531879678;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531968439;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -48,6 +48,53 @@
 <div class="x-body">
   <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
     <legend>工艺信息</legend>
+    <div class="layui-row">
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+            <tr>
+              <th>明细编号</th>
+              <th>公司编号</th>
+              <th>外图编号</th>
+              <th>图纸名称</th>
+              <th>材料</th>
+              <th>类型</th>
+              <th>客户</th>
+              <th>批量</th>
+              <th>工费</th>
+              <th>报价</th>
+              <th>实际价格</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
+            <tr>
+              <td><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['drawing_name']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['heat_treatment']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['drawing_type']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['client_id']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['if_batch']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['layout_qty']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['product_mfg_cost']); ?></td>
+              <td><?php echo htmlentities($blueprintInfoList['product_quotation']); ?></td>
+              <td class="td-manage">
+                <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的所有信息','<?php echo url('index/blueprint/blueprintInfos',['id'=>$blueprintInfoList['drawing_detail_id']]); ?>',450)" href="javascript:;"><i class="layui-icon">详</i></a>
+                <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
+                <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
+                <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>
+              </td>
+            </tr>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </fieldset>
   <xblock>
     <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
@@ -73,7 +120,6 @@
               <th>定额报价</th>
               <th>外协实际价格</th>
               <th>备注</th>
-              <th>排序</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -84,13 +130,13 @@
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
               </td>
               <td>
-                <?php echo htmlentities($processInfoList['process_id']); ?>
+                <?php echo substr($processInfoList['process_id'],strpos($processInfoList['process_id'],'-')+1); ?>
                   <span class="layui-table-sort layui-inline">
                     <i class="layui-edge layui-table-sort-asc" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" attr-drawing_detial_id="<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>"></i>
                     <i class="layui-edge layui-table-sort-desc" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" attr-drawing_detial_id="<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>"></i>
                   </span>
               </td>
-              <td><?php echo htmlentities($processInfoList['process_type']); ?></td>
+              <td><?php echo htmlentities($processInfoList['process_name']); ?> --- <?php echo htmlentities($processInfoList['process_price']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_content']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_quota']); ?></td>
               <td>
@@ -104,14 +150,11 @@
               <td><?php echo htmlentities($processInfoList['quota_quotation']); ?></td>
               <td><?php echo htmlentities($processInfoList['process_real_price']); ?></td>
               <td><?php echo htmlentities($processInfoList['remark']); ?></td>
+
               <td>
-                <div class="layui-input-inline listorder" style="width: 50px;">
-                  <input type="text" value="<?php echo htmlentities($processInfoList['sort']); ?>" size="3" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" class="layui-input"  name="listorder" >
-                </div>
-              </td>
-              <td>
-                <a title="改" onclick="x_admin_show('工序明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">改</i></a>
-                <a title="删" onclick="delete_process(this,'<?php echo htmlentities($processInfoList['id']); ?>')"><i class="layui-icon">删</i></a>
+                <!--<a title="详" onclick="x_admin_show('工序详情 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">详</i></a>-->
+                <a title="改" onclick="x_admin_show('修改工序 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">改</i></a>
+                <a title="删" onclick="delete_process(this,'<?php echo htmlentities($processInfoList['id']); ?>','<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>')"><i class="layui-icon">删</i></a>
               </td>
             </tr>
           <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -157,6 +200,7 @@
             }
         },"json");
     });
+
     //排序
     $(".listorder input").blur(function () {
         var listorder =  $(this).val();
@@ -188,16 +232,17 @@
     }
 
     /*删除*/
-    function delete_process(obj,id){
+    function delete_process(obj,id,drawing_detial_id){
         layer.confirm('确认要删除吗？',function(index){
             var url = "<?php echo url('/index/Blueprint/deleteProcess'); ?>";
-            var postData ={"id":id};
+            var postData ={"id":id,"drawing_detial_id":drawing_detial_id};
             $.post(url,postData,function (result) {
                 if(result === 1 ){
-                    $(obj).parents("tr").remove();
-                    layer.msg('已删除!',{icon:1,time:1000});
+                    layer.alert("删除成功", {icon: 6},function () {
+                        window.location.reload();  //刷新父级页面
+                    });
                 }else {
-                    layer.alert("排序失败", {icon: 5});
+                    layer.alert("删除失败", {icon: 5});
                 }
             },"json");
         });

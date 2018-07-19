@@ -1,12 +1,13 @@
 <?php
 namespace app\index\controller;
+
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
 use app\index\model\Material;
 use app\index\model\ProductProcess;
 use think\facade\Request;
-
+use app\index\model\ProcessType as ProcessTypeModel;
 class Blueprint extends Base
 {
     //--|图纸明细控制器以及相关子控制器
@@ -65,13 +66,21 @@ class Blueprint extends Base
     //--|--|工艺管理详情
     public function process(){
         $drawing_detail_id = input('drawing_detail_id');  //获取图纸明细编号
+        //获取当前的图纸明细
+        $blueprintInfo = BlueprintInfo::where(['drawing_detail_id'=>$drawing_detail_id])->select();
         //获取工艺/工序信息
-        $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->order('sort','asc')->paginate(10);
+        $processInfo = ProductProcess::alias('p')
+            ->join('process_type t','p.process_type = t.id')
+            ->where(['drawing_detial_id'=>$drawing_detail_id])
+            ->field('p.*,t.process_name,t.process_price')
+            ->order('p.sort','asc')
+            ->paginate(10);
         $count = count($processInfo);
         $this->assign([
-           'processInfo'           =>  $processInfo,
+            'processInfo'           =>  $processInfo,
             'drawing_detail_id'    =>  $drawing_detail_id,
-            'count'                =>  $count
+            'count'                =>  $count,
+            'blueprintInfo'       =>  $blueprintInfo
         ]);
         return $this->view->fetch('process');
     }
@@ -113,9 +122,12 @@ class Blueprint extends Base
             ++$code;
             $drawing_detail_id = $code<10 ? $drawing_detail_id .= '-P0'.$code:$drawing_detail_id .= '-P'.$code;
         }
+        //获取工艺类型数据
+        $processType = ProcessTypeModel::order('sort asc')->select();
         $this->assign([
             'drawing_detail_id'    =>  $drawing_detail_id,
             'drawing_detail_ids'   =>  $drawing_detail_ids,
+            'processType'          =>   $processType
         ]);
         return $this->view->fetch('add-process');
     }
@@ -135,8 +147,11 @@ class Blueprint extends Base
         }
         $id = intval(input('id'));
         $processRow = ProductProcess::get($id);
+        //获取工艺类型数据
+        $processType = ProcessTypeModel::order('sort asc')->select();
         $this->assign([
            'processRow'    =>  $processRow,
+            'processType'          =>   $processType
         ]);
         return $this->view->fetch('process-edit');
     }
@@ -276,6 +291,16 @@ class Blueprint extends Base
     public function deleteProcess(){
         $id = intval(input('id'));
         $info = ProductProcess::where(['id'=>$id])->delete();
+        $drawing_detial_id = input('drawing_detial_id');
+
+        $processList = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id,sort')->order('sort','asc')->select();
+        $top = 1;  //定义循环开始
+        foreach ($processList as $list){
+            $process_id = $top<10 ? $drawing_detial_id .= '-P0'.$top : $drawing_detial_id .= '-P'.$top;
+            ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
+            $drawing_detial_id = input('drawing_detial_id');
+        }
+
         if($info){
             return json(1);
         }else{

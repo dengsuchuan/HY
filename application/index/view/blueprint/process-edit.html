@@ -10,10 +10,21 @@
         <p id="pLog" style="color:red"></p>
       </div>
     </div>
+
     <div class="layui-form-item">
-      <label for="process_type" class="layui-form-label">工艺类型</label>
-      <div class="layui-input-inline">
-        <input type="text" id="process_type" name="process_type" autocomplete="off" value="{$processRow.process_type}" class="layui-input"  >
+      <label class="layui-form-label">工艺类型</label>
+      <div class="layui-input-block">
+        <select name="process_type" lay-verify="required">
+          <option value=""></option>
+          {volist name="processType" id ="processTypeInfo" }
+          {$processRow.process_type}
+             <option value="{$processTypeInfo.id}"
+                     {if $processTypeInfo.id == $processRow.process_type }
+                     selected
+                     {/if}
+             >{$processTypeInfo.process_name}</option>
+          {/volist}
+        </select>
       </div>
     </div>
     <div class="layui-form-item">

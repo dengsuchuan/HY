@@ -1,4 +1,4 @@
-<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1531664995;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1531966842;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -55,52 +55,109 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="process_type" class="layui-form-label">工艺类型</label>
-            <div class="layui-input-inline">
-                <input type="text" id="process_type" name="process_type" autocomplete="off" class="layui-input"  >
+            <label class="layui-form-label">工艺类型</label>
+            <div class="layui-input-block">
+                <select name="process_type" lay-verify="required">
+                    <option value=""></option>
+                    <?php if(is_array($processType) || $processType instanceof \think\Collection || $processType instanceof \think\Paginator): $i = 0; $__LIST__ = $processType;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$processTypeInfo): $mod = ($i % 2 );++$i;?>
+                        <option value="<?php echo htmlentities($processTypeInfo['id']); ?>"><?php echo htmlentities($processTypeInfo['process_name']); ?></option>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label for="process_content" class="layui-form-label">工艺说明</label>
-            <div class="layui-input-inline">
-                <input type="text" id="process_content" name="process_content" autocomplete="off" class="layui-input"  >
+            <div class="layui-input-block">
+                <textarea id="process_content" name="process_content" class="layui-textarea" ></textarea>
+                <div class="layui-btn-container layadmin-layer-demo" style="margin-top:5px; ">
+                    <input   type="button" 	class="layui-btn layui-btn-xs" onclick="openModak()" style="width:50px;height: 20px;" value="☼">
+                </div>
+                <script>
+                    function openModak(){
+                        $("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值
+                        layui.use(['layer'],function () {
+                            var layer = layui.layer,$=layui.$;
+                            layer.open({
+                                type:1,//类型
+                                area:['200px','200px'],//定义宽和高
+                                title:'特殊符号输入',//题目
+                                shadeClose:true,//点击遮罩层关闭
+                                content: $('#motaikunag')//打开的内容
+                            });
+                        })
+                    }
+                </script>
+                <div id="motaikunag" style="display: none;">
+                    <table class="layui-table">
+                        <tr>
+                            <td onclick="inputTs('~')">~</td>
+                            <td onclick="inputTs('!')">!</td>
+                            <td onclick="inputTs('#')">#</td>
+                            <td onclick="inputTs('$')">$</td>
+                        </tr>
+                        <tr>
+                            <td onclick="inputTs('￥')">￥</td>
+                            <td onclick="inputTs('%')">%</td>
+                            <td onclick="inputTs('^')">^</td>
+                            <td onclick="inputTs('&')">&</td>
+                        </tr>
+                        <tr>
+                            <td onclick="inputTs('*')">*</td>
+                            <td onclick="inputTs('\\')">\</td>
+                            <td onclick="inputTs('/')">/</td>
+                            <td onclick="inputTs('?')">?</td>
+                        </tr>
+                        <tr>
+                            <td onclick="inputTs('￥')">￥</td>
+                            <td onclick="inputTs('%')">%</td>
+                            <td onclick="inputTs('^')">^</td>
+                            <td onclick="inputTs('&')">&</td>
+                        </tr>
+                        <tr>
+                            <td onclick="inputTs('*')">*</td>
+                            <td onclick="inputTs('\\')">\</td>
+                            <td onclick="inputTs('/')">/</td>
+                            <td onclick="inputTs('?')">?</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
+        <script>
+            function inputTs(str) {
+               var count =  $("#process_content").val() + str;
+                $("#process_content").val(count);
+            }
+        </script>
         <div class="layui-form-item">
-            <label for="process_quota" class="layui-form-label">工序定额</label>
+            <label for="process_quota" class="layui-form-label">工序定额h(小时)</label>
             <div class="layui-input-inline">
-                <input type="text" id="process_quota" name="process_quota"  autocomplete="off" class="layui-input"  >
+                <input type="text" id="process_quota" name="process_quota"  autocomplete="off" class="layui-input" placeholder="￥" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">是否检验</label>
             <div class="layui-input-block">
-                <input type="checkbox"  checked=""  name="if_check" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                <input type="checkbox"  name="if_check" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
                 <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">明细编号</label>
-            <div class="layui-input-inline">
-                <input type="text" id="drawing_detial_id" name="drawing_detial_id" lay-verify="required" autocomplete="off" class="layui-input" value="<?php echo htmlentities($drawing_detail_ids); ?>" disabled="disabled">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">工序报价</label>
             <div class="layui-input-inline">
-                <input type="text" id="process_quoted_price" name="process_quoted_price"  autocomplete="off" class="layui-input">
+                <input type="text" id="process_quoted_price" name="process_quoted_price"  placeholder="￥"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">定额报价</label>
             <div class="layui-input-inline">
-                <input type="text" id="quota_quotation" name="quota_quotation" autocomplete="off" class="layui-input" >
+                <input type="text" id="quota_quotation"  placeholder="￥"  name="quota_quotation" autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">外协报价</label>
             <div class="layui-input-inline">
-                <input type="text" id="process_real_price" name="process_real_price" autocomplete="off" class="layui-input">
+                <input type="text" id="process_real_price" placeholder="￥"  name="process_real_price" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -116,6 +173,12 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">明细编号</label>
+            <div class="layui-input-inline">
+                <input type="text" id="drawing_detial_id" name="drawing_detial_id" lay-verify="required" autocomplete="off" class="layui-input" value="<?php echo htmlentities($drawing_detail_ids); ?>" disabled="disabled">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label"></label>
             <button class="layui-btn" lay-submit lay-filter="addId">
                 增加
@@ -124,8 +187,6 @@
     </form>
 </div>
 <script>
-
-
     layui.use(['form'], function(){
         $ = layui.jquery;
         var form = layui.form,layer = layui.layer;
