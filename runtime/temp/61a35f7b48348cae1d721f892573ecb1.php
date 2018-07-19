@@ -1,4 +1,4 @@
-<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1531976919;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1532012557;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -44,6 +44,12 @@
 
     </style>
 </head>
+<script src="/static/ueditor/ueditor.config.js"></script>
+<script src="/static/ueditor/ueditor.all.min.js"></script>
+<script src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
+<style>
+
+</style>
 <body>
 <div class="x-body ">
     <form  class="layui-form">
@@ -54,106 +60,121 @@
                 <p id="pLog" style="color:red"></p>
             </div>
         </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">工艺说明</label>
+            <div class="layui-input-block">
+                <textarea name="process_content" id="content" ></textarea>
+            </div>
+        </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">工艺类型</label>
             <div class="layui-input-block">
                 <select name="process_type" lay-verify="required">
                     <option value=""></option>
                     <?php if(is_array($processType) || $processType instanceof \think\Collection || $processType instanceof \think\Paginator): $i = 0; $__LIST__ = $processType;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$processTypeInfo): $mod = ($i % 2 );++$i;?>
-                        <option value="<?php echo htmlentities($processTypeInfo['id']); ?>"><?php echo htmlentities($processTypeInfo['process_name']); ?></option>
+                    <option value="<?php echo htmlentities($processTypeInfo['id']); ?>"><?php echo htmlentities($processTypeInfo['process_name']); ?></option>
                     <?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label for="process_content" class="layui-form-label">工艺说明</label>
-            <div class="layui-input-block">
-                <textarea id="process_content" name="process_content" class="layui-textarea" ></textarea>
-                <div class="layui-btn-container layadmin-layer-demo" style="margin-top:5px; ">
-                    <input   type="button" 	class="layui-btn layui-btn-xs" onclick="openModak()" style="width:50px;height: 20px;" value="☼">
-                </div>
-                <script>
-                    function openModak(){
-                        $("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值
-                        layui.use(['layer'],function () {
-                            var layer = layui.layer,$=layui.$;
-                            layer.open({
-                                type:1,//类型
-                                area:['200px','200px'],//定义宽和高
-                                title:'特殊符号输入',//题目
-                                shadeClose:true,//点击遮罩层关闭
-                                content: $('#motaikunag')//打开的内容
-                            });
-                        })
-                    }
-                </script>
-                <div id="motaikunag" style="display: none;">
-                    <table class="layui-table">
-                        <tr>
-                            <td onclick="inputTs('Φ')">Φ</td>
-                            <td onclick="inputTs('∥')">∥</td>
-                            <td onclick="inputTs('◎')">◎</td>
-                            <td onclick="inputTs('⊙')">⊙</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('○')">○</td>
-                            <td onclick="inputTs('☆')">☆</td>
-                            <td onclick="inputTs('□')">□</td>
-                            <td onclick="inputTs('≡')">≡</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('⊥')">⊥</td>
-                            <td onclick="inputTs('√')">√</td>
-                            <td onclick="inputTs('˚')">˚</td>
-                            <td onclick="inputTs('⌒')">⌒</td>
-                        </tr>
-                        <tr>
-
-                            <td onclick="inputTs('⊕')">⊕</td>
-                            <td onclick="inputTs('℃')">℃</td>
-                            <td onclick="inputTs('±')">±</td>
-                            <td onclick="inputTs('∠')">∠</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('⊿')">⊿</td>
-                            <td onclick="inputTs('◁')">◁</td>
-                            <td onclick="inputTs('↗')">↗</td>
-                            <td onclick="inputTs('×')">×</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('÷')">÷</td>
-                            <td onclick="inputTs('≦')">≦</td>
-                            <td onclick="inputTs('≧')">≧</td>
-                            <td onclick="inputTs('≠')">≠</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('Ⅰ')">Ⅰ</td>
-                            <td onclick="inputTs('Ⅱ')">Ⅱ</td>
-                            <td onclick="inputTs('Ⅲ')">Ⅲ</td>
-                            <td onclick="inputTs('Ⅳ')">Ⅳ</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('Ⅴ')">Ⅴ</td>
-                            <td onclick="inputTs('Ⅵ')">Ⅵ</td>
-                            <td onclick="inputTs('Ⅶ')">Ⅶ</td>
-                            <td onclick="inputTs('Ⅷ')">Ⅷ</td>
-                        </tr>
-                        <tr>
-                            <td onclick="inputTs('Ⅸ')">Ⅸ</td>
-                            <td onclick="inputTs('Ⅹ')">Ⅹ</td>
-                            <td onclick="inputTs('Ⅺ')">Ⅺ</td>
-                            <td onclick="inputTs('Ⅷ')">Ⅻ</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <script>
-            function inputTs(str) {
-               var count =  $("#process_content").val() + str;
-                $("#process_content").val(count);
-            }
+        <script type="text/javascript">
+            //实例化编辑器
+            //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+            UE.getEditor('content',{initialFrameWidth:300,initialFrameHeight:200,elementPathEnabled:false,wordCount:false, toolbars:[['bold','superscript','subscript','fontsize','spechars']]});
         </script>
+
+        <!--<div class="layui-form-item">-->
+            <!--<label for="process_content" class="layui-form-label">工艺说明</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<textarea id="process_content" name="process_content" class="layui-textarea" ></textarea>-->
+                <!--<div class="layui-btn-container layadmin-layer-demo" style="margin-top:5px; ">-->
+                    <!--<input   type="button" 	class="layui-btn layui-btn-xs" onclick="openModak()" style="width:50px;height: 20px;" value="☼">-->
+                <!--</div>-->
+                <!--<script>-->
+                    <!--function openModak(){-->
+                        <!--$("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值-->
+                        <!--layui.use(['layer'],function () {-->
+                            <!--var layer = layui.layer,$=layui.$;-->
+                            <!--layer.open({-->
+                                <!--type:1,//类型-->
+                                <!--area:['200px','200px'],//定义宽和高-->
+                                <!--title:'特殊符号输入',//题目-->
+                                <!--shadeClose:true,//点击遮罩层关闭-->
+                                <!--content: $('#motaikunag')//打开的内容-->
+                            <!--});-->
+                        <!--})-->
+                    <!--}-->
+                <!--</script>-->
+                <!--<div id="motaikunag" style="display: none;">-->
+                    <!--<table class="layui-table">-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('Φ')">Φ</td>-->
+                            <!--<td onclick="inputTs('∥')">∥</td>-->
+                            <!--<td onclick="inputTs('◎')">◎</td>-->
+                            <!--<td onclick="inputTs('⊙')">⊙</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('○')">○</td>-->
+                            <!--<td onclick="inputTs('☆')">☆</td>-->
+                            <!--<td onclick="inputTs('□')">□</td>-->
+                            <!--<td onclick="inputTs('≡')">≡</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('⊥')">⊥</td>-->
+                            <!--<td onclick="inputTs('√')">√</td>-->
+                            <!--<td onclick="inputTs('˚')">˚</td>-->
+                            <!--<td onclick="inputTs('⌒')">⌒</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+
+                            <!--<td onclick="inputTs('⊕')">⊕</td>-->
+                            <!--<td onclick="inputTs('℃')">℃</td>-->
+                            <!--<td onclick="inputTs('±')">±</td>-->
+                            <!--<td onclick="inputTs('∠')">∠</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('⊿')">⊿</td>-->
+                            <!--<td onclick="inputTs('◁')">◁</td>-->
+                            <!--<td onclick="inputTs('↗')">↗</td>-->
+                            <!--<td onclick="inputTs('×')">×</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('÷')">÷</td>-->
+                            <!--<td onclick="inputTs('≦')">≦</td>-->
+                            <!--<td onclick="inputTs('≧')">≧</td>-->
+                            <!--<td onclick="inputTs('≠')">≠</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('Ⅰ')">Ⅰ</td>-->
+                            <!--<td onclick="inputTs('Ⅱ')">Ⅱ</td>-->
+                            <!--<td onclick="inputTs('Ⅲ')">Ⅲ</td>-->
+                            <!--<td onclick="inputTs('Ⅳ')">Ⅳ</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('Ⅴ')">Ⅴ</td>-->
+                            <!--<td onclick="inputTs('Ⅵ')">Ⅵ</td>-->
+                            <!--<td onclick="inputTs('Ⅶ')">Ⅶ</td>-->
+                            <!--<td onclick="inputTs('Ⅷ')">Ⅷ</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td onclick="inputTs('Ⅸ')">Ⅸ</td>-->
+                            <!--<td onclick="inputTs('Ⅹ')">Ⅹ</td>-->
+                            <!--<td onclick="inputTs('Ⅺ')">Ⅺ</td>-->
+                            <!--<td onclick="inputTs('Ⅷ')">Ⅻ</td>-->
+                        <!--</tr>-->
+                    <!--</table>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<script>-->
+            <!--function inputTs(str) {-->
+               <!--var count =  $("#process_content").val() + str;-->
+                <!--$("#process_content").val(count);-->
+            <!--}-->
+        <!--</script>-->
         <div class="layui-form-item">
             <label for="process_quota" class="layui-form-label">工序定额h(小时)</label>
             <div class="layui-input-inline">

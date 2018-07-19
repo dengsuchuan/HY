@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1531968439;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532012317;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -62,9 +62,7 @@
               <th>类型</th>
               <th>客户</th>
               <th>批量</th>
-              <th>工费</th>
-              <th>报价</th>
-              <th>实际价格</th>
+
               <th>操作</th>
             </tr>
             </thead>
@@ -79,9 +77,6 @@
               <td><?php echo htmlentities($blueprintInfoList['drawing_type']); ?></td>
               <td><?php echo htmlentities($blueprintInfoList['client_id']); ?></td>
               <td><?php echo htmlentities($blueprintInfoList['if_batch']); ?></td>
-              <td><?php echo htmlentities($blueprintInfoList['layout_qty']); ?></td>
-              <td><?php echo htmlentities($blueprintInfoList['product_mfg_cost']); ?></td>
-              <td><?php echo htmlentities($blueprintInfoList['product_quotation']); ?></td>
               <td class="td-manage">
                 <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的所有信息','<?php echo url('index/blueprint/blueprintInfos',['id'=>$blueprintInfoList['drawing_detail_id']]); ?>',450)" href="javascript:;"><i class="layui-icon">详</i></a>
                 <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
@@ -130,14 +125,14 @@
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id=''><i class="layui-icon">&#xe605;</i></div>
               </td>
               <td>
-                <?php echo substr($processInfoList['process_id'],strpos($processInfoList['process_id'],'-')+1); ?>
+                <?php echo substr($processInfoList['process_id'],strpos($processInfoList['process_id'],'P')+1); ?>
                   <span class="layui-table-sort layui-inline">
                     <i class="layui-edge layui-table-sort-asc" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" attr-drawing_detial_id="<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>"></i>
                     <i class="layui-edge layui-table-sort-desc" attr-id="<?php echo htmlentities($processInfoList['id']); ?>" attr-drawing_detial_id="<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>"></i>
                   </span>
               </td>
               <td><?php echo htmlentities($processInfoList['process_name']); ?> --- <?php echo htmlentities($processInfoList['process_price']); ?></td>
-              <td><?php echo htmlentities($processInfoList['process_content']); ?></td>
+              <td><?php echo $processInfoList['process_content'];?></td>
               <td><?php echo htmlentities($processInfoList['process_quota']); ?></td>
               <td>
                 <?php if($processInfoList['if_check'] == 1): ?>
