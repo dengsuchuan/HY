@@ -40,18 +40,20 @@
                 <input type="text" class="layui-input" placeholder="描述">
             </div>
             <button type="button" class="layui-btn" id="createNumber">生成公司编号</button>
-            <button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>
+            <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
             <script>
                 $(function () {
-                    $("#addMidNumber").hide();
                     $("#voluntarily").hide();
+                    $("#addMidNumber").hide();
                     $("#mes").hide();
+
 
                     //切换模式
                     $("#model").on("click",function () {
-                        $('#voluntarily').toggle(100);
-                        $('#customNumber').toggle(100);
+                        $('#voluntarily').toggle();
+                        $('#customNumber').toggle();
                         $("#addMidNumber").hide();
+                        $("#mes").hide();
 
                         $("#customNumber").val("");
                         $("#selectMid").val("");
