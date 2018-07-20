@@ -4,6 +4,8 @@ namespace app\index\controller;
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
+use app\index\model\ComparnyM;
+use app\index\model\ComparnyP;
 use app\index\model\Material;
 use app\index\model\ProductProcess;
 use think\facade\Request;
