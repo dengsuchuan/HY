@@ -1,4 +1,4 @@
-<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1532012557;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1532089574;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -178,7 +178,7 @@
         <div class="layui-form-item">
             <label for="process_quota" class="layui-form-label">工序定额h(小时)</label>
             <div class="layui-input-inline">
-                <input type="text" id="process_quota" name="process_quota"  autocomplete="off" class="layui-input" placeholder="￥" >
+                <input type="text" id="process_quota" name="process_quota"  autocomplete="off" class="layui-input"  >
             </div>
         </div>
         <div class="layui-form-item">
@@ -195,9 +195,9 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">定额报价</label>
+            <label class="layui-form-label">报价定额h(小时)</label>
             <div class="layui-input-inline">
-                <input type="text" id="quota_quotation"  placeholder="￥"  name="quota_quotation" autocomplete="off" class="layui-input" >
+                <input type="text" id="quota_quotation" name="quota_quotation" autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
