@@ -1,13 +1,13 @@
 <?php
 namespace app\index\controller;
+
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
-use app\index\model\ComparnyM;
-use app\index\model\ComparnyP;
 use app\index\model\Material;
 use app\index\model\ProductProcess;
 use think\facade\Request;
+use app\index\model\ProcessType as ProcessTypeModel;
 
 class Blueprint extends Base
 {
@@ -67,22 +67,47 @@ class Blueprint extends Base
     //--|--|工艺管理详情
     public function process(){
         $drawing_detail_id = input('drawing_detail_id');  //获取图纸明细编号
+        //获取当前的图纸明细
+        $blueprintInfo = BlueprintInfo::where(['drawing_detail_id'=>$drawing_detail_id])->select();
         //获取工艺/工序信息
-        $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+        $processInfo = ProductProcess::alias('p')
+            ->join('process_type t','p.process_type = t.id')
+            ->where(['drawing_detial_id'=>$drawing_detail_id])
+            ->field('p.*,t.process_name,t.process_price')
+            ->order('p.sort','asc')
+            ->paginate(10);
         $count = count($processInfo);
         $this->assign([
-           'processInfo'           =>  $processInfo,
+            'processInfo'           =>  $processInfo,
             'drawing_detail_id'    =>  $drawing_detail_id,
-            'count'                =>  $count
+            'count'                =>  $count,
+            'blueprintInfo'       =>  $blueprintInfo
         ]);
         return $this->view->fetch('process');
     }
+
+
     //--|--|添加工艺
     public function addProcess(){
+        $drawing_detail_id = input('id');  //获取图纸明细编号
+        $drawing_detail_ids = input('id');  //获取图纸明细编号
+        $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->field('sort')->order('sort','desc')->select();
+        //统计工艺条数
+        $count = count($processInfo);
         //如果是ajax提交则代表为入库操作
         if(Request::isAjax()){
             $data = Request::post();
+            $drawing_detial_id = $data['drawing_detial_id'];
+            $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('sort')->order('sort','desc')->select();
+            //统计工艺条数 判断是否有值
+            $count = count($processInfo);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+            if($count == 0){
+                $data['sort'] = 1;
+            }else{
+                $sort = $processInfo[0]['sort'];
+                $data['sort'] = ++$sort;
+            }
             $info = ProductProcess::create($data);
             if($info){
                 return json(1);
@@ -90,27 +115,26 @@ class Blueprint extends Base
                 return json(0);
             }
         }
-        $drawing_detail_id = input('id');  //获取图纸明细编号
-        $drawing_detail_ids = input('id');  //获取图纸明细编号
         //获取当前图纸明细的工艺记录
-        $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->field('id,process_id')->select();
-        //统计工艺条数
-        $count = count($processInfo);
         //生成工艺编号
         if($count == 0){
             $drawing_detail_id.= '-P01';
         }else{
-            $processInfo = $processInfo[--$count];
-            $code = intval(substr($processInfo['process_id'],strpos($processInfo['process_id'],'P')+1));
-            $code++;
+            $code = $processInfo[0]['sort'];
+            ++$code;
             $drawing_detail_id = $code<10 ? $drawing_detail_id .= '-P0'.$code:$drawing_detail_id .= '-P'.$code;
         }
+        //获取工艺类型数据
+        $processType = ProcessTypeModel::order('sort asc')->select();
         $this->assign([
             'drawing_detail_id'    =>  $drawing_detail_id,
             'drawing_detail_ids'   =>  $drawing_detail_ids,
+            'processType'          =>   $processType
         ]);
         return $this->view->fetch('add-process');
     }
+
+
     //--|--|工艺管理里面的工序详情
     public function sequence(){
         return $this->view->fetch('sequence');
@@ -312,5 +336,169 @@ class Blueprint extends Base
 
     public function blueprintInterior(){
         return $this->view->fetch('blueprint-interior');
+    }
+
+    /**
+     * 工序一键排序
+     * 1、获取对应图纸的所有工序。升序排序。
+     * 2、然后获取总条数，
+     * 3、然后1到总条数循环修改排序字段，
+     * 4、最后 修改工序编号
+     * */
+    public function onekeySort(){
+        $id = input('id');
+        $processList = ProductProcess::where(['drawing_detial_id'=>$id])->field('id,sort')->order('sort','asc')->select();
+        $top = 1;  //定义循环开始
+        foreach ($processList as $list){
+            $process_id = $top<10 ? $id .= '-P0'.$top : $id .= '-P'.$top;
+            ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
+            $id = input('id');
+        }
+        return json(1);
+    }
+    //删除工序
+    public function deleteProcess(){
+        $id = intval(input('id'));
+        $info = ProductProcess::where(['id'=>$id])->delete();
+        $drawing_detial_id = input('drawing_detial_id');
+
+        $processList = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id,sort')->order('sort','asc')->select();
+        $top = 1;  //定义循环开始
+        foreach ($processList as $list){
+            $process_id = $top<10 ? $drawing_detial_id .= '-P0'.$top : $drawing_detial_id .= '-P'.$top;
+            ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
+            $drawing_detial_id = input('drawing_detial_id');
+        }
+
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    //点击小三角进行排序  Asc
+    public function updateAsc(){
+        $id = input('id');
+        $drawing_detial_id = input('drawing_detial_id');
+        //获取当前数据的排序
+        $Info = ProductProcess::where("id", "=", $id)->field('id,sort,process_id')->find();
+        $infoSort = $Info['sort'];
+        //获取上一条排序字段
+        $ascInfo = ProductProcess::where("sort", "<", $infoSort)->where(['drawing_detial_id'=>$drawing_detial_id])->order("sort", "desc")->find();
+        //如果是第一条数据
+        if($ascInfo == null){
+            return json([
+                'error' => 1000,
+                'msg'   =>  '已经是第一条数据'
+            ]);
+        }
+        //元数据的信息
+        $Ydata['yid'] = $Info['id'];
+        $Ydata['Ysort'] = $Info['sort'];
+        $Ydata['yprocessId'] = $Info['process_id'];
+        //上一条记录的信息
+        $Gdata['gid'] =  $ascInfo['id'];
+        $Gdata['gsort'] =  $ascInfo['sort'];
+        $Gdata['gprocessId'] =  $ascInfo['process_id'];
+        //更新数据 将上面的改成下面的
+        $info = ProductProcess::update(['sort'=>$Gdata['gsort'],'process_id'=>$Gdata['gprocessId']],['id'=> $Ydata['yid']]);
+        $info1 =  ProductProcess::update(['sort'=>$Ydata['Ysort'],'process_id'=>$Ydata['yprocessId']],['id'=>$Gdata['gid']]);
+        if($info && $info1){
+            return json([
+                'error' => 1,
+            ]);
+        }else{
+            return json([
+                'error' => 0,
+                'msg'   =>  '排序失败'
+            ]);
+        }
+    }
+    //点击小三角进行排序  Desc
+    public function updateDesc(){
+        $id = input('id');
+        $drawing_detial_id = input('drawing_detial_id');
+        //获取当前数据的排序
+        $Info = ProductProcess::where("id", "=", $id)->field('id,sort,process_id')->find();
+        $infoSort = $Info['sort'];
+        //获取上一条排序字段
+        $ascInfo = ProductProcess::where("sort", ">", $infoSort)->where(['drawing_detial_id'=>$drawing_detial_id])->order("sort", "asc")->find();
+        //如果是第一条数据
+        if($ascInfo == null){
+            return json([
+                'error' => 1000,
+                'msg'   =>  '已经是最后一条数据'
+            ]);
+        }
+        //元数据的信息
+        $Ydata['yid'] = $Info['id'];
+        $Ydata['Ysort'] = $Info['sort'];
+        $Ydata['yprocessId'] = $Info['process_id'];
+        //上一条记录的信息
+        $Gdata['gid'] =  $ascInfo['id'];
+        $Gdata['gsort'] =  $ascInfo['sort'];
+        $Gdata['gprocessId'] =  $ascInfo['process_id'];
+        //更新数据 将上面的改成下面的
+        $info = ProductProcess::update(['sort'=>$Gdata['gsort'],'process_id'=>$Gdata['gprocessId']],['id'=> $Ydata['yid']]);
+        $info1 =  ProductProcess::update(['sort'=>$Ydata['Ysort'],'process_id'=>$Ydata['yprocessId']],['id'=>$Gdata['gid']]);
+        if($info && $info1){
+            return json([
+                'error' => 1,
+            ]);
+        }else{
+            return json([
+                'error' => 0,
+                'msg'   =>  '排序失败'
+            ]);
+        }
+    }
+    //工序详情页面
+    public function editProcess(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            unset($data['id']);
+            $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+            $info = ProductProcess::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $id = intval(input('id'));
+        $processRow = ProductProcess::get($id);
+        //获取工艺类型数据
+        $processType = ProcessTypeModel::order('sort asc')->select();
+        $this->assign([
+            'processRow'    =>  $processRow,
+            'processType'          =>   $processType
+        ]);
+        return $this->view->fetch('process-edit');
+    }
+    //工艺批量删除
+    public function processDelAll(){
+        $data = input();
+        $drawing_detial_id = $data['dra_id'];
+        $ids = $data['data'];
+        $inf = false;
+        foreach ($ids as $id){
+            $info = ProductProcess::where(['id'=>$id])->delete();
+            if($info){
+                $inf = true;
+            }
+        }
+        $processList = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id,sort')->order('sort','asc')->select();
+        $top = 1;  //定义循环开始
+        foreach ($processList as $list){
+            $process_id = $top<10 ? $drawing_detial_id .= '-P0'.$top : $drawing_detial_id .= '-P'.$top;
+            ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
+            $drawing_detial_id = input('drawing_detial_id');
+        }
+        if($inf){
+            return json(1);
+        }else{
+            return json(0);
+        }
     }
 }
