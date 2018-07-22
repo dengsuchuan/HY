@@ -8,6 +8,7 @@ use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
 use app\index\model\Material;
 use app\index\model\ProductProcess;
+use think\Db;
 use think\facade\Request;
 use app\index\model\ProcessType as ProcessTypeModel;
 
@@ -502,6 +503,58 @@ class Blueprint extends Base
             return json(1);
         }else{
             return json(0);
+        }
+    }
+    //一键复制工序
+    public function copyProcess(){
+        $drawing_detail_id = input('id');
+        //查找当前图纸的所有工序
+        $currentProcess = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+        //查询现有的所有图纸明细
+        $blueprintAllInfo = BlueprintInfo::where('drawing_detail_id','<>',$drawing_detail_id)->order('create_time', 'desc')->select();
+        $this->assign([
+            'drawing_detail_id'   =>   $drawing_detail_id,
+            'blueprintAllInfo'     =>  $blueprintAllInfo,
+        ]);
+        return $this->view->fetch('process-copy');
+    }
+    public function exeCopyProcess(){
+        if(Request::isAjax()){
+            $copyCode = Request::post('copy');  //复制到某个下面的编号
+            $original =  Request::post('drawing_detail_id');   //复制的源数据
+            //跟据 copyCode 查找出是否有工序
+            $copyProcess = ProductProcess::where(['drawing_detial_id'=>$copyCode])->order('sort desc')->select();
+            //跟据original 查找出所有工序
+            $originalProcess = ProductProcess::where(['drawing_detial_id'=>$original])->order('sort asc')->select()->toArray();
+            //获取出copyCode的条数
+            $copyCodeCount = count($copyProcess);
+            //如果没有一条工序，则直接进行复制
+            if($copyCodeCount === 0){
+                foreach ($originalProcess as  $process){
+                    unset($process['id']);
+                    unset($process['create_time']);
+                    unset($process['update_time']);
+                    $process['process_id'] = $copyCode.= '-'.substr( $process['process_id'] ,strpos( $process['process_id'] ,'-')+1);
+                    $process['drawing_detial_id'] =  Request::post('copy');
+                    $copyCode = Request::post('copy');
+                    $info =ProductProcess::create($process);
+                }
+            }else{
+                $copyCode = Request::post('copy');
+                //获取出最大的排序字段
+                $maxSort = $copyProcess[0]['sort'];
+                foreach ($originalProcess as  $process){
+                    unset($process['id']);
+                    unset($process['create_time']);
+                    unset($process['update_time']);
+                    $process['drawing_detial_id'] =  Request::post('copy');
+                    $process['sort'] = ++$maxSort;
+                    $process['process_id'] = $maxSort<10 ? $copyCode .= '-P0'.$maxSort:$copyCode .= '-P'.$maxSort;
+                    $copyCode = Request::post('copy');
+                    $info =ProductProcess::create($process);
+                }
+            }
+            return json(1);
         }
     }
 }
