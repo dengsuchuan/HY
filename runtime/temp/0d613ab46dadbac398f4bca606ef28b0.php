@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532220950;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532222130;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -165,6 +165,10 @@
     //批量删除
     function delAll (drawing_detail_id) {
         var data = tableCheck.getData();
+        if(data == ''){
+            layer.msg('请选择需要删除的数据');
+            return;
+        }
         layer.confirm('确认要删除吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({

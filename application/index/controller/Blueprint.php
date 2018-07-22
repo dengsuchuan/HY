@@ -537,7 +537,7 @@ class Blueprint extends Base
                     $process['process_id'] = $copyCode.= '-'.substr( $process['process_id'] ,strpos( $process['process_id'] ,'-')+1);
                     $process['drawing_detial_id'] =  Request::post('copy');
                     $copyCode = Request::post('copy');
-                    $info =ProductProcess::create($process);
+                    $info = ProductProcess::create($process);
                 }
             }else{
                 $copyCode = Request::post('copy');
@@ -551,7 +551,7 @@ class Blueprint extends Base
                     $process['sort'] = ++$maxSort;
                     $process['process_id'] = $maxSort<10 ? $copyCode .= '-P0'.$maxSort:$copyCode .= '-P'.$maxSort;
                     $copyCode = Request::post('copy');
-                    $info =ProductProcess::create($process);
+                    $info = ProductProcess::create($process);
                 }
             }
             return json(1);

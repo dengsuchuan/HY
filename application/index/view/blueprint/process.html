@@ -120,6 +120,10 @@
     //批量删除
     function delAll (drawing_detail_id) {
         var data = tableCheck.getData();
+        if(data == ''){
+            layer.msg('请选择需要删除的数据');
+            return;
+        }
         layer.confirm('确认要删除吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({
