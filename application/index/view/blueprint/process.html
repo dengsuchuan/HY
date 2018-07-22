@@ -49,7 +49,7 @@
     <button class="layui-btn layui-btn-danger" onclick="delAll('{$drawing_detail_id}')"><i class="layui-icon"></i>批量删除</button>
     <button class="layui-btn" onclick="x_admin_show('工序信息','{:url(\'index/blueprint/addProcess\',[\'id\'=>$drawing_detail_id])}',500,500)"><i class="layui-icon"></i>添加</button>
       <button class="layui-btn" onclick ="sort('{$drawing_detail_id}')" >一键排序</button>
-      <button class="layui-btn" onclick ="sort('{$drawing_detail_id}')" >一键复制</button>
+      <button class="layui-btn" onclick ="x_admin_show('一键复制','{:url(\'index/blueprint/copyProcess\',[\'id\'=>$drawing_detail_id])}',500,400)">一键复制</button>
     <span class="x-right" style="line-height:40px">共有数据：{$count} 条</span>
   </xblock>
   <div class="layui-row">
@@ -120,6 +120,10 @@
     //批量删除
     function delAll (drawing_detail_id) {
         var data = tableCheck.getData();
+        if(data == ''){
+            layer.msg('请选择需要删除的数据');
+            return;
+        }
         layer.confirm('确认要删除吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({

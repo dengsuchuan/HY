@@ -1,4 +1,4 @@
-<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1531323738;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1532086853;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -188,7 +188,6 @@
       }
 
       function delAll (argument) {
-
           var data = tableCheck.getData();
 
           layer.confirm('确认要删除吗？',function(index){

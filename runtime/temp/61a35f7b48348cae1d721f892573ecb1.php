@@ -1,4 +1,4 @@
-<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1532089574;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:60:"D:\code\Hy\application\index\view\blueprint\add-process.html";i:1532216709;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,7 +56,8 @@
         <div class="layui-form-item">
             <label for="process_id" class="layui-form-label">工艺编号</label>
             <div class="layui-input-inline">
-                <input type="text" id="process_id" disabled="disabled" name="process_id" lay-verify="required" autocomplete="off" class="layui-input" value="<?php echo htmlentities($drawing_detail_id); ?>">
+                <input type="text" id="process_id1" disabled="disabled" name="" lay-verify="required" autocomplete="off" class="layui-input" value="<?php echo substr($drawing_detail_id,strpos($drawing_detail_id,'P')+1); ?>" >
+                <input type="hidden" id="process_id" disabled="disabled" name="process_id" lay-verify="required" autocomplete="off" class="layui-input" value="<?php echo htmlentities($drawing_detail_id); ?>" >
                 <p id="pLog" style="color:red"></p>
             </div>
         </div>
