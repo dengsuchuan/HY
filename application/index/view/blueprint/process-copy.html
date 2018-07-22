@@ -30,7 +30,7 @@
             return ;
         }
         var drawing_detail_id =  $("#drawing_detail_id").val();
-        layer.confirm('确定要将'+drawing_detail_id+'图纸下列的所有工艺复制到' + copy +'图纸下面吗？',function(index){
+        layer.confirm('确定要将'+copy+'图纸下列的所有工艺复制到' + drawing_detail_id +'图纸下面吗？',function(index){
             var url = "{:url('/index/Blueprint/exeCopysProcess')}";
             var postData ={"copy":copy,"drawing_detail_id":drawing_detail_id};
             $.post(url,postData,function (result) {
