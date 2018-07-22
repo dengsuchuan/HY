@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532222130;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532224776;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -94,7 +94,7 @@
     <button class="layui-btn layui-btn-danger" onclick="delAll('<?php echo htmlentities($drawing_detail_id); ?>')"><i class="layui-icon"></i>批量删除</button>
     <button class="layui-btn" onclick="x_admin_show('工序信息','<?php echo url('index/blueprint/addProcess',['id'=>$drawing_detail_id]); ?>',500,500)"><i class="layui-icon"></i>添加</button>
       <button class="layui-btn" onclick ="sort('<?php echo htmlentities($drawing_detail_id); ?>')" >一键排序</button>
-      <button class="layui-btn" <?php if($count == 0): ?> disabled <?php endif; ?>onclick ="x_admin_show('一键复制','<?php echo url('index/blueprint/copyProcess',['id'=>$drawing_detail_id]); ?>',500,400)">一键复制</button>
+      <button class="layui-btn" onclick ="x_admin_show('一键复制','<?php echo url('index/blueprint/copyProcess',['id'=>$drawing_detail_id]); ?>',500,400)">一键复制</button>
     <span class="x-right" style="line-height:40px">共有数据：<?php echo htmlentities($count); ?> 条</span>
   </xblock>
   <div class="layui-row">

@@ -31,11 +31,16 @@
         }
         var drawing_detail_id =  $("#drawing_detail_id").val();
         layer.confirm('确定要将'+drawing_detail_id+'图纸下列的所有工艺复制到' + copy +'图纸下面吗？',function(index){
-            var url = "{:url('/index/Blueprint/exeCopyProcess')}";
+            var url = "{:url('/index/Blueprint/exeCopysProcess')}";
             var postData ={"copy":copy,"drawing_detail_id":drawing_detail_id};
             $.post(url,postData,function (result) {
-                if(result === 1 ){
+                if(result.code === 1000 ){
+                    layer.alert(result.msg, {icon: 5});
+                    return;
+                }
+                if(result.code === 1 ){
                     layer.alert("复制成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
                         //关闭当前frame
