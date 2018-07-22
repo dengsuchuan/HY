@@ -61,6 +61,7 @@ class Blueprint extends Base
             } else {
                 return json(0);
             }
+
         }
         $blueprintInfo = BlueprintInfo::where('drawing_detail_id',$id)->find();
         $this->assign('blueprintInfo',$blueprintInfo);
