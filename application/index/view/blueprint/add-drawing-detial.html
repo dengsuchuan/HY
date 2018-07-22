@@ -18,13 +18,7 @@
                 <select name="modules" lay-verify="required" lay-search="" id="selectMid">
                     <option value=""></option>
                     <optgroup label="新增模具">
-                        <option value="{$midArray.companyNumber}">{$midArray.companyNumber}</option>
                         <option value="{$pidArray.companyNumber}">{$pidArray.companyNumber}</option>
-                    </optgroup>
-                    <optgroup label="所有模具">
-                        {volist name="$allM" id="allMList"}
-                        <option value="{$allMList.mid}">{$allMList.mid}</option>
-                        {/volist}
                     </optgroup>
                     <optgroup label="所有产品">
                         {volist name="$allP" id="allPList"}

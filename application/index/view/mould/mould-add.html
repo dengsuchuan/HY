@@ -1,0 +1,129 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">公司编号</label>
+            <div class="layui-input-inline" id="">
+                <input type="text" class="layui-input" id="customNumber"  placeholder="自定义编号">
+            </div>
+            <button type="button" class="layui-btn layui-btn-normal" id="model">切换模式</button>
+            <div class="layui-input-inline" id="voluntarily">
+                <select name="modules" lay-verify="required" lay-search="" id="selectMid">
+                    <option value=""></option>
+                    <optgroup label="新增模具">
+                        <option value="{$midArray.companyNumber}">{$midArray.companyNumber}</option>
+                    </optgroup>
+                    <optgroup label="所有模具">
+                        {volist name="$allM" id="allMList"}
+                        <option value="{$allMList.mid}">{$allMList.mid}</option>
+                        {/volist}
+                    </optgroup>
+                </select>
+            </div>
+            <div class="layui-input-inline" id="addMidNumber">
+                <input type="text" class="layui-input" placeholder="模具编号" id="addMidNumberInput">
+            </div>
+            <div class="layui-input-inline" id="mes">
+                <input type="text" class="layui-input" placeholder="编号描述">
+            </div>
+            <button type="button" class="layui-btn" id="createNumber">生成模具编号</button>
+            <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
+            <script>
+                $(function () {
+                    $("#voluntarily").hide();
+                    $("#addMidNumber").hide();
+                    $("#mes").hide();
+
+
+                    //切换模式
+                    $("#model").on("click",function () {
+                        $('#voluntarily').toggle();
+                        $('#customNumber').toggle();
+                        $("#addMidNumber").hide();
+                        $("#mes").hide();
+
+                        $("#customNumber").val("");
+                        $("#selectMid").val("");
+                    });
+
+                    //生成公司编号
+                    $("#createNumber").on("click",function () {
+                        var customNumber = $("#customNumber").val();
+                        var selectMid = $("#selectMid").val();
+
+                        if(customNumber || selectMid){
+                            $("#addMidNumber").show();
+                            $("#mes").show();
+                            var str = customNumber?customNumber:selectMid;
+                            var strSubstr = str.substr(0,1);
+                            var companyNumber = "";
+
+                            if(strSubstr === "M"){
+                                $.ajax({
+                                    type:"post", //请求方式
+                                    url:"{:url('index/Blueprint/newM')}", //发送请求地址
+                                    data:{ //发送给数据库的数据
+                                        p:str
+                                    },
+                                    //请求成功后的回调函数有两个参数
+                                    success:function(data){
+                                        companyNumber = data['companyNumber'];
+                                        $("#addMidNumberInput").val(companyNumber);
+                                    }
+                                });
+                            }else{
+                                $("#addMidNumberInput").val(str);
+                            }
+
+                        }else{
+                            layer.msg('基础编码不存在!',{icon:5,time:1000});
+                        }
+                    });
+
+
+                });
+            </script>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea"  >   </textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+        ,layer = layui.layer;
+
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            console.log(data);
+            //发异步，把数据提交给php
+            layer.alert("增加成功", {icon: 6},function () {
+                // 获得frame索引
+                var index = parent.layer.getFrameIndex(window.name);
+                //关闭当前frame
+                parent.layer.close(index);
+            });
+            return false;
+        });
+
+
+    });
+</script>
+</body>
+
+</html>
