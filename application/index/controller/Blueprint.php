@@ -7,6 +7,7 @@ use app\index\model\BlueprintOutside;
 use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
 use app\index\model\Material;
+use app\index\model\MaterialShape;
 use app\index\model\ProductProcess;
 use think\Db;
 use think\facade\Request;
@@ -285,7 +286,12 @@ class Blueprint extends Base
         $pidArray = $this->getMP("P");
         $this->assign("pidArray",$pidArray);
 
-        /*----------------公司编号处理----------------------*/
+        /*----------------公司编号处理-结束---------------------*/
+
+        /*----------------材料形状处理----------------------*/
+        $materialShape = MaterialShape::all();
+        $this->assign("materialShapeArray",$materialShape);
+
 
 
 
