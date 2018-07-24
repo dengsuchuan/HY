@@ -163,6 +163,7 @@
                         $("#specifications").hide();//规格
                         $("#sideLength1").hide();//边长1
                         $("#sideLength2").hide();//边长2
+                        $("#saveButton").hide();//保存按钮
 
                         $("#resettinGeneratingForm").on("click",function () {
                             $("#materialDiv").attr("style"," ");
@@ -175,6 +176,7 @@
                             $("#specifications").hide();//规格
                             $("#sideLength1").hide();//边长1
                             $("#sideLength2").hide();//边长2
+                            $("#saveButton").hide();//保存按钮
                         });
 
 
@@ -188,6 +190,7 @@
                                     $("#thickness").show(); //厚度
                                     $("#length").show();//长度
                                     $("#width").show();//宽度
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#altitude").hide();//高度
                                     $("#sideLength1").hide();//边长1
@@ -198,6 +201,7 @@
                                     $("#length").show();//长度
                                     $("#width").show();//宽度  ->直径
                                     $("#width > label").text("直径");
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#specialDiv").hide(); //特殊
                                     $("#thickness").hide(); //厚度
@@ -213,6 +217,7 @@
                                     $("#width > label").text("腿宽");
                                     $("#thickness").show(); //厚度 ->腰厚
                                     $("#thickness > label").text("腰厚");
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#specialDiv").hide(); //特殊
                                     $("#length").hide();//长度
@@ -226,6 +231,7 @@
                                     $("#thickness > label").text("管厚");
                                     $("#width").show();//宽度 ->大径
                                     $("#width > label").text("大径");
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#specialDiv").hide(); //特殊
                                     $("#altitude").hide();//高度
@@ -237,6 +243,7 @@
                                     $("#length").show();//长度
                                     $("#thickness").show(); //厚度 ->单位重量
                                     $("#thickness > label").text("单位重量");
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#specialDiv").hide(); //特殊
                                     $("#width").hide();//宽度
@@ -249,6 +256,7 @@
                                     $("#length").show();//长度
                                     $("#sideLength1").show();//边长1
                                     $("#sideLength2").show();//边长2
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#specialDiv").hide(); //特殊
                                     $("#thickness").hide(); //厚度
@@ -261,6 +269,7 @@
                                     $("#sideLength1").show();//边长1
                                     $("#sideLength2").show();//边长2
                                     $("#thickness").show(); //厚度
+                                    $("#saveButton").show();//保存按钮
 
                                     $("#specialDiv").hide(); //特殊
                                     $("#width").hide();//宽度
@@ -340,6 +349,11 @@
                     </div>
                 </div>
             </div>
+            <div class="layui-form-item" id="saveButton">
+                <label class="layui-form-label">
+                </label>
+                <button  class="layui-btn" lay-filter="add" lay-submit="">保存材料形状参数</button>
+            </div>
         </div>
 
         <div class="layui-form-item">
@@ -395,7 +409,7 @@
             <label class="layui-form-label">
             </label>
             <button  class="layui-btn" lay-filter="add" lay-submit="">
-                增加
+                确认增加
             </button>
         </div>
     </form>
