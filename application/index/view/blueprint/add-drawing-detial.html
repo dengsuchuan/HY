@@ -5,7 +5,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">明细编号</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}" id="drawing_detail_id">
+                <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}" id="drawing_detail_id"  disabled="">
             </div>
         </div>
         <div class="layui-form-item">
@@ -86,7 +86,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">外图编号</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" value="{$detailArray.drawing_external_id}"  >
+                <input type="text" class="layui-input" value="{$detailArray.drawing_external_id}"  title="无法编辑" disabled="">
             </div>
         </div>
         <div class="layui-form-item">
@@ -391,7 +391,7 @@
 
                 <div class="specialDiv">
                     <label class="layui-form-label">保证厚度</label>
-                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  value="保证厚度"   id="memoryThickness">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF"   id="memoryThickness">
                 </div>
             </div>
             <div class="layui-form-item" id="length">
@@ -402,7 +402,7 @@
 
                 <div class="specialDiv">
                     <label class="layui-form-label">保证长度</label>
-                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否" value="保证长度" id="memoryLength">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF" id="memoryLength">
                 </div>
             </div>
             <div class="layui-form-item" id="width">
@@ -413,7 +413,7 @@
 
                 <div class="specialDiv">
                     <label class="layui-form-label">保证宽度</label>
-                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  value="保证宽度"  id="memoryWidth">
+                    <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF"  id="memoryWidth">
                 </div>
             </div>
             <div class="layui-form-item" id="altitude">
