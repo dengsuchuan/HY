@@ -166,6 +166,10 @@
                             materialSelectId = 0;
                         });
 
+                        $("dd").on("click",function () {
+                            $("#generatingForm").click();
+                        });
+
                         $("#generatingForm").on("click",function () {
                             var materialSelect = parseInt($("#materialSelect").val());
                             $("input").val("");
@@ -275,6 +279,7 @@
                         });
 
                         var materialSelectArray = new Array();
+
                         $("#addwebsql").on("click",function () {
 
                             materialSelectArray = [];
@@ -357,7 +362,6 @@
 
                             console.log(materialSelectArray);
                         });
-
 
                     });
                 </script>
