@@ -62,25 +62,7 @@
                             $("#addMidNumber").show();
                             $("#mes").show();
                             var str = customNumber?customNumber:selectMid;
-                            var strSubstr = str.substr(0,1);
-                            var companyNumber = "";
-
-                            if(strSubstr === "M"){
-                                $.ajax({
-                                    type:"post", //请求方式
-                                    url:"{:url('index/Blueprint/newM')}", //发送请求地址
-                                    data:{ //发送给数据库的数据
-                                        p:str
-                                    },
-                                    //请求成功后的回调函数有两个参数
-                                    success:function(data){
-                                        companyNumber = data['companyNumber'];
-                                        $("#addMidNumberInput").val(companyNumber);
-                                    }
-                                });
-                            }else{
-                                $("#addMidNumberInput").val(str);
-                            }
+                            $("#addMidNumberInput").val(str);
 
                         }else{
                             layer.msg('基础编码不存在!',{icon:5,time:1000});
@@ -155,7 +137,10 @@
                 <button type="button" class="layui-btn" id="resettinGeneratingForm">重置</button>
                 <script>
                     $(function () {
-                        $("#specialDiv").hide(); //特殊
+                        //全局变量
+                        var materialSelectId;
+
+                        $(".specialDiv").hide(); //特殊
                         $("#thickness").hide(); //厚度
                         $("#length").hide();//长度
                         $("#width").hide();//宽度
@@ -168,7 +153,7 @@
                         $("#resettinGeneratingForm").on("click",function () {
                             $("#materialDiv").attr("style"," ");
 
-                            $("#specialDiv").hide(); //特殊
+                            $(".specialDiv").hide(); //特殊
                             $("#thickness").hide(); //厚度
                             $("#length").hide();//长度
                             $("#width").hide();//宽度
@@ -177,16 +162,18 @@
                             $("#sideLength1").hide();//边长1
                             $("#sideLength2").hide();//边长2
                             $("#saveButton").hide();//保存按钮
-                        });
 
+                            materialSelectId = 0;
+                        });
 
                         $("#generatingForm").on("click",function () {
                             var materialSelect = parseInt($("#materialSelect").val());
+                            $("input").val("");
                             $("#materialDiv").attr("style","border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;");
-
+                            materialSelectId = 0;
                             switch (materialSelect){
                                 case 1:
-                                    $("#specialDiv").show(); //特殊
+                                    $(".specialDiv").show(); //特殊
                                     $("#thickness").show(); //厚度
                                     $("#length").show();//长度
                                     $("#width").show();//宽度
@@ -196,6 +183,7 @@
                                     $("#sideLength1").hide();//边长1
                                     $("#sideLength2").hide();//边长2
                                     $("#specifications").hide();//规格
+                                    materialSelectId = 1;
                                     break;
                                 case 2:
                                     $("#length").show();//长度
@@ -203,12 +191,13 @@
                                     $("#width > label").text("直径");
                                     $("#saveButton").show();//保存按钮
 
-                                    $("#specialDiv").hide(); //特殊
+                                    $(".specialDiv").hide(); //特殊
                                     $("#thickness").hide(); //厚度
                                     $("#altitude").hide();//高度
                                     $("#sideLength1").hide();//边长1
                                     $("#sideLength2").hide();//边长2
                                     $("#specifications").hide();//规格
+                                    materialSelectId = 2;
                                     break;
                                 case 3:
                                     $("#altitude").show();//高度
@@ -218,12 +207,12 @@
                                     $("#thickness").show(); //厚度 ->腰厚
                                     $("#thickness > label").text("腰厚");
                                     $("#saveButton").show();//保存按钮
+                                    $("#length").show();//长度
 
-                                    $("#specialDiv").hide(); //特殊
-                                    $("#length").hide();//长度
+                                    $(".specialDiv").hide(); //特殊
                                     $("#sideLength1").hide();//边长1
                                     $("#sideLength2").hide();//边长2
-
+                                    materialSelectId = 3;
                                     break;
                                 case 4:
                                     $("#length").show();//长度
@@ -233,11 +222,12 @@
                                     $("#width > label").text("大径");
                                     $("#saveButton").show();//保存按钮
 
-                                    $("#specialDiv").hide(); //特殊
+                                    $(".specialDiv").hide(); //特殊
                                     $("#altitude").hide();//高度
                                     $("#sideLength1").hide();//边长1
                                     $("#sideLength2").hide();//边长2
                                     $("#specifications").hide();//规格
+                                    materialSelectId = 4;
                                     break;
                                 case 5:
                                     $("#length").show();//长度
@@ -245,12 +235,13 @@
                                     $("#thickness > label").text("单位重量");
                                     $("#saveButton").show();//保存按钮
 
-                                    $("#specialDiv").hide(); //特殊
+                                    $(".specialDiv").hide(); //特殊
                                     $("#width").hide();//宽度
                                     $("#altitude").hide();//高度
                                     $("#specifications").hide();//规格
                                     $("#sideLength1").hide();//边长1
                                     $("#sideLength2").hide();//边长2
+                                    materialSelectId = 5;
                                     break;
                                 case 6:
                                     $("#length").show();//长度
@@ -258,26 +249,113 @@
                                     $("#sideLength2").show();//边长2
                                     $("#saveButton").show();//保存按钮
 
-                                    $("#specialDiv").hide(); //特殊
+                                    $(".specialDiv").hide(); //特殊
                                     $("#thickness").hide(); //厚度
                                     $("#width").hide();//宽度
                                     $("#altitude").hide();//高度
                                     $("#specifications").hide();//规格
+                                    materialSelectId = 6;
                                     break;
                                 case 7:
                                     $("#length").show();//长度
                                     $("#sideLength1").show();//边长1
                                     $("#sideLength2").show();//边长2
                                     $("#thickness").show(); //厚度
+                                    $("#thickness > label").text("厚度");
                                     $("#saveButton").show();//保存按钮
 
-                                    $("#specialDiv").hide(); //特殊
+                                    $(".specialDiv").hide(); //特殊
                                     $("#width").hide();//宽度
                                     $("#altitude").hide();//高度
                                     $("#specifications").hide();//规格
+                                    materialSelectId = 7;
                                     break;
 
                             }
+                        });
+
+                        var materialSelectArray = new Array();
+                        $("#addwebsql").on("click",function () {
+
+                            materialSelectArray = [];
+
+                            var thickness = $("#thicknessInput").val();//厚度
+                            var lengths = $("#lengthInput").val();//长度
+                            var width = $("#widthInput").val();//宽度
+                            var altitude = $("#altitudeInput").val();//高度
+                            var specifications = $("#specificationsInput").val();//规格
+                            var sideLength1 = $("#sideLength1Input").val();//边长1
+                            var sideLength2 = $("#sideLength2Input").val();//边长2
+
+                            var memoryThickness = $("#memoryThickness:checked").val();//保证厚度
+                            memoryThickness = memoryThickness==undefined?"0":"1";
+                            var memoryLength = $("#memoryLength:checked").val();//保证长度
+                            memoryLength = memoryLength==undefined?"0":"1";
+                            var memoryWidth = $("#memoryWidth:checked").val();//保证宽度
+                            memoryWidth = memoryWidth==undefined?"0":"1";
+
+                            // $("#textTest").html(
+                            //     "厚度:<span style='color:red'>"+thickness+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "长度:<span style='color:red'>"+lengths+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "宽度:<span style='color:red'>"+width+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "高度:<span style='color:red'>"+altitude+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "规格:<span style='color:red'>"+specifications+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "边长1:<span style='color:red'>"+sideLength1+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "边长2:<span style='color:red'>"+sideLength2+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "保证厚度:<span style='color:red'>"+memoryThickness+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "保证长度:<span style='color:red'>"+memoryLength+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
+                            //     "保证宽度:<span style='color:red'>"+memoryWidth+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"
+                            // );
+
+                            switch (materialSelectId){
+                                case 1://板
+                                    materialSelectArray["thickness"] = thickness;
+                                    materialSelectArray["lengths"] = lengths;
+                                    materialSelectArray["width"] = width;
+                                    materialSelectArray["thickness"] = thickness;
+                                    materialSelectArray["memoryThickness"] = memoryThickness;
+                                    materialSelectArray["memoryLength"] = memoryLength;
+                                    materialSelectArray["memoryWidth"] = memoryWidth;
+                                    layer.msg('保存成功!',{icon:6,time:1000});
+                                    break;
+                                case 2://棒
+                                    materialSelectArray["lengths"] = lengths;//长度
+                                    materialSelectArray["width"] = width;//直径
+                                    layer.msg('保存成功!',{icon:6,time:1000});
+                                    break;
+                                case 3://槽钢
+                                    materialSelectArray["thickness"] = thickness;
+                                    materialSelectArray["lengths"] = lengths;
+                                    materialSelectArray["width"] = width;
+                                    materialSelectArray["specifications"] = specifications;//规格
+                                    break;
+                                case 4://管
+                                    materialSelectArray["thickness"] = thickness;
+                                    materialSelectArray["lengths"] = lengths;
+                                    materialSelectArray["width"] = width;
+                                    layer.msg('保存成功!',{icon:6,time:1000});
+                                    break;
+                                case 5://轨道
+                                    materialSelectArray["thickness"] = thickness;
+                                    materialSelectArray["lengths"] = lengths;
+                                    layer.msg('保存成功!',{icon:6,time:1000});
+                                    break;
+                                case 6://角钢
+                                    materialSelectArray["lengths"] = lengths;
+                                    materialSelectArray["sideLength1"] = sideLength1;
+                                    materialSelectArray["sideLength2"] = sideLength2;
+                                    layer.msg('保存成功!',{icon:6,time:1000});
+                                    break;
+                                case 7://矩管
+                                    materialSelectArray["thickness"] = thickness;
+                                    materialSelectArray["lengths"] = lengths;
+                                    materialSelectArray["sideLength1"] = sideLength1;
+                                    materialSelectArray["sideLength2"] = sideLength2;
+                                    layer.msg('保存成功!',{icon:6,time:1000});
+                                    break;
+                            }
+
+                            console.log(materialSelectArray);
                         });
 
 
@@ -288,71 +366,66 @@
         <div id="materialDiv">
             <div class="layui-form-item" id="thickness">
                 <label class="layui-form-label">厚度</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="thicknessInput">
+                </div>
+
+                <div class="specialDiv">
+                    <label class="layui-form-label">保证厚度</label>
+                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  value="保证厚度"   id="memoryThickness">
                 </div>
             </div>
             <div class="layui-form-item" id="length">
                 <label class="layui-form-label">长度</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="lengthInput">
+                </div>
+
+                <div class="specialDiv">
+                    <label class="layui-form-label">保证长度</label>
+                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否" value="保证长度" id="memoryLength">
                 </div>
             </div>
             <div class="layui-form-item" id="width">
                 <label class="layui-form-label">宽度</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="widthInput">
+                </div>
+
+                <div class="specialDiv">
+                    <label class="layui-form-label">保证宽度</label>
+                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  value="保证宽度"  id="memoryWidth">
                 </div>
             </div>
             <div class="layui-form-item" id="altitude">
                 <label class="layui-form-label">高度</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="altitudeInput">
                 </div>
             </div>
             <div class="layui-form-item" id="specifications">
                 <label class="layui-form-label">规格型号</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="specificationsInput">
                 </div>
             </div>
             <div class="layui-form-item" id="sideLength1">
                 <label class="layui-form-label">边长1</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength1Input">
                 </div>
             </div>
             <div class="layui-form-item" id="sideLength2">
                 <label class="layui-form-label">边长2</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" value=" "  >
-                </div>
-            </div>
-
-            <div id="specialDiv">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">保证厚度</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  >
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">保证长度</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  >
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">保证宽度</label>
-                    <div class="layui-input-block">
-                        <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  >
-                    </div>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength2Input">
                 </div>
             </div>
             <div class="layui-form-item" id="saveButton">
                 <label class="layui-form-label">
                 </label>
-                <button  class="layui-btn" lay-filter="add" lay-submit="">保存材料形状参数</button>
+                <button  type="button" class="layui-btn" id="addwebsql">保存材料形状参数</button>
+                <!--<p id="textTest"></p>-->
             </div>
         </div>
 
@@ -386,18 +459,18 @@
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">创建人</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">最后修改人</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
-            </div>
-        </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">创建人</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<input type="text" class="layui-input" value=" "  >-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">最后修改人</label>-->
+            <!--<div class="layui-input-block">-->
+                <!--<input type="text" class="layui-input" value=" "  >-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
