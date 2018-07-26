@@ -33,7 +33,7 @@
             <div class="layui-input-inline" id="mes">
                 <input type="text" class="layui-input" placeholder="编号描述">
             </div>
-            <button type="button" class="layui-btn" id="createNumber">生成公司编号</button>
+            <button type="button" class="layui-btn" id="createNumber">生成/刷新编号</button>
             <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
             <script>
                 $(function () {
@@ -62,8 +62,12 @@
                             $("#addMidNumber").show();
                             $("#mes").show();
                             var str = customNumber?customNumber:selectMid;
-                            $("#addMidNumberInput").val(str);
-
+                            $.ajax({
+                                url:"{:url('index/blueprint/getMP')}",
+                                success:function (data) {
+                                    $("#addMidNumberInput").val(data['companyNumber']);
+                                },
+                            });
                         }else{
                             layer.msg('基础编码不存在!',{icon:5,time:1000});
                         }
@@ -116,7 +120,7 @@
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
-        
+
         <div class="layui-form-item">
             <label class="layui-form-label">是否批量</label>
             <div class="layui-input-block">
@@ -332,6 +336,7 @@
                                     materialSelectArray["thickness"] = thickness;
                                     materialSelectArray["lengths"] = lengths;
                                     materialSelectArray["width"] = width;
+                                    materialSelectArray["altitude"] = altitude;
                                     materialSelectArray["specifications"] = specifications;//规格
                                     break;
                                 case 4://管
@@ -359,7 +364,7 @@
                                     layer.msg('保存成功!',{icon:6,time:1000});
                                     break;
                             }
-
+                            //layer.msg('保存成功!',{icon:6,time:1000});
                             console.log(materialSelectArray);
                         });
 
