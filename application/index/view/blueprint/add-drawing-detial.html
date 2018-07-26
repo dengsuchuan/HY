@@ -5,7 +5,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">明细编号</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}">
+                <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}" id="drawing_detail_id">
             </div>
         </div>
         <div class="layui-form-item">
@@ -33,7 +33,8 @@
             <div class="layui-input-inline" id="mes">
                 <input type="text" class="layui-input" placeholder="编号描述">
             </div>
-            <button type="button" class="layui-btn" id="createNumber">生成/刷新编号</button>
+            <button type="button" class="layui-btn" id="createNumber">生成编号</button>
+            <button type="button" class="layui-btn layui-btn-warm" id="renovateNumber" title="此按钮只针对当前日期的编号" style="display: none">刷新编号</button>
             <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
             <script>
                 $(function () {
@@ -48,9 +49,20 @@
                         $('#customNumber').toggle();
                         $("#addMidNumber").hide();
                         $("#mes").hide();
+                        $("#addMidNumber").hide();
+                        $("#renovateNumber").hide();
 
                         $("#customNumber").val("");
                         $("#selectMid").val("");
+                    });
+
+                    $("#renovateNumber").on("click",function () {
+                        $.ajax({
+                            url:"{:url('index/blueprint/getMP')}",
+                            success:function (data) {
+                                $("#addMidNumberInput").val(data['companyNumber']);
+                            },
+                        });
                     });
 
                     //生成公司编号
@@ -62,18 +74,12 @@
                             $("#addMidNumber").show();
                             $("#mes").show();
                             var str = customNumber?customNumber:selectMid;
-                            $.ajax({
-                                url:"{:url('index/blueprint/getMP')}",
-                                success:function (data) {
-                                    $("#addMidNumberInput").val(data['companyNumber']);
-                                },
-                            });
+                            $("#addMidNumberInput").val(str);
+                            $("#renovateNumber").show();
                         }else{
                             layer.msg('基础编码不存在!',{icon:5,time:1000});
                         }
                     });
-
-
                 });
             </script>
         </div>
@@ -481,34 +487,47 @@
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
+            <button type="button"  class="layui-btn" id="addData">
                 确认增加
             </button>
         </div>
     </form>
 </div>
 <script>
-    layui.use(['form','layer'], function(){
-        $ = layui.jquery;
-        var form = layui.form
-            ,layer = layui.layer;
 
 
-        //监听提交
-        form.on('submit(add)', function(data){
-            console.log(data);
-            //发异步，把数据提交给php
-            layer.alert("增加成功", {icon: 6},function () {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
-            });
-            return false;
+    $(function () {
+        setTimeout($("#generatingForm").click(),9000);
+
+
+        $("#addData").on("click",function () {
+           var drawing_detail_id = $("#drawing_detail_id").val();
+           alert(drawing_detail_id)
         });
-
-
     });
+
+
+    // layui.use(['form','layer'], function(){
+    //     $ = layui.jquery;
+    //     var form = layui.form
+    //         ,layer = layui.layer;
+    //
+    //
+    //     //监听提交
+    //     form.on('submit(add)', function(data){
+    //         console.log(data);
+    //         //发异步，把数据提交给php
+    //         layer.alert("增加成功", {icon: 6},function () {
+    //             // 获得frame索引
+    //             var index = parent.layer.getFrameIndex(window.name);
+    //             //关闭当前frame
+    //             parent.layer.close(index);
+    //         });
+    //         return false;
+    //     });
+    //
+    //
+    // });
 </script>
 </body>
 

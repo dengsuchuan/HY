@@ -29,9 +29,6 @@
             //自动生成编号
             $("#createId").click(function () {
                 $("#drawing_external_id").val("{$createId}");
-                layer.msg('现在是自动生成的外图编号<br>书写自定义编号时请不要占用自动生成编号<br>此提示显示3秒', {
-                    time: 3000, //20s后自动关闭
-                });
                 $("#pLog").text("当前是自动生成编号状态，请勿修改");
             });
         });
@@ -59,8 +56,6 @@
               },'json');
               return false;
           });
-
-
         });
     </script>
     <script>var _hmt = _hmt || []; (function() {

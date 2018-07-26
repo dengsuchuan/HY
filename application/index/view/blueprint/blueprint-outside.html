@@ -39,10 +39,12 @@
                 <th>
                   <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
                 </th>
+                <th>操作</th>
                 <th>外来图号</th>
                 <th>建档日期</th>
+                <th>创建人</th>
+                <th>修改人</th>
                 <th>备注</th>
-                <th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,25 +53,25 @@
                 <td>
                   <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>
                 </td>
+                <td class="td-manage">
+                    <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                </td>
                 <td>
                     <a title="序号{$blueprintOutsideList.drawing_external_id}" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i class="layui-icon" style="color: #1E9FFF">{$blueprintOutsideList.drawing_external_id}</i></a>
                 </td>
-                <td>{$blueprintOutsideList.create_time}</td>
+              <td>{$blueprintOutsideList.create_time}</td>
+                <td>admin</td>
+                <td>root</td>
                 <td>{$blueprintOutsideList.remark}</td>
-                <td class="td-manage">
-                  <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
-                </td>
               </tr>
             {/volist}
             </tbody>
           </table>
         </div>
       </div>
-      <h2 style="color:red">服务器GitHub同步测试</h2>
       <div class="page">
         {$blueprintOutside|raw}
       </div>
-
     </div>
     <script>
       layui.use('laydate', function(){
