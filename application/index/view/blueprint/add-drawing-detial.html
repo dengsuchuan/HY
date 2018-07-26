@@ -4,7 +4,7 @@
     <form class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">明细编号</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}" id="drawing_detail_id">
             </div>
         </div>
@@ -85,19 +85,19 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">外图编号</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value="{$detailArray.drawing_external_id}"  >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">图纸名称</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">材料类型</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <div class="layui-input-inline">
                     <select name="modules" lay-verify="required" lay-search="" id="findText">
                         <option value=""></option>
@@ -110,26 +110,26 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">热处理类型</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">图纸类型</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户类型</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">是否批量</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"  >
             </div>
         </div>
@@ -177,6 +177,19 @@
                         $("dd").on("click",function () {
                             $("#generatingForm").click();
                         });
+
+                        $("#thickness").show(); //厚度
+                        $("#length").show();//长度
+                        $("#width").show();//宽度
+                        $("#saveButton").show();//保存按钮
+
+                        //默认板
+                        $("#materialDiv").attr("style","border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;");
+                        $("#altitude").hide();//高度
+                        $("#sideLength1").hide();//边长1
+                        $("#sideLength2").hide();//边长2
+                        $("#specifications").hide();//规格
+                        materialSelectId = 1;
 
                         $("#generatingForm").on("click",function () {
                             var materialSelect = parseInt($("#materialSelect").val());
@@ -437,32 +450,32 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label">排料数量</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">材料要求</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">产品加工费</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" placeholder="￥">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">产品报价</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input"  placeholder="￥">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">产品实价</label>
-            <div class="layui-input-block">
-                <input type="text" class="layui-input" value=" "  >
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" placeholder="￥">
             </div>
         </div>
         <!--<div class="layui-form-item">-->
@@ -497,9 +510,6 @@
 
 
     $(function () {
-        setTimeout($("#generatingForm").click(),9000);
-
-
         $("#addData").on("click",function () {
            var drawing_detail_id = $("#drawing_detail_id").val();
            alert(drawing_detail_id)
