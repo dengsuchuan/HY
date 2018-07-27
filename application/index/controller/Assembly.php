@@ -11,12 +11,36 @@ namespace app\index\controller;
 use app\index\common\controller\Base;
 use app\index\model\LloolingType;
 use app\index\model\Assembly as AssemblyModel;
+use think\facade\Request;;
+
 class Assembly extends Base
 {
     public function assemblyInfo(){
+        $assemblyInfo = AssemblyModel::alias('a')
+             ->join('looling_type l','a.tooling_type = l.id')
+             ->field('a.*,l.looling_type_name')
+             ->paginate(20);
+        $assembluCount = count(AssemblyModel::field('id')->select());
+
+        $this->assign([
+            'assemblyInfo'   =>  $assemblyInfo,
+            'assembluCount' => $assembluCount
+        ]);
+
         return $this->view->fetch('assembly-info');
     }
+    //添加操作
     public function assemblyAdd(){
+        if (Request::isAjax()){
+            $data = Request::post();
+            $info = AssemblyModel::create($data);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+
         //获取工装类型
         $loolingInfo = LloolingType::order('sort asc')->select();
         $this->assign([
@@ -37,6 +61,55 @@ class Assembly extends Base
             "createId"  =>  $str.$i,]
         );
         return $this->view->fetch('assembly-add');
-
     }
+    public function assemblyEdit(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            unset($data['id']);
+            $info = AssemblyModel::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $id = intval(input('id'));
+        $assemblyRow = AssemblyModel::where(['id'=>$id])->find();
+        //获取工装类型
+        $loolingInfo = LloolingType::order('sort asc')->select();
+        $this->assign([
+            'loolingInfo'  => $loolingInfo,
+            'assemblyRow'  => $assemblyRow
+        ]);
+        return $this->view->fetch('assembly-edit');
+    }
+    //删除
+    public function delete(){
+        $info = AssemblyModel::where(['id'=>intval(input('id'))])->delete();
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    //批量删除
+    public function delAll()
+    {
+        $data = input();
+        $ids = $data['data'];
+        $inf = false;
+        foreach ($ids as $id) {
+            $info = AssemblyModel::where(['id' => $id])->delete();
+            if ($info) {
+                $inf = true;
+            }
+        }
+        if($inf){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+
 }

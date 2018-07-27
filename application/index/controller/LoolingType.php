@@ -25,11 +25,9 @@ class LoolingType extends Base
         if(Request::isAjax()){
             $info = LloolingTypeModel::create(['looling_type_name'=>Request::post('looling_type_name')]);
             if($info){
-                if($info){
-                    return json(1);
-                }else{
-                    return json(0);
-                }
+                return json(1);
+            }else{
+                return json(0);
             }
         }
         return $this->view->fetch('looling_add');

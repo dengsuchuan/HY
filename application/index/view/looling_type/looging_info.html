@@ -13,22 +13,14 @@
         <table class="layui-table">
           <thead>
           <tr>
-            <th>id</th>
+            <th>操作</th>
             <th>类型名称</th>
             <th>排序</th>
-            <th>操作</th>
           </tr>
           </thead>
           <tbody>
           {volist name="looinfInfo" id="info"}
           <tr>
-            <td>{$info.id}</td>
-            <td>{$info.looling_type_name}</td>
-            <td>
-              <div class="layui-input-inline listorder" style="width: 50px;">
-                <input type="text" value="{$info.sort}" style="height: 30px;" size="5" attr-id="{$info.id}" class="layui-input" name="listorder">
-              </div>
-            </td>
             <td class="td-manage" width="50px;">
               <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/LoolingType/looingEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
@@ -36,6 +28,12 @@
               <a title="删除" onclick="delete_process(this,'{$info.id}')" href="javascript:;">
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
+            </td>
+            <td>{$info.looling_type_name}</td>
+            <td>
+              <div class="layui-input-inline listorder" style="width: 50px;">
+                <input type="text" value="{$info.sort}" style="height: 30px;" size="5" attr-id="{$info.id}" class="layui-input" name="listorder">
+              </div>
             </td>
           </tr>
           {/volist}
@@ -70,15 +68,15 @@
             var postData ={"id":id};
             $.post(url,postData,function (result) {
                 if(result === 1 ){
-                    layer.alert("删除成功", {icon: 6},function () {
-                        window.location.reload();  //刷新父级页面
-                    });
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
                 }else {
                     layer.alert("删除失败", {icon: 5});
                 }
             },"json");
         });
     }
+
 </script>
 </body>
 </html>
