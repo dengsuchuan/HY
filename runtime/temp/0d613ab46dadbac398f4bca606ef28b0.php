@@ -1,4 +1,4 @@
-<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532224776;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:56:"D:\code\Hy\application\index\view\blueprint\process.html";i:1532659920;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -126,8 +126,8 @@
               </td>
                 <td>
                     <!--<a title="详" onclick="x_admin_show('工序详情 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">详</i></a>-->
-                    <a title="改" onclick="x_admin_show('修改工序 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon">改</i></a>
-                    <a title="删" onclick="delete_process(this,'<?php echo htmlentities($processInfoList['id']); ?>','<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>')"><i class="layui-icon">删</i></a>
+                    <a title="修改" onclick="x_admin_show('修改工序 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($processInfoList['process_id']); ?></span> 修改操作','<?php echo url('index/blueprint/editProcess',['id'=>$processInfoList['id']]); ?>',450)" href="javascript:;"><i class="layui-icon" style="color: green">&#xe642;</i></a>
+                    <a title="删除" onclick="delete_process(this,'<?php echo htmlentities($processInfoList['id']); ?>','<?php echo htmlentities($processInfoList['drawing_detial_id']); ?>')"><i class="layui-icon" style="color:red"></i></a>
                 </td>
               <td>
                 <?php echo substr($processInfoList['process_id'],strpos($processInfoList['process_id'],'P')+1); ?>

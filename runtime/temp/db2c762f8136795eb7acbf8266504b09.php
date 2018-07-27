@@ -1,4 +1,4 @@
-<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1532086853;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
+<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1532659922;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
 ﻿<!doctype html>
 <html lang="en">
 <head>
@@ -66,13 +66,12 @@
       <form class="layui-form" action="<?php echo url('index/Blueprint/blueprintInfo'); ?>" method="post">
         <div class="layui-input-inline">
           <select name="modules" lay-verify="required" lay-search="" id="findText">
-            <option value="">请输入关键字...</option>
+            <option value=""  >请输入关键字...</option>
             <optgroup label="外图明细">
               <?php if(is_array($blueprintKeyInfo) || $blueprintKeyInfo instanceof \think\Collection || $blueprintKeyInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintKeyInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
               <option value="<?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></option>
               <?php endforeach; endif; else: echo "" ;endif; ?>
             </optgroup>
-
             <optgroup label="公司编号">
               <?php if(is_array($blueprintKeyInfo) || $blueprintKeyInfo instanceof \think\Collection || $blueprintKeyInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintKeyInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
               <option value="<?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></option>
@@ -84,13 +83,16 @@
               <option value="<?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></option>
               <?php endforeach; endif; else: echo "" ;endif; ?>
             </optgroup>
-
           </select>
         </div>
         <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
       </form>
     </div>
+<<<<<<< Updated upstream
+=======
+    <script>
 
+    </script>
     <script>
       $(function () {
           $("#find").click(function () {
@@ -103,7 +105,11 @@
 
           });
       })
+      $("#a").change(function(){
+          alert(1);
+      })
     </script>
+>>>>>>> Stashed changes
     <!--<span class="x-right" style="line-height:40px">共：<?php echo htmlentities($blueprintInfoCount); ?>条数据</span>-->
   </xblock>
   <!------------------------------------------------------------------------------------------------------------------->

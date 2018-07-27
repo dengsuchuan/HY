@@ -2,10 +2,10 @@
 <body>
 <div class="x-body">
   <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
-    <legend>工序类型</legend>
+    <legend> 工装类型</legend>
   </fieldset>
   <xblock>
-    <button class="layui-btn" onclick="x_admin_show('工序类型','{:url(\'index/ProcessType/addProcessType\')}',500,400)"><i class="layui-icon"></i>添加</button>
+    <button class="layui-btn" onclick="x_admin_show('工序类型','{:url(\'index/LoolingType/looingAdd\')}',500,400)"><i class="layui-icon"></i>添加</button>
   </xblock>
   <div class="layui-row">
     <div class="container-wrap">
@@ -13,25 +13,24 @@
         <table class="layui-table">
           <thead>
           <tr>
-            <th>工序类型说明</th>
-            <th>报价</th>
+            <th>id</th>
+            <th>类型名称</th>
             <th>排序</th>
             <th>操作</th>
           </tr>
           </thead>
           <tbody>
-          {volist name="$ProcessTypeInfo" id = "info"}
+          {volist name="looinfInfo" id="info"}
           <tr>
-            <td>{$info.process_name}</td>
-            <td>{$info.process_price}</td>
+            <td>{$info.id}</td>
+            <td>{$info.looling_type_name}</td>
             <td>
-
               <div class="layui-input-inline listorder" style="width: 50px;">
                 <input type="text" value="{$info.sort}" style="height: 30px;" size="5" attr-id="{$info.id}" class="layui-input" name="listorder">
               </div>
             </td>
             <td class="td-manage" width="50px;">
-              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Process_type/editProcessType\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/LoolingType/looingEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
               </a>
               <a title="删除" onclick="delete_process(this,'{$info.id}')" href="javascript:;">
@@ -51,7 +50,7 @@
     $(".listorder input").blur(function () {
         var sort =  $(this).val();
         var id = $(this).attr('attr-id');
-        var url = "{:url('/index/Process_type/updateSort')}";
+        var url = "{:url('/index/Looling_Type/updateSort')}";
         var postData ={"id":id,"sort":sort};
         $.post(url,postData,function (result) {
             if(result == 1 ){
@@ -67,7 +66,7 @@
     /*删除*/
     function delete_process(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            var url = "{:url('/index/Process_type/delete')}";
+            var url = "{:url('/index/Looling_Type/delete')}";
             var postData ={"id":id};
             $.post(url,postData,function (result) {
                 if(result === 1 ){
