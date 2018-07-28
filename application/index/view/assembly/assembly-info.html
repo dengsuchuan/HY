@@ -23,8 +23,8 @@
             <th>
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
-            <th width="10%"> 操作</th>
-            <th>组件编号</th>
+            <th width="2%"> 操作</th>
+            <th width="13%">组件编号</th>
             <th>工装类型</th>
             <th>备注</th>
             <th>创建人</th>
@@ -36,7 +36,7 @@
         <tbody>
         {volist name="assemblyInfo" id="info"}
           <tr>
-            <td>
+            <td width="2% ">
               <div class="layui-unselect layui-form-checkbox"  data-id='{$info.id}' lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td class="td-manage" width="50px;">
@@ -46,9 +46,15 @@
               <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
-              <button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)"><i class="layui-icon layui-icon-add-circle"></i>内图</button>
+              <!--<button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)"><i class="layui-icon layui-icon-add-circle"></i>内图</button>-->
             </td>
-            <td>{$info.assembly_code}</td>
+            <td>
+              <a style="color: #0000cc" href="javaseript:();" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)">{$info.assembly_code}</a>
+              <span class="layui-table-sort layui-inline">
+                <i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>
+                <i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>
+              </span>
+            </td>
             <td>{$info.looling_type_name}</td>
             <td>{$info.remark}</td>
             <td>{$info.create_name}</td>
@@ -67,6 +73,26 @@
 
     </div>
     <script>
+      function SanSort(id,sort) {
+          $.ajax({
+              url:"/index/Assembly/SanSort",
+              type:"POST",
+              dataType:"json",
+              data:{
+                  id:id,
+                  sort:sort
+              },
+              success:function (res) {
+                  if(res.error === 1000 ){
+                      layer.msg(res.msg, {icon: 5});
+                  }else if(res.error === 1) {
+                      window.location.reload();  //刷新父级页面
+                  }else {
+                      layer.msg(res.msg, {icon: 5});
+                  }
+              },
+          });
+      }
         //批量删除
         function delAll (drawing_detail_id) {
             var data = tableCheck.getData();

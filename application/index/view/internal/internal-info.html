@@ -41,7 +41,7 @@
                 <th width="2%">
                     <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
                 </th>
-                <th>产品图号</th>
+                <th width="13%">产品图号</th>
                 <th>所属组件图纸</th>
                 <th>备注</th>
                 <th>创建人</th>
@@ -57,7 +57,13 @@
             <td>
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>{$info.drawing_Internal_id}</td>
+            <td>
+                {$info.drawing_Internal_id}
+                <span class="layui-table-sort layui-inline">
+                <i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>
+                <i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>
+              </span>
+            </td>
             <td>
                 <?php
                     if($info['assembly_code'] != null){
@@ -94,6 +100,27 @@
 
 </div>
 <script>
+    function SanSort(id,sort) {
+        $.ajax({
+            url:"/index/Internal/SanSort",
+            type:"POST",
+            dataType:"json",
+            data:{
+                id:id,
+                sort:sort
+            },
+            success:function (res) {
+                if(res.error === 1000 ){
+                    layer.msg(res.msg, {icon: 5});
+                }else if(res.error === 1) {
+                    window.location.reload();  //刷新父级页面
+                }else {
+                    layer.msg(res.msg, {icon: 5});
+                }
+            },
+        });
+    }
+
     layui.use('laydate', function(){
         var laydate = layui.laydate;
 

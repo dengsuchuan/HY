@@ -16,5 +16,5 @@ class  Assembly extends Model
     protected $autoWriteTimestamp = true;//自动时间戳
     protected $createTime = 'create_time';
     protected $updateTime = 'update_time';
-    protected $dateFormat = 'Y年m月d日';
+    protected $dateFormat = 'Y-m-d';
 }

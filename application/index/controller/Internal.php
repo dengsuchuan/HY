@@ -17,7 +17,7 @@ class Internal extends Base
 {
     //展示内部图纸列表
     public function internalInfo(){
-        $internalInfo = DrawingInternal::select();
+        $internalInfo = DrawingInternal::order('sort asc')->select();
         $this->assign([
             'internalInfo'  => $internalInfo
         ]);
@@ -85,5 +85,10 @@ class Internal extends Base
             $assembly_code = $assemblyCode_.'-01';
             return json($assembly_code);
         }
+    }
+    public function SanSort(){
+        $data = Request::post();
+        $DrawingInternal = new DrawingInternal();
+        return $this->Sort($data,$DrawingInternal);
     }
 }

@@ -20,4 +20,5 @@ class DrawingInternal extends Model
     protected $createTime = 'create_time';
     protected $updateTime = 'update_time';
     protected $dateFormat = 'Y-m-d';
+
 }

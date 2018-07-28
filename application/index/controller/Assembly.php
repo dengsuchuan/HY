@@ -17,6 +17,7 @@ class Assembly extends Base
 {
     public function assemblyInfo(){
         $assemblyInfo = AssemblyModel::alias('a')
+             ->order('sort asc')
              ->join('looling_type l','a.tooling_type = l.id')
              ->field('a.*,l.looling_type_name')
              ->paginate(20);
@@ -33,6 +34,9 @@ class Assembly extends Base
     public function assemblyAdd(){
         if (Request::isAjax()){
             $data = Request::post();
+
+            $maxSort = AssemblyModel::order('sort desc')->value('sort');
+            $data['sort'] = ++$maxSort;
             $info = AssemblyModel::create($data);
             if($info){
                 return json(1);
@@ -111,5 +115,9 @@ class Assembly extends Base
             return json(0);
         }
     }
-
+    public function SanSort(){
+        $data = Request::post();
+        $AssemblyModel = new AssemblyModel();
+        return $this->Sort($data,$AssemblyModel);
+    }
 }
