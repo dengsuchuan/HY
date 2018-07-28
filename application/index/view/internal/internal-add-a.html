@@ -5,46 +5,10 @@
           <div class="layui-form-item">
               <label for="drawing_Internal_id" class="layui-form-label">内部编号</label>
               <div class="layui-input-inline">
-                  <input type="text" id="drawing_Internal_id" name="drawing_Internal_id" disabled lay-verify="required"  autocomplete="off" class="layui-input" value="{$createId}">
+                  <input type="text" id="drawing_Internal_id" name="drawing_Internal_id" disabled lay-verify="required"  value="{$code}" autocomplete="off" class="layui-input">
                   <p id="pLog" style="color:red"></p>
               </div>
-              <!--<button type="button" class="layui-btn" id="createId">生成</button>-->
-              <!--<button type="button" class="layui-btn layui-btn-normal" id="model">切换模式</button>-->
-              <!--<button type="button" class="layui-btn layui-btn-normal" id="model1">切换模式</button>-->
-              <!--<div class="layui-input-inline" id="voluntarily">-->
-                  <!--<select name="modules"  lay-search="" id="selectMid">-->
-                      <!--<option value=""></option>-->
-                          <!--{volist name="$assemblyInfo" id="info"}-->
-                          <!--<option value="{$info.id}">{$info.assembly_code}</option>-->
-                          <!--{/volist}-->
-                  <!--</select>-->
-              <!--</div>-->
           </div>
-            <script>
-                // $(function () {
-                //     $("#voluntarily").hide();
-                //     $("#createId").hide();
-                //     $("#model1").hide();
-                //     $("#model").hide();
-                //
-                //     $("#model").on("click",function () {
-                //         $('#voluntarily').toggle();
-                //         $("#createId").toggle();
-                //         $("#model").hide();
-                //         $("#model1").toggle();
-                //         $("#drawing_Internal_id").val('');
-                //     })
-                //
-                //     $("#model1").on("click",function () {
-                //         var code = '{$createId}';
-                //         $("#drawing_Internal_id").val(code);
-                //         $("#voluntarily").hide();
-                //         $("#createId").hide();
-                //         $("#model1").hide();
-                //         $("#model").toggle();
-                //     })
-                // })
-            </script>
           <div class="layui-form-item">
               <label for="remark" class="layui-form-label">备注</label>
               <div class="layui-input-inline">

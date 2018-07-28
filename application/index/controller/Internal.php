@@ -23,7 +23,7 @@ class Internal extends Base
         ]);
         return $this->view->fetch('internal-info');
     }
-    //添加内部图纸
+    //添加内部图纸  内图
     public function internalAdd(){
         //获取数据库中P180706-x的数量实现自动生成编号
         $model = new DrawingInternal();//可实例化，也可不实例化
@@ -44,6 +44,28 @@ class Internal extends Base
         ]);
         return $this->view->fetch('internal-add');
     }
+    //添加图纸
+    public function internalAddAssembly(){
+        $assemblyId = input('assembly_code');
+
+        $assemblyCodeInfo = Assembly::where(['id'=>$assemblyId])->field('id,assembly_code')->find();
+        $assemblyCode = $assemblyCodeInfo['assembly_code'];
+        $assemblyCode_ = $assemblyCodeInfo['assembly_code'];
+        $assembly_code = DrawingInternal::where(['assembly_code'=>$assemblyCode])->where(['is_assembly_code'=>1])->order('id desc')->field('id,drawing_Internal_id,assembly_code')->select();
+        $cunot = count($assembly_code);
+        if($cunot){
+            $assembly_code = $assembly_code[0];
+            $assembly_code =  intval(trim(strrchr($assembly_code['drawing_Internal_id'], '-'),'-'));
+            $assembly_code = $assembly_code < 10 ?$assemblyCode_ .'-0' . ++ $assembly_code:$assemblyCode_.'-'.++ $assembly_code;
+        }else{
+            $assembly_code = $assemblyCode_.'-01';
+        }
+        $this->assign([
+            'code' => $assembly_code,
+        ]);
+        return $this->view->fetch('internal-add-a');
+    }
+
     //生成编号
     public function productionCode(){
         $assemblyId = Request::post();
