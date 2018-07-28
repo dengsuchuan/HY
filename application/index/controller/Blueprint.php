@@ -566,4 +566,27 @@ class Blueprint extends Base
             ]);
         }
     }
+
+    //创建图纸明细
+    public function createBlueprintInfo(){
+        if(Request::isAjax()){
+            $jsontext = Request::post("json");
+            $jsonToArray = json_decode($jsontext);
+
+            //公司编号
+            $p = Request::post("p");
+            $mes = Request::post("mes");
+            $pArray = ["pid"=>$p,"mes"=>$mes];
+
+            if (BlueprintInfo::create($jsonToArray)&&ComparnyP::create($pArray)){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+
+    }
+
+
+
 }
