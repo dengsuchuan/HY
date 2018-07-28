@@ -75,7 +75,7 @@
     <script>
       function SanSort(id,sort) {
           $.ajax({
-              url:"/index/Assembly/SanSort",
+              url:"{:url('/index/Assembly/SanSort')}",
               type:"POST",
               dataType:"json",
               data:{
@@ -103,7 +103,7 @@
             layer.confirm('确认要删除吗？',function(index){
                 //捉到所有被选中的，发异步进行删除
                 $.ajax({
-                    url:"/index/Assembly/delAll",
+                    url:"{:url('/index/Assembly/delAll')}",
                     type:"POST",
                     dataType:"json",
                     data:{

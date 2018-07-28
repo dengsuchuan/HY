@@ -102,7 +102,7 @@
 <script>
     function SanSort(id,sort) {
         $.ajax({
-            url:"/index/Internal/SanSort",
+            url:"{:url('/index/Internal/SanSort')}",
             type:"POST",
             dataType:"json",
             data:{
