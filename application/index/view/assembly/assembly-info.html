@@ -1,0 +1,156 @@
+﻿{include file="public/header" /}
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a>
+          <cite>组件图纸</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>删除</button>
+        <button class="layui-btn" onclick="x_admin_show('添加组件图纸','{:url(\'index/Assembly/assemblyAdd\')}',500,500)"><i class="layui-icon"></i>添加组图纸</button>
+        <span class="x-right" style="line-height:40px">共有数据：{$assembluCount} 条</span>
+      </xblock>
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+          <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th width="2%"> 操作</th>
+            <th width="13%">组件编号</th>
+            <th>工装类型</th>
+            <th>备注</th>
+            <th>创建人</th>
+            <th>创建时间</th>
+            <th>最后修改人</th>
+            <th>修改时间</th>
+          </tr>
+        </thead>
+        <tbody>
+        {volist name="assemblyInfo" id="info"}
+          <tr>
+            <td width="2% ">
+              <div class="layui-unselect layui-form-checkbox"  data-id='{$info.id}' lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td class="td-manage" width="50px;">
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Assembly/assemblyEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
+              <!--<button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)"><i class="layui-icon layui-icon-add-circle"></i>内图</button>-->
+            </td>
+            <td>
+              <a style="color: #0000cc" href="javaseript:();" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)">{$info.assembly_code}</a>
+              <span class="layui-table-sort layui-inline">
+                <i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>
+                <i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>
+              </span>
+            </td>
+            <td>{$info.looling_type_name}</td>
+            <td>{$info.remark}</td>
+            <td>{$info.create_name}</td>
+            <td>{$info.create_time}</td>
+            <td>{$info.modify_name}</td>
+            <td>{$info.update_time}</td>
+          </tr>
+        {/volist}
+        </tbody>
+      </table>
+        </div>
+      </div>
+      <div class="page">
+        {$assemblyInfo|raw}
+      </div>
+
+    </div>
+    <script>
+      function SanSort(id,sort) {
+          $.ajax({
+              url:"{:url('/index/Assembly/SanSort')}",
+              type:"POST",
+              dataType:"json",
+              data:{
+                  id:id,
+                  sort:sort
+              },
+              success:function (res) {
+                  if(res.error === 1000 ){
+                      layer.msg(res.msg, {icon: 5});
+                  }else if(res.error === 1) {
+                      window.location.reload();  //刷新父级页面
+                  }else {
+                      layer.msg(res.msg, {icon: 5});
+                  }
+              },
+          });
+      }
+        //批量删除
+        function delAll (drawing_detail_id) {
+            var data = tableCheck.getData();
+            if(data == ''){
+                layer.msg('请选择需要删除的数据');
+                return;
+            }
+            layer.confirm('确认要删除吗？',function(index){
+                //捉到所有被选中的，发异步进行删除
+                $.ajax({
+                    url:"{:url('/index/Assembly/delAll')}",
+                    type:"POST",
+                    dataType:"json",
+                    data:{
+                        dra_id:drawing_detail_id,
+                        data:data   //数据
+                    },
+                    success:function (res) {
+                        if(res === 1 ){
+                            layer.alert("删除成功", {icon: 6},function () {
+                                window.location.reload();  //刷新父级页面
+                            });
+                        }else {
+                            layer.alert("删除失败", {icon: 5});
+                        }
+                    },
+                });
+            });
+        }
+
+      layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+      });
+
+      /*删除*/
+      function delete_(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              var url = "{:url('/index/Assembly/delete')}";
+              var postData ={"id":id};
+              $.post(url,postData,function (result) {
+                  if(result === 1 ){
+                      $(obj).parents("tr").remove();
+                      layer.msg('已删除!',{icon:1,time:1000});
+                  }else {
+                      layer.alert("删除失败", {icon: 5});
+                  }
+              },"json");
+          });
+      }
+    </script>
+  </body>
+</html>

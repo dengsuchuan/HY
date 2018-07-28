@@ -754,7 +754,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
             }
         },
 
-        /** Internal 'global' variables. */
+        /** internal 'global' variables. */
         vars : {
             discoveredBrushes : null,
             highlighters : {}

@@ -1,0 +1,74 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">组件编号</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" id="assembly_code" name="assembly_code" value="{$assemblyRow.assembly_code}" disabled >
+                <input type="hidden" name="id"  value="{$assemblyRow.id}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">工装类型</label>
+            <div class="layui-input-block">
+                <select name="tooling_type" lay-verify="required">
+                    <option value=""></option>
+                    {volist name="loolingInfo" id="info"}
+                        <option value="{$info.id}"
+                            {if $assemblyRow.tooling_type == $info.id }
+                                selected
+                            {/if}
+                        >{$info.looling_type_name}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea"  name="remark">{$assemblyRow.remark}</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">修改人</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="modify_name" name="modify_name" value="ADMIN" disabled >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-submit lay-filter="addId">
+                修改
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Assembly/assemblyEdit')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

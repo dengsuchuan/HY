@@ -21,13 +21,12 @@
       <form class="layui-form" action="{:url('index/Blueprint/blueprintInfo')}" method="post">
         <div class="layui-input-inline">
           <select name="modules" lay-verify="required" lay-search="" id="findText">
-            <option value="">请输入关键字...</option>
+            <option value=""  >请输入关键字...</option>
             <optgroup label="外图明细">
               {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
               <option value="{$blueprintInfoList.drawing_detail_id}">{$blueprintInfoList.drawing_detail_id}</option>
               {/volist}
             </optgroup>
-
             <optgroup label="公司编号">
               {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
               <option value="{$blueprintInfoList.drawing_internal_id}">{$blueprintInfoList.drawing_internal_id}</option>
@@ -39,12 +38,33 @@
               <option value="{$blueprintInfoList.drawing_externa_id}">{$blueprintInfoList.drawing_externa_id}</option>
               {/volist}
             </optgroup>
-
           </select>
         </div>
         <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
       </form>
     </div>
+<<<<<<< Updated upstream
+=======
+    <script>
+
+    </script>
+    <script>
+      $(function () {
+          $("#find").click(function () {
+              var findText = $("#findText").val();
+              if(findText.length > 1){
+                  window.location.href="{:url('index/blueprint/blueprintInfo')}";
+              }else{
+                  layer.msg('请输入查找的关键字!',{icon:0,time:2000});
+              }
+
+          });
+      })
+      $("#a").change(function(){
+          alert(1);
+      })
+    </script>
+>>>>>>> Stashed changes
     <!--<span class="x-right" style="line-height:40px">共：{$blueprintInfoCount}条数据</span>-->
   </xblock>
   <!------------------------------------------------------------------------------------------------------------------->

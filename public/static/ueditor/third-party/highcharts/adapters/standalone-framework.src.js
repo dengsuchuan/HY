@@ -438,7 +438,7 @@ return {
 	},
 
 	/**
-	 * Internal method to return CSS value for given element and property
+	 * internal method to return CSS value for given element and property
 	 */
 	_getStyle: function (el, prop) {
 		return window.getComputedStyle(el).getPropertyValue(prop);

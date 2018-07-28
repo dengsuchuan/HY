@@ -465,7 +465,7 @@ class Blueprint extends Base
             return json(0);
         }
     }
-    //一键复制工序
+    //一键复制工序界面
     public function copyProcess(){
         $drawing_detail_id = input('id');
         //查找当前图纸的所有工序
@@ -518,6 +518,7 @@ class Blueprint extends Base
             return json(1);
         }
     }
+    //一键复制操作
     public function exeCopysProcess(){
         if(Request::isAjax()){
             $copyCode = Request::post('copy');  //复制到某个下面的编号

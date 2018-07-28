@@ -56,7 +56,7 @@ class ProcessType extends Base
         ]);
         return $this->view->fetch('process_type_edit');
     }
-    //
+    //删除
     public function delete(){
         $info = ProcessTypeModel::where(['id'=>intval(input('id'))])->delete();
         if($info){
