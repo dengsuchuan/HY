@@ -2806,7 +2806,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 		superMatcher;
 }
 
-compile = Sizzle.compile = function( selector, group /* Internal Use Only */ ) {
+compile = Sizzle.compile = function( selector, group /* internal Use Only */ ) {
 	var i,
 		setMatchers = [],
 		elementMatchers = [],
@@ -3565,7 +3565,7 @@ jQuery.support = (function( support ) {
 var rbrace = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/,
 	rmultiDash = /([A-Z])/g;
 
-function internalData( elem, name, data, pvt /* Internal Use Only */ ){
+function internalData( elem, name, data, pvt /* internal Use Only */ ){
 	if ( !jQuery.acceptData( elem ) ) {
 		return;
 	}

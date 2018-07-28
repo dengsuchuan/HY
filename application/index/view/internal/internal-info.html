@@ -15,7 +15,7 @@
 
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加内图','{:url(\'index/Internal/internalAdd\')}',500,400)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加内图','{:url(\'index/Internal/internalAdd\')}',800,400)"><i class="layui-icon"></i>添加</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
         <button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
@@ -40,29 +40,41 @@
                 <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>产品图号</th>
-            <th>建档日期</th>
-            <th>模具工装编号</th>
+            <th>所属组件图纸</th>
             <th>备注</th>
             <th>创建人</th>
+            <th>最后修改人</th>
+            <th>创建时间</th>
             <th>最后修改人</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
+        {volist name="internalInfo" id="info"}
         <tr>
             <td>
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>M10008-001</td>
-            <td>2011/1/29</td>
-            <td>M10008</td>
-            <td>备注</td>
-            <td>备注</td>
-            <td>备注</td>
+            <td>{$info.drawing_Internal_id}</td>
+            <td>
+                <?php
+                    if($info['assembly_code'] != null){
+                        echo $info['assembly_code'];
+                    }else{
+                        echo "<span class='layui-badge layui-bg-blue'>空</span>";
+                    }
+                ?>
+            </td>
+            <td>{$info.remark}</td>
+            <td>{$info.create_name}</td>
+            <td>{$info.modify_name}</td>
+            <td>{$info.create_time}</td>
+            <td>{$info.update_time}</td>
             <td class="td-manage">
                 <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
             </td>
         </tr>
+        {/volist}
         </tbody>
     </table>
     <div class="page">
