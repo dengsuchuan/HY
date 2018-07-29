@@ -10,14 +10,14 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">公司编号</label>
-            <div class="layui-input-inline" id="">
+            <div class="layui-input-inline" id="customNumberDiv">
                 <input type="text" class="layui-input" id="customNumber"  placeholder="自定义编号">
             </div>
             <button type="button" class="layui-btn layui-btn-normal" id="model">切换模式</button>
             <div class="layui-input-inline" id="voluntarily">
                 <select name="modules" lay-verify="required" lay-search="" id="selectMid">
                     <option value=""></option>
-                    <optgroup label="新增模具">
+                    <optgroup label="新增产品">
                         <option value="{$pidArray.companyNumber}">{$pidArray.companyNumber}</option>
                     </optgroup>
                     <optgroup label="所有产品">
@@ -38,21 +38,22 @@
             <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
             <script>
                 $(function () {
-                    $("#voluntarily").hide();
-                    $("#addMidNumber").hide();
-                    $("#mes").hide();
+                    $("#voluntarily").show(); //自动生成div
+                    $("#customNumberDiv").hide();//自定义编号div
+                    $("#addMidNumber").hide();//公司编号div
+                    $("#mes").hide();//描述div
 
 
                     //切换模式
                     $("#model").on("click",function () {
-                        $('#voluntarily').toggle();
-                        $('#customNumber').toggle();
-                        $("#addMidNumber").hide();
+                        $('#voluntarily').toggle();//自动生成div
+                        $('#customNumberDiv').toggle();//自定义编号div
+
+                        $("#addMidNumber").hide();//生成公司编号div
                         $("#mes").hide();
-                        $("#addMidNumber").hide();
                         $("#renovateNumber").hide();
 
-                        $("#customNumber").val("");
+                        $("#customNumber").val("");//自定义编号
                         $("#selectMid").val("");
                     });
 
@@ -560,30 +561,33 @@
             jsonData = "{"+jsonData+"}";
             //console.log(jsonData);
 
-            // if(materialSelectArray['mesInput']==""){
-            //     layer.msg('请填写完整',{icon:5,time:1000});
-            // }
+            //alert(drawing_external_name?1:0)
+            if(drawing_external_name==" "){
+                layer.msg('至少请填写【图纸名称】字段',{icon:5,time:1000});
+            }else {
+                $.ajax({
+                    url:"{:url('index/blueprint/createBlueprintInfo')}",
+                    type:"POST",
+                    dataType:"json",
+                    data:{"json":jsonData,"p":materialSelectArray['drawing_internal_id'],"mes":materialSelectArray['mesInput']},
+                    //contentType:"utf-8",
+                    success:function (data) {
+                        if(data){
+                            layer.alert("添加成功", {icon: 6},function () {
+                                window.parent.location.reload();  //刷新父级页面
+                                // 获得frame索引
+                                var index = parent.layer.getFrameIndex(window.name);
+                                //关闭当前弹出层
+                                parent.layer.close(index);
+                            });
+                        }else{
+                            layer.msg('添加失败!',{icon:5,time:1000});
+                        }
+                    },
+                });
+            }
 
-            $.ajax({
-                url:"{:url('index/blueprint/createBlueprintInfo')}",
-                type:"POST",
-                dataType:"json",
-                data:{"json":jsonData,"p":materialSelectArray['drawing_internal_id'],"mes":materialSelectArray['mesInput']},
-                //contentType:"utf-8",
-                success:function (data) {
-                    if(data){
-                        layer.alert("添加成功", {icon: 6},function () {
-                            window.parent.location.reload();  //刷新父级页面
-                            // 获得frame索引
-                            var index = parent.layer.getFrameIndex(window.name);
-                            //关闭当前弹出层
-                            parent.layer.close(index);
-                        });
-                    }else{
-                        layer.msg('添加失败!',{icon:5,time:1000});
-                    }
-                },
-            });
+
 
             //console.log(materialSelectArray);
             // var html = $("#mess").html("");

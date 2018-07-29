@@ -157,9 +157,14 @@ class Blueprint extends Base
         //获取数据库中W180706-x的数量实现自动生成编号
         $model = new BlueprintOutside();//可实例化，也可不实例化
         $i = 0;//编号
+        $tempi = 0;
         $str = "W".date('y').date('m').date('d')."-";//可以设置来之数据库的一个自定义字符串
         do{
-            ++$i;  //第一次就为1，排除编号0
+            ++$i;
+            if($i<10){
+                $tempi = "0".$i;
+                $i = $tempi;
+            }
         }while($model->get(["drawing_external_id"=>$str.$i])); //如果存在就继续算下去
 
         $this->assign("createId",$str.$i);
@@ -178,14 +183,21 @@ class Blueprint extends Base
             }
             //拆分单独的序号出来
             foreach ($pidArray as $value){
-                $pidOrder[] = $value[1];
+                $pidOrder[] =  intval($value[1]);
             }
             //找到最大的序号
             $maxPid = max($pidOrder);
+            $maxPid += 1;
+
+            if($maxPid<10){
+                $maxPid = '0'.$maxPid.'';
+            }
+
+            echo "<script>console.log($maxPid)</script>";
 
 
             //合成将要生成的P编号//
-            $tempPid = $strP."-".($maxPid+1);
+            $tempPid = $strP."-".($maxPid);
 
             $tempArray = [
                 "cou"=>count($pArray),
@@ -195,7 +207,7 @@ class Blueprint extends Base
                 "companyNumber"=>$tempPid
             ];
         }else{
-            $tempArray = ["cou"=>0,"mes"=>"不存在","companyNumber"=>$strP."-1"];
+            $tempArray = ["cou"=>0,"mes"=>"不存在","companyNumber"=>$strP."-01"];
         }
         return $tempArray;
     }
@@ -264,9 +276,14 @@ class Blueprint extends Base
         //获取数据库中$id的数量实现自动生成图纸明细编号
         $model = new BlueprintInfo();//可实例化，也可不实例化
         $i = 0;//编号
+        $tempi = 0;
         $str = $id."-";//可以设置来之数据库的一个自定义字符串
         do{
             ++$i;  //第一次就为1，排除编号0
+            if($i<10){
+                $tempi = "0".$i;
+                $i = $tempi;
+            }
         }while($model->get(["drawing_detail_id"=>$str.$i])); //如果存在就继续算下去
         /*------------------------------------------*/
 
