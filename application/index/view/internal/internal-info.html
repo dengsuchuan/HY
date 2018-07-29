@@ -41,28 +41,50 @@
                 <th width="2%">
                     <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
                 </th>
-                <th width="13%">产品图号</th>
+                <th width="2%">操作</th>
+                <th width="13%">
+                    产品图号
+                    <span class="layui-table-sort layui-inline"  lay-sort="{if $sort == 'asc'}asc{else}desc{/if}">
+                <a href="{:url('/index/Internal/internalInfo',['sort'=>'asc'])}"><i class="layui-edge layui-table-sort-asc"></i></a>
+                <a href="{:url('/index/Internal/internalInfo',['sort'=>'desc'])}"><i class="layui-edge layui-table-sort-desc"></i></a>
+              </span>
+                </th>
                 <th>所属组件图纸</th>
                 <th>备注</th>
                 <th>创建人</th>
                 <th>创建时间</th>
                 <th>修改人</th>
                 <th>修改时间</th>
-                <th>操作</th>
+                <th>是否组件</th>
             </tr>
         </thead>
         <tbody>
         {volist name="internalInfo" id="info"}
         <tr>
             <td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.id}'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td class="td-manage" width="50px;">
+                {if $info.assembly_code == null}
+                <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                    <i style="color: green" class="layui-icon"></i>
+                </a>
+                {else}
+                <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/editA\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                    <i style="color: green" class="layui-icon"></i>
+                </a>
+                {/if}
+                <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+                    <i  style="color:red;" class="layui-icon"></i>
+                </a>
+                <!--<button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)"><i class="layui-icon layui-icon-add-circle"></i>内图</button>-->
             </td>
             <td>
+                {if $info.assembly_code == null or $info.is_assembly_code == null}
+                <a href="javascript:;" onclick="x_admin_show('修改所属组件','{:url(\'index/Internal/assemblyUpdate\',[\'id\'=>$info.id])}',500,400)" style="color:red;">{$info.drawing_Internal_id} </a>
+                {else}
                 {$info.drawing_Internal_id}
-                <span class="layui-table-sort layui-inline">
-                <i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>
-                <i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>
-              </span>
+                {/if}
             </td>
             <td>
                 <?php
@@ -78,8 +100,14 @@
             <td>{$info.create_time}</td>
             <td>{$info.modify_name}</td>
             <td>{$info.update_time}</td>
-            <td class="td-manage">
-                <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+            <td>
+                <?php
+                    if($info['assembly_code'] != null){
+                        echo '是';
+                    }else{
+                        echo "否";
+                    }
+                ?>
             </td>
         </tr>
         {/volist}
@@ -88,14 +116,7 @@
         </div>
     </div>
     <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
+        {$internalInfo|raw}
     </div>
 
 </div>
@@ -121,46 +142,46 @@
         });
     }
 
-    layui.use('laydate', function(){
-        var laydate = layui.laydate;
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
-    });
-
-    /*用户-删除*/
-    function member_del(obj,id){
+    /*删除*/
+    function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
+            var url = "{:url('/index/Internal/delete')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1 ){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
         });
     }
-
-    function delAll (argument) {
-
+    //批量删除
+    function delAll (drawing_detail_id) {
         var data = tableCheck.getData();
-
-        layer.confirm('确认要删除吗？'+data,function(index){
+        if(data == ''){
+            layer.msg('请选择需要删除的数据');
+            return;
+        }
+        layer.confirm('确认要删除吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({
-                url:"/index/index/delall",
+                url:"{:url('/index/Internal/delAll')}",
                 type:"POST",
                 dataType:"json",
                 data:{
-                    table:"",  //表名
+                    dra_id:drawing_detail_id,
                     data:data   //数据
                 },
                 success:function (res) {
-                    layer.msg(res.message, {icon: 1});
-                    $(".layui-form-checked").not('.header').parents('tr').remove();
+                    if(res === 1 ){
+                        layer.alert("删除成功", {icon: 6},function () {
+                            window.location.reload();  //刷新父级页面
+                        });
+                    }else {
+                        layer.alert("删除失败", {icon: 5});
+                    }
                 },
             });
         });

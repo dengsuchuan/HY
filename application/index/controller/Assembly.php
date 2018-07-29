@@ -15,17 +15,18 @@ use think\facade\Request;;
 
 class Assembly extends Base
 {
-    public function assemblyInfo(){
+    public function assemblyInfo($sort = 'asc'){
         $assemblyInfo = AssemblyModel::alias('a')
-             ->order('sort asc')
+             ->order('assembly_code '.$sort.' ')
              ->join('looling_type l','a.tooling_type = l.id')
              ->field('a.*,l.looling_type_name')
-             ->paginate(20);
+             ->paginate(10);
         $assembluCount = count(AssemblyModel::field('id')->select());
 
         $this->assign([
             'assemblyInfo'   =>  $assemblyInfo,
-            'assembluCount' => $assembluCount
+            'assembluCount' => $assembluCount,
+            'sort'          =>$sort
         ]);
 
         return $this->view->fetch('assembly-info');

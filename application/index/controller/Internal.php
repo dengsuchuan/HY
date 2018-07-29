@@ -16,15 +16,27 @@ use think\facade\Request;
 class Internal extends Base
 {
     //展示内部图纸列表
-    public function internalInfo(){
-        $internalInfo = DrawingInternal::order('sort asc')->select();
+    public function internalInfo($sort = 'desc'){
+        $internalInfo = DrawingInternal::order('sort '.$sort.' ')->paginate(10);
         $this->assign([
-            'internalInfo'  => $internalInfo
+            'internalInfo'  => $internalInfo,
+            'sort'          =>$sort
         ]);
         return $this->view->fetch('internal-info');
     }
     //添加内部图纸  内图
     public function internalAdd(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $info = DrawingInternal::create($data);
+            if($info){
+                if($info){
+                    return json(1);
+                }else{
+                    return json(0);
+                }
+            }
+        }
         //获取数据库中P180706-x的数量实现自动生成编号
         $model = new DrawingInternal();//可实例化，也可不实例化
         $i = 0;//编号
@@ -46,8 +58,17 @@ class Internal extends Base
     }
     //添加图纸
     public function internalAddAssembly(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $data['is_assembly_code'] = 1;
+            $info = DrawingInternal::create($data);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
         $assemblyId = input('assembly_code');
-
         $assemblyCodeInfo = Assembly::where(['id'=>$assemblyId])->field('id,assembly_code')->find();
         $assemblyCode = $assemblyCodeInfo['assembly_code'];
         $assemblyCode_ = $assemblyCodeInfo['assembly_code'];
@@ -62,6 +83,7 @@ class Internal extends Base
         }
         $this->assign([
             'code' => $assembly_code,
+            'assemblyCode_'    => $assemblyCode_
         ]);
         return $this->view->fetch('internal-add-a');
     }
@@ -90,5 +112,89 @@ class Internal extends Base
         $data = Request::post();
         $DrawingInternal = new DrawingInternal();
         return $this->Sort($data,$DrawingInternal);
+    }
+    public function edit(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            $info = DrawingInternal::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $id = intval(input('id'));
+        $internal = DrawingInternal::get($id);
+        $this->assign([
+           'internal'  =>  $internal
+        ]);
+        return $this->view->fetch('internal-edit');
+    }
+
+    public function editA(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            $info = DrawingInternal::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $id = intval(input('id'));
+        $internal = DrawingInternal::get($id);
+        $this->assign([
+            'internal'  =>  $internal
+        ]);
+        return $this->view->fetch('internal-edit-a');
+    }
+    //修改所属组件
+    public function assemblyUpdate(){
+
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            $info = DrawingInternal::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+
+        $id = intval(input('id'));
+        $internalRoe = DrawingInternal::get($id);
+        //获取组件图纸信息
+        $assemblyInfo = Assembly::select();
+        $this->assign([
+            'assemblyInfo'  =>  $assemblyInfo,
+            'internalRoe'  =>  $internalRoe
+        ]);
+        return $this->view->fetch('assembly-update');
+    }
+    public function delete(){
+        $info = DrawingInternal::where(['id'=>intval(input('id'))])->delete();
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+
+    //批量删除
+    public function delAll()
+    {
+        $data = input();
+        $ids = $data['data'];
+        foreach ($ids as $id) {
+            $info = DrawingInternal::where(['id' => $id])->delete();
+        }
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
     }
 }

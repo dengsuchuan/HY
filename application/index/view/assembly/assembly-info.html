@@ -24,7 +24,13 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th width="2%"> 操作</th>
-            <th width="13%">组件编号</th>
+            <th width="13%">
+              组件编号
+              <span class="layui-table-sort layui-inline"  lay-sort="{if $sort == 'asc'}asc{else}desc{/if}">
+                <a href="{:url('/index/Assembly/assemblyInfo',['sort'=>'asc'])}"><i class="layui-edge layui-table-sort-asc"></i></a>
+                <a href="{:url('/index/Assembly/assemblyInfo',['sort'=>'desc'])}"><i class="layui-edge layui-table-sort-desc"></i></a>
+              </span>
+            </th>
             <th>工装类型</th>
             <th>备注</th>
             <th>创建人</th>
@@ -37,7 +43,7 @@
         {volist name="assemblyInfo" id="info"}
           <tr>
             <td width="2% ">
-              <div class="layui-unselect layui-form-checkbox"  data-id='{$info.id}' lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect layui-form-checkbox"  data-id='{$info.id}' lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td class="td-manage" width="50px;">
               <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Assembly/assemblyEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
@@ -50,10 +56,10 @@
             </td>
             <td>
               <a style="color: #0000cc" href="javaseript:();" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)">{$info.assembly_code}</a>
-              <span class="layui-table-sort layui-inline">
-                <i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>
-                <i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>
-              </span>
+              <!--<span class="layui-table-sort layui-inline">-->
+                <!--<i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>-->
+                <!--<i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>-->
+              <!--</span>-->
             </td>
             <td>{$info.looling_type_name}</td>
             <td>{$info.remark}</td>

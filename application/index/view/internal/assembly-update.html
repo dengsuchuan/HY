@@ -5,22 +5,22 @@
           <div class="layui-form-item">
               <label for="drawing_Internal_id" class="layui-form-label">内部编号</label>
               <div class="layui-input-inline">
-                  <input type="text" id="drawing_Internal_id" name="drawing_Internal_id" disabled lay-verify="required"  autocomplete="off" class="layui-input" value="{$createId}">
+                  <input type="text" id="drawing_Internal_id" name="drawing_Internal_id" disabled lay-verify="required"  value="{$internalRoe.drawing_Internal_id}" autocomplete="off" class="layui-input" >
+                  <input type="hidden" name="id" value="{$internalRoe.id}">
                   <p id="pLog" style="color:red"></p>
               </div>
           </div>
-            <script>
-            </script>
-          <div class="layui-form-item">
-              <label for="remark" class="layui-form-label">备注</label>
-              <div class="layui-input-inline">
-                  <input type="text" id="remark" name="remark" autocomplete="off" class="layui-input">
-              </div>
-          </div>
             <div class="layui-form-item">
-                <label for="create_name" class="layui-form-label">创建人</label>
-                <div class="layui-input-inline">
-                    <input type="text" id="create_name" name="create_name" lay-verify="required" autocomplete="off" value="杨世晖"  disabled class="layui-input">
+                <label class="layui-form-label">所属组件</label>
+                <div class="layui-input-block">
+                    <select name="assembly_code" >
+                        <option value="">空</option>
+                        {volist name="assemblyInfo" id = "info"}
+                        <option value="{$info.assembly_code}">{$info.assembly_code}</option>
+                        {/volist}
+                    </select>
+                    <br>
+                    <span style="color:red;">选择空代表移除</span>
                 </div>
             </div>
           <div class="layui-form-item">
@@ -35,13 +35,12 @@
          layui.use(['form'], function(){
            $ = layui.jquery;
            var form = layui.form,layer = layui.layer;
-
            //监听提交
            form.on('submit(addId)', function(data){
              //console.log(data);
-               $.post("{:url('index/Internal/internalAdd')}",data.field,function(info){
+               $.post("{:url('index/Internal/assemblyUpdate')}",data.field,function(info){
                    if (info) {
-                       layer.alert("添加成功", {icon: 6},function () {
+                       layer.alert("修改失败", {icon: 6},function () {
                            window.parent.location.reload();  //刷新父级页面
                            // 获得frame索引
                            var index = parent.layer.getFrameIndex(window.name);
@@ -49,7 +48,7 @@
                            parent.layer.close(index);
                        });
                    }else{
-                       layer.alert("添加失败", {icon: 5});
+                       layer.alert("修改失败", {icon: 5});
                    }
                },'json');
                return false;
