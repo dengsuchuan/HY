@@ -11,87 +11,101 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
-      <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <input type="text" name="username"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-      </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <button class="layui-btn" onclick="x_admin_show('添加材料','{:url(\'index/Material/materialAdd\')}',500,400)"><i class="layui-icon"></i>添加</button>
+        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
       </xblock>
-      <table class="layui-table">
-        <thead>
-          <tr>
-            <th>
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+            <tr>
+            <th width="2%">
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
+            <th>操作</th>
             <th>材料名称</th>
             <th>密度</th>
             <th>材料价格</th>
-            <th>操作</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
             </tr>
         </thead>
         <tbody>
+        {volist name="materialInfo" id="info"}
           <tr>
             <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary"  data-id='{$info.id}' ><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+            <td class="td-manage" width="50px;">
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Material/materialEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" >
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
             </td>
+            <td>{$info.material_id}</td>
+            <td>{$info.density}</td>
+            <td>{$info.material_price}</td>
+            <td>{$info.create_time}</td>
+            <td>{$info.update_time}</td>
           </tr>
+        {/volist}
         </tbody>
       </table>
-      <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
         </div>
       </div>
-
+      <div class="page">
+        {$materialInfo|raw}
+      </div>
     </div>
     <script>
-      layui.use('laydate', function(){
-        var laydate = layui.laydate;
-        //执行一个laydate实例
-        laydate.render({
-          elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-          elem: '#end' //指定元素
-        });
-      });
-
-      /*用户-删除*/
-      function member_del(obj,id){
-          layer.confirm('确认要删除吗？',function(index){
-              //发异步删除数据
-              $(obj).parents("tr").remove();
-              layer.msg('已删除!',{icon:1,time:1000});
-          });
-      }
-
-      function delAll (argument) {
-        var data = tableCheck.getData();
-  
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
-        });
-      }
+        //批量删除
+        function delAll (drawing_detail_id) {
+            var data = tableCheck.getData();
+            if(data == ''){
+                layer.msg('请选择需要删除的数据');
+                return;
+            }
+            layer.confirm('确认要删除吗？',function(index){
+                //捉到所有被选中的，发异步进行删除
+                $.ajax({
+                    url:"{:url('/index/Material/delAll')}",
+                    type:"POST",
+                    dataType:"json",
+                    data:{
+                        dra_id:drawing_detail_id,
+                        data:data   //数据
+                    },
+                    success:function (res) {
+                        if(res === 1 ){
+                            layer.alert("删除成功", {icon: 6},function () {
+                                window.location.reload();  //刷新父级页面
+                            });
+                        }else {
+                            layer.alert("删除失败", {icon: 5});
+                        }
+                    },
+                });
+            });
+        }
+        /*删除*/
+        function delete_(obj,id){
+            layer.confirm('确认要删除吗？',function(index){
+                var url = "{:url('/index/Material/delete')}";
+                var postData ={"id":id};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        $(obj).parents("tr").remove();
+                        layer.msg('已删除!',{icon:1,time:1000});
+                    }else {
+                        layer.alert("删除失败", {icon: 5});
+                    }
+                },"json");
+            });
+        }
     </script>
   </body>
 </html>
