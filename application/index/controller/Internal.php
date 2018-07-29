@@ -126,53 +126,12 @@ class Internal extends Base
         }
         $id = intval(input('id'));
         $internal = DrawingInternal::get($id);
-        $this->assign([
-           'internal'  =>  $internal
-        ]);
-        return $this->view->fetch('internal-edit');
-    }
-
-    public function editA(){
-        if(Request::isAjax()){
-            $data = Request::post();
-            $id = $data['id'];
-            $info = DrawingInternal::update($data,['id'=>$id]);
-            if($info){
-                return json(1);
-            }else{
-                return json(0);
-            }
-        }
-        $id = intval(input('id'));
-        $internal = DrawingInternal::get($id);
-        $this->assign([
-            'internal'  =>  $internal
-        ]);
-        return $this->view->fetch('internal-edit-a');
-    }
-    //修改所属组件
-    public function assemblyUpdate(){
-
-        if(Request::isAjax()){
-            $data = Request::post();
-            $id = $data['id'];
-            $info = DrawingInternal::update($data,['id'=>$id]);
-            if($info){
-                return json(1);
-            }else{
-                return json(0);
-            }
-        }
-
-        $id = intval(input('id'));
-        $internalRoe = DrawingInternal::get($id);
-        //获取组件图纸信息
         $assemblyInfo = Assembly::select();
         $this->assign([
+           'internal'  =>  $internal,
             'assemblyInfo'  =>  $assemblyInfo,
-            'internalRoe'  =>  $internalRoe
         ]);
-        return $this->view->fetch('assembly-update');
+        return $this->view->fetch('internal-edit');
     }
     public function delete(){
         $info = DrawingInternal::where(['id'=>intval(input('id'))])->delete();

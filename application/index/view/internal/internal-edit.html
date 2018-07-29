@@ -10,11 +10,37 @@
                   <p id="pLog" style="color:red"></p>
               </div>
           </div>
-
+            {if $internal.is_assembly_code == null}
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属组件</label>
+                <div class="layui-input-block">
+                    <select name="assembly_code" >
+                        <option value="">空</option>
+                        {volist name="assemblyInfo" id = "info"}
+                        <option value="{$info.assembly_code}"
+                            {if $info.assembly_code ==$internal.assembly_code }
+                                selected
+                                {/if}
+                        >{$info.assembly_code}</option>
+                        {/volist}
+                    </select>
+                    <br>
+                    <span style="color:red;">选择空代表移除</span>
+                </div>
+            </div>
+            {/if}
+            {if $internal.is_assembly_code == 1}
+            <div class="layui-form-item">
+                <label for="remark" class="layui-form-label">所属组件</label>
+                <div class="layui-input-inline">
+                    <input type="text"  autocomplete="off" class="layui-input" disabled value="{$internal.assembly_code}">
+                </div>
+            </div>
+            {/if}
           <div class="layui-form-item">
               <label for="remark" class="layui-form-label">备注</label>
               <div class="layui-input-inline">
-                  <input type="text" id="remark" name="remark" lay-verify="required" autocomplete="off" class="layui-input" value="{$internal.remark}">
+                  <input type="text" id="remark" name="remark" autocomplete="off" class="layui-input" value="{$internal.remark}">
               </div>
           </div>
             <div class="layui-form-item">

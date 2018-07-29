@@ -65,23 +65,16 @@
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.id}'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td class="td-manage" width="50px;">
-                {if $info.assembly_code == null}
                 <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                     <i style="color: green" class="layui-icon"></i>
                 </a>
-                {else}
-                <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/editA\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
-                    <i style="color: green" class="layui-icon"></i>
-                </a>
-                {/if}
                 <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
                     <i  style="color:red;" class="layui-icon"></i>
                 </a>
-                <!--<button class="layui-btn layui-btn layui-btn-xs" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)"><i class="layui-icon layui-icon-add-circle"></i>内图</button>-->
             </td>
             <td>
                 {if $info.assembly_code == null or $info.is_assembly_code == null}
-                <a href="javascript:;" onclick="x_admin_show('修改所属组件','{:url(\'index/Internal/assemblyUpdate\',[\'id\'=>$info.id])}',500,400)" style="color:red;">{$info.drawing_Internal_id} </a>
+                <span style="color:red;">{$info.drawing_Internal_id}</span>
                 {else}
                 {$info.drawing_Internal_id}
                 {/if}
@@ -121,27 +114,6 @@
 
 </div>
 <script>
-    function SanSort(id,sort) {
-        $.ajax({
-            url:"{:url('/index/Internal/SanSort')}",
-            type:"POST",
-            dataType:"json",
-            data:{
-                id:id,
-                sort:sort
-            },
-            success:function (res) {
-                if(res.error === 1000 ){
-                    layer.msg(res.msg, {icon: 5});
-                }else if(res.error === 1) {
-                    window.location.reload();  //刷新父级页面
-                }else {
-                    layer.msg(res.msg, {icon: 5});
-                }
-            },
-        });
-    }
-
     /*删除*/
     function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){
