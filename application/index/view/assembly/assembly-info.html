@@ -49,12 +49,12 @@
               <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Assembly/assemblyEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
               </a>
-              <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+              <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" >
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
             </td>
             <td>
-              <a style="color: #0000cc" href="javaseript:();" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)">{$info.assembly_code}</a>
+              <a style="color: #0000cc" href="javascript:void(0);" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)">{$info.assembly_code}</a>
             </td>
             <td>{$info.looling_type_name}</td>
             <td>{$info.remark}</td>
