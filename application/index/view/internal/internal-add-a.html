@@ -6,13 +6,14 @@
               <label for="drawing_Internal_id" class="layui-form-label">内部编号</label>
               <div class="layui-input-inline">
                   <input type="text" id="drawing_Internal_id" name="drawing_Internal_id" disabled lay-verify="required"  value="{$code}" autocomplete="off" class="layui-input">
+                    <input type="hidden" value="{$assemblyCode_}" name="assembly_code">
                   <p id="pLog" style="color:red"></p>
               </div>
           </div>
           <div class="layui-form-item">
               <label for="remark" class="layui-form-label">备注</label>
               <div class="layui-input-inline">
-                  <input type="text" id="remark" name="remark" lay-verify="required" autocomplete="off" class="layui-input">
+                  <input type="text" id="remark" name="remark"  autocomplete="off" class="layui-input">
               </div>
           </div>
             <div class="layui-form-item">
@@ -23,57 +24,39 @@
             </div>
           <div class="layui-form-item">
               <label class="layui-form-label"></label>
-              <button class="layui-btn" lay-submit lay-filter="addId" disabled>
+              <button class="layui-btn" lay-submit lay-filter="addId" >
                   增加
               </button>
           </div>
       </form>
     </div>
     <script>
-        $(function () {
-            //自动生成编号
-            $("#createId").click(function () {
-                var code = $("#selectMid").val();
-                if(code == ''){
-                    layer.msg('基础编码不存在!',{icon:5,time:1000});
-                    return;
-                }
-                $.post("{:url('index/Internal/productionCode')}",{data:code},function(info){
-                    if (info) {
-                        $("#drawing_Internal_id").val(info);
-                    }else{
-                        layer.alert("添加失败", {icon: 5});
-                    }
-                },'json');
-            });
+
+
+
+        layui.use(['form'], function(){
+          $ = layui.jquery;
+          var form = layui.form,layer = layui.layer;
+
+          //监听提交
+          form.on('submit(addId)', function(data){
+            //console.log(data);
+              $.post("{:url('index/Internal/internalAddAssembly')}",data.field,function(info){
+                  if (info) {
+                      layer.alert("添加成功", {icon: 6},function () {
+                          window.parent.location.reload();  //刷新父级页面
+                          // 获得frame索引
+                          var index = parent.layer.getFrameIndex(window.name);
+                          //关闭当前弹出层
+                          parent.layer.close(index);
+                      });
+                  }else{
+                      layer.alert("添加失败", {icon: 5});
+                  }
+              },'json');
+              return false;
+          });
         });
-
-        //
-        // layui.use(['form'], function(){
-        //   $ = layui.jquery;
-        //   var form = layui.form,layer = layui.layer;
-
-        //   //监听提交
-        //   form.on('submit(addId)', function(data){
-        //     //console.log(data);
-        //       $.post("{:url('index/Blueprint/addDrawingExternalId')}",data.field,function(info){
-        //           if (info) {
-        //               layer.alert("添加成功", {icon: 6},function () {
-        //                   window.parent.location.reload();  //刷新父级页面
-        //                   // 获得frame索引
-        //                   var index = parent.layer.getFrameIndex(window.name);
-        //                   //关闭当前弹出层
-        //                   parent.layer.close(index);
-        //               });
-        //           }else{
-        //               layer.alert("添加失败", {icon: 5});
-        //           }
-        //       },'json');
-        //       return false;
-        //   });
-        //
-        //
-        // });
     </script>
 
   </body>
