@@ -10,7 +10,7 @@ namespace app\index\controller;
 
 use app\index\common\controller\Base;
 use app\index\model\Material as MaterialModel;
-use think\Facade\Request;
+use think\facade\Request;
 class Material extends Base
 {
     //渲染列表
