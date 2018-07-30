@@ -44,4 +44,9 @@ class Index extends Base
         ]);
         return;
     }
+
+    //登陆
+    public function login(){
+        return $this->view->fetch("login");
+    }
 }

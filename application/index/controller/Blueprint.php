@@ -605,6 +605,4 @@ class Blueprint extends Base
 
     }
 
-
-
 }
