@@ -1,0 +1,77 @@
+﻿{include file="public/header" /}
+<body>
+<div class="x-body">
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+    <legend>职务管理</legend>
+  </fieldset>
+  <xblock>
+    <button class="layui-btn" onclick="x_admin_show('添加职务','{:url(\'index/Duties/DutiesAdd\')}',500,400)"><i class="layui-icon"></i>添加</button>
+  </xblock>
+  <div class="layui-row">
+    <div class="container-wrap">
+      <div class="box-1">
+        <table class="layui-table">
+          <thead>
+          <tr>
+            <th>职务名称</th>
+            <th>描述</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          {volist name="$dutiesModeInfo" id = "info"}
+          <tr>
+            <td>{$info.duties_name}</td>
+            <td>{$info.remark}</td>
+            <td class="td-manage" width="50px;">
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Duties/DutiesEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_process(this,'{$info.id}')" href="javascript:;">
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
+            </td>
+          </tr>
+          {/volist}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    //排序
+    $(".listorder input").blur(function () {
+        var sort =  $(this).val();
+        var id = $(this).attr('attr-id');
+        var url = "{:url('/index/Process_type/updateSort')}";
+        var postData ={"id":id,"sort":sort};
+        $.post(url,postData,function (result) {
+            if(result == 1 ){
+                layer.alert("更新成功", {icon: 6},function () {
+                    window.location.reload();  //刷新父级页面
+                });
+            }else {
+                layer.alert("更新失败", {icon: 5});
+            }
+        },"json")
+    });
+
+    /*删除*/
+    function delete_process(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "{:url('/index/Duties/delete')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1 ){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
+</html>

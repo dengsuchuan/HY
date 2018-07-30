@@ -1,0 +1,56 @@
+﻿{include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    <div class="layui-form-item">
+      <label for="duties_name" class="layui-form-label">部门名称</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="duties_name" name="duties_name" lay-verify="required" autocomplete="off" value="{$dutiesRow.duties_name}" class="layui-input" >
+      <input type="hidden" value="{$dutiesRow.id}" name="id">
+        <p id="pLog" style="color:red"></p>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="remark" class="layui-form-label">描述</label>
+      <div class="layui-input-inline">
+        <input type="text" id="remark" name="remark"  value="{$dutiesRow.remark}" autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId">
+        修改
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Duties/DutiesEdit')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

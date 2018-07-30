@@ -21,7 +21,6 @@ class ProcessType extends Base
           'ProcessTypeInfo'     =>  $ProcessTypeInfo
        ]);
        return $this->view->fetch('process_type_info');
-
     }
     //添加操作
     public function addProcessType(){
