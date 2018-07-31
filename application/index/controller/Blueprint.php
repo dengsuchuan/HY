@@ -15,6 +15,9 @@ use app\index\model\ProcessType as ProcessTypeModel;
 
 class Blueprint extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //--|图纸明细控制器以及相关子控制器
     public function blueprintInfo(){
         //判断是否为post提交请求。如果是，就代表是搜索。

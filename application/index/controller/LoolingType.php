@@ -13,6 +13,9 @@ use app\index\model\LloolingType as LloolingTypeModel ;
 use think\facade\Request;
 class LoolingType extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //例表显示
     public function loolingInfo(){
         $looinfInfo = LloolingTypeModel::order('sort asc')->select();

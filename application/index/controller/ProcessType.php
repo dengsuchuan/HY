@@ -13,6 +13,9 @@ use app\index\model\ProcessType as ProcessTypeModel;
 use think\facade\Request;
 class ProcessType extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //工序类型列表
     public function index(){
         //获取工序类型的所有信息1
@@ -21,7 +24,6 @@ class ProcessType extends Base
           'ProcessTypeInfo'     =>  $ProcessTypeInfo
        ]);
        return $this->view->fetch('process_type_info');
-
     }
     //添加操作
     public function addProcessType(){

@@ -15,6 +15,9 @@ use think\facade\Request;;
 
 class Assembly extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function assemblyInfo($sort = 'asc'){
         $assemblyInfo = AssemblyModel::alias('a')
              ->order('assembly_code '.$sort.' ')

@@ -1,0 +1,79 @@
+﻿{include file="public/header" /}
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">人力资源</a>
+        <a>
+          <cite>管理员列表</cite>
+        </a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <xblock>
+        <button class="layui-btn" onclick="x_admin_show('添加管理员','{:url(\'index/Administrators/adminAdd\')}',500,400)"><i class="layui-icon"></i>添加</button>
+        </xblock>
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+            <tr>
+              <th>编号</th>
+              <th>姓名</th>
+              <th>手机</th>
+              <th>邮箱</th>
+              <th>登陆次数</th>
+              <th>角色</th>
+            <th>加入时间</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        {volist name="adminInfo" id="info"}
+          <tr>
+            <td>{$info.admin_code}</td>
+            <td>{$info.admin_name}</td>
+            <td>{$info.tie}</td>
+            <td>{$info.mailbox}</td>
+            <td>{$info.login_number}</td>
+            <td>超级管理员</td>
+            <td>{$info.create_time}</td>
+            <td>
+              <a title="编辑"  onclick="x_admin_show('修改操作','{:url(\'index/Administrators/adminEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
+            </td>
+          </tr>
+        {/volist}
+        </tbody>
+      </table>
+        </div>
+      </div>
+      <div class="page">
+
+      </div>
+    </div>
+    <script>
+        /*删除*/
+        function delete_(obj,id){
+            layer.confirm('确认要删除吗？',function(index){
+                var url = "{:url('/index/Administrators/delete')}";
+                var postData ={"id":id};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        $(obj).parents("tr").remove();
+                        layer.msg('已删除!',{icon:1,time:1000});
+                    }else {
+                        layer.alert("删除失败", {icon: 5});
+                    }
+                },"json");
+            });
+        }
+    </script>
+  </body>
+
+</html>
