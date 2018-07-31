@@ -32,7 +32,7 @@
                       if(result.code ===0 ){
                           layer.msg(result.msg,{icon:5,time:1000});
                       }else if(result.code ===1){
-                          location.href="{:url('/')}"
+                          location.href="{:url('/index/login/adminLogin')}"
                       }
                   },"json");
                 return false;

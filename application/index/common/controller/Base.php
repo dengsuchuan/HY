@@ -13,7 +13,7 @@ class Base extends Controller
 
     public function isLogin (){
         if(!session('user')){
-            $this->redirect('index/index/index');
+            $this->redirect('/index/index/index');
         }
     }
     //排序

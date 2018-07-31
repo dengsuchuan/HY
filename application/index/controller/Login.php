@@ -47,11 +47,11 @@ class Login extends Controller
     public function outLogin(){
         session('user',null);
         Session::clear();
-        $this->redirect('/');
+        $this->redirect('/index/index/index');
     }
     public function switchLogin(){
         session('user',null);
         Session::clear();
-        $this->redirect('index/login/adminLogin');
+        $this->redirect('/index/login/adminLogin');
     }
 }
