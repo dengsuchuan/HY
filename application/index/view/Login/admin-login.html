@@ -1,0 +1,45 @@
+{include file="public/header" /}
+<body class="login-bg">
+
+    <div class="login layui-anim layui-anim-up">
+        <div class="message" style="background: #0ecad2">恒易管理2.0-后台管理登录</div>
+        <div id="darkbannerwrap"></div>
+
+        <form method="post" class="layui-form" >
+            <input name="username" id="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" id="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="登录" style="background: #0ecad2" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
+
+    <script>
+        $(function  () {
+            layui.use('form', function(){
+              var form = layui.form;
+              // layer.msg('玩命卖萌中', function(){
+              //   //关闭后的操作
+              //   });
+              //监听提交
+              form.on('submit(login)', function(data){
+                  var admin_name = $("#username").val();
+                  var password = $("#password").val();
+                  var data ={"admin_name":admin_name,"password":password};
+                  var url = "{:url('/index/Login/adminHandleLogin')}";
+                  $.post(url,data,function (result) {
+                      if(result.code ===0 ){
+                          layer.msg(result.msg,{icon:5,time:1000});
+                      }else if(result.code ===1){
+                          location.href="{:url('/')}"
+                      }
+                  },"json");
+                return false;
+              });
+            });
+        })
+    </script>
+
+</body>
+</html>

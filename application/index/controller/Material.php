@@ -13,6 +13,9 @@ use app\index\model\Material as MaterialModel;
 use think\facade\Request;
 class Material extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //渲染列表
     public function material(){
         $materialInfo = MaterialModel::paginate(10);

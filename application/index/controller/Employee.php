@@ -14,6 +14,9 @@ use app\index\model\Duties;
 use app\index\model\Employee as EmployeeModel;
 class Employee extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //渲染列表
     public function employeeInfo(){
         $employeeInfo  = EmployeeModel::alias('e')

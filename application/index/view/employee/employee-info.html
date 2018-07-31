@@ -25,7 +25,8 @@
             <th>
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
-            <th>员工编号</th>
+              <th>操作</th>
+              <th>员工编号</th>
             <th>员工姓名</th>
             <th>手机号</th>
             <th>部门名称</th>
@@ -41,13 +42,23 @@
             <th>离职日期</th>
             <th>创建时间</th>
             <th>更新时间</th>
-            <th>操作</th>
         </thead>
         <tbody>
         {volist name="employeeInfo" id = "info"}
           <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
+              <a title="设置为管理员" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+                <i class="layui-icon layui-icon-username"></i>
+              </a>
             </td>
             <td>{$info.employee_code}</td>
             <td>{$info.employee_name}</td>
@@ -85,7 +96,6 @@
             <td>{$info.leave_date}</td>
             <td>{$info.create_time}</td>
             <td>{$info.update_time}</td>
-            <td></td>
           </tr>
         {/volist}
         </tbody>

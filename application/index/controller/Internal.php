@@ -15,6 +15,9 @@ use app\index\model\Assembly;
 use think\facade\Request;
 class Internal extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //展示内部图纸列表
     public function internalInfo($sort = 'desc'){
         $internalInfo = DrawingInternal::order('sort '.$sort.' ')->paginate(10);

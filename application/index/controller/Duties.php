@@ -14,6 +14,9 @@ use app\index\model\Duties as DutiesMode;
 use think\facade\Request;
 class Duties extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //渲染列表
     public function DutiesInfo(){
         $dutiesModeInfo =  DutiesMode::where('id',"<>",0)->select();

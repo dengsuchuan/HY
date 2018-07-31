@@ -2,8 +2,20 @@
 namespace app\index\common\controller;
 
 use think\Controller;
+use think\Url;
+
 class Base extends Controller
 {
+//    protected $beforeActionList = [
+//        'isLogin',
+//        ['isLogin' => ['only'=>'login,data']]
+//    ];
+
+    public function isLogin (){
+        if(!session('user')){
+            $this->redirect('/');
+        }
+    }
     //排序
     public function _updateSort($data){
         $id = intval($data['id']);
