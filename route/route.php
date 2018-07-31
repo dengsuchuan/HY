@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 
 Route::get('/login', 'index/index/login');
-Route::get('/admin/login', 'index/Login/adminLogin');
+Route::get('/admin/login', 'index/login/adminLogin');
 
 return [
 
