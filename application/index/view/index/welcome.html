@@ -2,9 +2,16 @@
     <body>
     <div class="x-body layui-anim layui-anim-up">
         {if $Think.session.user.user_id}
+        {if $Think.session.user.admin ==='admin'}
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">{$Think.session.user.admin_name}</span>！当前时间:2018-04-25 20:50:53
+            <span class="x-red">{$Think.session.user.user_name}</span>！当前时间:2018-04-25 20:50:53
         </blockquote>
+        {else/}
+
+        <blockquote class="layui-elem-quote">欢迎：  {if  $Think.session.user.employee_lv == 1}管理员{/if}
+            <span class="x-red">{$Think.session.user.user_name}</span>！当前时间:2018-04-25 20:50:53
+        </blockquote>
+        {/if}
         {/if}
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>

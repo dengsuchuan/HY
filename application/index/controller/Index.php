@@ -44,9 +44,11 @@ class Index extends Base
         ]);
         return;
     }
-
-    //登陆
-    public function login(){
-        return $this->view->fetch("login");
+    public function aa(){
+        if(!session('user.employee_lv') == 1){
+            return '不可访问';
+        }
+        $id = session('user.employee_lv');
+        return $id;
     }
 }

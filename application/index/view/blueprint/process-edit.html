@@ -8,7 +8,8 @@
     <div class="layui-form-item">
       <label for="process_id" class="layui-form-label">工艺编号</label>
       <div class="layui-input-inline">
-        <input type="text" id="process_id" disabled="disabled" name="process_id" lay-verify="required" value="<?php echo substr($processRow['process_id'],strpos($processRow['process_id'],'P')+1); ?>" autocomplete="off" class="layui-input">
+        <input type="text"  value="<?php echo substr($processRow['process_id'],strpos($processRow['process_id'],'P')+1); ?>" autocomplete="off" class="layui-input">
+        <input type="hidden" id="process_id" disabled="disabled" name="process_id" lay-verify="required" value="{$processRow.process_id}" autocomplete="off" class="layui-input">
         <input type="hidden" id="id"  name="id"  value="{$processRow.id}" autocomplete="off" class="layui-input">
         <p id="pLog" style="color:red"></p>
       </div>
@@ -41,106 +42,21 @@
         </select>
       </div>
     </div>
-
-
-    <!--<div class="layui-form-item">-->
-      <!--<label for="process_content" class="layui-form-label">工艺说明</label>-->
-      <!--<div class="layui-input-block">-->
-        <!--<textarea id="process_content" name="process_content" class="layui-textarea" >{$processRow.process_content}</textarea>-->
-        <!--<div class="layui-btn-container layadmin-layer-demo" style="margin-top:5px; ">-->
-          <!--<input   type="button" 	class="layui-btn layui-btn-xs" onclick="openModak()" style="width:50px;height: 20px;" value="☼">-->
-        <!--</div>-->
-        <!--<script>-->
-            <!--function openModak(){-->
-                <!--$("[name='testname']").val("xxxxxxxxxxxxxxx");//向模态框中赋值-->
-                <!--layui.use(['layer'],function () {-->
-                    <!--var layer = layui.layer,$=layui.$;-->
-                    <!--layer.open({-->
-                        <!--type:1,//类型-->
-                        <!--area:['200px','200px'],//定义宽和高-->
-                        <!--title:'特殊符号输入',//题目-->
-                        <!--shadeClose:true,//点击遮罩层关闭-->
-                        <!--content: $('#motaikunag')//打开的内容-->
-                    <!--});-->
-                <!--})-->
-            <!--}-->
-
-        <!--</script>-->
-
-        <!--<div id="motaikunag" style="display: none;">-->
-          <!--<table class="layui-table">-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('Φ')">Φ</td>-->
-              <!--<td onclick="inputTs('∥')">∥</td>-->
-              <!--<td onclick="inputTs('◎')">◎</td>-->
-              <!--<td onclick="inputTs('⊙')">⊙</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('○')">○</td>-->
-              <!--<td onclick="inputTs('☆')">☆</td>-->
-              <!--<td onclick="inputTs('□')">□</td>-->
-              <!--<td onclick="inputTs('≡')">≡</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('⊥')">⊥</td>-->
-              <!--<td onclick="inputTs('√')">√</td>-->
-              <!--<td onclick="inputTs('˚')">˚</td>-->
-              <!--<td onclick="inputTs('⌒')">⌒</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-
-              <!--<td onclick="inputTs('⊕')">⊕</td>-->
-              <!--<td onclick="inputTs('℃')">℃</td>-->
-              <!--<td onclick="inputTs('±')">±</td>-->
-              <!--<td onclick="inputTs('∠')">∠</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('⊿')">⊿</td>-->
-              <!--<td onclick="inputTs('◁')">◁</td>-->
-              <!--<td onclick="inputTs('↗')">↗</td>-->
-              <!--<td onclick="inputTs('×')">×</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('÷')">÷</td>-->
-              <!--<td onclick="inputTs('≦')">≦</td>-->
-              <!--<td onclick="inputTs('≧')">≧</td>-->
-              <!--<td onclick="inputTs('≠')">≠</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('Ⅰ')">Ⅰ</td>-->
-              <!--<td onclick="inputTs('Ⅱ')">Ⅱ</td>-->
-              <!--<td onclick="inputTs('Ⅲ')">Ⅲ</td>-->
-              <!--<td onclick="inputTs('Ⅳ')">Ⅳ</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('Ⅴ')">Ⅴ</td>-->
-              <!--<td onclick="inputTs('Ⅵ')">Ⅵ</td>-->
-              <!--<td onclick="inputTs('Ⅶ')">Ⅶ</td>-->
-              <!--<td onclick="inputTs('Ⅷ')">Ⅷ</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-              <!--<td onclick="inputTs('Ⅸ')">Ⅸ</td>-->
-              <!--<td onclick="inputTs('Ⅹ')">Ⅹ</td>-->
-              <!--<td onclick="inputTs('Ⅺ')">Ⅺ</td>-->
-              <!--<td onclick="inputTs('Ⅷ')">Ⅻ</td>-->
-            <!--</tr>-->
-          <!--</table>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<script>-->
-        <!--function inputTs(str) {-->
-            <!--var count =  $("#process_content").val() + str;-->
-            <!--$("#process_content").val(count);-->
-        <!--}-->
-    <!--</script>-->
-
+    {if  $Think.session.user.is_quota == 1}
     <div class="layui-form-item">
       <label for="process_quota" class="layui-form-label">工序定额</label>
       <div class="layui-input-inline">
         <input type="text" id="process_quota" name="process_quota"   value="{$processRow.process_quota}"  autocomplete="off" class="layui-input"  >
       </div>
     </div>
+    {else/}
+    <div class="layui-form-item">
+      <label for="process_quota" class="layui-form-label">工序定额</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_quota"  disabled value="{$processRow.process_quota}"  autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+    {/if}
     <div class="layui-form-item">
       <label class="layui-form-label">是否检验</label>
       <div class="layui-input-block">

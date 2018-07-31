@@ -9,12 +9,14 @@
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
+                    {if $Think.session.user.admin === 'admin'}
                     <li>
                         <a _href="{:url('index/Administrators/adminInfo')}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>超级管理员列表</cite>
                         </a>
                     </li >
+                    {/if}
                     <li>
                         <a _href="{:url('index/Employee/employeeInfo')}">
                         <i class="iconfont">&#xe6a7;</i>

@@ -56,9 +56,11 @@
               <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
+              {if  $Think.session.user.employee_lv == 1}
               <a title="设置为管理员" onclick="delete_(this,'{$info.id}')" href="javascript:;">
                 <i class="layui-icon layui-icon-username"></i>
               </a>
+              {/if}
             </td>
             <td>{$info.employee_code}</td>
             <td>{$info.employee_name}</td>

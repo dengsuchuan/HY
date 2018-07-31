@@ -27,12 +27,12 @@
                   var admin_name = $("#username").val();
                   var password = $("#password").val();
                   var data ={"admin_name":admin_name,"password":password};
-                  var url = "{:url('/index/Login/adminHandleLogin')}";
+                  var url = "{:url('index/Login/adminHandleLogin')}";
                   $.post(url,data,function (result) {
                       if(result.code ===0 ){
                           layer.msg(result.msg,{icon:5,time:1000});
                       }else if(result.code ===1){
-                          location.href="{:url('/index/index/index')}"
+                          location.href="{:url('index/index/index')}"
                       }
                   },"json");
                 return false;
