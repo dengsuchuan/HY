@@ -129,7 +129,11 @@
         <div class="layui-form-item">
             <label class="layui-form-label">客户简称</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" value=" "  id="client_id">
+                <select name="modules" lay-verify="required" lay-search="" id="client_id">
+                    {volist name="$client" id="clientList"}
+                    <option value="{$clientList.id}">{$clientList.client_abbreviation}</option>
+                    {/volist}
+                </select>
             </div>
         </div>
 
@@ -545,7 +549,7 @@
             materialSelectArray['product_quotation']=product_quotation;//产品报价
             materialSelectArray['product_real_price']=product_real_price;//产品实际价格
             materialSelectArray['remark']=remark;//备注
-            materialSelectArray['create_name']="创建人";//创建人
+            materialSelectArray['create_name']="{$Think.session.user.user_name}";//创建人
             materialSelectArray['modify_name']="";//修改人
             // materialSelectArray['create_time']= "";//当前时间戳  创建时间
             // materialSelectArray['update_time']= "";//修改时间

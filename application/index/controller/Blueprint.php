@@ -4,6 +4,7 @@ namespace app\index\controller;
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
+use app\index\model\Client;
 use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
 use app\index\model\Material;
@@ -56,6 +57,7 @@ class Blueprint extends Base
             $data['if_thickness'] = isset($data['if_thickness']) ? '1' : '0';
             $data['if_length'] = isset($data['if_length']) ? '1' : '0';
             $data['if_width'] = isset($data['if_width']) ? '1' : '0';
+            $data['if_discard'] = isset($data['if_discard']) ? '1' : '0';
             //获取提交过来的ID
             $id = $data['id'];
             unset($data['id']);
@@ -314,6 +316,9 @@ class Blueprint extends Base
         /*----------------材料形状处理----------------------*/
         $materialShape = MaterialShape::all();
         $this->assign("materialShapeArray",$materialShape);
+
+        $client = Client::all();
+        $this->assign("client",$client);
 
 
 

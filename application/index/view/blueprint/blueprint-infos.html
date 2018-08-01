@@ -139,25 +139,27 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">创建人</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" name="create_name" value="{$blueprintInfo.create_name}"  >
+                    <input type="text" class="layui-input" value="{$blueprintInfo.create_name}"  disabled title="不可修改">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">最后修改人</label>
-                <div class="layui-input-block">
-                    <input type="text" class="layui-input" name="modify_name" value="{$blueprintInfo.modify_name}"  >
-                </div>
-            </div>
+            <input type="hidden" class="layui-input" name="modify_name" value="{$Think.session.user.user_name}" >
             <div class="layui-form-item">
                 <label class="layui-form-label">创建时间</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" value="{$blueprintInfo.create_time}"  >
+                    <input type="text" class="layui-input" value="{$blueprintInfo.create_time}"  disabled title="不可修改">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">修改时间</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" value="{$blueprintInfo.update_time}"  >
+                    <input type="text" class="layui-input" value="{$blueprintInfo.update_time}"   disabled title="不可修改">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否作废</label>
+                <div class="layui-input-block">
+                    <input type="checkbox"   {if 1==$blueprintInfo.if_discard}checked=""{/if}  name="if_discard" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                    <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
