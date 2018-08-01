@@ -93,7 +93,10 @@ class Employee extends Base
     }
     //管理员更改
     public function employeeLv(){
-
+        $employee_lv = session('user.admin');
+        if($employee_lv != 'admin'){
+            return $this->redirect('index/index/index');
+        }
         if(Request::isAjax()){
             $admin = session('user.admin');
             if(!$admin == 'admin'){
