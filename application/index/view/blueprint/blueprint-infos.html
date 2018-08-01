@@ -84,7 +84,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">材料形状</label>
                     <div class="layui-input-inline">
-                        <select lay-verify="required" lay-search="" name="material_type" lay-filter="material_type">
+                        <select lay-verify="required" lay-search="" name="material_type" lay-filter="material_type" id="material_type">
                             <option value="{$blueprintInfo.material_type}">{$blueprintInfo.material_type|getMateria}</option>
                             <optgroup label="选择形状">
                                 {volist name="$materialShape" id="materialShapeList"}
@@ -95,40 +95,69 @@
                     </div>
                 </div>
             </div>
-            <div style="border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;">
-                <div class="layui-form-item">
+            <div style="border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;" id="specia">
+                <div class="layui-form-item" id="thickness_Dia">
                     <label class="layui-form-label">厚度</label>
                     <div class="layui-input-inline">
                         <input type="text" class="layui-input" name="thickness_Dia" value="{$blueprintInfo.thickness_Dia}"  >
                     </div>
-                    <label class="layui-form-label">保证厚度</label>
-                    <div style="padding-top: 6px;">
-                        <input type="checkbox"   {if 1==$blueprintInfo.if_thickness}checked=""{/if}  name="if_thickness" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-                        <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+                    <div class="specialDiv">
+                        <label class="layui-form-label">保证厚度</label>
+                        <div style="padding-top: 6px;">
+                            <input type="checkbox"   {if 1==$blueprintInfo.if_thickness}checked=""{/if}  name="if_thickness" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                            <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+                        </div>
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item" id="length_dim">
                     <label class="layui-form-label">长度</label>
                     <div class="layui-input-inline">
                         <input type="text" class="layui-input" name="length_dim" value="{$blueprintInfo.length_dim}"  >
                     </div>
-
-                    <label class="layui-form-label">保证长度</label>
-                    <div style="padding-top: 6px;">
-                        <input type="checkbox"   {if 1==$blueprintInfo.if_length}checked=""{/if}  name="if_length" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-                        <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+                    <div class="specialDiv">
+                        <label class="layui-form-label">保证长度</label>
+                        <div style="padding-top: 6px;">
+                            <input type="checkbox"   {if 1==$blueprintInfo.if_length}checked=""{/if}  name="if_length" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                            <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+                        </div>
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item" id="width_dim">
                     <label class="layui-form-label">宽度</label>
                     <div class="layui-input-inline">
                         <input type="text" class="layui-input" name="width_dim" value="{$blueprintInfo.width_dim}"  >
                     </div>
+                    <div class="specialDiv">
+                        <label class="layui-form-label">保证宽度</label>
+                        <div style="padding-top: 6px;">
+                            <input type="checkbox"   {if 1==$blueprintInfo.if_width}checked=""{/if}  name="if_width" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                            <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+                        </div>
+                    </div>
+                </div>
 
-                    <label class="layui-form-label">保证宽度</label>
-                    <div style="padding-top: 6px;">
-                        <input type="checkbox"   {if 1==$blueprintInfo.if_width}checked=""{/if}  name="if_width" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-                        <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+                <div class="layui-form-item" id="specifications">
+                    <label class="layui-form-label">规格型号</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" name="specifications" value="{$blueprintInfo.specifications}"  >
+                    </div>
+                </div>
+                <div class="layui-form-item" id="altitudeInput">
+                    <label class="layui-form-label">高度</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" name="altitudeInput" value="{$blueprintInfo.altitudeInput}"  >
+                    </div>
+                </div>
+                <div class="layui-form-item" id="sideLength1">
+                    <label class="layui-form-label">边长1</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" name="sideLength1" value="{$blueprintInfo.sideLength1}"  >
+                    </div>
+                </div>
+                <div class="layui-form-item" id="sideLength2">
+                    <label class="layui-form-label">边长2</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" name="sideLength2" value="{$blueprintInfo.sideLength2}"  >
                     </div>
                 </div>
             </div>
@@ -204,6 +233,113 @@
     </div>
 
     <script>
+        function showHide($id){
+            switch ($id){
+                case "1":
+                    $(".specialDiv").show();//三个保存
+                    $("#thickness_Dia").show();//厚度
+                    $("#thickness_Dia > label").text("厚度");
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#width_dim").show();//宽度
+                    $("#width_dim > label").text("宽度");
+
+
+                    $("#specifications").hide();//规格型号
+                    $("#altitudeInput").hide();//高度
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
+                    break;
+                case "2":
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#width_dim").show();//宽度
+                    $("#width_dim > label").text("直径");
+
+                    $(".specialDiv").hide();//三个保存
+                    $("#thickness_Dia").hide();//厚度
+                    $("#specifications").hide();//规格型号
+                    $("#altitudeInput").hide();//高度
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
+                    break;
+                case "3":
+                    $("#thickness_Dia").show();//厚度
+                    $("#thickness_Dia > label").text("腰厚");
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#width_dim").show();//宽度
+                    $("#width_dim > label").text("腿宽");
+                    $("#altitudeInput").show();//高度
+                    $("#altitudeInput > label").text("高度");
+                    $("#specifications").show();//规格型号
+
+                    $(".specialDiv").hide();//三个保存
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
+                    break;
+                case "4":
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#thickness_Dia").show();//厚度
+                    $("#thickness_Dia > label").text("管厚");
+                    $("#width_dim").show();//宽度
+                    $("#width_dim > label").text("大径");
+
+                    $("#altitudeInput").hide();//高度
+                    $("#specifications").hide();//规格型号
+                    $(".specialDiv").hide();//三个保存
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
+                    break;
+                case "5":
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#thickness_Dia").show();//厚度
+                    $("#thickness_Dia > label").text("单位重量");
+
+                    $("#width_dim").hide();//宽度
+                    $("#altitudeInput").hide();//高度
+                    $("#specifications").hide();//规格型号
+                    $(".specialDiv").hide();//三个保存
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
+                    break;
+                case "6":
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#sideLength1").show();//边长1
+                    $("#sideLength2").show();//边长2
+
+                    $("#thickness_Dia").hide();//厚度
+                    $("#width_dim").hide();//宽度
+                    $("#altitudeInput").hide();//高度
+                    $("#specifications").hide();//规格型号
+                    $(".specialDiv").hide();//三个保存
+                    break;
+                case "7":
+                    $("#thickness_Dia").hide();//厚度
+                    $("#thickness_Dia > label").text("厚度");
+                    $("#length_dim").show();//长度
+                    $("#length_dim > label").text("长度");
+                    $("#sideLength1").show();//边长1
+                    $("#sideLength2").show();//边长2
+
+
+                    $("#thickness_Dia").hide();//厚度
+                    $("#width_dim").hide();//宽度
+                    $("#altitudeInput").hide();//高度
+                    $("#specifications").hide();//规格型号
+                    $(".specialDiv").hide();//三个保存
+                    break;
+            }
+        }
+
+        $(function () {
+            var valuses = $("#material_type").val();
+            showHide(valuses)
+        })
+
          layui.use('form', function(){
              $ = layui.jquery;
              var form = layui.form
@@ -211,10 +347,10 @@
 
                 //监听事件
                  form.on('select(material_type)', function(data){
-                     console.log(data.value); //得到被选中的值
-
-
-
+                     $("#specia").val("");
+                     //console.log(data.value); //得到被选中的值
+                     var values = data.value;
+                    showHide(values)
                  });
 
                  //监听提交
