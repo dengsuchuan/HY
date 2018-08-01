@@ -105,6 +105,9 @@ class Blueprint extends Base
         //如果是ajax提交则代表为入库操作
         if(Request::isAjax()){
             $data = Request::post();
+            if(session('user.is_quota') == 0){
+                $data['process_quota'] = 0;
+            }
             $drawing_detial_id = $data['drawing_detial_id'];
             $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('sort')->order('sort','desc')->select();
             //统计工艺条数 判断是否有值
@@ -564,6 +567,9 @@ class Blueprint extends Base
                     unset($process['update_time']);
                     $process['process_id'] = $original.= '-'.substr( $process['process_id'] ,strpos( $process['process_id'] ,'-')+1);
                     $process['drawing_detial_id'] =  Request::post('drawing_detail_id');
+                    if(session('user.is_quota') == 0){
+                        $process['process_quota'] = 0;
+                    }
                     $original =  Request::post('drawing_detail_id');   //复制的源数据
                     $info = ProductProcess::create($process);
                 }
@@ -576,6 +582,9 @@ class Blueprint extends Base
                     unset($process['create_time']);
                     unset($process['update_time']);
                     $process['drawing_detial_id'] =  Request::post('drawing_detail_id');
+                    if(session('user.is_quota') == 0){
+                        $process['process_quota'] = 0;
+                    }
                     $process['sort'] = ++$maxSort;
                     $process['process_id'] = $maxSort<10 ? $original .= '-P0'.$maxSort:$original .= '-P'.$maxSort;
                     $original =  Request::post('drawing_detail_id');   //复制的源数据

@@ -36,7 +36,12 @@ class Employee extends Base
     //添加员工
     public function employeeAdd(){
         if(Request::isAjax()){
+            //自动生成编号
+            $employeeCode = EmployeeModel::order('employee_code desc')->where('employee_code','like','%HY%')->value('employee_code');
+            $employeeCode = intval(trim(strrchr($employeeCode, 'Y'),'Y'));
+            $employeeCode = $employeeCode<100? 'HY'.'00'.++$employeeCode : 'HY'.++$employeeCode;
             $data = Request::post();
+            $data['employee_code'] = $employeeCode;
             $data['is_leftis'] =  isset($data['is_leftis']) ? '1' : '0';
             $data['factory_date'] = $data['factory_date'] == ''? null:$data['factory_date'];
             $data['leave_date'] = $data['leave_date'] == ''? null:$data['leave_date'];

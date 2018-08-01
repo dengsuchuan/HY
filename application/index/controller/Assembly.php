@@ -38,7 +38,18 @@ class Assembly extends Base
     public function assemblyAdd(){
         if (Request::isAjax()){
             $data = Request::post();
-
+            //生成编号
+            //获取数据库中M180706-x的数量实现自动生成编号
+            $model = new AssemblyModel();//可实例化，也可不实例化
+            $i = 0;//编号
+            $str = "M".date('y').date('m').date('d')."-";//可以设置来之数据库的一个自定义字符串
+            do{
+                ++$i;  //第一次就为1，排除编号0
+                if($i < 10){
+                    $i = '0'.$i;
+                }
+            }while($model->get(["assembly_code"=>$str.$i])); //如果存在就继续算下去
+            $data['assembly_code'] = $str.$i;
             $maxSort = AssemblyModel::order('sort desc')->value('sort');
             $data['sort'] = ++$maxSort;
             $info = AssemblyModel::create($data);

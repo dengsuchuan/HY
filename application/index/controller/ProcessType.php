@@ -44,7 +44,8 @@ class ProcessType extends Base
             $id = Request::post('id');
             $process_name = Request::post('process_name');
             $process_price = Request::post('process_price');
-            $info = ProcessTypeModel::update(['process_name'=>$process_name,'process_price'=>$process_price],['id'=>$id]);
+            $cost_price = Request::post('cost_price');
+            $info = ProcessTypeModel::update(['process_name'=>$process_name,'process_price'=>$process_price,'cost_price'=>$cost_price],['id'=>$id]);
             if($info){
                 return json(1);
             }else{

@@ -4,7 +4,6 @@
             <!--//超级管理权限-->
             {if $Think.session.user.user_id}
             <!--//管理员权限-->
-            {if $Think.session.user.employee_lv == 1}
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
@@ -20,12 +19,15 @@
                         </a>
                     </li >
                     {/if}
+                    {if $Think.session.user.employee_lv == 1}
                     <li>
-                        <a _href="{:url('index/Employee/employeeInfo')}">
-                        <i class="iconfont">&#xe6a7;</i>
+                        <a _href="{:url('index/Employee/employeeInfo')}" >
+                            <i class="iconfont">&#xe6a7;</i>
                             <cite>员工列表</cite>
                         </a>
                     </li >
+                    {/if}
+
                     <li>
                         <a _href="{:url('index/personnel/clientList')}">
                         <i class="iconfont">&#xe6a7;</i>
@@ -46,7 +48,6 @@
                     <!--</li >-->
                 </ul>
             </li>
-            {/if}
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6e5;</i>
