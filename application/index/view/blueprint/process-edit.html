@@ -8,7 +8,7 @@
     <div class="layui-form-item">
       <label for="process_id" class="layui-form-label">工艺编号</label>
       <div class="layui-input-inline">
-        <input type="text"  value="<?php echo substr($processRow['process_id'],strpos($processRow['process_id'],'P')+1); ?>" autocomplete="off" class="layui-input">
+        <input type="text" disabled  value="<?php echo substr($processRow['process_id'],strpos($processRow['process_id'],'P')+1); ?>" autocomplete="off" class="layui-input">
         <input type="hidden" id="process_id" disabled="disabled" name="process_id" lay-verify="required" value="{$processRow.process_id}" autocomplete="off" class="layui-input">
         <input type="hidden" id="id"  name="id"  value="{$processRow.id}" autocomplete="off" class="layui-input">
         <p id="pLog" style="color:red"></p>
