@@ -19,6 +19,9 @@ class Login extends Controller
 
     //---------------超级管理员
     public function adminLogin(){
+        if(session('user')){
+            $this->redirect('index/index/index');
+        }
         return $this->view->fetch('admin-login');
     }
     public function adminHandleLogin(){
@@ -62,6 +65,9 @@ class Login extends Controller
 
     //普通成员登陆
     public function login(){
+        if(session('user')){
+            $this->redirect('index/index/index');
+        }
         return $this->view->fetch("login");
     }
     public function handleLogin(){

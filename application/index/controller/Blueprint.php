@@ -30,6 +30,11 @@ class Blueprint extends Base
                 ->whereOr(['drawing_internal_id'=>$data['modules']])
                 ->whereOr(['drawing_externa_id'=>$data['modules']])
                 ->paginate(5);
+            foreach ($blueprintInfo as &$item){
+                $drawing_detail_id = $item['drawing_detail_id'];
+                $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+                $item['count'] = count($count);
+            }
             $blueprintInfoCount = $blueprintInfo->total();
             $this->assign('blueprintInfo', $blueprintInfo);
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
@@ -37,6 +42,11 @@ class Blueprint extends Base
             return $this->view->fetch('blueprint-info');
         }
         $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
+        foreach ($blueprintInfo as &$item){
+            $drawing_detail_id = $item['drawing_detail_id'];
+            $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+            $item['count'] = count($count);
+        }
         $blueprintInfoCount = $blueprintInfo->total();
         $this->assign('blueprintInfo', $blueprintInfo);
         $this->assign('blueprintInfoCount', $blueprintInfoCount);
@@ -631,4 +641,35 @@ class Blueprint extends Base
 
     }
 
+    public function DelAll()  //用于删除
+    {
+        $Ary = Request::post();
+        //总条数
+        $count = count($Ary['data']);
+        $sum = 0;
+        for($i=0;$i<$count;$i++)
+        {
+            $id = $Ary['data'][$i];
+            $drawing_detail_id = BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');
+            if(!Db::table($Ary['table'])->where(["Id"=>$Ary['data'][$i]])->delete())
+            {
+                continue;//失败不统计
+            }
+            ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->delete();
+            //计数
+            $sum++;
+            //写入日志
+        }
+        if($sum>0) {   //产生有效事件再记录日志
+            $model->save([
+                "date" => time(),
+                "msg" => "删除" . $Ary['table'] . "表中记录" . $sum . "条"
+            ]);
+        }
+        echo json_encode($data=[
+            "state"=>200,
+            "message"=>"选中".$count."条记录,共".$sum."条删除成功"
+        ]);
+        return;
+    }
 }

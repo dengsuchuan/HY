@@ -93,7 +93,7 @@
         <td>
           <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintInfoList.id}'><i class="layui-icon">&#xe605;</i></div>
         </td>
-        <td>{$blueprintInfoList.drawing_detail_id}</td>
+        <td> <a href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" >{$blueprintInfoList.drawing_detail_id}</a></td>
         <td>{$blueprintInfoList.drawing_internal_id}</td>
         <td>{$blueprintInfoList.drawing_externa_id}</td>
         <td>{$blueprintInfoList.drawing_name}</td>
@@ -110,7 +110,9 @@
           <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
           <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
           <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>
-          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><i class="layui-icon">工</i></a>
+        {if $blueprintInfoList.count !=0}
+          <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>
+      {/if}
         </td>
       </tr>
       {/volist}
@@ -152,7 +154,7 @@
           layer.confirm('确认要删除吗？',function(index){
               //捉到所有被选中的，发异步进行删除
               $.ajax({
-                  url:"/index/index/delall",
+                  url:"/index/Blueprint/DelAll",
                   type:"POST",
                   dataType:"json",
                   data:{
