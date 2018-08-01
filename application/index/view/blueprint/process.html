@@ -67,9 +67,9 @@
               <th>工艺说明</th>
               <th>工序定额</th>
               <th>是否检验</th>
-              <th>工序报价</th>
               <th>定额报价</th>
-              <th>外协实际价格</th>
+              <th>工序报价</th>
+              <th>外协费用</th>
               <th>备注</th>
             </tr>
           </thead>
@@ -101,8 +101,8 @@
                 <span class="layui-badge layui-bg-gray">否</span>
                 {/if}
               </td>
-              <td>{$processInfoList.process_quoted_price}</td>
               <td>{$processInfoList.quota_quotation}</td>
+              <td>{$processInfoList.process_quoted_price}</td>
               <td>{$processInfoList.process_real_price}</td>
               <td>{$processInfoList.remark}</td>
             </tr>
