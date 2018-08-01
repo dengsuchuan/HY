@@ -9,6 +9,9 @@
 // | Author: 流年 <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
+use app\index\model\Client;
+use app\index\model\MaterialShape;
+
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -17,4 +20,14 @@ function msubstr($content) {
 function dd($value){
     dump($value);
     die;
+}
+
+function getClientName($id){
+    $clientName = Client::where("id","$id")->value("client_abbreviation");
+    return $clientName;
+}
+
+function getMateria($id){
+    $clientName = MaterialShape::where("id","$id")->value("shape");
+    return $clientName;
 }

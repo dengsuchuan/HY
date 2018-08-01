@@ -104,9 +104,9 @@
         <td>{$blueprintInfoList.layout_qty}</td>
         <td>{$blueprintInfoList.product_mfg_cost}</td>
         <td>{$blueprintInfoList.product_quotation}</td>
-        <td>{$blueprintInfoList.if_discard?"是":"否"}</td>
+        <td> {$blueprintInfoList.if_discard?'<span class="layui-badge">是</span>':'<span class="layui-badge layui-bg-green">否</span>'}  </td>
         <td class="td-manage">
-          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}',450)" href="javascript:;"><i class="layui-icon">详</i></a>
+          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}',700)" href="javascript:;"><i class="layui-icon">详</i></a>
           <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
           <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
           <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>

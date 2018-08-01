@@ -531,6 +531,7 @@
             var product_real_price = $("#product_real_price").val();
             var remark = $("#remark").val();
             var mesInput = $("#mesInput").val();//编号描述
+            var materialSelect = $("#materialSelect").val();//材料形状
 
             //组装数组
             materialSelectArray['drawing_detail_id']=drawing_detail_id;//明细编号
@@ -551,6 +552,7 @@
             materialSelectArray['remark']=remark;//备注
             materialSelectArray['create_name']="{$Think.session.user.user_name}";//创建人
             materialSelectArray['modify_name']="";//修改人
+            materialSelectArray['material_type']=materialSelect;//材料形状
             // materialSelectArray['create_time']= "";//当前时间戳  创建时间
             // materialSelectArray['update_time']= "";//修改时间
 

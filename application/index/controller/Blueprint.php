@@ -70,6 +70,15 @@ class Blueprint extends Base
             }
 
         }
+        $client = Client::all();//所有客户
+        $this->assign("client",$client);
+
+        $materialShape = MaterialShape::all();//材料形状
+        $this->assign("materialShape",$materialShape);
+
+        $material = Material::all();//获取所有材料
+        $this->assign("material",$material);
+
         $blueprintInfo = BlueprintInfo::where('drawing_detail_id',$id)->find();
         $this->assign('blueprintInfo',$blueprintInfo);
         return $this->view->fetch('blueprint-infos');
