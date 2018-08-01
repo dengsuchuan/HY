@@ -32,7 +32,8 @@
             <th>部门名称</th>
             <th>职务名称</th>
               <th>备注</th>
-              <th>权限</th>
+              <th>身份</th>
+              <th>定额权限</th>
             <th>身份证号码</th>
             <th>银行卡号</th>
             <th>业主</th>
@@ -50,16 +51,22 @@
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>
-              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Employee/employeeEdit\',[\'id\'=>$info.id])}',500,550)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
               </a>
               <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
-              {if  $Think.session.user.employee_lv == 1}
-              <a title="设置为管理员" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+              {if  $Think.session.user.admin == 'admin'}
+              {if $info.employee_lv == 0}
+              <a title="设置为管理员" onclick="admin('{$info.id}','1')" href="javascript:;">
                 <i class="layui-icon layui-icon-username"></i>
               </a>
+              {else/}
+              <a title="取消管理员" onclick="admin('{$info.id}','0')" href="javascript:;">
+                <i class="layui-icon layui-icon-close"></i>
+              </a>
+              {/if}
               {/if}
             </td>
             <td>{$info.employee_code}</td>
@@ -68,11 +75,15 @@
             <td>
               {if $info.department_name == ''}
               未指定
+              {else}
+              {$info.department_name}
               {/if}
             </td>
             <td>
               {if $info.duties_name == ''}
               未指定
+              {else}
+              {$info.duties_name}
               {/if}
             </td>
             <td>{$info.annotation}
@@ -83,11 +94,18 @@
             管理员
             {/if}
            </td>
+            <td>
+              {if $info.is_quota == 1}
+              修改
+              {else}
+              查看
+              {/if}
+            </td>
             <td>{$info.id_card_no}</td>
             <td>{$info.bank_card}</td>
             <td>{$info.owner}</td>
             <td>
-              {if $info.is_leftis == 0}
+              {if $info.is_leftis != 0}
               是
               {else}
               否
@@ -104,67 +122,46 @@
       </table>
         </div>
       </div>
+      </div>
       <div class="page">
         {$employeeInfo|raw}
     </div>
     <script>
-      layui.use('laydate', function(){
-        var laydate = layui.laydate;
-        
-        //执行一个laydate实例
-        laydate.render({
-          elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-          elem: '#end' //指定元素
-        });
-      });
-
-       /*用户-停用*/
-      function member_stop(obj,id){
-          layer.confirm('确认要停用吗？',function(index){
-
-              if($(obj).attr('title')=='启用'){
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title','停用')
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!',{icon: 5,time:1000});
-
-              }else{
-                $(obj).attr('title','启用')
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!',{icon: 5,time:1000});
-              }
-              
-          });
-      }
-
-      /*用户-删除*/
-      function member_del(obj,id){
-          layer.confirm('确认要删除吗？',function(index){
-              //发异步删除数据
-              $(obj).parents("tr").remove();
-              layer.msg('已删除!',{icon:1,time:1000});
-          });
-      }
-
-      function delAll (argument) {
-
-        var data = tableCheck.getData();
-  
-        layer.confirm('确认要删除吗？'+data,function(index){
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
-        });
-      }
+     function admin(id,admin) {
+         $.ajax({
+             url:"{:url('/index/Employee/employeeLv')}",
+             type:"POST",
+             dataType:"json",
+             data:{
+                 id:id,
+                 admin:admin   //数据
+             },
+             success:function (res) {
+                 if(res === 1 ){
+                     layer.alert("更改成功", {icon: 6},function () {
+                         window.location.reload();  //刷新父级页面
+                     });
+                 }else {
+                     layer.alert("更改失败", {icon: 5});
+                 }
+             },
+         });
+     }
+     /*删除*/
+     function delete_(obj,id){
+         layer.confirm('确认要删除吗？',function(index){
+             var url = "<?php echo url('/index/Employee/delete'); ?>";
+             var postData ={"id":id};
+             $.post(url,postData,function (result) {
+                 if(result === 1 ){
+                     $(obj).parents("tr").remove();
+                     layer.msg('已删除!',{icon:1,time:1000});
+                 }else {
+                     layer.alert("删除失败", {icon: 5});
+                 }
+             },"json");
+         });
+     }
     </script>
   </body>
 

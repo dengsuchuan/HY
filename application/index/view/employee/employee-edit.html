@@ -11,7 +11,8 @@
         <div class="layui-form-item">
             <label for="employee_code" class="layui-form-label">员工编号</label>
             <div class="layui-input-inline">
-                <input type="text" id="employee_code" value="{$employeeCode}" disabled="disabled" name="employee_code" lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="text" id="employee_code" disabled="disabled" value="{$employeeRow.employee_code}" lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="hidden" id="id" name="id" disabled="disabled" value="{$employeeRow.id}" lay-verify="required" autocomplete="off" class="layui-input" >
             </div>
             <span style="color: red">*</span>
         </div>
@@ -19,21 +20,21 @@
         <div class="layui-form-item">
             <label for="employee_name" class="layui-form-label">员工姓名</label>
             <div class="layui-input-inline">
-                <input type="text" id="employee_name" name="employee_name" lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="text" id="employee_name" value="{$employeeRow.employee_name}"  name="employee_name" lay-verify="required" autocomplete="off" class="layui-input" >
             </div>
             <span style="color: red">*</span>
         </div>
         <div class="layui-form-item">
             <label for="password" class="layui-form-label">登陆密码</label>
             <div class="layui-input-inline">
-                <input type="text" id="password"  name="password" lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="text" id="password"  name="password" lay-verify="required" value="{$employeeRow.password}"  autocomplete="off" class="layui-input" >
             </div>
             <span style="color: red">*</span>
         </div>
         <div class="layui-form-item">
             <label for="tle" class="layui-form-label">手机号</label>
             <div class="layui-input-inline">
-                <input type="text" id="tle"  name="tle"  autocomplete="off" class="layui-input" >
+                <input type="text" id="tle"  name="tle"  value="{$employeeRow.tle}"   autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
@@ -42,7 +43,11 @@
                 <select name="department_name" >
                     <option value=""></option>
                     {volist name="departmentInfo" id = "info"}
-                     <option value="{$info.id}">{$info.department_name}</option>
+                     <option value="{$info.id}"
+                        {if $info.id == $employeeRow.department_name }
+                             selected
+                         {/if}
+                     >{$info.department_name}</option>
                     {/volist}
                 </select>
             </div>
@@ -53,7 +58,11 @@
                 <select name="duties_name" >
                     <option value=""></option>
                     {volist name="dutiesInfo" id = "info"}
-                    <option value="{$info.id}">{$info.duties_name}</option>
+                    <option value="{$info.id}"
+                            {if $info.id == $employeeRow.duties_name }
+                            selected
+                            {/if}
+                    >{$info.duties_name}</option>
                     {/volist}
                 </select>
             </div>
@@ -68,13 +77,13 @@
         <div class="layui-form-item">
             <label for="id_card_no" class="layui-form-label">身份证号码</label>
             <div class="layui-input-inline">
-                <input type="text" id="id_card_no"  name="id_card_no" autocomplete="off" class="layui-input" >
+                <input type="text" id="id_card_no" value="{$employeeRow.id_card_no}" name="id_card_no" autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
             <label for="factory_date" class="layui-form-label">进厂日期</label>
             <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
-                <input type="text" name="factory_date" class="layui-input" id="data">
+                <input type="text"  value="{$employeeRow.factory_date}" name="factory_date" class="layui-input" id="data">
             </div>
             <script>
                 layui.use('laydate', function(){
@@ -90,7 +99,7 @@
         <div class="layui-form-item">
             <label for="process_id" class="layui-form-label">离职日期</label>
             <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
-                <input type="text" name="leave_date" class="layui-input" id="data1">
+                <input type="text" value="{$employeeRow.leave_date}" name="leave_date" class="layui-input" id="data1">
             </div>
             <script>
                 layui.use('laydate', function(){
@@ -106,46 +115,46 @@
         <div class="layui-form-item">
             <label for="bank_card" class="layui-form-label">银行卡号</label>
             <div class="layui-input-inline">
-                <input type="text" id="bank_card" name="bank_card"autocomplete="off" class="layui-input" >
+                <input type="text"  value="{$employeeRow.bank_card}"  id="bank_card" name="bank_card"autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
             <label for="owner" class="layui-form-label">业主</label>
             <div class="layui-input-inline">
-                <input type="text" id="owner"  name="owner"  autocomplete="off" class="layui-input" >
+                <input type="text" id="owner"  name="owner" value="{$employeeRow.owner}"  autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
             <label for="opening_bank" class="layui-form-label">开户行</label>
             <div class="layui-input-inline">
-                <input type="text" id="opening_bank" name="opening_bank"  autocomplete="off" class="layui-input" >
+                <input type="text" id="opening_bank" name="opening_bank"  value="{$employeeRow.opening_bank}"   autocomplete="off" class="layui-input" >
                 <p id="pLog" style="color:red"></p>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">是否离职</label>
             <div class="layui-input-block">
-                <input type="checkbox"  name="is_leftis" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+                <input type="checkbox"  {if 1==$employeeRow.is_leftis}checked=""{/if}   name="is_leftis"  lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
                 <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
             </div>
         </div>
         <div class="layui-form-item" lay-filter="sex">
             <label class="layui-form-label">定额权限</label>
             <div class="layui-input-block">
-                <input type="radio" name="is_quota" value="1" title="修改" ><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon layui-anim-scaleSpring"></i><div>修改</div></div>
-                <input type="radio" name="is_quota" value="0" title="查看" checked=""><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>查看</div></div>
+                <input type="radio" {if $employeeRow.is_quota == 1 }checked=""{/if}  name="is_quota" value="1" title="修改" ><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon layui-anim-scaleSpring"></i><div>修改</div></div>
+                <input type="radio"   {if $employeeRow.is_quota == 0 }checked=""{/if}   name="is_quota" value="0" title="查看"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>查看</div></div>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-inline">
-                <input type="text" id="annotation" name="annotation" autocomplete="off" class="layui-input" >
+                <input type="text" id="annotation" value="{$employeeRow.annotation}" name="annotation" autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
             <button class="layui-btn" lay-submit lay-filter="addId">
-                增加
+                修改
             </button>
         </div>
     </form>
@@ -158,9 +167,9 @@
         //监听提交
         form.on('submit(addId)', function(data){
             //console.log(data);
-            $.post("{:url('index/Employee/employeeAdd')}",data.field,function(info){
+            $.post("{:url('index/Employee/employeeEdit')}",data.field,function(info){
                 if (info) {
-                    layer.alert("添加成功", {icon: 6},function () {
+                    layer.alert("修改成功", {icon: 6},function () {
                         window.parent.location.reload();  //刷新父级页面
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
@@ -168,7 +177,7 @@
                         parent.layer.close(index);
                     });
                 }else{
-                    layer.alert("添加失败", {icon: 5});
+                    layer.alert("修改失败", {icon: 5});
                 }
             },'json');
             return false;

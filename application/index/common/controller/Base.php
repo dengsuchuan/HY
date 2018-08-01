@@ -11,9 +11,16 @@ class Base extends Controller
 //        ['isLogin' => ['only'=>'login,data']]
 //    ];
 
+//登陆权限
     public function isLogin (){
         if(!session('user')){
-            $this->redirect('/index/index/index');
+            return $this->redirect('index/index/index');
+        }
+    }
+    public function isLeftis(){
+        $employee_lv = session('user.employee_lv');
+        if($employee_lv != 1){
+            return $this->redirect('index/index/index');
         }
     }
     //排序
