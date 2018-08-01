@@ -12,7 +12,14 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">公司编号</label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" title="无法编辑" value="{$blueprintInfo.drawing_internal_id}"  disabled>
+                    <select lay-verify="required" lay-search="" name="drawing_internal_id">
+                        <option value="{$blueprintInfo.drawing_internal_id}">{$blueprintInfo.drawing_internal_id}</option>
+                        <optgroup label="选择公司编号">
+                            {volist name="$drawingInternal" id="drawingInternalList"}
+                            <option value="{$drawingInternalList.drawing_Internal_id}">{$drawingInternalList.drawing_Internal_id}</option>
+                            {/volist}
+                        </optgroup>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item">

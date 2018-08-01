@@ -7,6 +7,7 @@ use app\index\model\BlueprintOutside;
 use app\index\model\Client;
 use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
+use app\index\model\DrawingInternal;
 use app\index\model\Material;
 use app\index\model\MaterialShape;
 use app\index\model\ProductProcess;
@@ -80,6 +81,10 @@ class Blueprint extends Base
             }
 
         }
+
+        $drawingInternal = DrawingInternal::all();//所有内图
+        $this->assign("drawingInternal",$drawingInternal);
+
         $client = Client::all();//所有客户
         $this->assign("client",$client);
 
