@@ -8,7 +8,7 @@
           <cite>图纸明细</cite>
         </a>
       </span>
-  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="/index/blueprint/blueprintInfo" title="刷新">
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
     <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 
@@ -20,31 +20,47 @@
       <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
       <form class="layui-form" action="{:url('index/Blueprint/blueprintInfo')}" method="post">
         <div class="layui-input-inline">
-          <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
-        </div>
-        <div class="layui-input-inline">
-          <select name="id" lay-search="" >
-            <option value="">输入简称</option>
+          <select name="modules" lay-verify="required" lay-search="" id="findText">
+            <option value=""  >请输入关键字...</option>
             <optgroup label="外图明细">
-              {volist name="$clientKeyInfo" id="clientKeyInfoList"}
-              <option value="{$clientKeyInfoList.id}">{$clientKeyInfoList.client_abbreviation}</option>
+              {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
+              <option value="{$blueprintInfoList.drawing_detail_id}">{$blueprintInfoList.drawing_detail_id}</option>
+              {/volist}
+            </optgroup>
+            <optgroup label="公司编号">
+              {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
+              <option value="{$blueprintInfoList.drawing_internal_id}">{$blueprintInfoList.drawing_internal_id}</option>
+              {/volist}
+            </optgroup>
+
+            <optgroup label="外图编号">
+              {volist name="$blueprintKeyInfo" id="blueprintInfoList"}
+              <option value="{$blueprintInfoList.drawing_externa_id}">{$blueprintInfoList.drawing_externa_id}</option>
               {/volist}
             </optgroup>
           </select>
         </div>
-        <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
       </form>
     </div>
     <script>
-      $(function () {
-          $("input").click(function () {
-              $("input").val("");
-          });
-          $("xblock").click(function () {
-              $("dd").val("");
-          });
 
-      });
+    </script>
+    <script>
+      $(function () {
+          $("#find").click(function () {
+              var findText = $("#findText").val();
+              if(findText.length > 1){
+                  window.location.href="{:url('index/blueprint/blueprintInfo')}";
+              }else{
+                  layer.msg('请输入查找的关键字!',{icon:0,time:2000});
+              }
+
+          });
+      })
+      $("#a").change(function(){
+          alert(1);
+      })
     </script>
     <!--<span class="x-right" style="line-height:40px">共：{$blueprintInfoCount}条数据</span>-->
   </xblock>
@@ -56,7 +72,6 @@
         <th>
           <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
         </th>
-        <th>编辑</th>
         <th>明细编号</th>
         <th>公司编号</th>
         <th>外图编号</th>
@@ -65,13 +80,11 @@
         <th>类型</th>
         <th>客户</th>
         <th>批量</th>
-        <th>图纸工艺</th>
-        {if $Think.session.user.is_price !=0}
-        <th>加工费</th>
+        <th>工费</th>
         <th>报价</th>
         <th>实际价格</th>
-        {/if}
         <th>是否作废</th>
+        <th>操作</th>
       </tr>
       </thead>
       <tbody>
@@ -80,31 +93,25 @@
         <td>
           <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintInfoList.id}'><i class="layui-icon">&#xe605;</i></div>
         </td>
-        <td class="td-manage">
-          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}',600,500)" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
-        </td>
-        <td> <a href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon" style="color: #1E9FFF">{$blueprintInfoList.drawing_detail_id}</i></a></td>
+        <td>{$blueprintInfoList.drawing_detail_id}</td>
         <td>{$blueprintInfoList.drawing_internal_id}</td>
         <td>{$blueprintInfoList.drawing_externa_id}</td>
         <td>{$blueprintInfoList.drawing_name}</td>
-        <td>{$blueprintInfoList.material}</td>
+        <td>{$blueprintInfoList.heat_treatment}</td>
         <td>{$blueprintInfoList.drawing_type}</td>
-        <td>{$blueprintInfoList.client_id|getClientName}</td>
-        <td>{$blueprintInfoList.if_batch?"是":"否"}</td>
+        <td>{$blueprintInfoList.client_id}</td>
+        <td>{$blueprintInfoList.if_batch}</td>
+        <td>{$blueprintInfoList.layout_qty}</td>
+        <td>{$blueprintInfoList.product_mfg_cost}</td>
+        <td>{$blueprintInfoList.product_quotation}</td>
+        <td>否</td>
         <td class="td-manage">
-          <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><span class="layui-badge layui-bg-orange">图</span></a>
-          <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><span class="layui-badge layui-bg-orange">3D</span></a>
+          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}',450)" href="javascript:;"><i class="layui-icon">详</i></a>
+          <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
+          <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
           <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>
-          {if $blueprintInfoList.count !=0}
-          <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>
-          {/if}
+          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><i class="layui-icon">工</i></a>
         </td>
-        {if $Think.session.user.is_price !=0}
-        <td>{$blueprintInfoList.product_mfg_cost}￥</td>
-        <td>{$blueprintInfoList.product_quotation}￥</td>
-        <td>{$blueprintInfoList.product_real_price}￥</td>
-        {/if}
-        <td> {$blueprintInfoList.if_discard?'<span class="layui-badge">是</span>':'<span class="layui-badge layui-bg-green">否</span>'}  </td>
       </tr>
       {/volist}
       </tbody>
@@ -145,7 +152,7 @@
           layer.confirm('确认要删除吗？',function(index){
               //捉到所有被选中的，发异步进行删除
               $.ajax({
-                  url:"/index/Blueprint/DelAll",
+                  url:"/index/index/delall",
                   type:"POST",
                   dataType:"json",
                   data:{
