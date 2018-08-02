@@ -6,6 +6,7 @@ use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
 use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
+use app\index\model\Drawing_files;
 use app\index\model\Material;
 use app\index\model\MaterialShape;
 use app\index\model\ProductProcess;
@@ -613,8 +614,19 @@ class Blueprint extends Base
         switch ($key)
         {
             case 'wai':
-                echo '外图文件';
+//                echo '外图文件';
+                $model = new Drawing_files();
+                $rel = $model->get(['drawing_id'=>$id]);
                 break;
+
+            case 'nei':
+                echo '内图文件';
+                break;
+
+            case 'cheng':
+                echo '程序图文件';
+                break;
+            $this->error('非法访问');
         }
     }
 }
