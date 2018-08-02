@@ -27,9 +27,12 @@ class Blueprint extends Base
         if(Request::isPost()){
             $data = Request::post();
             $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
-                ->where(['drawing_detail_id'=>$data['modules']])
-                ->whereOr(['drawing_internal_id'=>$data['modules']])
-                ->whereOr(['drawing_externa_id'=>$data['modules']])
+                ->where("drawing_detail_id","LIKE","%".$data['modules']."%")
+                ->whereOr("drawing_internal_id","LIKE","%".$data['modules']."%")
+                ->whereOr("drawing_externa_id","LIKE","%".$data['modules']."%")
+                ->whereOr("drawing_name","LIKE","%".$data['modules']."%")
+                ->whereOr("material","LIKE","%".$data['modules']."%")
+                ->whereOr("drawing_type","LIKE","%".$data['modules']."%")
                 ->paginate(5);
             foreach ($blueprintInfo as &$item){
                 $drawing_detail_id = $item['drawing_detail_id'];
