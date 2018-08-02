@@ -608,4 +608,13 @@ class Blueprint extends Base
 
     }
 
+    public function is_DrawingFiles($id,$key)//判断是否存在图纸文件  图纸明细id,类别
+    {
+        switch ($key)
+        {
+            case 'wai':
+                echo '外图文件';
+                break;
+        }
+    }
 }
