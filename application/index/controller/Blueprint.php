@@ -22,18 +22,28 @@ class Blueprint extends Base
     ];
     //--|图纸明细控制器以及相关子控制器
     public function blueprintInfo(){
+        $ClientKeyInfo = Client::all();
+        $this->assign("clientKeyInfo",$ClientKeyInfo);
+
+
+
         //判断是否为post提交请求。如果是，就代表是搜索。
         $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
         if(Request::isPost()){
             $data = Request::post();
-            $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
-                ->where("drawing_detail_id","LIKE","%".$data['modules']."%")
-                ->whereOr("drawing_internal_id","LIKE","%".$data['modules']."%")
-                ->whereOr("drawing_externa_id","LIKE","%".$data['modules']."%")
-                ->whereOr("drawing_name","LIKE","%".$data['modules']."%")
-                ->whereOr("material","LIKE","%".$data['modules']."%")
-                ->whereOr("drawing_type","LIKE","%".$data['modules']."%")
-                ->paginate(5);
+            if($data['id']!=""){
+                $blueprintInfo = BlueprintInfo::where("client_id",$data['id'])->paginate(10);
+            }else{
+                $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
+                    ->where("drawing_detail_id","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_internal_id","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_externa_id","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_name","LIKE","%".$data['modules']."%")
+                    ->whereOr("material","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_type","LIKE","%".$data['modules']."%")
+                    ->whereOr("material","LIKE","%".$data['modules']."%")
+                    ->paginate(10);
+            }
             foreach ($blueprintInfo as &$item){
                 $drawing_detail_id = $item['drawing_detail_id'];
                 $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
@@ -44,6 +54,7 @@ class Blueprint extends Base
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
             $this->assign('blueprintKeyInfo', $blueprintKeyInfo);
             return $this->view->fetch('blueprint-info');
+
         }
         $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
         foreach ($blueprintInfo as &$item){
