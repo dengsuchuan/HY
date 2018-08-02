@@ -617,6 +617,8 @@ class Blueprint extends Base
 //                echo '外图文件';
                 $model = new Drawing_files();
                 $rel = $model->get(['drawing_id'=>$id]);
+                echo $id;
+                dump($rel);
                 break;
 
             case 'nei':
