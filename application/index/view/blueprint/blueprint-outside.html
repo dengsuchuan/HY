@@ -57,7 +57,7 @@
                     <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
                 </td>
                 <td>
-                    <a title="序号{$blueprintOutsideList.drawing_external_id}" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i class="layui-icon" style="color: #1E9FFF">{$blueprintOutsideList.drawing_external_id}</i></a>
+                    <a title="序号{$blueprintOutsideList.drawing_external_id}" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}',600,600)" href="javascript:;"><i class="layui-icon" style="color: #1E9FFF">{$blueprintOutsideList.drawing_external_id}</i></a>
                 </td>
               <td>{$blueprintOutsideList.create_time}</td>
                 <td>admin</td>

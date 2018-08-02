@@ -180,6 +180,35 @@
                     <input type="text" class="layui-input" name="material_requirements" value="{$blueprintInfo.material_requirements}"  >
                 </div>
             </div>
+
+
+
+            <!--设置价格权限-->
+            {switch name="$Think.session.user.is_price"}
+            {case value="0"}
+
+            {/case}
+            {case value="1"}
+            <div class="layui-form-item">
+                <label class="layui-form-label">产品加工费</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input"  disabled value="{$blueprintInfo.product_mfg_cost}"  placeholder="￥">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">产品报价</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input"  disabled value="{$blueprintInfo.product_quotation}"  placeholder="￥">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">产品实价</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" disabled value="{$blueprintInfo.product_real_price}"  placeholder="￥">
+                </div>
+            </div>
+            {/case}
+            {default /}
             <div class="layui-form-item">
                 <label class="layui-form-label">产品加工费</label>
                 <div class="layui-input-inline">
@@ -198,6 +227,7 @@
                     <input type="text" class="layui-input" name="product_real_price" value="{$blueprintInfo.product_real_price}"  placeholder="￥">
                 </div>
             </div>
+            {/switch}
             <div class="layui-form-item">
                 <label class="layui-form-label">创建人</label>
                 <div class="layui-input-inline">

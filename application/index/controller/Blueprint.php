@@ -69,6 +69,7 @@ class Blueprint extends Base
             $data['if_length'] = isset($data['if_length']) ? '1' : '0';
             $data['if_width'] = isset($data['if_width']) ? '1' : '0';
             $data['if_discard'] = isset($data['if_discard']) ? '1' : '0';
+            $data['modify_name'] = session('user.user_name');
             //获取提交过来的ID
             $id = $data['id'];
             unset($data['id']);
@@ -145,6 +146,7 @@ class Blueprint extends Base
                 $sort = $processInfo[0]['sort'];
                 $data['sort'] = ++$sort;
             }
+            $data['create_name'] = session('user.user_name');
             $info = ProductProcess::create($data);
             if($info){
                 return json(1);
@@ -324,7 +326,7 @@ class Blueprint extends Base
         $detailArray = [
             'drawing_detail_id'=>$str.$i,//这个是图纸明细的编号，每次自动递增
             'drawing_external_id'=>$id,//外图编号
-            'material'=>$material//获取所有材料
+            'material'=>$material,//获取所有材料
         ];
         $this->assign("detailArray",$detailArray);
         /*----------------公司编号处理----------------------*/
@@ -475,6 +477,7 @@ class Blueprint extends Base
             $id = $data['id'];
             unset($data['id']);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+            $data['modify_name'] = session('user.user_name');
             $info = ProductProcess::update($data,['id'=>$id]);
             if($info){
                 return json(1);
@@ -631,7 +634,16 @@ class Blueprint extends Base
         if(Request::isAjax()){
             $jsontext = Request::post("json");
             $jsonToArray = json_decode($jsontext);
-
+            $jsonToArray->create_name = session('user.user_name');
+            if(session('user.is_price') == 0){
+                $jsonToArray->product_mfg_cost = 0;
+                $jsonToArray->product_quotation = 0;
+                $jsonToArray->product_real_price = 0;
+            }else if (session('user.is_price') == 1){
+                $jsonToArray->product_mfg_cost = 0;
+                $jsonToArray->product_quotation = 0;
+                $jsonToArray->product_real_price = 0;
+            }
             //公司编号
             $p = Request::post("p");
             $mes = Request::post("mes");

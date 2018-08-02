@@ -43,6 +43,7 @@ class Internal extends Base
 
             $data = Request::post();
             $data['drawing_Internal_id'] = $str.$i;
+            $data['create_name'] = session('user.user_name');
             $info = DrawingInternal::create($data);
             if($info){
                 if($info){
@@ -91,6 +92,7 @@ class Internal extends Base
                 $assembly_code = $assemblyCode_.'-01';
             }
             $data['drawing_Internal_id'] = $assembly_code;
+            $data['create_name'] = session('user.user_name');
             $info = DrawingInternal::create($data);
             if($info){
                 return json(1);
@@ -148,6 +150,7 @@ class Internal extends Base
         if(Request::isAjax()){
             $data = Request::post();
             $id = $data['id'];
+            $data['modify_name'] = session('user.user_name');
             $info = DrawingInternal::update($data,['id'=>$id]);
             if($info){
                 return json(1);

@@ -34,6 +34,7 @@
               <th>备注</th>
               <th>身份</th>
               <th>定额权限</th>
+              <th>价格权限</th>
             <th>身份证号码</th>
             <th>银行卡号</th>
             <th>业主</th>
@@ -100,6 +101,13 @@
               {else}
               查看
               {/if}
+            </td>
+            <td>
+              {switch name=" $info.is_price"}
+              {case value="0"}隐藏{/case}
+              {case value="1"}查看{/case}
+              {default /}修改
+              {/switch}
             </td>
             <td>{$info.id_card_no}</td>
             <td>{$info.bank_card}</td>

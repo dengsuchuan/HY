@@ -82,9 +82,11 @@
         <th>客户</th>
         <th>批量</th>
         <th>图纸工艺</th>
+        {if $Think.session.user.is_price !=0}
         <th>加工费</th>
         <th>报价</th>
         <th>实际价格</th>
+        {/if}
         <th>是否作废</th>
       </tr>
       </thead>
@@ -95,7 +97,7 @@
           <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintInfoList.id}'><i class="layui-icon">&#xe605;</i></div>
         </td>
         <td class="td-manage">
-          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}',600,500)" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
         </td>
         <td> <a href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon" style="color: #1E9FFF">{$blueprintInfoList.drawing_detail_id}</i></a></td>
         <td>{$blueprintInfoList.drawing_internal_id}</td>
@@ -113,9 +115,11 @@
           <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>
           {/if}
         </td>
-        <td>{$blueprintInfoList.layout_qty}￥</td>
+        {if $Think.session.user.is_price !=0}
         <td>{$blueprintInfoList.product_mfg_cost}￥</td>
         <td>{$blueprintInfoList.product_quotation}￥</td>
+        <td>{$blueprintInfoList.product_real_price}￥</td>
+        {/if}
         <td> {$blueprintInfoList.if_discard?'<span class="layui-badge">是</span>':'<span class="layui-badge layui-bg-green">否</span>'}  </td>
       </tr>
       {/volist}

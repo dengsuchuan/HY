@@ -145,6 +145,14 @@
                 <input type="radio"   {if $employeeRow.is_quota == 0 }checked=""{/if}   name="is_quota" value="0" title="查看"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>查看</div></div>
             </div>
         </div>
+        <div class="layui-form-item" lay-filter="sex">
+            <label class="layui-form-label">价格权限</label>
+            <div class="layui-input-block">
+                <input type="radio" name="is_price" value="0" title="隐藏"  {if $employeeRow.is_price == 0 }checked=""{/if} ><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon layui-anim-scaleSpring"></i><div>隐藏</div></div>
+                <input type="radio" name="is_price" value="1" title="查看"   {if $employeeRow.is_price == 1 }checked=""{/if}  ><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>查看</div></div>
+                <input type="radio" name="is_price" value="2" title="修改"  {if $employeeRow.is_price == 2 }checked=""{/if}  ><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>修改</div></div>
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-inline">

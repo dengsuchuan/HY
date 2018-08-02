@@ -52,6 +52,7 @@ class Assembly extends Base
             $data['assembly_code'] = $str.$i;
             $maxSort = AssemblyModel::order('sort desc')->value('sort');
             $data['sort'] = ++$maxSort;
+            $data['create_name'] = session('user.user_name');
             $info = AssemblyModel::create($data);
             if($info){
                 return json(1);
@@ -86,6 +87,8 @@ class Assembly extends Base
             $data = Request::post();
             $id = $data['id'];
             unset($data['id']);
+            $data['modify_name'] = session('user.user_name');
+
             $info = AssemblyModel::update($data,['id'=>$id]);
             if($info){
                 return json(1);

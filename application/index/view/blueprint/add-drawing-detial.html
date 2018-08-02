@@ -240,6 +240,33 @@
                 <input type="text" class="layui-input" value=" "  id="material_requirements">
             </div>
         </div>
+
+        <!--设置价格权限-->
+        {switch name="$Think.session.user.is_price"}
+        {case value="0"}
+
+        {/case}
+        {case value="1"}
+        <div class="layui-form-item">
+            <label class="layui-form-label">产品加工费</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" placeholder="￥" disabled value="0" id="product_mfg_cost">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">产品报价</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input"  placeholder="￥" disabled value="0" id="product_quotation">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">产品实价</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" placeholder="￥" disabled value="0" id="product_real_price">
+            </div>
+        </div>
+        {/case}
+        {default /}
         <div class="layui-form-item">
             <label class="layui-form-label">产品加工费</label>
             <div class="layui-input-inline">
@@ -258,13 +285,16 @@
                 <input type="text" class="layui-input" placeholder="￥" id="product_real_price">
             </div>
         </div>
+        {/switch}
+
+
+
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
                 <textarea class="layui-textarea"  id="remark"></textarea>
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
