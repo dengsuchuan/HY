@@ -617,10 +617,15 @@ class Blueprint extends Base
         {
             case 'wai':
 //                echo '外图文件';
-                if($rel['abroad']==null||$rel['abroad']=="")
+                if($rel['abroad']==null||$rel['abroad']=="")//没有文件地址
                 {
                     return $this->fetch('not-files',['key'=>'外图']);
                 }
+                if(!file_exists('.'.$rel['abroad']))//文件不存在
+                {
+                    return $this->fetch('not-files',['key'=>'外图']);
+                }
+                return $this->fetch('drawing_files',['url'=>$rel['abroad']]);
                 break;
 
             case 'nei':
