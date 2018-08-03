@@ -611,22 +611,32 @@ class Blueprint extends Base
 
     public function is_DrawingFiles($id,$key)//判断是否存在图纸文件  图纸明细id,类别
     {
+        $model = new Drawing_files();
+        $rel = $model->get(['drawing_id'=>$id]);
         switch ($key)
         {
             case 'wai':
 //                echo '外图文件';
-                $model = new Drawing_files();
-                $rel = $model->get(['drawing_id'=>$id]);
-                echo $id;
-                dump($rel);
+                if($rel['abroad']==null||$rel['abroad']=="")
+                {
+                    return $this->fetch('not-files',['key'=>'外图']);
+                }
                 break;
 
             case 'nei':
-                echo '内图文件';
+//                echo '内图文件';
+                if($rel['within']==null||$rel['within']=="")
+                {
+                    return $this->fetch('not-files',['key'=>'内图']);
+                }
                 break;
 
             case 'cheng':
-                echo '程序图文件';
+//                echo '程序图文件';
+                if($rel['engineering']==null||$rel['engineering']=="")
+                {
+                    return $this->fetch('not-files',['key'=>'程序图']);
+                }
                 break;
             $this->error('非法访问');
         }
