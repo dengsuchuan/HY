@@ -27,7 +27,10 @@ class Section extends Base
     public function sectionAdd(){
         if(Request::isAjax()){
             $data = Request::post();
-            $info = SectionModel::create($data);
+            $datas['spec'] = $data['spec'];
+            $datas['size'] = $data['height'].'*'.$data['leg_width'].'*'.$data['waist_depth'];
+            $datas['weight'] = $data['weight'];
+            $info = SectionModel::create($datas);
             if($info){
                 return json(1);
             }else{
@@ -41,7 +44,10 @@ class Section extends Base
             $data = Request::post();
             $id = $data['id'];
             unset($data['id']);
-            $info = SectionModel::update($data,['id'=>$id]);
+            $datas['spec'] = $data['spec'];
+            $datas['size'] = $data['height'].'*'.$data['leg_width'].'*'.$data['waist_depth'];
+            $datas['weight'] = $data['weight'];
+            $info = SectionModel::update($datas,['id'=>$id]);
             if($info){
                 return json(1);
             }else{
@@ -50,8 +56,10 @@ class Section extends Base
         }
         $id = intval(input('id'));
         $sectionRow = SectionModel::get($id);
-        $this->assign([
+        $data = explode('*',$sectionRow['size']);
+            $this->assign([
             'sectionRow'  =>  $sectionRow,
+            'data'  =>$data
         ]);
         return $this->view->fetch('section_edit');
     }

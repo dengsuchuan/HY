@@ -20,18 +20,11 @@
           <table class="layui-table">
             <thead>
             <tr>
-
-              <th rowspan="2" style="text-align: center">操作</th>
-              <th rowspan="2" style="text-align: center">规格</th>
-            <th colspan="3" style="text-align: center">尺寸</th>
-            <th  rowspan="2" style="text-align: center">理论重量</th>
+              <th  style="text-align: center">操作</th>
+              <th style="text-align: center">规格</th>
+            <th style="text-align: center">尺寸</th>
+            <th   style="text-align: center">理论重量</th>
             </tr>
-            <tr>
-              <th style="text-align: center">高度</th>
-              <th style="text-align: center">腿宽</th>
-              <th style="text-align: center">腰厚</th>
-            </tr>
-        </thead>
         <tbody>
         {volist name="sectionInfo" id="info"}
           <tr>
@@ -45,9 +38,7 @@
               </a>
             </td>
             <td style="text-align: center">{$info.spec}</td>
-            <td style="text-align: center">{$info.height}</td>
-            <td style="text-align: center">{$info.leg_width}</td>
-            <td style="text-align: center">{$info.waist_depth}</td>
+            <td style="text-align: center">{$info.size}</td>
             <td style="text-align: center">{$info.weight}</td>
           </tr>
         {/volist}
