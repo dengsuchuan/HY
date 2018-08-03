@@ -4,12 +4,15 @@ namespace app\index\controller;
 use app\index\model\BlueprintInfo;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintOutside;
+use app\index\model\Client;
 use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
-use app\index\model\Drawing_files;
+use app\index\model\DrawingInternal;
 use app\index\model\Material;
 use app\index\model\MaterialShape;
 use app\index\model\ProductProcess;
+use app\index\model\DrawingFiles;
+
 use think\Db;
 use think\facade\Request;
 use app\index\model\ProcessType as ProcessTypeModel;
@@ -21,22 +24,46 @@ class Blueprint extends Base
     ];
     //--|图纸明细控制器以及相关子控制器
     public function blueprintInfo(){
+        $ClientKeyInfo = Client::all();
+        $this->assign("clientKeyInfo",$ClientKeyInfo);
+
+
+
         //判断是否为post提交请求。如果是，就代表是搜索。
         $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
         if(Request::isPost()){
             $data = Request::post();
-            $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
-                ->where(['drawing_detail_id'=>$data['modules']])
-                ->whereOr(['drawing_internal_id'=>$data['modules']])
-                ->whereOr(['drawing_externa_id'=>$data['modules']])
-                ->paginate(5);
+            if($data['id']!=""){
+                $blueprintInfo = BlueprintInfo::where("client_id",$data['id'])->paginate(10);
+            }else{
+                $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
+                    ->where("drawing_detail_id","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_internal_id","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_externa_id","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_name","LIKE","%".$data['modules']."%")
+                    ->whereOr("material","LIKE","%".$data['modules']."%")
+                    ->whereOr("drawing_type","LIKE","%".$data['modules']."%")
+                    ->whereOr("material","LIKE","%".$data['modules']."%")
+                    ->paginate(10);
+            }
+            foreach ($blueprintInfo as &$item){
+                $drawing_detail_id = $item['drawing_detail_id'];
+                $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+                $item['count'] = count($count);
+            }
             $blueprintInfoCount = $blueprintInfo->total();
             $this->assign('blueprintInfo', $blueprintInfo);
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
             $this->assign('blueprintKeyInfo', $blueprintKeyInfo);
             return $this->view->fetch('blueprint-info');
+
         }
         $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
+        foreach ($blueprintInfo as &$item){
+            $drawing_detail_id = $item['drawing_detail_id'];
+            $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+            $item['count'] = count($count);
+        }
         $blueprintInfoCount = $blueprintInfo->total();
         $this->assign('blueprintInfo', $blueprintInfo);
         $this->assign('blueprintInfoCount', $blueprintInfoCount);
@@ -57,6 +84,8 @@ class Blueprint extends Base
             $data['if_thickness'] = isset($data['if_thickness']) ? '1' : '0';
             $data['if_length'] = isset($data['if_length']) ? '1' : '0';
             $data['if_width'] = isset($data['if_width']) ? '1' : '0';
+            $data['if_discard'] = isset($data['if_discard']) ? '1' : '0';
+            $data['modify_name'] = session('user.user_name');
             //获取提交过来的ID
             $id = $data['id'];
             unset($data['id']);
@@ -69,6 +98,19 @@ class Blueprint extends Base
             }
 
         }
+
+        $drawingInternal = DrawingInternal::all();//所有内图
+        $this->assign("drawingInternal",$drawingInternal);
+
+        $client = Client::all();//所有客户
+        $this->assign("client",$client);
+
+        $materialShape = MaterialShape::all();//材料形状
+        $this->assign("materialShape",$materialShape);
+
+        $material = Material::all();//获取所有材料
+        $this->assign("material",$material);
+
         $blueprintInfo = BlueprintInfo::where('drawing_detail_id',$id)->find();
         $this->assign('blueprintInfo',$blueprintInfo);
         return $this->view->fetch('blueprint-infos');
@@ -106,6 +148,9 @@ class Blueprint extends Base
         //如果是ajax提交则代表为入库操作
         if(Request::isAjax()){
             $data = Request::post();
+            if(session('user.is_quota') == 0){
+                $data['process_quota'] = 0;
+            }
             $drawing_detial_id = $data['drawing_detial_id'];
             $processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('sort')->order('sort','desc')->select();
             //统计工艺条数 判断是否有值
@@ -117,6 +162,7 @@ class Blueprint extends Base
                 $sort = $processInfo[0]['sort'];
                 $data['sort'] = ++$sort;
             }
+            $data['create_name'] = session('user.user_name');
             $info = ProductProcess::create($data);
             if($info){
                 return json(1);
@@ -296,7 +342,7 @@ class Blueprint extends Base
         $detailArray = [
             'drawing_detail_id'=>$str.$i,//这个是图纸明细的编号，每次自动递增
             'drawing_external_id'=>$id,//外图编号
-            'material'=>$material//获取所有材料
+            'material'=>$material,//获取所有材料
         ];
         $this->assign("detailArray",$detailArray);
         /*----------------公司编号处理----------------------*/
@@ -312,6 +358,9 @@ class Blueprint extends Base
         /*----------------材料形状处理----------------------*/
         $materialShape = MaterialShape::all();
         $this->assign("materialShapeArray",$materialShape);
+
+        $client = Client::all();
+        $this->assign("client",$client);
 
 
 
@@ -444,6 +493,7 @@ class Blueprint extends Base
             $id = $data['id'];
             unset($data['id']);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+            $data['modify_name'] = session('user.user_name');
             $info = ProductProcess::update($data,['id'=>$id]);
             if($info){
                 return json(1);
@@ -565,6 +615,9 @@ class Blueprint extends Base
                     unset($process['update_time']);
                     $process['process_id'] = $original.= '-'.substr( $process['process_id'] ,strpos( $process['process_id'] ,'-')+1);
                     $process['drawing_detial_id'] =  Request::post('drawing_detail_id');
+                    if(session('user.is_quota') == 0){
+                        $process['process_quota'] = 0;
+                    }
                     $original =  Request::post('drawing_detail_id');   //复制的源数据
                     $info = ProductProcess::create($process);
                 }
@@ -577,6 +630,9 @@ class Blueprint extends Base
                     unset($process['create_time']);
                     unset($process['update_time']);
                     $process['drawing_detial_id'] =  Request::post('drawing_detail_id');
+                    if(session('user.is_quota') == 0){
+                        $process['process_quota'] = 0;
+                    }
                     $process['sort'] = ++$maxSort;
                     $process['process_id'] = $maxSort<10 ? $original .= '-P0'.$maxSort:$original .= '-P'.$maxSort;
                     $original =  Request::post('drawing_detail_id');   //复制的源数据
@@ -594,7 +650,16 @@ class Blueprint extends Base
         if(Request::isAjax()){
             $jsontext = Request::post("json");
             $jsonToArray = json_decode($jsontext);
-
+            $jsonToArray->create_name = session('user.user_name');
+            if(session('user.is_price') == 0){
+                $jsonToArray->product_mfg_cost = 0;
+                $jsonToArray->product_quotation = 0;
+                $jsonToArray->product_real_price = 0;
+            }else if (session('user.is_price') == 1){
+                $jsonToArray->product_mfg_cost = 0;
+                $jsonToArray->product_quotation = 0;
+                $jsonToArray->product_real_price = 0;
+            }
             //公司编号
             $p = Request::post("p");
             $mes = Request::post("mes");
@@ -609,9 +674,40 @@ class Blueprint extends Base
 
     }
 
+    public function DelAll()  //用于删除
+    {
+        $Ary = Request::post();
+        //总条数
+        $count = count($Ary['data']);
+        $sum = 0;
+        for($i=0;$i<$count;$i++)
+        {
+            $id = $Ary['data'][$i];
+            $drawing_detail_id = BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');
+            if(!Db::table($Ary['table'])->where(["Id"=>$Ary['data'][$i]])->delete())
+            {
+                continue;//失败不统计
+            }
+            ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->delete();
+            //计数
+            $sum++;
+            //写入日志
+        }
+        if($sum>0) {   //产生有效事件再记录日志
+            $model->save([
+                "date" => time(),
+                "msg" => "删除" . $Ary['table'] . "表中记录" . $sum . "条"
+            ]);
+        }
+        echo json_encode($data=[
+            "state"=>200,
+            "message"=>"选中".$count."条记录,共".$sum."条删除成功"
+        ]);
+        return;
+    }
     public function is_DrawingFiles($id,$key)//判断是否存在图纸文件  图纸明细id,类别
     {
-        $model = new Drawing_files();
+        $model = new DrawingFiles();
         $rel = $model->get(['drawing_id'=>$id]);
         switch ($key)
         {
@@ -643,7 +739,8 @@ class Blueprint extends Base
                     return $this->fetch('not-files',['key'=>'程序图']);
                 }
                 break;
-            $this->error('非法访问');
+                $this->error('非法访问');
         }
     }
+
 }
