@@ -693,12 +693,6 @@ class Blueprint extends Base
             $sum++;
             //写入日志
         }
-        if($sum>0) {   //产生有效事件再记录日志
-            $model->save([
-                "date" => time(),
-                "msg" => "删除" . $Ary['table'] . "表中记录" . $sum . "条"
-            ]);
-        }
         echo json_encode($data=[
             "state"=>200,
             "message"=>"选中".$count."条记录,共".$sum."条删除成功"
