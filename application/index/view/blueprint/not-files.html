@@ -39,7 +39,7 @@
         var formFile = new FormData();//文件对象
         formFile.append('file',files);
         $.ajax({
-            url:"{:url('index/Blueprint/check',['drawing_id'=>$drawing_id,'tip'=>$tip])}",
+            url:"{:url('index/Blueprint/FileUpload',['drawing_id'=>$drawing_id,'tip'=>$tip])}",
             data:formFile,
             type: "post",
             dataType: "json",

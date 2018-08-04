@@ -732,7 +732,7 @@ class Blueprint extends Base
                 {
                     return $this->fetch('not-files',$data);
                 }
-                return $this->fetch('drawing_files',['url'=>$rel['abroad']]);
+                    return $this->fetch('drawing_files',['url'=>$rel['abroad']]);
                 break;
 
             case 'nei':
@@ -756,7 +756,7 @@ class Blueprint extends Base
         }
     }
 
-    public function check($drawing_id,$tip)//测试
+    public function FileUpload($drawing_id,$tip)//图纸文件上传
     {
         $files = $this->request->file('file');//得到文件
         $fileModel = new DrawingFiles();
@@ -790,20 +790,21 @@ class Blueprint extends Base
             return;
         }
         if($data) {  //已经存在改图纸明细的文件记录
+            $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>'']);//清空原记录
             $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path.'.pdf']);
             if(!$rel)
             {
                 echo json_encode([
                     'state' =>  500,
-                    'msg'   =>  '文件上传失败',
+                    'msg'   =>  '文件记录上传失败',
                 ]);
                 return;
             }
-            echo json_encode([
-                'state' =>  200,
-                'msg'   =>  '文件上传完成',
-            ]);
-            return;
+                echo json_encode([
+                    'state' =>  200,
+                    'msg'   =>  '文件上传完成',
+                ]);
+                return;
         }
         //不存在该图纸明细的文件记录
         $rel = $fileModel->save([$tip=>$path.'.pdf','drawing_id'=>$drawing_id]);
@@ -811,15 +812,15 @@ class Blueprint extends Base
         {
             echo json_encode([
                 'state' =>  500,
-                'msg'   =>  '文件上传失败',
+                'msg'   =>  '文件记录上传失败',
             ]);
             return;
         }
-        echo json_encode([
-            'state' =>  200,
-            'msg'   =>  '文件上传完成',
-        ]);
-        return;
+            echo json_encode([
+                'state' =>  200,
+                'msg'   =>  '文件上传完成',
+            ]);
+            return;
     }
 
 }
