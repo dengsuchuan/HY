@@ -47,7 +47,19 @@
             processData: false,//用于对data参数进行序列化处理 这里必须false
             contentType: false, //必须
             success:function (res) {
-                console.log(res);
+                if(res.state==500)
+                {
+                    layer.msg(res.msg);
+                    return;
+                }
+                if(res.state==200)
+                {
+                    layer.msg(res.msg+',请稍后', {icon: 16,time: 2000},
+                    function () {
+                        location.reload();
+                    });
+                    return;
+                }
             }
         })
     }

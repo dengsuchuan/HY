@@ -774,7 +774,7 @@ class Blueprint extends Base
             return;
         }
         if($data) {  //已经存在改图纸明细的文件记录
-            $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path]);
+            $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path.'.pdf']);
             if(!$rel)
             {
                 echo json_encode([
@@ -790,7 +790,7 @@ class Blueprint extends Base
             return;
         }
         //不存在该图纸明细的文件记录
-        $rel = $fileModel->save([$tip=>$path,'drawing_id'=>$drawing_id]);
+        $rel = $fileModel->save([$tip=>$path.'.pdf','drawing_id'=>$drawing_id]);
         if(!$rel)
         {
             echo json_encode([
