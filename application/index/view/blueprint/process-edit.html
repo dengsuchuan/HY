@@ -70,6 +70,31 @@
         <input type="text" id="drawing_detial_id" value="{$processRow.drawing_detial_id}"  name="drawing_detial_id" lay-verify="required" autocomplete="off" class="layui-input"  disabled="disabled">
       </div>
     </div>
+
+
+    <!--设置价格权限-->
+    {switch name="$Think.session.user.is_offer"}
+    {case value="0"}
+
+    {/case}
+    {case value="1"}
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">报价定额h(小时)</label>
+      <div class="layui-input-inline">
+        <input type="text" id="quota_quotation"  disabled value="{$processRow.quota_quotation}"   autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">工序报价</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_quoted_price"  disabled value="{$processRow.process_quoted_price}"   autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    {/case}
+    {default /}
+
     <div class="layui-form-item">
       <label class="layui-form-label">报价定额h(小时)</label>
       <div class="layui-input-inline">
@@ -83,6 +108,7 @@
       </div>
     </div>
 
+    {/switch}
     <div class="layui-form-item">
       <label class="layui-form-label">外协费用</label>
       <div class="layui-input-inline">

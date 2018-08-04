@@ -46,6 +46,7 @@ class Login extends Controller
                 $user['is_quota'] =  1;   //定额权限  默认管理员有最高权限
                 $user['employee_lv'] = 1; //管理员权限
                 $user['is_price'] = 2;  //价格权限
+                $user['is_offer'] = 2;  //报价权限
                 session('user',$user);
                 return json([
                     'code'  => 1,
@@ -75,7 +76,7 @@ class Login extends Controller
         if(Request::isAjax()){
             $employee_code = Request::post('employee_code');
             $password = Request::post('password');
-            $info = Employee::where(['employee_code'=>$employee_code])->where(['password'=>$password])->field('id,employee_code,employee_name,employee_lv,is_quota,is_price')->find();
+            $info = Employee::where(['employee_code'=>$employee_code])->where(['password'=>$password])->field('id,employee_code,employee_name,employee_lv,is_quota,is_price,is_offer')->find();
             if(!$info){
                 return json([
                     'code'  => 0,
@@ -90,6 +91,7 @@ class Login extends Controller
                 $user['employee_lv'] =  $info['employee_lv'];
                 $user['is_quota'] =  $info['is_quota'];
                 $user['is_price'] =  $info['is_price'];
+                $user['is_offer'] =  $info['is_offer'];  //报价权限
                 session('user',$user);
                 return json([
                     'code'  => 1,

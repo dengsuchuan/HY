@@ -63,6 +63,25 @@
                 <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
             </div>
         </div>
+        <!--设置价格权限-->
+        {switch name="$Think.session.user.is_offer"}
+        {case value="0"}
+
+        {/case}
+        {case value="1"}
+        <div class="layui-form-item">
+            <label class="layui-form-label">报价定额h(小时)</label>
+            <div class="layui-input-inline">
+                <input type="text" id="quota_quotation" disabled  autocomplete="off" value="0" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">工序报价</label>
+            <div class="layui-input-inline">
+                <input type="text" disabled   placeholder="￥"  autocomplete="off" value="0" class="layui-input">
+            </div>
+        </div>
+        {default /}
         <div class="layui-form-item">
             <label class="layui-form-label">报价定额h(小时)</label>
             <div class="layui-input-inline">
@@ -75,6 +94,8 @@
                 <input type="text" id="process_quoted_price" name="process_quoted_price"  placeholder="￥"  autocomplete="off" class="layui-input">
             </div>
         </div>
+        {/case}
+        {/switch}
         <div class="layui-form-item">
             <label class="layui-form-label">外协费用</label>
             <div class="layui-input-inline">
