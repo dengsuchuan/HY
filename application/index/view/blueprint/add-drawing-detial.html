@@ -205,7 +205,12 @@
             <div class="layui-form-item" id="specifications">
                 <label class="layui-form-label">规格型号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="specificationsInput">
+                    <select lay-verify="required" lay-search="" name="material_type" lay-filter="material_type" id="material_type">
+                        <option value="">查找规格</option>
+                        <optgroup label="选择规格">
+                            <option value="1">23*32*44</option>
+                        </optgroup>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item" id="sideLength1">
@@ -217,7 +222,13 @@
             <div class="layui-form-item" id="sideLength2">
                 <label class="layui-form-label">边长2</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength2Input">
+                    <input type="text" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength2Input">
+                </div>
+            </div>
+            <div class="layui-form-item" id="weight">
+                <label class="layui-form-label">重量</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="weight" lay-verify="required" autocomplete="off" class="layui-input"  id="weightInput">
                 </div>
             </div>
             <div class="layui-form-item" id="saveButton">
@@ -287,8 +298,6 @@
         </div>
         {/switch}
 
-
-
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
@@ -321,6 +330,9 @@
         $("#sideLength2").hide();//边长2
 
 
+
+
+
         //重置
         $("#resettinGeneratingForm").on("click",function () {
             $("#materialDiv").attr("style"," ");
@@ -333,6 +345,7 @@
             $("#specifications").hide();//规格
             $("#sideLength1").hide();//边长1
             $("#sideLength2").hide();//边长2
+            $("#weight").hide();//重量
 
             materialSelectId = 0;
         });
@@ -359,6 +372,7 @@
         //生成
         $("#generatingForm").on("click",function () {
             var materialSelect = parseInt($("#materialSelect").val());
+            $("#weight").show();//重量
             $("#addwebsql").show();//保存按钮
             $("#materialDiv > input").val("");
             $(".specialDiv").hide();//保证
@@ -392,14 +406,12 @@
                     materialSelectId = 2;
                     break;
                 case 3:
-                    $("#altitude").show();//高度
                     $("#specifications").show();//规格
-                    $("#width").show();//宽度 ->腿宽
-                    $("#width > label").text("腿宽");
-                    $("#thickness").show(); //厚度 ->腰厚
-                    $("#thickness > label").text("腰厚");
                     $("#length").show();//长度
 
+                    $("#altitude").hide();//高度
+                    $("#width").hide();//宽度 ->腿宽
+                    $("#thickness").hide(); //厚度 ->腰厚
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
                     materialSelectId = 3;
@@ -420,7 +432,7 @@
                 case 5:
                     $("#length").show();//长度
                     $("#thickness").show(); //厚度 ->单位重量
-                    $("#thickness > label").text("单位重量");
+                    $("#thickness > label").text("厚度");
 
                     $("#width").hide();//宽度
                     $("#altitude").hide();//高度
@@ -476,19 +488,6 @@
             memoryLength = memoryLength==undefined?"0":"1";
             var memoryWidth = $("#memoryWidth:checked").val();//保证宽度
             memoryWidth = memoryWidth==undefined?"0":"1";
-
-            // $("#textTest").html(
-            //     "厚度:<span style='color:red'>"+thickness+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "长度:<span style='color:red'>"+lengths+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "宽度:<span style='color:red'>"+width+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "高度:<span style='color:red'>"+altitude+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "规格:<span style='color:red'>"+specifications+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "边长1:<span style='color:red'>"+sideLength1+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "边长2:<span style='color:red'>"+sideLength2+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "保证厚度:<span style='color:red'>"+memoryThickness+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "保证长度:<span style='color:red'>"+memoryLength+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"+
-            //     "保证宽度:<span style='color:red'>"+memoryWidth+"</span>&nbsp;&nbsp;&nbsp;&nbsp;"
-            // );
 
             switch (materialSelectId){
                 case 1://板

@@ -11,7 +11,7 @@ namespace app\index\model;
 
 use think\Model;
 
-class logs extends Model
+class Logs extends Model
 {
 
 }
