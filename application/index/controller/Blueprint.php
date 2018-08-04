@@ -12,6 +12,7 @@ use app\index\model\Material;
 use app\index\model\MaterialShape;
 use app\index\model\ProductProcess;
 use app\index\model\DrawingFiles;
+use app\index\model\Section;
 
 use think\Db;
 use think\facade\Request;
@@ -368,8 +369,11 @@ class Blueprint extends Base
         $materialShape = MaterialShape::all();
         $this->assign("materialShapeArray",$materialShape);
 
-        $client = Client::all();
+        $client = Client::all();//所有客户
         $this->assign("client",$client);
+
+        $section = Section::all();
+        $this->assign("section",$section);
 
 
 

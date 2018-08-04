@@ -15,7 +15,7 @@
             </div>
             <button type="button" class="layui-btn layui-btn-normal" id="model">切换模式</button>
             <div class="layui-input-inline" id="voluntarily">
-                <select name="modules" lay-verify="required" lay-search="" id="selectMid">
+                <select name="modules" lay-verify="required" lay-search="" id="selectMid" lay-filter="selectMid">
                     <option value=""></option>
                     <optgroup label="新增产品">
                         <option value="{$pidArray.companyNumber}">{$pidArray.companyNumber}</option>
@@ -33,7 +33,7 @@
             <div class="layui-input-inline" id="mes">
                 <input type="text" class="layui-input" placeholder="编号描述" id="mesInput">
             </div>
-            <button type="button" class="layui-btn" id="createNumber">生成编号</button>
+            <input type="hidden" class="layui-btn" id="createNumber">
             <button type="button" class="layui-btn layui-btn-warm" id="renovateNumber" title="此按钮只针对当前日期的编号" style="display: none">刷新编号</button>
             <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
             <script>
@@ -147,13 +147,13 @@
             <label class="layui-form-label">材料形状</label>
             <div class="layui-input-block">
                 <div class="layui-input-inline">
-                    <select name="modules" lay-verify="required" lay-search="" id="materialSelect">
+                    <select name="modules" lay-verify="required" lay-search="" lay-filter="materialSelect" id="materialSelect">
                         {volist name="$materialShapeArray" id="shapeArrayList"}
                         <option value="{$shapeArrayList.id}">{$shapeArrayList.shape}</option>
                         {/volist}
                     </select>
                 </div>
-                <button type="button" class="layui-btn" id="generatingForm">生成表单</button>
+                <input type="hidden" class="layui-btn" id="generatingForm">
                 <button type="button" class="layui-btn" id="resettinGeneratingForm">重置</button>
                 <script>
                     $(function () {
@@ -205,10 +205,12 @@
             <div class="layui-form-item" id="specifications">
                 <label class="layui-form-label">规格型号</label>
                 <div class="layui-input-inline">
-                    <select lay-verify="required" lay-search="" name="material_type" lay-filter="material_type" id="material_type">
+                    <select lay-verify="required" lay-search="" name="material_type" lay-filter="channel_select" id="channel_select">
                         <option value="">查找规格</option>
                         <optgroup label="选择规格">
-                            <option value="1">23*32*44</option>
+                            {volist name="$section" id="sectionList"}
+                            <option value="{$sectionList.weight}">规格:{$sectionList.spec}&nbsp;&nbsp;尺寸:{$sectionList.size}&nbsp;&nbsp;理论重量:{$sectionList.weight}&nbsp;&nbsp;</option>
+                            {/volist}
                         </optgroup>
                     </select>
                 </div>
@@ -228,7 +230,7 @@
             <div class="layui-form-item" id="weight">
                 <label class="layui-form-label">重量</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="weight" lay-verify="required" autocomplete="off" class="layui-input"  id="weightInput">
+                    <input type="text" name="weight" lay-verify="required" autocomplete="off" class="layui-input"  id="weightInput" disabled>
                 </div>
             </div>
             <div class="layui-form-item" id="saveButton">
@@ -330,9 +332,6 @@
         $("#sideLength2").hide();//边长2
 
 
-
-
-
         //重置
         $("#resettinGeneratingForm").on("click",function () {
             $("#materialDiv").attr("style"," ");
@@ -367,16 +366,17 @@
         $("#sideLength2").hide();//边长2
         $("#specifications").hide();//规格
         $(".specialDiv").show();//保证
+        $("#weight").hide();//重量
         materialSelectId = 1;
 
         //生成
         $("#generatingForm").on("click",function () {
             var materialSelect = parseInt($("#materialSelect").val());
-            $("#weight").show();//重量
-            $("#addwebsql").show();//保存按钮
-            $("#materialDiv > input").val("");
+            $("#weight").hide();//重量
             $(".specialDiv").hide();//保证
             $("#materialDiv").attr("style","border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;");
+            $("#addwebsql").show();//保存按钮
+            $("#materialDiv > input").val("");
             materialSelectId = 0;
             switch (materialSelect){
                 case 1:
@@ -408,6 +408,7 @@
                 case 3:
                     $("#specifications").show();//规格
                     $("#length").show();//长度
+                    $("#weight").show();//重量
 
                     $("#altitude").hide();//高度
                     $("#width").hide();//宽度 ->腿宽
@@ -481,6 +482,7 @@
             var specifications = $("#specificationsInput").val();//规格
             var sideLength1 = $("#sideLength1Input").val();//边长1
             var sideLength2 = $("#sideLength2Input").val();//边长2
+            var weight = $("#weight").val();//边长2
 
             var memoryThickness = $("#memoryThickness:checked").val();//保证厚度
             memoryThickness = memoryThickness==undefined?"0":"1";
@@ -506,10 +508,9 @@
                     layer.msg('保存成功!',{icon:6,time:1000});
                     break;
                 case 3://槽钢
-                    materialSelectArray["thickness_Dia"] = thickness;
                     materialSelectArray["length_dim"] = lengths;
-                    materialSelectArray["width_dim"] = width;
-                    materialSelectArray["altitude"] = altitude;
+                    materialSelectArray["weight"] = weight;
+
                     materialSelectArray["specifications"] = specifications;//规格
                     break;
                 case 4://管
@@ -621,17 +622,29 @@
                     },
                 });
             }
+        });
+    });
 
+    layui.use('form', function() {
+        $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer;
 
+        //监听事件
+        form.on('select(channel_select)', function (data) {
+            $("#weightInput").val("");
+            var weight = $("#channel_select").val();
+            var lenght = $("#lengthInput").val();
 
-            //console.log(materialSelectArray);
-            // var html = $("#mess").html("");
-            // for(var i in  materialSelectArray){
-            //     html += i+"&nbsp;&nbsp;:&nbsp;"+materialSelectArray[i]+"<br>";
-            // }
-            // $("#mess").html(html);
+            $("#weightInput").val(weight);
+        });
 
-           //alert(drawing_detail_id+" \n"+addMidNumberInput+"\n"+drawing_external_id+"\n"+drawing_external_name+"\n"+findText+"\n"+heat_treatment+"\n"+drawing_type+"\n"+client_id+"\n"+if_batch+"\n"+layout_qty+"\n"+material_requirements+"\n"+product_mfg_cost+"\n"+product_quotation+"\n"+product_real_price+"\n"+remark)
+        form.on('select(materialSelect)', function (data) {
+            $("#generatingForm").click();
+        });
+
+        form.on('select(selectMid)', function (data) {
+            $("#createNumber").click();
 
         });
     });
