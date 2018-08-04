@@ -764,7 +764,7 @@ class Blueprint extends Base
         switch ($tip) { //文件分类上传
             //外部图纸
             case 'abroad':
-                $info = $files->validate(['ext'=>'pdf,docx,doc'])
+                $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/wai',strtoupper($tip).$drawing_id);
                 $path= '/drawing/wai/'.strtoupper($tip).$drawing_id;
                 break;
@@ -776,7 +776,7 @@ class Blueprint extends Base
                 break;
             //程序图文件
             case 'engineering':
-                $info = $files->validate(['ext'=>'pdf,docx,doc'])
+                $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
                 $path= '/drawing/cheng/'.strtoupper($tip).$drawing_id;
                 break;
