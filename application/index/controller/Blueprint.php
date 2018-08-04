@@ -156,6 +156,15 @@ class Blueprint extends Base
             //统计工艺条数 判断是否有值
             $count = count($processInfo);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+
+            if(session('user.is_offer') == 0){
+                $data['quota_quotation'] = 0;
+                $data['process_quoted_price'] = 0;
+            }else if (session('user.is_offer') == 1){
+                $data['quota_quotation'] = 0;
+                $data['process_quoted_price'] = 0;
+            }
+
             if($count == 0){
                 $data['sort'] = 1;
             }else{
@@ -494,6 +503,13 @@ class Blueprint extends Base
             unset($data['id']);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
             $data['modify_name'] = session('user.user_name');
+//            if(session('user.is_offer') == 0){
+//                $data['quota_quotation'] = 0;
+//                $data['process_quoted_price'] = 0;
+//            }else if (session('user.is_offer') == 1){
+//                $data['quota_quotation'] = 0;
+//                $data['process_quoted_price'] = 0;
+//            }
             $info = ProductProcess::update($data,['id'=>$id]);
             if($info){
                 return json(1);
