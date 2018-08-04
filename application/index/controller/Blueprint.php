@@ -732,7 +732,8 @@ class Blueprint extends Base
                 {
                     return $this->fetch('not-files',$data);
                 }
-                    return $this->fetch('drawing_files',['url'=>$rel['abroad']]);
+                $data['url']=$rel['abroad'];
+                return $this->fetch('drawing_files',$data);
                 break;
 
             case 'nei':
@@ -742,6 +743,12 @@ class Blueprint extends Base
                 {
                     return $this->fetch('not-files',$data);
                 }
+                if(!file_exists('.'.$rel['within']))//文件不存在
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                $data['url']=$rel['within'];
+                return $this->fetch('drawing_files',$data);
                 break;
 
             case 'cheng':
@@ -751,6 +758,12 @@ class Blueprint extends Base
                 {
                     return $this->fetch('not-files',$data);
                 }
+                if(!file_exists('.'.$rel['engineering']))//文件不存在
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                $data['url']=$rel['engineering'];
+                return $this->fetch('drawing_files',$data);
                 break;
                 $this->error('非法访问');
         }
