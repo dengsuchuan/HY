@@ -707,34 +707,103 @@ class Blueprint extends Base
         {
             case 'wai':
 //                echo '外图文件';
+                $data=['drawing_id'=>$id,'key'=>'图纸','tip'=>'abroad'];//图纸基本信息
                 if($rel['abroad']==null||$rel['abroad']=="")//没有文件地址
                 {
-                    return $this->fetch('not-files',['key'=>'外图']);
+                    return $this->fetch('not-files',$data);
                 }
                 if(!file_exists('.'.$rel['abroad']))//文件不存在
                 {
-                    return $this->fetch('not-files',['key'=>'外图']);
+                    return $this->fetch('not-files',$data);
                 }
                 return $this->fetch('drawing_files',['url'=>$rel['abroad']]);
                 break;
 
             case 'nei':
 //                echo '内图文件';
+                $data=['drawing_id'=>$id,'key'=>'模型','tip'=>'within'];//图纸基本信息
                 if($rel['within']==null||$rel['within']=="")
                 {
-                    return $this->fetch('not-files',['key'=>'内图']);
+                    return $this->fetch('not-files',$data);
                 }
                 break;
 
             case 'cheng':
 //                echo '程序图文件';
+                $data=['drawing_id'=>$id,'key'=>'程序单','tip'=>'engineering'];//图纸基本信息
                 if($rel['engineering']==null||$rel['engineering']=="")
                 {
-                    return $this->fetch('not-files',['key'=>'程序图']);
+                    return $this->fetch('not-files',$data);
                 }
                 break;
                 $this->error('非法访问');
         }
+    }
+
+    public function check($drawing_id,$tip)//测试
+    {
+        $files = $this->request->file('file');//得到文件
+        $fileModel = new DrawingFiles();
+        $data = $fileModel->get(['drawing_id'=>$drawing_id]);
+        switch ($tip) { //文件分类上传
+            //外部图纸
+            case 'abroad':
+                $info = $files->validate(['ext'=>'pdf,docx,doc'])
+                    ->move('./drawing/wai',strtoupper($tip).$drawing_id);
+                $path= '/drawing/wai/'.strtoupper($tip).$drawing_id;
+                break;
+            //模型文件
+            case 'within':
+                $info = $files->validate(['ext'=>'pdf'])
+                    ->move('./drawing/nei',strtoupper($tip).$drawing_id);
+                $path= '/drawing/nei/'.strtoupper($tip).$drawing_id;
+                break;
+            //程序图文件
+            case 'engineering':
+                $info = $files->validate(['ext'=>'pdf,docx,doc'])
+                    ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
+                $path= '/drawing/cheng/'.strtoupper($tip).$drawing_id;
+                break;
+        }
+        if(!$info) //上传失败反馈
+        {
+            echo json_encode([
+                'state' =>  500,
+                'msg'   =>  '文件上传失败',
+            ]);
+            return;
+        }
+        if($data) {  //已经存在改图纸明细的文件记录
+            $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path]);
+            if(!$rel)
+            {
+                echo json_encode([
+                    'state' =>  500,
+                    'msg'   =>  '文件上传失败',
+                ]);
+                return;
+            }
+            echo json_encode([
+                'state' =>  200,
+                'msg'   =>  '文件上传完成',
+            ]);
+            return;
+        }
+        //不存在该图纸明细的文件记录
+        $rel = $fileModel->save([$tip=>$path,'drawing_id'=>$drawing_id]);
+        if(!$rel)
+        {
+            echo json_encode([
+                'state' =>  500,
+                'msg'   =>  '文件上传失败',
+            ]);
+            return;
+        }
+        echo json_encode([
+            'state' =>  200,
+            'msg'   =>  '文件上传完成',
+        ]);
+        return;
     }
 
 }
