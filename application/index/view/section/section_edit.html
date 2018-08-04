@@ -1,0 +1,75 @@
+﻿{include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    <div class="layui-form-item">
+      <label for="spec" class="layui-form-label">规格</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="spec"  value="{$sectionRow.spec}" name="spec" lay-verify="required" autocomplete="off" class="layui-input" >
+        <input type="hidden" id="id" name="id" value="{$sectionRow.id}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-inline">
+        <label class="layui-form-label">尺寸</label>
+        <span style="color: red">*</span>
+        <div class="layui-form-mid">高度</div>
+        <div class="layui-input-inline" style="width: 100px;">
+          <input type="text" name="height"  lay-verify="required" value="{$data[0]}"  autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid">腿宽</div>
+        <div class="layui-input-inline" style="width: 100px;">
+          <input type="text" name="leg_width"  lay-verify="required" value="{$data[1]}"  autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid">腰厚</div>
+        <div class="layui-input-inline" style="width: 100px;">
+          <input type="text" name="waist_depth"  lay-verify="required" value="{$data[2]}"   autocomplete="off" class="layui-input">
+        </div>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="weight" class="layui-form-label">理论重量</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="weight" name="weight" value="{$sectionRow.weight}"   lay-verify="required"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId">
+        修改
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Section/sectionEdit')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+
+
+    });
+</script>
+</body>
+
+</html>

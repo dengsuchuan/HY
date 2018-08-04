@@ -11,6 +11,8 @@ use app\index\model\DrawingInternal;
 use app\index\model\Material;
 use app\index\model\MaterialShape;
 use app\index\model\ProductProcess;
+use app\index\model\DrawingFiles;
+
 use think\Db;
 use think\facade\Request;
 use app\index\model\ProcessType as ProcessTypeModel;
@@ -154,6 +156,15 @@ class Blueprint extends Base
             //统计工艺条数 判断是否有值
             $count = count($processInfo);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
+
+            if(session('user.is_offer') == 0){
+                $data['quota_quotation'] = 0;
+                $data['process_quoted_price'] = 0;
+            }else if (session('user.is_offer') == 1){
+                $data['quota_quotation'] = 0;
+                $data['process_quoted_price'] = 0;
+            }
+
             if($count == 0){
                 $data['sort'] = 1;
             }else{
@@ -492,6 +503,13 @@ class Blueprint extends Base
             unset($data['id']);
             $data['if_check'] = isset($data['if_check']) ? '1' : '0';
             $data['modify_name'] = session('user.user_name');
+//            if(session('user.is_offer') == 0){
+//                $data['quota_quotation'] = 0;
+//                $data['process_quoted_price'] = 0;
+//            }else if (session('user.is_offer') == 1){
+//                $data['quota_quotation'] = 0;
+//                $data['process_quoted_price'] = 0;
+//            }
             $info = ProductProcess::update($data,['id'=>$id]);
             if($info){
                 return json(1);
@@ -691,16 +709,131 @@ class Blueprint extends Base
             $sum++;
             //写入日志
         }
-        if($sum>0) {   //产生有效事件再记录日志
-            $model->save([
-                "date" => time(),
-                "msg" => "删除" . $Ary['table'] . "表中记录" . $sum . "条"
-            ]);
-        }
         echo json_encode($data=[
             "state"=>200,
             "message"=>"选中".$count."条记录,共".$sum."条删除成功"
         ]);
         return;
     }
+    public function is_DrawingFiles($id,$key)//判断是否存在图纸文件  图纸明细id,类别
+    {
+        $model = new DrawingFiles();
+        $rel = $model->get(['drawing_id'=>$id]);
+        switch ($key)
+        {
+            case 'wai':
+//                echo '外图文件';
+                $data=['drawing_id'=>$id,'key'=>'图纸','tip'=>'abroad'];//图纸基本信息
+                if($rel['abroad']==null||$rel['abroad']=="")//没有文件地址
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                if(!file_exists('.'.$rel['abroad']))//文件不存在
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                $data['url']=$rel['abroad'];
+                return $this->fetch('drawing_files',$data);
+                break;
+
+            case 'nei':
+//                echo '内图文件';
+                $data=['drawing_id'=>$id,'key'=>'模型','tip'=>'within'];//图纸基本信息
+                if($rel['within']==null||$rel['within']=="")
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                if(!file_exists('.'.$rel['within']))//文件不存在
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                $data['url']=$rel['within'];
+                return $this->fetch('drawing_files',$data);
+                break;
+
+            case 'cheng':
+//                echo '程序图文件';
+                $data=['drawing_id'=>$id,'key'=>'程序单','tip'=>'engineering'];//图纸基本信息
+                if($rel['engineering']==null||$rel['engineering']=="")
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                if(!file_exists('.'.$rel['engineering']))//文件不存在
+                {
+                    return $this->fetch('not-files',$data);
+                }
+                $data['url']=$rel['engineering'];
+                return $this->fetch('drawing_files',$data);
+                break;
+                $this->error('非法访问');
+        }
+    }
+
+    public function FileUpload($drawing_id,$tip)//图纸文件上传
+    {
+        $files = $this->request->file('file');//得到文件
+        $fileModel = new DrawingFiles();
+        $data = $fileModel->get(['drawing_id'=>$drawing_id]);
+        switch ($tip) { //文件分类上传
+            //外部图纸
+            case 'abroad':
+                $info = $files->validate(['ext'=>'pdf'])
+                    ->move('./drawing/wai',strtoupper($tip).$drawing_id);
+                $path= '/drawing/wai/'.strtoupper($tip).$drawing_id;
+                break;
+            //模型文件
+            case 'within':
+                $info = $files->validate(['ext'=>'pdf'])
+                    ->move('./drawing/nei',strtoupper($tip).$drawing_id);
+                $path= '/drawing/nei/'.strtoupper($tip).$drawing_id;
+                break;
+            //程序图文件
+            case 'engineering':
+                $info = $files->validate(['ext'=>'pdf'])
+                    ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
+                $path= '/drawing/cheng/'.strtoupper($tip).$drawing_id;
+                break;
+        }
+        if(!$info) //上传失败反馈
+        {
+            echo json_encode([
+                'state' =>  500,
+                'msg'   =>  '文件上传失败',
+            ]);
+            return;
+        }
+        if($data) {  //已经存在改图纸明细的文件记录
+            $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>'']);//清空原记录
+            $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path.'.pdf']);
+            if(!$rel)
+            {
+                echo json_encode([
+                    'state' =>  500,
+                    'msg'   =>  '文件记录上传失败',
+                ]);
+                return;
+            }
+                echo json_encode([
+                    'state' =>  200,
+                    'msg'   =>  '文件上传完成',
+                ]);
+                return;
+        }
+        //不存在该图纸明细的文件记录
+        $rel = $fileModel->save([$tip=>$path.'.pdf','drawing_id'=>$drawing_id]);
+        if(!$rel)
+        {
+            echo json_encode([
+                'state' =>  500,
+                'msg'   =>  '文件记录上传失败',
+            ]);
+            return;
+        }
+            echo json_encode([
+                'state' =>  200,
+                'msg'   =>  '文件上传完成',
+            ]);
+            return;
+    }
+
 }

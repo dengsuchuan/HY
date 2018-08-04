@@ -1,0 +1,66 @@
+{include file="public/header" /}
+<head>
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron bg-light jumbotron-fluid">
+    <div class="container bg-light">
+        <h1>已上传<a href="{$url}">{$key}</a>文件</h1>
+        <p class="text-danger">您也可以在此界面更新您的{$key}文件</p>
+    </div>
+</div>
+<div class="container bg-white">
+    <form onsubmit="return false">
+        <p>选择新的{$key}文件:</p>
+        <div class="custom-file mb-3">
+            <input type="file" class="custom-file-input" id="customFile" name="filename">
+            <label class="custom-file-label" for="customFile">选择文件</label>
+        </div>
+        <div class="mt-3">
+            <button type="button" onclick="UpFiles()" class="btn btn-primary">更新</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    function UpFiles(){
+        var files = $("#customFile")[0].files[0];//获取文件
+        var formFile = new FormData();//文件对象
+        formFile.append('file',files);
+        $.ajax({
+            url:"{:url('index/Blueprint/FileUpload',['drawing_id'=>$drawing_id,'tip'=>$tip])}",
+            data:formFile,
+            type: "post",
+            dataType: "json",
+            cache: false,//上传文件无需缓存
+            processData: false,//用于对data参数进行序列化处理 这里必须false
+            contentType: false, //必须
+            success:function (res) {
+                if(res.state==500)
+                {
+                    layer.msg(res.msg);
+                    return;
+                }
+                if(res.state==200)
+                {
+                    layer.msg(res.msg+',请稍后', {icon: 16,time: 2000},
+                        function () {
+                            location.reload();
+                        });
+                    return;
+                }
+            }
+        })
+    }
+</script>
+</html>
