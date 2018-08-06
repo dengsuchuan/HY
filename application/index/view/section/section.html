@@ -23,7 +23,7 @@
               <th  >操作</th>
               <th >规格</th>
             <th>尺寸</th>
-            <th   >截面积</th>
+            <th   style="text-align: right">截面积</th>
             </tr>
         <tbody>
         {volist name="sectionInfo" id="info"}
@@ -39,7 +39,7 @@
             </td>
             <td >{$info.spec}</td>
             <td >{$info.size}</td>
-            <td >{$info.weight}</td>
+            <td style="text-align: right">{$info.weight}</td>
           </tr>
         {/volist}
         </tbody>
