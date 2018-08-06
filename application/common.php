@@ -11,6 +11,7 @@
 
 use app\index\model\Client;
 use app\index\model\MaterialShape;
+use app\index\model\Section;
 
 // 应用公共文件
 //截取右边的展示内容
@@ -30,4 +31,15 @@ function getClientName($id){
 function getMateria($id){
     $clientName = MaterialShape::where("id","$id")->value("shape");
     return $clientName;
+}
+
+//材料形状的查询
+function getWeight($id){//获取材料形状的重量
+    $weight = Section::where("id","$id")->value("weight");
+    return $weight;
+}
+
+function getWeightId($id){//获取材料形状的编号
+    $weightId =  Section::where("id","$id")->value("spec");
+    return $weightId;
 }
