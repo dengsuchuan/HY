@@ -17,21 +17,21 @@
         <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加内图','{:url(\'index/Internal/internalAdd\')}',400,400)"><i class="layui-icon"></i>添加</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
-        <button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
-        <script>
-            $(function () {
-                $("#find").click(function () {
-                    var findText = $("#findText").val();
-                    if(findText.length > 1){
-                        window.location.href="{:url('index/blueprint/blueprintInfo')}";
-                    }else{
-                        layer.msg('请输入查找的关键字!',{icon:0,time:2000});
-                    }
+        <!--<div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>-->
+        <!--<button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>-->
+        <!--<script>-->
+            <!--$(function () {-->
+                <!--$("#find").click(function () {-->
+                    <!--var findText = $("#findText").val();-->
+                    <!--if(findText.length > 1){-->
+                        <!--window.location.href="{:url('index/blueprint/blueprintInfo')}";-->
+                    <!--}else{-->
+                        <!--layer.msg('请输入查找的关键字!',{icon:0,time:2000});-->
+                    <!--}-->
 
-                });
-            })
-        </script>
+                <!--});-->
+            <!--})-->
+        <!--</script>-->
     </xblock>
     <div class="container-wrap">
         <div class="box-1">
