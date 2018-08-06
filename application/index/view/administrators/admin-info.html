@@ -20,6 +20,7 @@
           <table class="layui-table">
             <thead>
             <tr>
+              <th width="40px;">操作</th>
               <th>编号</th>
               <th>姓名</th>
               <th>手机</th>
@@ -27,18 +28,11 @@
               <th>登陆次数</th>
               <th>角色</th>
             <th>加入时间</th>
-            <th>操作</th>
+
         </thead>
         <tbody>
         {volist name="adminInfo" id="info"}
           <tr>
-            <td>{$info.admin_code}</td>
-            <td>{$info.admin_name}</td>
-            <td>{$info.tie}</td>
-            <td>{$info.mailbox}</td>
-            <td>{$info.login_number}</td>
-            <td>超级管理员</td>
-            <td>{$info.create_time}</td>
             <td>
               <a title="编辑"  onclick="x_admin_show('修改操作','{:url(\'index/Administrators/adminEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
@@ -47,6 +41,14 @@
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
             </td>
+            <td>{$info.admin_code}</td>
+            <td>{$info.admin_name}</td>
+            <td>{$info.tie}</td>
+            <td>{$info.mailbox}</td>
+            <td>{$info.login_number}</td>
+            <td>超级管理员</td>
+            <td>{$info.create_time}</td>
+
           </tr>
         {/volist}
         </tbody>

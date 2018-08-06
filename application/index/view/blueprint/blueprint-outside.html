@@ -13,7 +13,7 @@
 </div>
 <div class="x-body">
     <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加外图','{:url(\'index/blueprint/addDrawingExterna\')}',500,400)"><i class="layui-icon"></i>添加</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
@@ -36,9 +36,9 @@
         <table class="layui-table">
             <thead>
                 <tr>
-                    <th width="20px;">
-                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-                    </th>
+                    <!--<th width="20px;">-->
+                        <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+                    <!--</th>-->
                     <th width="30px;">操作</th>
                     <th>外来图号</th>
                     <th>建档日期</th>
@@ -50,9 +50,9 @@
             <tbody>
             {volist name="$blueprintOutside" id="blueprintOutsideList"}
             <tr>
-                <td>
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>
-                </td>
+                <!--<td>-->
+                    <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>-->
+                <!--</td>-->
                 <td class="td-manage">
                     <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
                 </td>

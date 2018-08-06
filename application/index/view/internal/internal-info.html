@@ -14,7 +14,7 @@
 <div class="x-body">
 
     <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加内图','{:url(\'index/Internal/internalAdd\')}',400,400)"><i class="layui-icon"></i>添加</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>
@@ -38,9 +38,9 @@
             <table class="layui-table">
                 <thead>
             <tr>
-                <th width="2%">
-                    <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-                </th>
+                <!--<th width="2%">-->
+                    <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+                <!--</th>-->
                 <th width="2%">操作</th>
                 <th width="13%">
                     产品图号
@@ -61,9 +61,9 @@
         <tbody>
         {volist name="internalInfo" id="info"}
         <tr>
-            <td>
-                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.id}'><i class="layui-icon">&#xe605;</i></div>
-            </td>
+            <!--<td>-->
+                <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.id}'><i class="layui-icon">&#xe605;</i></div>-->
+            <!--</td>-->
             <td class="td-manage" width="50px;">
                 <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                     <i style="color: green" class="layui-icon"></i>

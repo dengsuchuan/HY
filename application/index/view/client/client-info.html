@@ -13,7 +13,6 @@
     </div>
     <div class="x-body">
       <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加客户','{:url(\'index/Client/clientAdd\')}',500,550)"><i class="layui-icon"></i>添加</button>
         <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
 
@@ -23,10 +22,7 @@
           <table class="layui-table">
             <thead>
             <tr>
-            <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
-            <th>操作</th>
+            <th width="40px;">操作</th>
             <th>客户简称</th>
             <th>客户全称</th>
             <th>负责人</th>
@@ -41,9 +37,6 @@
         <tbody>
         {volist name="clientInfo" id = "clientInfoList"}
           <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
             <td>
               <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Client/clientEdit\',[\'id\'=>$clientInfoList.id])}')" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>

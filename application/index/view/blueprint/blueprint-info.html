@@ -14,7 +14,7 @@
 
 <div class="x-body" >
   <xblock>
-    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;-->
 
     <div class="layui-input-inline">
       <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
@@ -53,9 +53,9 @@
       <table class="layui-table">
       <thead>
       <tr>
-        <th>
-          <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-        </th>
+        <!--<th>-->
+          <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+        <!--</th>-->
         <th>编辑</th>
         <th>明细编号</th>
         <th>公司编号</th>
@@ -78,9 +78,9 @@
       <tbody>
       {volist name="$blueprintInfo" id="blueprintInfoList"}
       <tr>
-        <td>
-          <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintInfoList.id}'><i class="layui-icon">&#xe605;</i></div>
-        </td>
+        <!--<td>-->
+          <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintInfoList.id}'><i class="layui-icon">&#xe605;</i></div>-->
+        <!--</td>-->
         <td class="td-manage">
           <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的所有信息','{:url(\'index/blueprint/blueprintInfos\',[\'id\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
         </td>
