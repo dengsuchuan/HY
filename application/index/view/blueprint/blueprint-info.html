@@ -62,6 +62,7 @@
         <th>外图编号</th>
         <th>图纸名称</th>
         <th>材料</th>
+        <th>材料形状</th>
         <th>类型</th>
         <th>客户</th>
         <th>批量</th>
@@ -88,6 +89,7 @@
         <td>{$blueprintInfoList.drawing_externa_id}</td>
         <td>{$blueprintInfoList.drawing_name}</td>
         <td>{$blueprintInfoList.material}</td>
+        <td>{$blueprintInfoList.material_type|getMateria}</td>
         <td>{$blueprintInfoList.drawing_type}</td>
         <td>{$blueprintInfoList.client_id|getClientName}</td>
         <td>{$blueprintInfoList.if_batch?"是":"否"}</td>

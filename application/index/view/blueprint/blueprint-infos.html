@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item" id="specifications">
-                    <label class="layui-form-label">规格型号</label>
+                    <label class="layui-form-label">截面积</label>
                     <div class="layui-input-inline">
                         <input type="text" class="layui-input" name="specifications" value="{$blueprintInfo.specifications}"  >
                     </div>
@@ -300,16 +300,17 @@
                     $("#sideLength2").hide();//边长2
                     break;
                 case "3":
-                    $("#thickness_Dia").show();//厚度
-                    $("#thickness_Dia > label").text("腰厚");
                     $("#length_dim").show();//长度
                     $("#length_dim > label").text("长度");
-                    $("#width_dim").show();//宽度
-                    $("#width_dim > label").text("腿宽");
-                    $("#altitudeInput").show();//高度
-                    $("#altitudeInput > label").text("高度");
                     $("#specifications").show();//规格型号
 
+
+                    $("#thickness_Dia").hide();//厚度
+                    $("#thickness_Dia > label").text("腰厚");
+                    $("#width_dim").hide();//宽度
+                    $("#width_dim > label").text("腿宽");
+                    $("#altitudeInput").hide();//高度
+                    $("#altitudeInput > label").text("高度");
                     $(".specialDiv").hide();//三个保存
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
@@ -331,12 +332,13 @@
                 case "5":
                     $("#length_dim").show();//长度
                     $("#length_dim > label").text("长度");
-                    $("#thickness_Dia").show();//厚度
-                    $("#thickness_Dia > label").text("单位重量");
+                    $("#specifications").show();//规格型号
 
+
+                    $("#thickness_Dia").hide();//厚度
+                    $("#thickness_Dia > label").text("单位重量");
                     $("#width_dim").hide();//宽度
                     $("#altitudeInput").hide();//高度
-                    $("#specifications").hide();//规格型号
                     $(".specialDiv").hide();//三个保存
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
@@ -344,28 +346,27 @@
                 case "6":
                     $("#length_dim").show();//长度
                     $("#length_dim > label").text("长度");
-                    $("#sideLength1").show();//边长1
-                    $("#sideLength2").show();//边长2
+                    $("#specifications").show();//规格型号
 
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
                     $("#thickness_Dia").hide();//厚度
                     $("#width_dim").hide();//宽度
                     $("#altitudeInput").hide();//高度
-                    $("#specifications").hide();//规格型号
                     $(".specialDiv").hide();//三个保存
                     break;
                 case "7":
-                    $("#thickness_Dia").hide();//厚度
-                    $("#thickness_Dia > label").text("厚度");
                     $("#length_dim").show();//长度
                     $("#length_dim > label").text("长度");
-                    $("#sideLength1").show();//边长1
-                    $("#sideLength2").show();//边长2
+                    $("#specifications").show();//规格型号
 
-
+                    $("#thickness_Dia").hide();//厚度
+                    $("#thickness_Dia > label").text("厚度");
+                    $("#sideLength1").hide();//边长1
+                    $("#sideLength2").hide();//边长2
                     $("#thickness_Dia").hide();//厚度
                     $("#width_dim").hide();//宽度
                     $("#altitudeInput").hide();//高度
-                    $("#specifications").hide();//规格型号
                     $(".specialDiv").hide();//三个保存
                     break;
             }

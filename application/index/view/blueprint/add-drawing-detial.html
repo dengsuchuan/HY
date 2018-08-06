@@ -352,7 +352,7 @@
         $("#thickness").show(); //厚度
         $("#length").show();//长度
         $("#width").show();//宽度
-        $("#addwebsql").show();//保存按钮
+        $("#addwebsql").hide();//保存按钮
 
 
         //默认板
@@ -371,7 +371,7 @@
             $("#weight").hide();//重量
             $(".specialDiv").hide();//保证
             $("#materialDiv").attr("style","border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;");
-            $("#addwebsql").show();//保存按钮
+            $("#addwebsql").hide();//保存按钮
             $("#materialDiv > input").val("");
             materialSelectId = 0;
             switch (materialSelect){
@@ -543,6 +543,8 @@
 
 
         $("#addData").on("click",function () {
+            $("#addwebsql").click();
+
            var drawing_detail_id = $("#drawing_detail_id").val();
            var addMidNumberInput = $("#addMidNumberInput").val();
            var drawing_external_id = $("#drawing_external_id").val();
@@ -594,8 +596,7 @@
                 }
             jsonData = jsonData.substr(0,jsonData.length-1)
             jsonData = "{"+jsonData+"}";
-            //console.log(jsonData);
-
+            console.log(jsonData);
             //alert(drawing_external_name?1:0)
             if(drawing_external_name==" "){
                 layer.msg('至少请填写【图纸名称】字段',{icon:5,time:1000});
