@@ -841,4 +841,44 @@ class Blueprint extends Base
             return;
     }
 
+    public function delete(){
+        $id = intval(input('id'));
+        $info =  BlueprintInfo::where('id',$id)->delete();
+        if($info){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    public function deleteOutside(){//删除外图
+        $id = intval(input('id'));
+        $info =  BlueprintOutside::where('id',$id)->delete();
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+
+    public function outsideEdit(){
+        if(Request::isAjax()) {
+            $data = Request::post();
+            $id = $data['id'];
+            unset($data['id']);
+
+            $info = BlueprintOutside::update($data,['id'=>$id]);
+            if ($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+
+
+        $id = intval(input('id'));
+        $outsideRow = BlueprintOutside::where('id',$id)->find();
+        $this->assign('outsideRow',$outsideRow);
+        return $this->view->fetch('outside-edit');
+    }
+
 }

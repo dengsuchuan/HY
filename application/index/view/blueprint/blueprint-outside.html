@@ -54,14 +54,17 @@
                     <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>-->
                 <!--</td>-->
                 <td class="td-manage">
-                    <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','#')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                    <a title="修改" onclick="x_admin_show('修改外图','{:url(\'index/Blueprint/outsideEdit\',[\'id\'=>$blueprintOutsideList.id])}',400,400)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+                    <a title="删除" onclick="delete_(this,'{$blueprintOutsideList.id}')" href="javascript:void(0);" >
+                        <i  style="color:red;" class="layui-icon"></i>
+                    </a>
                 </td>
                 <td>
                     <a title="序号{$blueprintOutsideList.drawing_external_id}" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i class="layui-icon" style="color: #1E9FFF">{$blueprintOutsideList.drawing_external_id}</i></a>
                 </td>
                 <td>{$blueprintOutsideList.create_time}</td>
-                <td>admin</td>
-                <td>root</td>
+                <td>{$blueprintOutsideList.create_name}</td>
+                <td>{$blueprintOutsideList.modify_name}</td>
                 <td>{$blueprintOutsideList.remark}</td>
             </tr>
             {/volist}
@@ -74,6 +77,23 @@
     </div>
 </div>
 <script>
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "<?php echo url('/index/Blueprint/deleteOutside'); ?>";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1 ){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+
+
     layui.use('laydate', function(){
         var laydate = layui.laydate;
         //执行一个laydate实例

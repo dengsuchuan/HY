@@ -6,6 +6,7 @@
               <label for="drawing_external_id" class="layui-form-label">外来图号</label>
               <div class="layui-input-inline">
                   <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="">
+                  <input type="hidden" id="create_name" name="create_name" value="{$Think.session.user.user_name}">
                   <p id="pLog" style="color:red"></p>
               </div>
               <button type="button" class="layui-btn" id="createId">生成</button>
@@ -59,12 +60,6 @@
           });
         });
     </script>
-    <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();</script>
   </body>
 
 </html>
