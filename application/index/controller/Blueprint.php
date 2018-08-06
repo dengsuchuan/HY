@@ -28,8 +28,6 @@ class Blueprint extends Base
         $ClientKeyInfo = Client::all();
         $this->assign("clientKeyInfo",$ClientKeyInfo);
 
-
-
         //判断是否为post提交请求。如果是，就代表是搜索。
         $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
         if(Request::isPost()){
@@ -75,6 +73,9 @@ class Blueprint extends Base
     //--|--|明细具体项目详情
     public function blueprintInfos()
     {
+        $section = Section::all();//材料规格
+        $this->assign("section",$section);
+
         $id = input('id');
         //如果是POST请求的话就代表是执行修改操作
         if (Request::isAjax()) {
@@ -372,7 +373,7 @@ class Blueprint extends Base
         $client = Client::all();//所有客户
         $this->assign("client",$client);
 
-        $section = Section::all();
+        $section = Section::all();//材料规格
         $this->assign("section",$section);
 
 

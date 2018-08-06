@@ -151,9 +151,17 @@
                 <div class="layui-form-item" id="specifications">
                     <label class="layui-form-label">截面积</label>
                     <div class="layui-input-inline">
-                        <input type="text" class="layui-input" name="specifications" value="{$blueprintInfo.specifications}"  >
+                        <select lay-verify="required" lay-search="" name="material_type" lay-filter="channel_select" id="channel_select">
+                            <option value="{$blueprintInfo.specifications}">{$blueprintInfo.specifications}</option>
+                            <optgroup label="选择规格">
+                                {volist name="$section" id="sectionList"}
+                                <option value="{'weight':'{$sectionList.weight}','spec':'{$sectionList.spec}'}">{$sectionList.spec}      尺寸:{$sectionList.size}      理论重量:{$sectionList.weight}      </option>
+                                {/volist}
+                            </optgroup>
+                        </select>
                     </div>
                 </div>
+
                 <div class="layui-form-item" id="sideLength1">
                     <label class="layui-form-label">边长1</label>
                     <div class="layui-input-inline">
