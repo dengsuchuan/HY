@@ -11,7 +11,7 @@
     </div>
     <div class="x-body">
       <xblock>
-        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>删除</button>
+        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>删除</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加组件图纸','{:url(\'index/Assembly/assemblyAdd\')}',500,500)"><i class="layui-icon"></i>添加组件图纸</button>
         <span class="x-right" style="line-height:40px">共有数据：{$assembluCount} 条</span>
       </xblock>
@@ -20,9 +20,9 @@
           <table class="layui-table">
             <thead>
           <tr>
-            <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
+            <!--<th>-->
+              <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+            <!--</th>-->
             <th width="2%"> 操作</th>
             <th width="13%">
               组件编号
@@ -42,9 +42,9 @@
         <tbody>
         {volist name="assemblyInfo" id="info"}
           <tr>
-            <td width="2% ">
-              <div class="layui-unselect layui-form-checkbox"  data-id='{$info.id}' lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </td>
+            <!--<td width="2% ">-->
+              <!--<div class="layui-unselect layui-form-checkbox"  data-id='{$info.id}' lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+            <!--</td>-->
             <td class="td-manage" width="50px;">
               <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Assembly/assemblyEdit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
