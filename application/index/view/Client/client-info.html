@@ -1,0 +1,94 @@
+﻿{include file="public/header" /}
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">人力资源</a>
+        <a>
+          <cite>客户列表</cite>
+        </a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+      <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" onclick="x_admin_show('添加客户','{:url(\'index/Client/clientAdd\')}',500,550)"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+      </xblock>
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+            <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>操作</th>
+            <th>客户简称</th>
+            <th>客户全称</th>
+            <th>负责人</th>
+            <th>地址</th>
+            <th>电话</th>
+            <th>税法</th>
+            <th>开户行</th>
+            <th>银行卡号</th>
+            <th>客户分类</th>
+
+        </thead>
+        <tbody>
+        {volist name="clientInfo" id = "clientInfoList"}
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>
+              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Client/clientEdit\',[\'id\'=>$clientInfoList.id])}')" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_(this,'{$clientInfoList.id}')" href="javascript:;">
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
+              {if  $Think.session.user.admin == 'admin'}
+              {/if}
+            </td>
+            <td>{$clientInfoList.client_abbreviation}</td>
+            <td>{$clientInfoList.client_name}</td>
+            <td>{$clientInfoList.person_in_charge}</td>
+            <td>{$clientInfoList.address}</td>
+            <td>{$clientInfoList.tle}</td>
+            <td>{$clientInfoList.taxunm}</td>
+            <td>{$clientInfoList.opening_bank}</td>
+            <td>{$clientInfoList.accoun_num}</td>
+            <td>{$clientInfoList.client_classify_id}</td>
+          </tr>
+        {/volist}
+        </tbody>
+      </table>
+        </div>
+      </div>
+      </div>
+      <div class="page">
+        {$clientInfo|raw}
+    </div>
+    <script>
+     /*删除*/
+     function delete_(obj,id){
+         layer.confirm('确认要删除吗？',function(index){
+             var url = "<?php echo url('/index/Client/delete'); ?>";
+             var postData ={"id":id};
+             $.post(url,postData,function (result) {
+                 if(result === 1 ){
+                     $(obj).parents("tr").remove();
+                     layer.msg('已删除!',{icon:1,time:1000});
+                 }else {
+                     layer.alert("删除失败", {icon: 5});
+                 }
+             },"json");
+         });
+     }
+    </script>
+  </body>
+
+</html>

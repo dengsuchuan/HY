@@ -1,0 +1,118 @@
+{include file="public/header" /}
+<script src="/static/ueditor/ueditor.config.js"></script>
+<script src="/static/ueditor/ueditor.all.min.js"></script>
+<script src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
+<style>
+
+</style>
+<body>
+<div class="x-body ">
+    <form  class="layui-form">
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">客户简称</label>
+            <div class="layui-input-block">
+                <input type="text" id="client_abbreviation" value="{$clientRow.client_abbreviation}"  name="client_abbreviation" lay-verify="required" autocomplete="off" class="layui-input" >
+                <input type="hidden" id="id" value="{$clientRow.id}"  name="id">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">客户全称</label>
+            <div class="layui-input-block">
+                <input type="text" id="client_name" value="{$clientRow.client_name}"  name="client_name" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">负责人</label>
+            <div class="layui-input-block">
+                <input type="text" id="person_in_charge" value="{$clientRow.person_in_charge}"  name="person_in_charge" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">地址</label>
+            <div class="layui-input-block">
+                <input type="text" id="address" value="{$clientRow.address}"  name="address" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <input type="text" id="tle" value="{$clientRow.tle}"  name="tle" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">税法</label>
+            <div class="layui-input-block">
+                <input type="text" id="taxunm" value="{$clientRow.taxunm}"  name="taxunm" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">开户行</label>
+            <div class="layui-input-block">
+                <input type="text" id="opening_bank" value="{$clientRow.opening_bank}"  name="opening_bank" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="employee_code" class="layui-form-label">银行卡号</label>
+            <div class="layui-input-block">
+                <input type="text" id="accoun_num" value="{$clientRow.accoun_num}"  name="accoun_num" lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">部门名称</label>
+            <div class="layui-input-block">
+                <select name="client_classify_id" >
+                    <option value="{$clientRow.accoun_num}">{$clientRow.accoun_num=1?"分类1":"分类2"}</option>
+                    <optgroup label="选择分类">
+                        <option value="1">分类1</option>
+                        <option value="2">分类2</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-submit lay-filter="addId">
+                修改
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Client/clientEdit')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+
+
+    });
+</script>
+</body>
+
+</html>

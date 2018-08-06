@@ -151,7 +151,7 @@
                 <div class="layui-form-item" id="specifications">
                     <label class="layui-form-label">截面积</label>
                     <div class="layui-input-inline">
-                        <select lay-verify="required" lay-search="" name="material_type" lay-filter="channel_select" id="channel_select">
+                        <select lay-verify="required" lay-search="" lay-filter="channel_select" id="channel_select">
                             <option value="{$blueprintInfo.specifications}">{$blueprintInfo.specifications}</option>
                             <optgroup label="选择规格">
                                 {volist name="$section" id="sectionList"}
@@ -161,6 +161,8 @@
                         </select>
                     </div>
                 </div>
+                <input type="hidden" class="layui-input" name="weight" value="{$blueprintInfo.weight}" id="weightInput"  disabled>
+                <input type="hidden" class="layui-input" name="specifications" value="{$blueprintInfo.specifications}" id="specInput"  disabled>
 
                 <div class="layui-form-item" id="sideLength1">
                     <label class="layui-form-label">边长1</label>
@@ -397,6 +399,17 @@
                      var values = data.value;
                     showHide(values)
                  });
+
+             form.on('select(channel_select)', function (data) {
+                 var dataJson = $("#channel_select").val();
+                 dataJson = dataJson.replace(/'/g,'"');
+                 var dataArray = JSON.parse(dataJson);
+                 console.log(dataArray)
+
+                 $("#weightInput").val(dataArray['weight']);//给重量编辑框
+                 $("#specInput").val(dataArray['spec']);//给规格编辑框
+             });
+
 
                  //监听提交
                  form.on('submit(formDemo)', function(data){
