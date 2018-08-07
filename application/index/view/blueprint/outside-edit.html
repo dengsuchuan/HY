@@ -6,6 +6,7 @@
             <label for="drawing_external_id" class="layui-form-label">外来图号</label>
             <div class="layui-input-inline">
                 <input type="text" id="drawing_external_id" name="drawing_external_id" lay-verify="required" autocomplete="off" class="layui-input" value="{$outsideRow.drawing_external_id}">
+                <input type="hidden" id="old_drawing_external_id" name="old_drawing_external_id" value="{$outsideRow.drawing_external_id}">
                 <input type="hidden" id="id" name="id" value="{$outsideRow.id}">
                 <input type="hidden" id="modify_name" name="modify_name" value="{$Think.session.user.user_name}">
             </div>

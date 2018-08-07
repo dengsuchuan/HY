@@ -871,9 +871,16 @@ class Blueprint extends Base
         if(Request::isAjax()) {
             $data = Request::post();
             $id = $data['id'];
+            $old_drawing_external_id =  $data['old_drawing_external_id'];
+            $drawing_external_id =  $data['drawing_external_id'];
             unset($data['id']);
+            unset($data['old_drawing_external_id']);
 
-            $info = BlueprintOutside::update($data,['id'=>$id]);
+            $info = BlueprintOutside::update($data,['id'=>$id]);//修改外图
+            //echo $old_drawing_external_id;
+            $info2 = BlueprintInfo::where("drawing_externa_id","LIKE","%".$old_drawing_external_id."%")->update(["drawing_externa_id"=>$drawing_external_id]);
+            //where("drawing_detail_id","LIKE","%".$data['modules']."%")
+            //var_dump($info2);
             if ($info){
                 return json(1);
             }else{
