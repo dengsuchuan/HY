@@ -30,9 +30,16 @@ class Blueprint extends Base
 
         //判断是否为post提交请求。如果是，就代表是搜索。
         $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
-        if(Request::isPost()){
-            $data = Request::post();
-            if($data['id']!=""){
+//input('id')
+        $tempData2 = [
+            'modules'=>input('modules'),
+            'id'=>''
+        ];
+        if(Request::isPost()||isset($tempData2)){
+            //$data = Request::post();
+            $tempData1 = Request::post();
+            $data = isset($tempData1['id'])?$tempData1:$tempData2;
+            if($data['id']!=""){//这个ID是客户ID
                 $blueprintInfo = BlueprintInfo::where("client_id",$data['id'])->paginate(10);
             }else{
                 $blueprintInfo = BlueprintInfo::order('create_time', 'desc')

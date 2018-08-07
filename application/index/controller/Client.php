@@ -28,9 +28,9 @@ class Client extends Base
             $data = Request::post();
             $info = ClientModel::create($data);
             if($info){
-                return 1;
+                return json(1);
             }else{
-                return 0;
+                return json(0);
             }
         }
         return $this->view->fetch('client-add');
