@@ -876,11 +876,39 @@ class Blueprint extends Base
             unset($data['id']);
             unset($data['old_drawing_external_id']);
 
+            //BlueprintInfo::where("drawing_externa_id","LIKE","%".$old_drawing_external_id."%")->update(["drawing_externa_id"=>$drawing_external_id]);
+
             $info = BlueprintOutside::update($data,['id'=>$id]);//修改外图
-            //echo $old_drawing_external_id;
-            $info2 = BlueprintInfo::where("drawing_externa_id","LIKE","%".$old_drawing_external_id."%")->update(["drawing_externa_id"=>$drawing_external_id]);
-            //where("drawing_detail_id","LIKE","%".$data['modules']."%")
-            //var_dump($info2);
+            $tempArray = BlueprintInfo::where("drawing_externa_id","LIKE","%".$old_drawing_external_id."%")->select();//先查找旧数据，返回一个结果集
+            foreach ($tempArray as $value){
+                $productProcess['old'][]= $value['drawing_detail_id'];//拿到所有旧的明细编号
+            }
+
+            $tempJson = str_replace($old_drawing_external_id,$drawing_external_id,$tempArray);//替换里面的旧数据为新数据
+            $tempArray = json_decode($tempJson,true);//新数据转换为数组
+            //修改明细表
+            foreach ($tempArray as $value){//循环出ID
+                $tempId = $value['id'];//获得所有ID
+                $tempValueExterna = $value['drawing_externa_id'];
+                $tempValueDetail = $value['drawing_detail_id'];
+                $productProcess['new'][] = $value['drawing_detail_id'];//拿到所有新的明细编号表
+                //开始循环修改
+                BlueprintInfo::where('id', $tempId)
+                    ->data(['drawing_externa_id' => $tempValueExterna,'drawing_detail_id' => $tempValueDetail])
+                    ->update();
+            }
+            $productProcessArray['old'] = $productProcess['old'];
+            $productProcessArray['new'] = $productProcess['new'];
+
+            for($i = 0;$i < count($productProcessArray['old']);$i++){
+                $old = $productProcessArray['old'][$i];
+                $new = $productProcessArray['new'][$i];
+                //echo "旧的:".$old."   新的:".$new."\n";
+                ProductProcess::where('drawing_detial_id', $old)
+                    ->data(['drawing_detial_id' => $new])
+                    ->update();
+            }
+
             if ($info){
                 return json(1);
             }else{
