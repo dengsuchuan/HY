@@ -1,0 +1,140 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">图纸管理</a>
+        <a>
+          <cite>内部图纸</cite>
+        </a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+
+
+    <div class="container-wrap">
+        <div class="box-1">
+            <table class="layui-table">
+                <thead>
+            <tr>
+                <!--<th width="2%">-->
+                    <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+                <!--</th>-->
+                <th width="2%">操作</th>
+                <th width="13%">
+                    产品图号
+                </th>
+                <th>所属组件图纸</th>
+                <th>备注</th>
+                <th>创建人</th>
+                <th>创建时间</th>
+                <th>修改人</th>
+                <th>修改时间</th>
+                <th>是否组件</th>
+            </tr>
+        </thead>
+        <tbody>
+        {volist name="internal_belonged" id="info"}
+        <tr>
+            <!--<td>-->
+                <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.id}'><i class="layui-icon">&#xe605;</i></div>-->
+            <!--</td>-->
+            <td class="td-manage" width="50px;">
+                <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
+                    <i style="color: green" class="layui-icon"></i>
+                </a>
+                <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
+                    <i  style="color:red;" class="layui-icon"></i>
+                </a>
+            </td>
+            <td>
+                {if $info.assembly_code == null or $info.is_assembly_code == null}
+                <span style="color:red;">{$info.drawing_Internal_id}</span>
+                {else}
+                {$info.drawing_Internal_id}
+                {/if}
+            </td>
+            <td>
+                <?php
+                    if($info['assembly_code'] != null){
+                        echo $info['assembly_code'];
+                    }else{
+                        echo "";
+                    }
+                ?>
+            </td>
+            <td>{$info.remark}</td>
+            <td>{$info.create_name}</td>
+            <td>{$info.create_time}</td>
+            <td>{$info.modify_name}</td>
+            <td>{$info.update_time}</td>
+            <td>
+                <?php
+                    if($info['assembly_code'] != null){
+                        echo '是';
+                    }else{
+                        echo "否";
+                    }
+                ?>
+            </td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+        </div>
+    </div>
+    <div class="page">
+        {$internal_belonged|raw}
+    </div>
+
+</div>
+<script>
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "{:url('/index/Internal/delete')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1 ){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+    //批量删除
+    function delAll (drawing_detail_id) {
+        var data = tableCheck.getData();
+        if(data == ''){
+            layer.msg('请选择需要删除的数据');
+            return;
+        }
+        layer.confirm('确认要删除吗？',function(index){
+            //捉到所有被选中的，发异步进行删除
+            $.ajax({
+                url:"{:url('/index/Internal/delAll')}",
+                type:"POST",
+                dataType:"json",
+                data:{
+                    dra_id:drawing_detail_id,
+                    data:data   //数据
+                },
+                success:function (res) {
+                    if(res === 1 ){
+                        layer.alert("删除成功", {icon: 6},function () {
+                            window.location.reload();  //刷新父级页面
+                        });
+                    }else {
+                        layer.alert("删除失败", {icon: 5});
+                    }
+                },
+            });
+        });
+    }
+</script>
+</body>
+</html>

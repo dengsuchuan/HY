@@ -190,4 +190,13 @@ class Internal extends Base
             return json(0);
         }
     }
+    public function internalBelonged($sort = 'desc'){
+        $assembly_code = input('assembly_code');
+        $internal_belonged = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(10);
+        $this->assign([
+            'internal_belonged'    =>  $internal_belonged,
+            'sort'  =>$sort
+        ]);
+        return $this->view->fetch('internal-info-belonged');
+    }
 }

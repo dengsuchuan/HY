@@ -52,9 +52,10 @@
               <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" >
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
+              <a title="添加明细" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)" href="javascript:;"><i style="color: green" class="iconfont nav_right">&#xe6b9;</i></a>
             </td>
             <td>
-              <a style="color: #0000cc" href="javascript:void(0);" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)">{$info.assembly_code}</a>
+              <a style="color: #0000cc" href="javascript:void(0);" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.assembly_code}</span> 的内图','{:url(\'index/Internal/internalBelonged\',[\'assembly_code\'=>$info.assembly_code])}')">{$info.assembly_code}</a>
             </td>
             <td>{$info.looling_type_name}</td>
             <td>{$info.remark}</td>
