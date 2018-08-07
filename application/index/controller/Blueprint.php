@@ -850,8 +850,10 @@ class Blueprint extends Base
 
     public function delete(){
         $id = intval(input('id'));
+        $drawing_detail_id = BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');  //获取编号
         $info =  BlueprintInfo::where('id',$id)->delete();
         if($info){
+            ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->delete();
             return 1;
         }else{
             return 0;

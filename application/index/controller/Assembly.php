@@ -12,7 +12,7 @@ use app\index\common\controller\Base;
 use app\index\model\LloolingType;
 use app\index\model\Assembly as AssemblyModel;
 use think\facade\Request;;
-
+use app\index\model\DrawingInternal;
 class Assembly extends Base
 {
     protected $beforeActionList = [
@@ -108,8 +108,11 @@ class Assembly extends Base
     }
     //删除
     public function delete(){
+        $id = intval(input('id'));
+        $assembly_code = AssemblyModel::where(['id'=>$id])->value('assembly_code');  //获取编号
         $info = AssemblyModel::where(['id'=>intval(input('id'))])->delete();
         if($info){
+            DrawingInternal::where(['assembly_code'=>$assembly_code])->delete();
             return json(1);
         }else{
             return json(0);
