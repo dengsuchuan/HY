@@ -35,7 +35,7 @@ class Blueprint extends Base
             'modules'=>input('modules'),
             'id'=>''
         ];
-        if(Request::isPost()){
+        if(Request::isPost()||isset($tempData2)){
             //$data = Request::post();
             $tempData1 = Request::post();
             $data = isset($tempData1['id'])?$tempData1:$tempData2;
@@ -52,6 +52,11 @@ class Blueprint extends Base
                     ->whereOr("material","LIKE","%".$data['modules']."%")
                     ->paginate(10);
             }
+            foreach ($blueprintInfo as &$item){
+                $drawing_detail_id = $item['drawing_detail_id'];
+                $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+                $item['count'] = count($count);
+            }
             $blueprintInfoCount = $blueprintInfo->total();
             $this->assign('blueprintInfo', $blueprintInfo);
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
@@ -60,7 +65,11 @@ class Blueprint extends Base
 
         }
         $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
-
+        foreach ($blueprintInfo as &$item){
+            $drawing_detail_id = $item['drawing_detail_id'];
+            $count  = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->select();
+            $item['count'] = count($count);
+        }
         $blueprintInfoCount = $blueprintInfo->total();
         $this->assign('blueprintInfo', $blueprintInfo);
         $this->assign('blueprintInfoCount', $blueprintInfoCount);
@@ -174,7 +183,6 @@ class Blueprint extends Base
             $data['create_name'] = session('user.user_name');
             $info = ProductProcess::create($data);
             if($info){
-                BlueprintInfo::update(['is_gongxu'=>1],['drawing_detail_id'=>$drawing_detial_id]);
                 return json(1);
             }else{
                 return json(0);
@@ -406,13 +414,9 @@ class Blueprint extends Base
     //删除工序
     public function deleteProcess(){
         $id = intval(input('id'));
-        $drawing_detial_id = input('drawing_detial_id');
         $info = ProductProcess::where(['id'=>$id])->delete();
-        $count = count(ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id')->select());
-        if($count==0){
-            BlueprintInfo::update(['is_gongxu'=>0],['drawing_detail_id'=>$drawing_detial_id]);
-        }
-//        dd($drawing_detial_id);
+        $drawing_detial_id = input('drawing_detial_id');
+
         $processList = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id,sort')->order('sort','asc')->select();
         $top = 1;  //定义循环开始
         foreach ($processList as $list){
@@ -420,6 +424,7 @@ class Blueprint extends Base
             ProductProcess::update(['sort'=>$top++,'process_id'=>$process_id],['id'=>$list['id']]);
             $drawing_detial_id = input('drawing_detial_id');
         }
+
         if($info){
             return json(1);
         }else{
@@ -545,10 +550,6 @@ class Blueprint extends Base
             if($info){
                 $inf = true;
             }
-        }
-        $count = count(ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id')->select());
-        if($count==0){
-            BlueprintInfo::update(['is_gongxu'=>0],['drawing_detail_id'=>$drawing_detial_id]);
         }
         $processList = ProductProcess::where(['drawing_detial_id'=>$drawing_detial_id])->field('id,sort')->order('sort','asc')->select();
         $top = 1;  //定义循环开始
@@ -824,11 +825,11 @@ class Blueprint extends Base
                 ]);
                 return;
             }
-                echo json_encode([
-                    'state' =>  200,
-                    'msg'   =>  '文件上传完成',
-                ]);
-                return;
+            echo json_encode([
+                'state' =>  200,
+                'msg'   =>  '文件上传完成',
+            ]);
+            return;
         }
         //不存在该图纸明细的文件记录
         $rel = $fileModel->save([$tip=>$path.'.pdf','drawing_id'=>$drawing_id]);
@@ -840,11 +841,11 @@ class Blueprint extends Base
             ]);
             return;
         }
-            echo json_encode([
-                'state' =>  200,
-                'msg'   =>  '文件上传完成',
-            ]);
-            return;
+        echo json_encode([
+            'state' =>  200,
+            'msg'   =>  '文件上传完成',
+        ]);
+        return;
     }
 
     public function delete(){
