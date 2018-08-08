@@ -107,7 +107,7 @@
           <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\'])}')" href="javascript:;"><i class="layui-icon">程</i></a>
 
-          {if $blueprintInfoList.count !=0}
+          {if $blueprintInfoList.is_gongxu !=0}
           <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>
           {/if}
         </td>
