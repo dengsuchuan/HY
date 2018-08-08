@@ -30,12 +30,10 @@ class Blueprint extends Base
 
         //判断是否为post提交请求。如果是，就代表是搜索。
         $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
-//input('id')
         $tempData2 = [
             'modules'=>input('modules'),
             'id'=>input('id')
         ];
-//                          dd($tempData2);
 
         if(Request::isPost() || isset($tempData2['modules']) || isset($tempData2['id'])){
             //$data = Request::post();

@@ -85,11 +85,11 @@
          });
      }
      function openLinke(id,name) {
-         layer.confirm('请选择进入那个页面？', {
+         layer.confirm('请选择进入的页面~', {
              btn: ['图纸','订单','发货单'] //按钮
          }, function(){
                  x_admin_show('<span class=\'layui-badge layui-bg-blue\'> '+name+'</span>的所有明细',"{:url('index/Blueprint/blueprintInfo')}?id="+id);
-                 layer.msg('进入中', {
+                 layer.msg('加载中', {
                      time: 500, //20s后自动关闭
                  });
          }, function(){
