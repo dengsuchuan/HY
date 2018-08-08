@@ -35,7 +35,7 @@ class Blueprint extends Base
             'modules'=>input('modules'),
             'id'=>''
         ];
-        if(Request::isPost()||isset($tempData2)){
+        if(Request::isPost()){
             //$data = Request::post();
             $tempData1 = Request::post();
             $data = isset($tempData1['id'])?$tempData1:$tempData2;
