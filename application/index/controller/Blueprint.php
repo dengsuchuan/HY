@@ -33,9 +33,11 @@ class Blueprint extends Base
 //input('id')
         $tempData2 = [
             'modules'=>input('modules'),
-            'id'=>''
+            'id'=>input('id')
         ];
-        if(Request::isPost()){
+//                          dd($tempData2);
+
+        if(Request::isPost() || isset($tempData2['modules']) || isset($tempData2['id'])){
             //$data = Request::post();
             $tempData1 = Request::post();
             $data = isset($tempData1['id'])?$tempData1:$tempData2;
@@ -50,6 +52,7 @@ class Blueprint extends Base
                     ->whereOr("material","LIKE","%".$data['modules']."%")
                     ->whereOr("drawing_type","LIKE","%".$data['modules']."%")
                     ->whereOr("material","LIKE","%".$data['modules']."%")
+                    ->whereOr("client_id",'=',$data['modules'])
                     ->paginate(10);
             }
             $blueprintInfoCount = $blueprintInfo->total();

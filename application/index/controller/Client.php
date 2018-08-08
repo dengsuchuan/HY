@@ -10,7 +10,6 @@ namespace app\index\controller;
 
 use app\index\common\controller\Base;
 use app\index\model\Client as ClientModel;
-use function PHPSTORM_META\elementType;
 use think\facade\Request;
 
 class Client extends Base
