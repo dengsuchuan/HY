@@ -38,7 +38,7 @@
         {volist name="clientInfo" id = "clientInfoList"}
           <tr>
             <td>
-              <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Client/clientEdit\',[\'id\'=>$clientInfoList.id])}')" href="javascript:;">
+              <a title="编辑" onclick="x_admin_show('修改操作','{:url(\'index/Client/clientEdit\',[\'id\'=>$clientInfoList.id])}')" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
               </a>
               <a title="删除" onclick="delete_(this,'{$clientInfoList.id}')" href="javascript:;">
@@ -47,7 +47,9 @@
               {if  $Think.session.user.admin == 'admin'}
               {/if}
             </td>
-            <td>{$clientInfoList.client_abbreviation}</td>
+            
+            <td style="cursor: pointer" onclick="openLinke('{$clientInfoList.id}','{$clientInfoList.client_abbreviation}')"><span style="color: #1E9FFF">{$clientInfoList.client_abbreviation}</span></td>
+            
             <td>{$clientInfoList.client_name}</td>
             <td>{$clientInfoList.person_in_charge}</td>
             <td>{$clientInfoList.address}</td>
@@ -81,6 +83,27 @@
                  }
              },"json");
          });
+     }
+     function openLinke(id,name) {
+         layer.confirm('请选择进入的页面~', {
+             btn: ['图纸','订单','发货单'] //按钮
+         }, function(){
+                 x_admin_show('<span class=\'layui-badge layui-bg-blue\'> '+name+'</span>的所有明细',"{:url('index/Blueprint/blueprintInfo')}?id="+id);
+                 layer.msg('加载中', {
+                     time: 500, //20s后自动关闭
+                 });
+         }, function(){
+                 layer.msg('订单', {
+                     time: 20000, //20s后自动关闭
+                     btn: ['明白了', '知道了']
+                 });
+         },function () {
+             layer.msg('发货单', {
+                 time: 20000, //20s后自动关闭
+                 btn: ['明白了', '知道了']
+             });
+            }
+         );
      }
     </script>
   </body>

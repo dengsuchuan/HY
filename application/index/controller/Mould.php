@@ -15,6 +15,9 @@ use app\index\model\ComparnyP;
 
 class Mould extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function mould(){
         return $this->view->fetch('mould');
     }

@@ -16,16 +16,7 @@
                 <p id="pLog" style="color:red"></p>
             </div>
         </div>
-
-
-        <div class="layui-form-item layui-form-text">
-            <label class="layui-form-label">工艺说明</label>
-            <div class="layui-input-block">
-                <textarea name="process_content" id="content" ></textarea>
-            </div>
-        </div>
-
-        <div class="layui-form-item">
+        <div class="layui-form-item" >
             <label class="layui-form-label">工艺类型</label>
             <div class="layui-input-block">
                 <select name="process_type" lay-verify="required">
@@ -36,11 +27,6 @@
                 </select>
             </div>
         </div>
-        <script type="text/javascript">
-            //实例化编辑器
-            //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-            UE.getEditor('content',{initialFrameWidth:300,initialFrameHeight:200,elementPathEnabled:false,wordCount:false, toolbars:[['bold','superscript','subscript','fontsize','spechars']]});
-        </script>
         {if  $Think.session.user.is_quota == 1}
         <div class="layui-form-item">
             <label for="process_quota" class="layui-form-label">工序定额h(小时)</label>
@@ -56,6 +42,18 @@
             </div>
         </div>
         {/if}
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">工艺说明</label>
+            <div class="layui-input-block">
+                <textarea name="process_content"  id="content" ></textarea>
+            </div>
+        </div>
+        <script type="text/javascript">
+            //实例化编辑器
+            //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+            UE.getEditor('content',{initialFrameWidth:300,initialFrameHeight:200,elementPathEnabled:false,wordCount:false,zIndex :0, toolbars:[['bold','superscript','subscript','fontsize','spechars']]});
+        </script>
+
         <div class="layui-form-item">
             <label class="layui-form-label">是否检验</label>
             <div class="layui-input-block">

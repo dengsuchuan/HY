@@ -25,7 +25,11 @@ function dd($value){
 
 function getClientName($id){
     $clientName = Client::where("id","$id")->value("client_abbreviation");
-    return $clientName;
+    $data = [
+        'clientName'    =>  $clientName,
+        'id'    => $id,
+    ];
+    return $data;
 }
 
 function getMateria($id){

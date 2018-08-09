@@ -13,6 +13,9 @@ use app\index\common\controller\Base;
 
 class Personnel extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function adminList(){
         return $this->view->fetch('admin-list');
     }
