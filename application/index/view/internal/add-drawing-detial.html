@@ -5,103 +5,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">明细编号</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" title="无法编辑" value="{$detailArray.drawing_detail_id}" id="drawing_detail_id"  disabled="">
+                <input type="text" class="layui-input" title="无法编辑" value="{$newDetial}" id="drawing_detail_id"  disabled="">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">内图编号</label>
-            <div class="layui-input-inline" id="customNumberDiv">
-                <input type="text" class="layui-input" id="customNumber"  placeholder="自定义编号">
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" title="无法编辑" value="{$internal}" id="addMidNumberInput"  disabled="">
             </div>
-            <!--<button type="button" class="layui-btn layui-btn-normal" id="model">切换模式</button>-->
-            <div class="layui-input-inline" id="voluntarily">
-                <select name="modules" lay-verify="required" lay-search="" id="selectMid" lay-filter="selectMid">
-                    <option value=""></option>
-                    <optgroup label="新的编号">
-                        <option value="new">{$internal.new}</option>
-                    </optgroup>
-                    <optgroup label="以往编号">
-                        {volist name="$internal.old" id="internalList"}
-                        <option value="{$internalList.drawing_Internal_id}">{$internalList.drawing_Internal_id}</option>
-                        {/volist}
-                    </optgroup>
-                </select>
-            </div>
-            <p style="color:red" id="customW">* 你选择的是当前日期的编号，在数据库提交的时候可能会更新到新的编号，请留意添加之后的结果。</p>
-            <div class="layui-input-inline" id="addMidNumber">
-                <input type="hidden" class="layui-input" placeholder="内图编号" id="addMidNumberInput">
-                <input type="hidden"  placeholder="临时" id="temp_nternal">
-            </div>
-            <div class="layui-input-inline" id="mes">
-                <input type="hidden" class="layui-input" placeholder="编号描述" id="mesInput">
-            </div>
-            <input type="hidden" class="layui-btn" id="createNumber">
-            <input type="hidden" class="layui-btn layui-btn-warm" id="renovateNumber" title="此按钮只针对当前日期的编号" value="刷新">
-            <!--<button type="button" class="layui-btn" onclick="x_admin_show('模具管理','{:url(\'index/mould/mould\')}')" >模具管理</button>-->
-            <script>
-                $(function () {
-                    $("#voluntarily").show(); //自动生成div
-                    $("#customNumberDiv").hide();//自定义编号div
-                    $("#addMidNumber").hide();//公司编号div
-                    $("#mes").hide();//描述div
-                    $("#customW").hide();//新旧警告
-
-
-                    //切换模式
-                    $("#model").on("click",function () {
-                        $('#voluntarily').toggle();//自动生成div
-                        $('#customNumberDiv').toggle();//自定义编号div
-
-                        $("#addMidNumber").hide();//生成公司编号div
-                        $("#mes").hide();
-                        $("#renovateNumber").hide();
-
-                        $("#customNumber").val("");//自定义编号
-                        $("#selectMid").val("");
-                    });
-
-                    $("#renovateNumber").on("click",function () {
-                        $.ajax({
-                            url:"{:url('index/blueprint/getP')}",
-                            success:function (data) {
-                                $("#addMidNumberInput").val(data);
-                            },
-                        });
-                    });
-
-                    //生成公司编号
-                    $("#createNumber").on("click",function () {
-                        var customNumber = $("#customNumber").val();
-                        var selectMid = $("#selectMid").val();
-
-                        if(customNumber || selectMid){
-                            $("#addMidNumber").show();
-                            $("#mes").show();
-                            var str = customNumber?customNumber:selectMid;
-                            var dateId = '';//定义一个保存时间编号的变量
-                            if(str == "new"){
-                                dateId = "{$internal.new}";
-                                $("#temp_nternal").val("new");
-                                $("#customW").show();//新旧警告
-                            }else{
-                                dateId = str;
-                                $("#temp_nternal").val("");
-                                $("#customW").hide();//新旧警告
-                            }
-                            //alert(str)
-                            $("#addMidNumberInput").val(dateId);//内图编号写到编辑框
-                            $("#renovateNumber").show();
-                        }else{
-                            layer.msg('数据丢失，请重新选择!',{icon:5,time:1000});
-                        }
-                    });
-                });
-            </script>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">外图编号</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" value="{$detailArray.drawing_external_id}"  title="无法编辑" id="drawing_external_id" disabled="">
+                <input type="text" class="layui-input" value=""  title="无法编辑" id="drawing_external_id" disabled="">
             </div>
         </div>
         <div class="layui-form-item">
@@ -615,21 +531,12 @@
             if(drawing_external_name==" "){
                 layer.msg('至少请填写【图纸名称】字段',{icon:5,time:1000});
             }else {
-                //写入新的内图信息
-                var temp_internal = $("#temp_nternal").val();
-                var jsons = "";
-                if(temp_internal == "new"){
-                    jsons = {"json":jsonData,"drawing_Internal_id":materialSelectArray['drawing_internal_id']};
-                }else{
-                    jsons = {"json":jsonData};
-                }
-
                 //写入图纸明细信息
                 $.ajax({
-                    url:"{:url('index/blueprint/createBlueprintInfo')}",
+                    url:"{:url('index/Internal/createDetial')}",
                     type:"POST",
                     dataType:"json",
-                    data:jsons,
+                    data:{"json":jsonData},
                     success:function (data) {
                         if(data){
                             layer.alert("明细添加成功", {icon: 6},function () {
@@ -665,12 +572,9 @@
             $("#spec").val(dataArray['spec']);//给规格编辑框
         });
 
+        //操作材料形状
         form.on('select(materialSelect)', function (data) {
             $("#generatingForm").click();
-        });
-
-        form.on('select(selectMid)', function (data) {
-            $("#createNumber").click();
         });
     });
 

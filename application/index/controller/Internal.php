@@ -9,10 +9,15 @@
 namespace app\index\controller;
 
 use app\index\common\controller\Base;
+use app\index\model\BlueprintInfo;
 use app\index\model\DrawingInternal;
 use app\index\model\ComparnyM;
 use app\index\model\Assembly;
 use think\facade\Request;
+use app\index\model\Material;
+use app\index\model\MaterialShape;
+use app\index\model\Client;
+use app\index\model\Section;
 class Internal extends Base
 {
     protected $beforeActionList = [
@@ -20,7 +25,7 @@ class Internal extends Base
     ];
     //展示内部图纸列表
     public function internalInfo($sort = 'desc'){
-        $internalInfo = DrawingInternal::order('sort '.$sort.' ')->paginate(10);
+        $internalInfo = DrawingInternal::order('create_time '.$sort.' ')->paginate(10);
         $this->assign([
             'internalInfo'  => $internalInfo,
             'sort'          =>$sort
@@ -53,21 +58,16 @@ class Internal extends Base
                 }
             }
         }
+
         //获取数据库中P180706-x的数量实现自动生成编号
-        $model = new DrawingInternal();//可实例化，也可不实例化
-        $i = 0;//编号
-        $str = "P".date('y').date('m').date('d')."-";//可以设置来之数据库的一个自定义字符串
-        do{
-            ++$i;  //第一次就为1，排除编号0
-            if($i < 10){
-                $i = '0'.$i;
-            }
-        }while($model->get(["drawing_Internal_id"=>$str.$i])); //如果存在就继续算下去
+        $str = "P".date('y').date('m').date('d');
+        $model = new DrawingInternal();
+        $newId = $this->getNewId($str,$model,"drawing_Internal_id");
 
         //获取组件图纸信息
         $assemblyInfo  = Assembly::field('id,assembly_code')->select();
         $this->assign([
-            "createId"      =>  $str.$i,
+            "createId"      =>  $newId,
             'assemblyInfo'  =>  $assemblyInfo
         ]);
         return $this->view->fetch('internal-add');
@@ -199,4 +199,76 @@ class Internal extends Base
         ]);
         return $this->view->fetch('internal-info-belonged');
     }
+
+    //添加明细视图
+    public function addDetial(){
+        $internal = input();//获得内图编号
+
+        //更新一下最新的明细编号
+        $str = $internal['id'];
+        $model = new BlueprintInfo();
+        $newId = $this->getNewId($str,$model,'drawing_detail_id');
+
+        $this->assign("internal",$internal['id']);
+        $this->assign("newDetial",$newId);
+
+        //------这里开始复制代码-------------------------------
+        $detailArray = array();
+        /*------------------生成新的--明细编号------------------------*/
+        $material = Material::all();//获取所有材料
+
+        $detailArray = [
+            'drawing_detail_id'=>$newId,//图纸明细的编号
+            'material'=>$material,//获取所有材料
+        ];
+        $this->assign("detailArray",$detailArray);
+        /*----------------材料形状处理----------------------*/
+        $materialShape = MaterialShape::all();
+        $this->assign("materialShapeArray",$materialShape);
+
+        $client = Client::all();//所有客户
+        $this->assign("client",$client);
+
+        $section = Section::all();//材料规格
+        $this->assign("section",$section);
+
+
+
+
+        return $this->view->fetch("add-drawing-detial");
+    }
+
+    //添加图纸明细写入
+    public function createDetial(){
+        if(Request::isAjax()) {
+            $jsontext = Request::post("json");
+            $jsonToArray = json_decode($jsontext, true);
+            $arrayToJson = json_encode($jsonToArray);
+            $jsonToArray = json_decode($arrayToJson, true);
+            //更新一下最新的明细编号
+            $str = $jsonToArray['drawing_internal_id'];
+            $model = new BlueprintInfo();
+            $newId = $this->getNewId($str, $model, 'drawing_detail_id');
+            $jsonToArray['drawing_detail_id'] = $newId;
+            //写入创建者
+            $jsonToArray['create_name'] = session('user.user_name');
+            if (session('user.is_price') == 0) {
+                $jsonToArray['product_mfg_cost'] = 0;
+                $jsonToArray['product_quotation'] = 0;
+                $jsonToArray['product_real_price'] = 0;
+            } else if (session('user.is_price') == 1) {
+                $jsonToArray['product_mfg_cost'] = 0;
+                $jsonToArray['product_quotation'] = 0;
+                $jsonToArray['product_real_price'] = 0;
+            }
+            //var_dump($jsonToArray);
+            $info = BlueprintInfo::create($jsonToArray);//创建明细
+            if ($info) {
+                return json(1);
+            } else {
+                return json(0);
+            }
+        }
+    }
+
 }

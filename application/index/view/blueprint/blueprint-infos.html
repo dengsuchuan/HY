@@ -10,11 +10,11 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">公司编号</label>
+                <label class="layui-form-label">内图编号</label>
                 <div class="layui-input-inline">
                     <select lay-verify="required" lay-search="" name="drawing_internal_id">
                         <option value="{$blueprintInfo.drawing_internal_id}">{$blueprintInfo.drawing_internal_id}</option>
-                        <optgroup label="选择公司编号">
+                        <optgroup label="选择内图编号">
                             {volist name="$drawingInternal" id="drawingInternalList"}
                             <option value="{$drawingInternalList.drawing_Internal_id}">{$drawingInternalList.drawing_Internal_id}</option>
                             {/volist}

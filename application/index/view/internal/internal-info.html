@@ -71,12 +71,14 @@
                 <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:;">
                     <i  style="color:red;" class="layui-icon"></i>
                 </a>
+                <a title="添加明细" onclick="x_admin_show('为内图 <span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 添加明细','{:url(\'index/Internal/addDetial\', [\'id\'=>$info.drawing_Internal_id])}')" href="javascript:;"><i style="color: green" class="iconfont nav_right">&#xe6b9;</i></a>
             </td>
             <td>
                 {if $info.assembly_code == null or $info.is_assembly_code == null}
-                <span style="color:red;">{$info.drawing_Internal_id}</span>
+                <span style="color:red;">!</span>
+                <a title="序号{$info.drawing_Internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $info.drawing_Internal_id])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$info.drawing_Internal_id}</i></a>
                 {else}
-                {$info.drawing_Internal_id}
+                <a title="序号{$info.drawing_Internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $info.drawing_Internal_id])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$info.drawing_Internal_id}</i></a>
                 {/if}
             </td>
             <td>

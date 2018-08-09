@@ -239,84 +239,45 @@ class Blueprint extends Base
         return $this->view->fetch("add-drawing-externa");
     }
 
-    //获取M和P的值
-    public function getMP(){
-        $strP = "P".date('y').date('m').date('d');
-        $pArray = ComparnyP::where("pid","like",$strP."-%")->select(); //查找P的数据
 
-        if(count($pArray)){ /*count($mArray)等于0，则执行else的内容*/
-            //拆分字符串为数组
-            foreach ($pArray as $value){
-                $pidArray[] = explode("-",$value['pid']);
-            }
-            //拆分单独的序号出来
-            foreach ($pidArray as $value){
-                $pidOrder[] =  intval($value[1]);
-            }
-            //找到最大的序号
-            $maxPid = max($pidOrder);
-            $maxPid += 1;
-
-            if($maxPid<10){
-                $maxPid = '0'.$maxPid.'';
-            }
-
-            echo "<script>console.log($maxPid)</script>";
-
-
-            //合成将要生成的P编号//
-            $tempPid = $strP."-".($maxPid);
-
-            $tempArray = [
-                "cou"=>count($pArray),
-                "mes"=>"存在",
-                "pids"=>$pidArray,
-                "max"=>$maxPid,
-                "companyNumber"=>$tempPid
-            ];
-        }else{
-            $tempArray = ["cou"=>0,"mes"=>"不存在","companyNumber"=>$strP."-01"];
-        }
-        return $tempArray;
-    }
-
+    //公司编号-以作废
     //拿到新的公司编号值
-    public function newM(){
-        if(Request::isAjax()){
-            $mid = Request::post("p");
-            $mArray = ComparnyM::where("mid","like",$mid."-%")->select(); //查找M的数据
-            if(count($mArray)){ /*count($mArray)等于0，则执行else的内容*/
-                //拆分字符串为数组
-                foreach ($mArray as $value){
-                    $midArray[] = explode("-",$value['mid']);
-                }
-                //拆分单独的序号出来
-                foreach ($midArray as $value){
-                    $midOrder[] = $value[1];
-                }
-                //找到最大的序号
-                $maxMid = max($midOrder);
+//    public function newM(){
+//        if(Request::isAjax()){
+//            $mid = Request::post("p");
+//            $mArray = ComparnyM::where("mid","like",$mid."-%")->select(); //查找M的数据
+//            if(count($mArray)){ /*count($mArray)等于0，则执行else的内容*/
+//                //拆分字符串为数组
+//                foreach ($mArray as $value){
+//                    $midArray[] = explode("-",$value['mid']);
+//                }
+//                //拆分单独的序号出来
+//                foreach ($midArray as $value){
+//                    $midOrder[] = $value[1];
+//                }
+//                //找到最大的序号
+//                $maxMid = max($midOrder);
+//
+//                //合成将要生成的M编号
+//                $tempMid = $mid."-".($maxMid+1);
+//                //合成新的公司编号
+//                $companyNumber = $tempMid."-1";
+//
+//                $tempArray = [
+//                    "companyNumber"=>$companyNumber
+//                ];
+//
+//            }else{
+//                $tempArray = ["companyNumber"=>$mid."-1"];
+//            }
+//
+//            return $tempArray;
+//
+//        }
+//    }
 
-                //合成将要生成的M编号
-                $tempMid = $mid."-".($maxMid+1);
-                //合成新的公司编号
-                $companyNumber = $tempMid."-1";
-
-                $tempArray = [
-                    "companyNumber"=>$companyNumber
-                ];
-
-            }else{
-                $tempArray = ["companyNumber"=>$mid."-1"];
-            }
-
-            return $tempArray;
-
-        }
-    }
-
-
-    public function addDrawingExternalId(){//传入编号和备注
+    //添加外图
+    public function addDrawingExternalId(){
         if(Request::isAjax()){
             //获取提交过来的所有数据
             $data = Request::post();
@@ -336,42 +297,46 @@ class Blueprint extends Base
         }
     }
 
-    //--|--|添加图纸明细控制器
+    //获取最新的内图编号
+    public function getP(){
+        //获取数据库中P180706-x的数量实现自动生成编号
+        $str = "P".date('y').date('m').date('d');//字符串
+        $model = new DrawingInternal();//实例
+        $newId = $this->getNewId($str,$model,"drawing_Internal_id");//最新的内图
+        return $newId;
+    }
+
+    //添加图纸明细的视图里面的参数
     public function addDrawingDetial($id){//从视图传来
 
-        $detailArray[] =[];
-        /*------------------------------------------*/
+        $detailArray = array();
+        /*------------------生成新的--明细编号------------------------*/
         //获取数据库中$id的数量实现自动生成图纸明细编号
         $model = new BlueprintInfo();//可实例化，也可不实例化
-        $i = 0;//编号
-        $tempi = 0;
-        $str = $id."-";//可以设置来之数据库的一个自定义字符串
-        do{
-            ++$i;  //第一次就为1，排除编号0
-            if($i<10){
-                $tempi = "0".$i;
-                $i = $tempi;
-            }
-        }while($model->get(["drawing_detail_id"=>$str.$i])); //如果存在就继续算下去
-        /*------------------------------------------*/
+        $newId = $this->getNewId($id,$model,"drawing_detail_id");
 
         $material = Material::all();//获取所有材料
 
         $detailArray = [
-            'drawing_detail_id'=>$str.$i,//这个是图纸明细的编号，每次自动递增
+            'drawing_detail_id'=>$newId,//图纸明细的编号
             'drawing_external_id'=>$id,//外图编号
             'material'=>$material,//获取所有材料
         ];
         $this->assign("detailArray",$detailArray);
-        /*----------------公司编号处理----------------------*/
-        //先获取所有的模具M
-        $allP = ComparnyP::order("id","desc")->select();
-        $this->assign("allP",$allP);
 
-        $pidArray = $this->getMP("P");
-        $this->assign("pidArray",$pidArray);
+        /*----------------内图编号处理----------------------*/
+        //先获取所有已经存在的内图编号
+        $allInternal = DrawingInternal::order("id","desc")->select();
 
+        //获取最新的内图编号
+        $newInternal = $this->getP();
+
+        $internal['old'] = $allInternal;
+        $internal['new'] = $newInternal;
+
+        $this->assign("internal",$internal);
         /*----------------公司编号处理-结束---------------------*/
+
 
         /*----------------材料形状处理----------------------*/
         $materialShape = MaterialShape::all();
@@ -382,9 +347,6 @@ class Blueprint extends Base
 
         $section = Section::all();//材料规格
         $this->assign("section",$section);
-
-
-
 
         return $this->view->fetch('add-drawing-detial');
     }
@@ -677,26 +639,50 @@ class Blueprint extends Base
     public function createBlueprintInfo(){
         if(Request::isAjax()){
             $jsontext = Request::post("json");
-            $jsonToArray = json_decode($jsontext);
-            $jsonToArray->create_name = session('user.user_name');
+            $jsonToArray = json_decode($jsontext,true);
+            $arrayToJson = json_encode($jsonToArray);
+            $jsonToArray = json_decode($arrayToJson,true);
+            //更新一下最新的明细编号
+            $str = $jsonToArray['drawing_externa_id'];
+            $model = new BlueprintInfo();
+            $newId = $this->getNewId($str,$model,'drawing_detail_id');
+            $jsonToArray['drawing_detail_id'] = $newId;
+            //写入创建者
+            $jsonToArray['create_name'] = session('user.user_name');
             if(session('user.is_price') == 0){
-                $jsonToArray->product_mfg_cost = 0;
-                $jsonToArray->product_quotation = 0;
-                $jsonToArray->product_real_price = 0;
+                $jsonToArray['product_mfg_cost'] = 0;
+                $jsonToArray['product_quotation'] = 0;
+                $jsonToArray['product_real_price'] = 0;
             }else if (session('user.is_price') == 1){
-                $jsonToArray->product_mfg_cost = 0;
-                $jsonToArray->product_quotation = 0;
-                $jsonToArray->product_real_price = 0;
+                $jsonToArray['product_mfg_cost'] = 0;
+                $jsonToArray['product_quotation'] = 0;
+                $jsonToArray['product_real_price'] = 0;
             }
-            //公司编号
-            $p = Request::post("p");
-            $mes = Request::post("mes");
-            $pArray = ["pid"=>$p,"mes"=>$mes];
 
-            if (BlueprintInfo::create($jsonToArray)&&ComparnyP::create($pArray)){
-                return 1;
+
+            //更新一下最新的内图编号
+            $drawing_Internal_id = Request::post("drawing_Internal_id");
+
+            $info = '';
+            if(isset($drawing_Internal_id)){
+                $drawing_Internal_id = $this->getP();
+                $info1 = DrawingInternal::create(['drawing_Internal_id'=>$drawing_Internal_id,'remark'=>'']);
+
+                $jsonToArray['drawing_internal_id'] = $drawing_Internal_id;
+                $info2 = BlueprintInfo::create($jsonToArray);
+                if($info1 && $info2){
+                    $info = 1;
+                }else{
+                    $info = 0;
+                }
             }else{
-                return 0;
+                $info = BlueprintInfo::create($jsonToArray);
+            }
+
+            if ($info){
+                return json(1);
+            }else{
+                return json(0);
             }
         }
 
