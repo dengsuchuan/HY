@@ -11,7 +11,6 @@ namespace app\index\controller;
 use app\index\common\controller\Base;
 use app\index\model\BlueprintInfo;
 use app\index\model\DrawingInternal;
-use app\index\model\ComparnyM;
 use app\index\model\Assembly;
 use think\facade\Request;
 use app\index\model\Material;
@@ -25,6 +24,15 @@ class Internal extends Base
     ];
     //展示内部图纸列表
     public function internalInfo($sort = 'desc'){
+        $assembly_code = input('assembly_code');
+        if(isset($assembly_code)){
+            $internalInfo = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(10);
+            $this->assign([
+                'internalInfo'  => $internalInfo,
+                'sort'          =>$sort
+            ]);
+            return $this->view->fetch('internal-info');
+        }
         $internalInfo = DrawingInternal::order('create_time '.$sort.' ')->paginate(10);
         $this->assign([
             'internalInfo'  => $internalInfo,
