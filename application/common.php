@@ -34,7 +34,7 @@ function getClientName($id){
 
 function getMateria($id){
     $clientName = MaterialShape::where("id","$id")->value("shape");
-    return $clientName.$id;
+    return $clientName;
 }
 
 //材料形状的查询

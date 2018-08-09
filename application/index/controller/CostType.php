@@ -14,6 +14,9 @@ use app\index\model\CostType as CostTypeModel;
 use think\facade\Request;
 class CostType extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function costInfo(){
         $costInfo = CostTypeModel::getCostInfo();
         $this->assign([

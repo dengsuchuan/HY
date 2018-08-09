@@ -26,7 +26,7 @@ class Blueprint extends Base
     //--|图纸明细控制器以及相关子控制器
     public function blueprintInfo(){
 
-        $ClientKeyInfo = Client::all();
+        $ClientKeyInfo = Client::select();
         $this->assign("clientKeyInfo",$ClientKeyInfo);
 
         //判断是否为post提交请求。如果是，就代表是搜索。
@@ -41,7 +41,6 @@ class Blueprint extends Base
         if(Request::isPost() || isset($tempData2['modules']) || isset($tempData2['id']) || isset($tempData2['key']) || isset($tempData2['codeId'])){
             //$data = Request::post();
 //            dd($tempData2);
-
             $tempData1 = Request::post();
             $data = isset($tempData1['id'])?$tempData1:$tempData2;
             if($data['id']!=""){//这个ID是客户ID

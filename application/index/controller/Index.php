@@ -45,10 +45,13 @@ class Index extends Base
         return;
     }
     public function aa(){
-        if(!session('user.employee_lv') == 1){
-            return '不可访问';
-        }
-        $id = session('user.employee_lv');
-        return $id;
+//        if(!session('user.employee_lv') == 1){
+//            return '不可访问';
+//        }
+//        $id = session('user.employee_lv');
+        $m = new \Memcache();
+        $m->connect('127.0.0.1',11211);
+//        $m->set('name','王恒兵',0);
+        dump($m->get('name'));
     }
 }

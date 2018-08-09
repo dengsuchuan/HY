@@ -14,7 +14,9 @@ use think\facade\Request;
 
 class Client extends Base
 {
-
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //渲染列表
     public function clientInfo(){
 

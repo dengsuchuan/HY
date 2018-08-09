@@ -13,6 +13,9 @@ use app\index\common\controller\Base;
 
 class Order extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function order(){
         return $this->view->fetch('order');
     }

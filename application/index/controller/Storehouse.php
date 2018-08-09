@@ -5,6 +5,9 @@ use app\index\common\controller\Base;
 
 class Storehouse extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function delivery(){
         return $this->view->fetch('delivery');
     }
