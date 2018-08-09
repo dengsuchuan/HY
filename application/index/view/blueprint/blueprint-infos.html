@@ -12,7 +12,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">公司编号</label>
                 <div class="layui-input-inline">
-                    <select lay-verify="required" lay-search="" name="drawing_internal_id">
+                    <select  lay-search="" name="drawing_internal_id">
                         <option value="{$blueprintInfo.drawing_internal_id}">{$blueprintInfo.drawing_internal_id}</option>
                         <optgroup label="选择公司编号">
                             {volist name="$drawingInternal" id="drawingInternalList"}
@@ -37,7 +37,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">材料类型</label>
                 <div class="layui-input-inline">
-                    <select lay-verify="required" lay-search="" name="material">
+                    <select  lay-search="" name="material">
                         <option value="{$blueprintInfo.material}">{$blueprintInfo.material}</option>
                         <optgroup label="选择材料类型">
                             {volist name="material" id="materialList"}
@@ -56,7 +56,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">图纸类型</label>
                 <div class="layui-input-inline">
-                    <select lay-verify="required" lay-search="" name="drawing_type">
+                    <select lay-search="" name="drawing_type">
                         <option value="{$blueprintInfo.drawing_type}">{$blueprintInfo.drawing_type}</option>
                         <optgroup label="选择类型">
                             <option value="零件">零件</option>
@@ -68,8 +68,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">客户简称</label>
                 <div class="layui-input-inline">
-                    <select lay-verify="required" lay-search="" name="client_id">
-                        <option value="{$blueprintInfo.client_id}">{$blueprintInfo.client_id|getClientName}</option>
+                    <select lay-search="" name="client_id">
+                        <option value="{$blueprintInfo.client_id}">  <?php   $clienyname = getClientName($blueprintInfo['client_id']);?>{$clienyname.clientName}</option>
                         <optgroup label="选择客户">
                             {volist name="$client" id="clientList"}
                             <option value="{$clientList.id}">{$clientList.client_abbreviation}</option>
@@ -91,7 +91,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">材料形状</label>
                     <div class="layui-input-inline">
-                        <select lay-verify="required" lay-search="" name="material_type" lay-filter="material_type" id="material_type">
+                        <select  lay-search="" name="material_type" lay-filter="material_type" id="material_type">
                             <option value="{$blueprintInfo.material_type}">{$blueprintInfo.material_type|getMateria}</option>
                             <optgroup label="选择形状">
                                 {volist name="$materialShape" id="materialShapeList"}
@@ -151,7 +151,7 @@
                 <div class="layui-form-item" id="specifications">
                     <label class="layui-form-label">截面积</label>
                     <div class="layui-input-inline">
-                        <select lay-verify="required" lay-search="" lay-filter="channel_select" id="channel_select">
+                        <select  lay-search="" lay-filter="channel_select" id="channel_select">
                             <option value="{$blueprintInfo.specifications}">{$blueprintInfo.specifications}</option>
                             <optgroup label="选择规格">
                                 {volist name="$section" id="sectionList"}

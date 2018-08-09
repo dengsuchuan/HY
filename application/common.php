@@ -25,12 +25,16 @@ function dd($value){
 
 function getClientName($id){
     $clientName = Client::where("id","$id")->value("client_abbreviation");
-    return $clientName;
+    $data = [
+        'clientName'    =>  $clientName,
+        'id'    => $id,
+    ];
+    return $data;
 }
 
 function getMateria($id){
     $clientName = MaterialShape::where("id","$id")->value("shape");
-    return $clientName;
+    return $clientName.$id;
 }
 
 //材料形状的查询

@@ -25,6 +25,7 @@ class Blueprint extends Base
     ];
     //--|图纸明细控制器以及相关子控制器
     public function blueprintInfo(){
+
         $ClientKeyInfo = Client::all();
         $this->assign("clientKeyInfo",$ClientKeyInfo);
 
@@ -32,16 +33,31 @@ class Blueprint extends Base
         $blueprintKeyInfo = BlueprintInfo::order('create_time', 'desc')->select();
         $tempData2 = [
             'modules'=>input('modules'),
-            'id'=>input('id')
+            'id'=>input('id'),
+            'codeId'   =>input('codeId'),
+            'key'   => input('key'),
         ];
 
-        if(Request::isPost() || isset($tempData2['modules']) || isset($tempData2['id'])){
+        if(Request::isPost() || isset($tempData2['modules']) || isset($tempData2['id']) || isset($tempData2['key']) || isset($tempData2['codeId'])){
             //$data = Request::post();
+//            dd($tempData2);
+
             $tempData1 = Request::post();
             $data = isset($tempData1['id'])?$tempData1:$tempData2;
             if($data['id']!=""){//这个ID是客户ID
                 $blueprintInfo = BlueprintInfo::where("client_id",$data['id'])->paginate(10);
-            }else{
+            }else if ($tempData2['key']!=''){
+                    switch ($tempData2['key']){
+                        case 'internal':
+                            $blueprintInfo =  BlueprintInfo::where("drawing_internal_id",$tempData2['codeId'])->paginate(10);
+                            break;
+                        case 'externa':
+                            $blueprintInfo =  BlueprintInfo::where("drawing_externa_id",$tempData2['codeId'])->paginate(10);
+                            break;
+                        case 'clients':
+                            $blueprintInfo = BlueprintInfo::where("client_id",$tempData2['codeId'])->paginate(10);
+                    }
+            } else{
                 $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
                     ->where("drawing_detail_id","LIKE","%".$data['modules']."%")
                     ->whereOr("drawing_internal_id","LIKE","%".$data['modules']."%")
