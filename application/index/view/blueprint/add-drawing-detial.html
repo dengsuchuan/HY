@@ -162,6 +162,12 @@
                 <input type="checkbox" name="close" lay-skin="switch" lay-text="是|否"  id="if_batch">
             </div>
         </div>
+        <div >
+            <label class="layui-form-label">继承图纸文件</label>
+            <div class="layui-input-inline">
+                <input type="checkbox" name="files_state" lay-skin="switch" lay-text="是|否"  id="files_state">
+            </div>
+        </div>  <!-- 是否继承外图图纸文件 默认选中为是-->
         <div class="layui-form-item">
             <label class="layui-form-label">材料形状</label>
             <div class="layui-input-block">
@@ -314,7 +320,6 @@
             </div>
         </div>
         {/switch}
-
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
