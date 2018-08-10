@@ -817,7 +817,7 @@ class Blueprint extends Base
                 break;
             //模型文件
             case 'within':
-                $info = $files->validate(['extcreateBlueprintInfo'=>'pdf'])
+                $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/nei',strtoupper($tip).$drawing_id);
                 $path= '/drawing/nei/'.strtoupper($tip).$drawing_id;
                 break;
