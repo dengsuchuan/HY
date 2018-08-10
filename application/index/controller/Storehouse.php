@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\index\common\controller\Base;
 
+
 class Storehouse extends Base
 {
     protected $beforeActionList = [

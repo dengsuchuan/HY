@@ -15,6 +15,7 @@ use think\facade\Request;;
 use app\index\model\DrawingInternal;
 class Assembly extends Base
 {
+
     protected $beforeActionList = [
         'isLogin',
     ];

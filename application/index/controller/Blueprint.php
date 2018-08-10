@@ -694,6 +694,7 @@ class Blueprint extends Base
             }
 
 
+
             //更新一下最新的内图编号
             $drawing_Internal_id = Request::post("drawing_Internal_id");
 

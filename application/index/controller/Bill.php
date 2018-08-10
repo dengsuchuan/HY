@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 
+
 use app\index\common\controller\Base;
 
 class Bill extends Base

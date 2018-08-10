@@ -100,6 +100,7 @@ class Internal extends Base
                 }
             }while($model->get(["drawing_Internal_id"=>$str.$i])); //如果存在就继续算下去
 
+
             $data = Request::post();
             $data['drawing_Internal_id'] = $str.$i;
             $data['create_name'] = session('user.user_name');

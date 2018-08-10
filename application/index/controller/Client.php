@@ -36,6 +36,7 @@ class Client extends Base
         }
         return $this->view->fetch('client-add');
     }
+
     public function clientEdit(){
         if(Request::isAjax()) {
             $data = Request::post();

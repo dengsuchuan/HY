@@ -9,6 +9,7 @@
 namespace app\index\controller;
 
 
+
 use app\index\common\controller\Base;
 
 class Message extends Base

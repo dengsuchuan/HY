@@ -20,3 +20,4 @@ class CostType extends Model
         return $cate->catetree(self::select());
     }
 }
+

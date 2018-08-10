@@ -8,6 +8,7 @@
 
 namespace app\index\controller;
 
+
 use app\index\common\controller\Base;
 use app\index\model\Section as SectionModel;
 use think\facade\Request;

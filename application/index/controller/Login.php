@@ -54,6 +54,7 @@ class Login extends Controller
             }
         }
     }
+
     public function outLogin(){
         session('user',null);
         Session::clear();

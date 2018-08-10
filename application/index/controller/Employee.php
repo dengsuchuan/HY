@@ -83,6 +83,7 @@ class Employee extends Base
                 return json(0);
             }
         }
+
         $id = intval(input('id'));
         $employeeRow = EmployeeModel::get($id);
         //获取部门信息

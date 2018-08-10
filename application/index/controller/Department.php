@@ -17,6 +17,7 @@ class Department extends Base
     protected $beforeActionList = [
         'isLogin',
     ];
+
     //渲染列表
     public function departmentInfo(){
         $departmentInfo =  DepartmentMode::where('id',"<>",0)->select();
