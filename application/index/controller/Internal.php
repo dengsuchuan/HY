@@ -23,7 +23,7 @@ class Internal extends Base
         'isLogin',
     ];
     //展示内部图纸列表
-    public function internalInfo($sort = 'desc'){
+    public function internalInfo($sort = 'asc'){
         if(Request::isPost()){
             $id = Request::post('id');
             $internalInfo = DrawingInternal::where('id',$id)->order('sort '.$sort.' ')->paginate(10);

@@ -37,8 +37,8 @@
             <form class="layui-form" action="{:url('index/Internal/internalInfo')}" method="post">
                 <div class="layui-input-inline">
                     <select name="id" lay-search="" >
-                        <option value="">输入简称</option>
-                        <optgroup label="外图明细">
+                        <option value="">请输入关键字</option>
+                        <optgroup label="内图编号">
                             {volist name="$internalCode" id="InfoList"}
                             <option value="{$InfoList.id}">{$InfoList.drawing_Internal_id}</option>
                             {/volist}
@@ -72,10 +72,10 @@
                     操作
                     &nbsp;
                     {if $code == 'M'}
-                    <a href="{:url('/index/Internal/internalInfo')}"> <i class="layui-icon layui-icon-release" style="color: red"></i></a>
+                    <a href="{:url('/index/Internal/internalInfo')}"> <span  style="color: red">组</span></a>
                     {elseif $code == 'N'/}
                     {else/}
-                    <a href="{:url('/index/Internal/internalInfo',['code'=>'M'])}"> <i class="layui-icon layui-icon-release"></i></a>
+                    <a href="{:url('/index/Internal/internalInfo',['code'=>'M'])}"> <span >组</span></a>
                     {/if}
                 </th>
                 <th width="13%">
