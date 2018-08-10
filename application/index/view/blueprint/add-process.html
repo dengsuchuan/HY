@@ -19,7 +19,7 @@
         <div class="layui-form-item" >
             <label class="layui-form-label">工艺类型</label>
             <div class="layui-input-block">
-                <select name="process_type" lay-verify="required">
+                <select name="process_type" lay-verify="required" lay-search="">
                     <option value=""></option>
                     {volist name="processType" id ="processTypeInfo" }
                     <option value="{$processTypeInfo.id}">{$processTypeInfo.process_name}</option>

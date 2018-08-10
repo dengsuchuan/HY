@@ -142,11 +142,15 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户简称</label>
+            <?php $clienyName = getClientName($clientId);?>
             <div class="layui-input-inline">
                 <select name="modules" lay-verify="required" lay-search="" id="client_id">
-                    {volist name="$client" id="clientList"}
-                    <option value="{$clientList.id}">{$clientList.client_abbreviation}</option>
-                    {/volist}
+                    <option value="{$clientId}"><?php echo $clienyName['clientName'] ?></option>
+                    <optgroup label="选择客户">
+                        {volist name="$client" id="clientList"}
+                        <option value="{$clientList.id}">{$clientList.client_abbreviation}</option>
+                        {/volist}
+                    </optgroup>
                 </select>
             </div>
         </div>
@@ -258,7 +262,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">材料要求</label>
+            <label class="layui-form-label">备料要求</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" "  id="material_requirements">
             </div>
@@ -644,7 +648,6 @@
                         }
                     },
                 });
-
             }
         });
     });

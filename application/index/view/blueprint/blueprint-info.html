@@ -35,6 +35,7 @@
         <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
       </form>
     </div>
+      <span class="x-right" style="line-height:40px">共有{$blueprintInfoCount}条数据 · 有{$blueprintInfoCount/25|getInt}页</span>
     <script>
       $(function () {
           $("input").click(function () {
@@ -46,7 +47,6 @@
 
       });
     </script>
-    <!--<span class="x-right" style="line-height:40px">共：{$blueprintInfoCount}条数据</span>-->
   </xblock>
   <div class="container-wrap">
     <div class="box-1">

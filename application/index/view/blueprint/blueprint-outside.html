@@ -15,21 +15,25 @@
     <xblock>
         <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加外图','{:url(\'index/blueprint/addDrawingExterna\')}',500,400)"><i class="layui-icon"></i>添加</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <!--<div class="layui-input-inline"><input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input"></div>-->
-        <!--<button class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>-->
-        <!--<script>-->
-            <!--$(function () {-->
-                <!--$("#find").click(function () {-->
-                    <!--var findText = $("#findText").val();-->
-                    <!--if(findText.length > 1){-->
-                        <!--window.location.href="{:url('index/blueprint/blueprintInfo')}";-->
-                    <!--}else{-->
-                        <!--layer.msg('请输入查找的关键字!',{icon:0,time:2000});-->
-                    <!--}-->
-                <!--});-->
-            <!--})-->
-        <!--</script>-->
+        <div class="layui-input-inline">
+            <form class="layui-form" action="{:url('index/Blueprint/blueprintOutside')}" method="post">
+                <div class="layui-input-inline">
+                    <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
+                </div>
+                <div class="layui-input-inline">
+                    <select name="id" lay-search="" >
+                        <option value=""></option>
+                        <optgroup label="外图编号">
+                            {volist name="$blueprintOutside" id="outside"}
+                            <option value="{$outside.id}">{$outside.drawing_external_id}</option>
+                            {/volist}
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </form>
+        </div>
+        <span class="x-right" style="line-height:40px">共有{$blueprintOutsideCount}条数据 · 有{$blueprintOutsideCount/25|getInt}页</span>
     </xblock>
 <div class="container-wrap">
     <div class="box-1">
@@ -60,7 +64,14 @@
                     <a title="添加明细" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i style="color: green" class="iconfont nav_right">&#xe6b9;</i></a>
                 </td>
                 <td>
+                    <?php
+                    $count = getDetialExternal($blueprintOutsideList['drawing_external_id']);
+                    ?>
+                    {if $count == 0}
+                    {$blueprintOutsideList.drawing_external_id}
+                    {else/}
                     <a title="序号{$blueprintOutsideList.drawing_external_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$blueprintOutsideList.drawing_external_id}</i></a>
+                    {/if}
                 </td>
                 <td>{$blueprintOutsideList.create_time}</td>
                 <td>{$blueprintOutsideList.create_name}</td>

@@ -13,6 +13,7 @@ use app\index\model\Client;
 use app\index\model\MaterialShape;
 use app\index\model\Section;
 use app\index\model\BlueprintInfo;
+use app\index\model\DrawingInternal;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -50,4 +51,22 @@ function getWeightId($id){//获取材料形状的编号
 function getCodet($id){
     $count = BlueprintInfo::where('drawing_internal_id','=',$id)->count();
     return$count;
+}
+
+//页数
+function getInt($int){
+    $int = $int > (int)$int ==0?1:(int)$int+1;
+    return $int;
+}
+
+//检查是否有子项    外图
+function getDetialExternal($id){
+    $count = BlueprintInfo::where('drawing_externa_id',$id)->count();
+    return $count;
+}
+
+//检查是否有子项  组件
+function getAssembly($id){
+    $count = DrawingInternal::where('assembly_code',$id)->count();
+    return $count;
 }

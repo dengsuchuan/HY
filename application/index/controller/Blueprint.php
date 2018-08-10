@@ -222,9 +222,24 @@ class Blueprint extends Base
     }
     //--|外图控制器以及子控制器
     public function blueprintOutside(){
-        $blueprintOutside = BlueprintOutside::order('create_time','desc')->paginate(25);
-        $blueprintOutsideCount = $blueprintOutside->total();
+        //-----------------------------------------
+        //搜索功能
+        if(Request::isPost()){
+            $data = Request::post();
+            if($data['id']!=""){//这个ID是主键
+                $blueprintOutside = BlueprintOutside::where("id",$data['id'])->paginate(25);
+            }else{
+                $blueprintOutside = BlueprintOutside::order('create_time', 'desc')
+                    ->where("drawing_external_id","LIKE","%".$data['modules']."%")
+                    ->paginate(25);
+            }
+        }else{
+            $blueprintOutside = BlueprintOutside::order('create_time','desc')->paginate(25);
+        }
+        //-----------------------------------------
+
         $this->assign('blueprintOutside',$blueprintOutside);
+        $blueprintOutsideCount = $blueprintOutside->total();
         $this->assign('blueprintOutsideCount',$blueprintOutsideCount);
         return $this->view->fetch('blueprint-outside');
     }
@@ -355,6 +370,10 @@ class Blueprint extends Base
 
         $section = Section::all();//材料规格
         $this->assign("section",$section);
+
+        //session的客户id
+        $clientId = session('client_id')?session('client_id'):"";
+        $this->assign("clientId",$clientId);
 
         return $this->view->fetch('add-drawing-detial');
     }
@@ -681,7 +700,7 @@ class Blueprint extends Base
             $info = '';
             if(isset($drawing_Internal_id)){
                 $drawing_Internal_id = $this->getP();
-                $info1 = DrawingInternal::create(['drawing_Internal_id'=>$drawing_Internal_id,'remark'=>'']);
+                $info1 = DrawingInternal::create(['drawing_Internal_id'=>$drawing_Internal_id,'remark'=>'','create_name'=>session('user.user_name')]);
 
                 $jsonToArray['drawing_internal_id'] = $drawing_Internal_id;
                 $info2 = BlueprintInfo::create($jsonToArray);
@@ -695,6 +714,7 @@ class Blueprint extends Base
             }
 
             if ($info){
+                session('client_id',$jsonToArray['client_id']);
                 return json(1);
             }else{
                 return json(0);

@@ -19,11 +19,31 @@ class Assembly extends Base
         'isLogin',
     ];
     public function assemblyInfo($sort = 'asc'){
-        $assemblyInfo = AssemblyModel::alias('a')
-             ->order('assembly_code '.$sort.' ')
-             ->join('looling_type l','a.tooling_type = l.id')
-             ->field('a.*,l.looling_type_name')
-             ->paginate(10);
+        if(Request::isPost()) {
+            $data = Request::post();
+
+            if($data['id']!="") {//这个ID是主键
+//                $assemblyInfo = AssemblyModel::where("id", $data['id'])->paginate(25);
+                $assemblyInfo = AssemblyModel::alias('a')->where("a.id", $data['id'])
+                    ->order('assembly_code '.$sort.' ')
+                    ->join('looling_type l','a.tooling_type = l.id')
+                    ->field('a.*,l.looling_type_name')
+                    ->paginate(25);
+            }else{
+                $assemblyInfo = AssemblyModel::alias('a')->where("a.assembly_code","LIKE","%".$data['modules']."%")
+                    ->join('looling_type l','a.tooling_type = l.id')
+                    ->field('a.*,l.looling_type_name')
+                    ->paginate(25);
+            }
+        }else{
+            $assemblyInfo = AssemblyModel::alias('a')
+                ->order('assembly_code '.$sort.' ')
+                ->join('looling_type l','a.tooling_type = l.id')
+                ->field('a.*,l.looling_type_name')
+                ->paginate(25);
+        }
+
+
         $assembluCount = count(AssemblyModel::field('id')->select());
 
         $this->assign([

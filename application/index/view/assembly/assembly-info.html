@@ -13,7 +13,25 @@
       <xblock>
         <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>删除</button>-->
         <button class="layui-btn" onclick="x_admin_show('添加组件图纸','{:url(\'index/Assembly/assemblyAdd\')}',500,500)"><i class="layui-icon"></i>添加组件图纸</button>
-        <span class="x-right" style="line-height:40px">共有数据：{$assembluCount} 条</span>
+        <div class="layui-input-inline">
+          <form class="layui-form" action="{:url('index/Assembly/assemblyInfo')}" method="post">
+            <div class="layui-input-inline">
+              <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+              <select name="id" lay-search="" >
+                <option value=""></option>
+                <optgroup label="组件编号">
+                  {volist name="assemblyInfo" id="assemblyInfoLest"}
+                  <option value="{$assemblyInfoLest.id}">{$assemblyInfoLest.assembly_code}</option>
+                  {/volist}
+                </optgroup>
+              </select>
+            </div>
+            <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+          </form>
+        </div>
+        <span class="x-right" style="line-height:40px">共有{$assembluCount}条数据 · 有{$assembluCount/25|getInt}页</span>
       </xblock>
       <div class="container-wrap">
         <div class="box-1">
@@ -55,7 +73,14 @@
               <a title="添加明细" onclick="x_admin_show('生成内图','{:url(\'index/Internal/internalAddAssembly\',[\'assembly_code\'=>$info.id])}',400,400)" href="javascript:;"><i style="color: green" class="iconfont nav_right">&#xe6b9;</i></a>
             </td>
             <td>
+                <?php
+                    $count = getAssembly($info['assembly_code']);
+                ?>
+                {if $count == 0}
+                {$info.assembly_code}
+                {else/}
               <a style="color: #0000cc" href="javascript:void(0);" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.assembly_code}</span> 的内图','{:url(\'index/Internal/internalInfo\',[\'assembly_code\'=>$info.assembly_code,'sort'=>'desc'])}')">{$info.assembly_code}</a>
+                {/if}
             </td>
             <td>{$info.looling_type_name}</td>
             <td>{$info.remark}</td>

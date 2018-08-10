@@ -25,18 +25,26 @@ class Internal extends Base
     //展示内部图纸列表
     public function internalInfo($sort = 'asc'){
         if(Request::isPost()){
-            $id = Request::post('id');
-            $internalInfo = DrawingInternal::where('id',$id)->order('sort '.$sort.' ')->paginate(10);
+            $data = Request::post();
+            if($data['id']!=""){//这个ID是主键
+                $internalInfo = DrawingInternal::where('id',$data['id'])->order('sort '.$sort.' ')->paginate(10);
+            }else{
+                $internalInfo = DrawingInternal::order('create_time', 'desc')
+                    ->where("drawing_Internal_id","LIKE","%".$data['modules']."%")
+                    ->paginate(25);
+            }
             $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
+            $countInternalInfo = $internalInfo->total();
+            $this->assign("countInternalInfo",$countInternalInfo);
             $this->assign([
                 'internalInfo'  => $internalInfo,
                 'sort'          =>$sort,
                 'internalCode'  =>  $internalCode,
                 'code'          =>  'N'
-
             ]);
             return $this->view->fetch('internal-info');
         }
+
         $assembly_code = input('assembly_code');
         $code = input('code');
         if(isset($assembly_code)){
@@ -49,6 +57,8 @@ class Internal extends Base
                 'code'          =>  'N'
 
             ]);
+            $countInternalInfo = $internalInfo->total();
+            $this->assign("countInternalInfo",$countInternalInfo);
             return $this->view->fetch('internal-info');
         }
         if($code == 'M'){
@@ -60,6 +70,8 @@ class Internal extends Base
                 'internalCode'  =>  $internalCode,
                 'code'          =>  'M'
             ]);
+            $countInternalInfo = $internalInfo->total();
+            $this->assign("countInternalInfo",$countInternalInfo);
             return $this->view->fetch('internal-info');
         }
         $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=','')->paginate(10);
@@ -70,6 +82,8 @@ class Internal extends Base
             'internalCode'  =>  $internalCode,
             'code'          =>  ''
         ]);
+        $countInternalInfo = $internalInfo->total();
+        $this->assign("countInternalInfo",$countInternalInfo);
         return $this->view->fetch('internal-info');
     }
     //添加内部图纸  内图
