@@ -24,19 +24,51 @@ class Internal extends Base
     ];
     //展示内部图纸列表
     public function internalInfo($sort = 'desc'){
-        $assembly_code = input('assembly_code');
-        if(isset($assembly_code)){
-            $internalInfo = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(10);
+        if(Request::isPost()){
+            $id = Request::post('id');
+            $internalInfo = DrawingInternal::where('id',$id)->order('sort '.$sort.' ')->paginate(10);
+            $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
             $this->assign([
                 'internalInfo'  => $internalInfo,
-                'sort'          =>$sort
+                'sort'          =>$sort,
+                'internalCode'  =>  $internalCode,
+                'code'          =>  'N'
+
             ]);
             return $this->view->fetch('internal-info');
         }
-        $internalInfo = DrawingInternal::order('create_time '.$sort.' ')->paginate(10);
+        $assembly_code = input('assembly_code');
+        $code = input('code');
+        if(isset($assembly_code)){
+            $internalInfo = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(10);
+            $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
+            $this->assign([
+                'internalInfo'  => $internalInfo,
+                'sort'          =>$sort,
+                'internalCode'  =>  $internalCode,
+                'code'          =>  'N'
+
+            ]);
+            return $this->view->fetch('internal-info');
+        }
+        if($code == 'M'){
+            $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->paginate(10);
+            $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
+            $this->assign([
+                'internalInfo'  => $internalInfo,
+                'sort'          =>$sort,
+                'internalCode'  =>  $internalCode,
+                'code'          =>  'M'
+            ]);
+            return $this->view->fetch('internal-info');
+        }
+        $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=','')->paginate(10);
+        $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
         $this->assign([
             'internalInfo'  => $internalInfo,
-            'sort'          =>$sort
+            'sort'          =>$sort,
+            'internalCode'  =>  $internalCode,
+            'code'          =>  ''
         ]);
         return $this->view->fetch('internal-info');
     }

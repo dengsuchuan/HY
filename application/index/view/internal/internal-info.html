@@ -32,6 +32,33 @@
                 <!--});-->
             <!--})-->
         <!--</script>-->
+        <div class="layui-input-inline">
+            <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
+            <form class="layui-form" action="{:url('index/Internal/internalInfo')}" method="post">
+                <div class="layui-input-inline">
+                    <select name="id" lay-search="" >
+                        <option value="">输入简称</option>
+                        <optgroup label="外图明细">
+                            {volist name="$internalCode" id="InfoList"}
+                            <option value="{$InfoList.id}">{$InfoList.drawing_Internal_id}</option>
+                            {/volist}
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </form>
+        </div>
+        <script>
+            $(function () {
+                $("input").click(function () {
+                    $("input").val("");
+                });
+                $("xblock").click(function () {
+                    $("dd").val("");
+                });
+
+            });
+        </script>
     </xblock>
     <div class="container-wrap">
         <div class="box-1">
@@ -41,9 +68,18 @@
                 <!--<th width="2%">-->
                     <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
                 <!--</th>-->
-                <th width="2%">操作</th>
+                <th width="2%">
+                    操作
+                    &nbsp;
+                    {if $code == 'M'}
+                    <a href="{:url('/index/Internal/internalInfo')}"> <i class="layui-icon layui-icon-release" style="color: red"></i></a>
+                    {elseif $code == 'N'/}
+                    {else/}
+                    <a href="{:url('/index/Internal/internalInfo',['code'=>'M'])}"> <i class="layui-icon layui-icon-release"></i></a>
+                    {/if}
+                </th>
                 <th width="13%">
-                    产品图号
+                    内图编号
                     <span class="layui-table-sort layui-inline"  lay-sort="{if $sort == 'asc'}asc{else}desc{/if}">
                 <a href="{:url('/index/Internal/internalInfo',['sort'=>'asc'])}"><i class="layui-edge layui-table-sort-asc"></i></a>
                 <a href="{:url('/index/Internal/internalInfo',['sort'=>'desc'])}"><i class="layui-edge layui-table-sort-desc"></i></a>
@@ -55,7 +91,7 @@
                 <th>创建时间</th>
                 <th>修改人</th>
                 <th>修改时间</th>
-                <th>是否组件</th>
+
             </tr>
         </thead>
         <tbody>
@@ -74,11 +110,13 @@
                 <a title="添加明细" onclick="x_admin_show('为内图 <span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 添加明细','{:url(\'index/Internal/addDetial\', [\'id\'=>$info.drawing_Internal_id])}')" href="javascript:;"><i style="color: green" class="iconfont nav_right">&#xe6b9;</i></a>
             </td>
             <td>
-                {if $info.assembly_code == null or $info.is_assembly_code == null}
-                <span style="color:red;">!</span>
-                <a title="序号{$info.drawing_Internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $info.drawing_Internal_id])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$info.drawing_Internal_id}</i></a>
+                <?php
+                    $count = getCodet($info['drawing_Internal_id']);
+                ?>
+                {if $count == 0}
+          {$info.drawing_Internal_id}
                 {else}
-                <a title="序号{$info.drawing_Internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $info.drawing_Internal_id])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$info.drawing_Internal_id}</i></a>
+                <a title="序号{$info.drawing_Internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$info.drawing_Internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $info.drawing_Internal_id])}')" href="javascript:;"> <span style="color: #1E9FFF">{$info.drawing_Internal_id}</span></a>
                 {/if}
             </td>
             <td>
@@ -95,15 +133,7 @@
             <td>{$info.create_time}</td>
             <td>{$info.modify_name}</td>
             <td>{$info.update_time}</td>
-            <td>
-                <?php
-                    if($info['assembly_code'] != null){
-                        echo '是';
-                    }else{
-                        echo "否";
-                    }
-                ?>
-            </td>
+
         </tr>
         {/volist}
         </tbody>

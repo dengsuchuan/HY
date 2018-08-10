@@ -12,7 +12,7 @@
 use app\index\model\Client;
 use app\index\model\MaterialShape;
 use app\index\model\Section;
-
+use app\index\model\BlueprintInfo;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -46,4 +46,8 @@ function getWeight($id){//获取材料形状的重量
 function getWeightId($id){//获取材料形状的编号
     $weightId =  Section::where("id","$id")->value("spec");
     return $weightId;
+}
+function getCodet($id){
+    $count = BlueprintInfo::where('drawing_internal_id','=',$id)->count();
+    return$count;
 }
