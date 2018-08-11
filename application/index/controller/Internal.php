@@ -58,6 +58,7 @@ class Internal extends Base
                 'code'          =>  'N'
 
             ]);
+
             $countInternalInfo = $internalInfo->total();
             $this->assign("countInternalInfo",$countInternalInfo);
             return $this->view->fetch('internal-info');
@@ -295,8 +296,6 @@ class Internal extends Base
 
         $section = Section::all();//材料规格
         $this->assign("section",$section);
-
-
 
 
         return $this->view->fetch("add-drawing-detial");
