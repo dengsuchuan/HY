@@ -70,3 +70,4 @@ function getAssembly($id){
     $count = DrawingInternal::where('assembly_code',$id)->count();
     return $count;
 }
+
