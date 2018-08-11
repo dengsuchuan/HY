@@ -811,18 +811,30 @@ class Blueprint extends Base
         switch ($tip) { //文件分类上传
             //外部图纸
             case 'abroad':
+                if(file_exists('.'.$data[$tip]))
+                {
+                    @unlink('.'.$data[$tip]);
+                }
                 $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/wai',strtoupper($tip).$drawing_id);
                 $path= '/drawing/wai/'.strtoupper($tip).$drawing_id;
                 break;
             //模型文件
             case 'within':
+                if(file_exists('.'.$data[$tip]))
+                {
+                    @unlink('.'.$data[$tip]);
+                }
                 $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/nei',strtoupper($tip).$drawing_id);
                 $path= '/drawing/nei/'.strtoupper($tip).$drawing_id;
                 break;
             //程序图文件
             case 'engineering':
+                if(file_exists('.'.$data[$tip]))
+                {
+                    @unlink('.'.$data[$tip]);
+                }
                 $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
                 $path= '/drawing/cheng/'.strtoupper($tip).$drawing_id;
@@ -945,6 +957,11 @@ class Blueprint extends Base
         $outsideRow = BlueprintOutside::where('id',$id)->find();
         $this->assign('outsideRow',$outsideRow);
         return $this->view->fetch('outside-edit');
+    }
+
+    public function is_outDrawing($id)
+    {
+        echo $id;
     }
 
 }

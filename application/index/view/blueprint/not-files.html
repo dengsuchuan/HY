@@ -26,7 +26,7 @@
         <p>选择{$key}文件:</p>
         <div class="custom-file mb-3">
             <input type="file" class="custom-file-input" id="customFile" name="filename">
-            <label class="custom-file-label" for="customFile">选择文件</label>
+            <label class="custom-file-label" for="customFile" id="customFile_log">选择文件</label>
         </div>
         <div class="mt-3">
             <button type="button" onclick="UpFiles()" class="btn btn-primary">上传</button>
@@ -64,7 +64,15 @@
         })
     }
     $("#customFile").change(function () {
-        console.log($("#customFile"));
+        $("#customFile_log").html($("#customFile")[0].files[0].name);
+        if(!/^[\S]+.pdf$/.test($("#customFile")[0].files[0].name))
+        {
+            layer.msg('请选择有效的图纸文件', {icon: 0,time: 2000},
+                function () {
+                    location.reload();
+                });
+            return;
+        }
     });
 </script>
 </html>
