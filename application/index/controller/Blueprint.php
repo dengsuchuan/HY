@@ -44,20 +44,20 @@ class Blueprint extends Base
             $tempData1 = Request::post();
             $data = isset($tempData1['id'])?$tempData1:$tempData2;
             if($data['id']!=""){//这个ID是客户ID
-                $blueprintInfo = BlueprintInfo::where("client_id",$data['id'])->paginate(10);
+                $blueprintInfo = BlueprintInfo::where("client_id",$data['id'])->order('drawing_detail_id asc')->paginate(25);
             }else if ($tempData2['key']!=''){
                     switch ($tempData2['key']){
                         case 'internal':
-                            $blueprintInfo =  BlueprintInfo::where("drawing_internal_id",$tempData2['codeId'])->paginate(10);
+                            $blueprintInfo =  BlueprintInfo::where("drawing_internal_id",$tempData2['codeId'])->order('drawing_detail_id asc')->paginate(25);
                             break;
                         case 'externa':
-                            $blueprintInfo =  BlueprintInfo::where("drawing_externa_id",$tempData2['codeId'])->paginate(10);
+                            $blueprintInfo =  BlueprintInfo::where("drawing_externa_id",$tempData2['codeId'])->order('drawing_detail_id asc')->paginate(25);
                             break;
                         case 'clients':
-                            $blueprintInfo = BlueprintInfo::where("client_id",$tempData2['codeId'])->paginate(10);
+                            $blueprintInfo = BlueprintInfo::where("client_id",$tempData2['codeId'])->order('drawing_detail_id asc')->paginate(25);
                     }
             } else{
-                $blueprintInfo = BlueprintInfo::order('create_time', 'desc')
+                $blueprintInfo = BlueprintInfo::order('drawing_detail_id asc')
                     ->where("drawing_detail_id","LIKE","%".$data['modules']."%")
                     ->whereOr("drawing_internal_id","LIKE","%".$data['modules']."%")
                     ->whereOr("drawing_externa_id","LIKE","%".$data['modules']."%")
@@ -66,8 +66,9 @@ class Blueprint extends Base
                     ->whereOr("drawing_type","LIKE","%".$data['modules']."%")
                     ->whereOr("material","LIKE","%".$data['modules']."%")
                     ->whereOr("client_id",'=',$data['modules'])
-                    ->paginate(10);
+                    ->paginate(25);
             }
+
             $blueprintInfoCount = $blueprintInfo->total();
             $this->assign('blueprintInfo', $blueprintInfo);
             $this->assign('blueprintInfoCount', $blueprintInfoCount);
@@ -75,7 +76,7 @@ class Blueprint extends Base
             return $this->view->fetch('blueprint-info');
 
         }
-        $blueprintInfo = BlueprintInfo::order('create_time', 'desc')->paginate(25);
+        $blueprintInfo = BlueprintInfo::order('drawing_detail_id', 'asc')->paginate(25);
 
         $blueprintInfoCount = $blueprintInfo->total();
         $this->assign('blueprintInfo', $blueprintInfo);
@@ -143,7 +144,7 @@ class Blueprint extends Base
             ->where(['drawing_detial_id'=>$drawing_detail_id])
             ->field('p.*,t.process_name,t.process_price')
             ->order('p.sort','asc')
-            ->paginate(10);
+            ->paginate(25);
         $count = count($processInfo);
         $this->assign([
             'processInfo'           =>  $processInfo,
@@ -230,12 +231,12 @@ class Blueprint extends Base
             if($data['id']!=""){//这个ID是主键
                 $blueprintOutside = BlueprintOutside::where("id",$data['id'])->paginate(25);
             }else{
-                $blueprintOutside = BlueprintOutside::order('create_time', 'desc')
+                $blueprintOutside = BlueprintOutside::order('drawing_external_id', 'asc')
                     ->where("drawing_external_id","LIKE","%".$data['modules']."%")
                     ->paginate(25);
             }
         }else{
-            $blueprintOutside = BlueprintOutside::order('create_time','desc')->paginate(25);
+            $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25);
         }
         //-----------------------------------------
 

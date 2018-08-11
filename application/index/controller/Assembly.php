@@ -33,6 +33,7 @@ class Assembly extends Base
             }else{
                 $assemblyInfo = AssemblyModel::alias('a')->where("a.assembly_code","LIKE","%".$data['modules']."%")
                     ->join('looling_type l','a.tooling_type = l.id')
+                    ->order('a.assembly_code '.$sort.' ')
                     ->field('a.*,l.looling_type_name')
                     ->paginate(25);
             }

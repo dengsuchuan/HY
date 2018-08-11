@@ -51,7 +51,7 @@
     <button class="layui-btn" onclick="x_admin_show('工序信息','{:url(\'index/blueprint/addProcess\',[\'id\'=>$drawing_detail_id])}',500,500)"><i class="layui-icon"></i>添加</button>
       <button class="layui-btn" onclick ="sort('{$drawing_detail_id}')" >一键排序</button>
       <button class="layui-btn" onclick ="x_admin_show('一键复制','{:url(\'index/blueprint/copyProcess\',[\'id\'=>$drawing_detail_id])}',500,400)">一键复制</button>
-    <span class="x-right" style="line-height:40px">共有数据：{$count} 条</span>
+    <span class="x-right" style="line-height:40px">共{$count}条 · 有{$count/25|getInt}页</span>
   </xblock>
   <div class="layui-row">
     <div class="container-wrap">

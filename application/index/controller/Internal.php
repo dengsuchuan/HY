@@ -12,6 +12,7 @@ use app\index\common\controller\Base;
 use app\index\model\BlueprintInfo;
 use app\index\model\DrawingInternal;
 use app\index\model\Assembly;
+use app\index\model\ProductProcess;
 use think\facade\Request;
 use app\index\model\Material;
 use app\index\model\MaterialShape;
@@ -223,6 +224,14 @@ class Internal extends Base
         return $this->view->fetch('internal-edit');
     }
     public function delete(){
+        $id = input('id');
+        $InternalCode = DrawingInternal::where(['id'=>$id])->value('drawing_Internal_id');  //找出内图编号
+        $drawingInfo = BlueprintInfo::where(['drawing_internal_id'=>$InternalCode])->field('drawing_detail_id')->select()->toArray();  //找出内图编号与之对应的图纸明细
+        foreach ($drawingInfo as $item){
+          ProductProcess::where(['drawing_detial_id'=>$item['drawing_detail_id']])->delete();  //删除对应的工序
+        }
+        BlueprintInfo::where(['drawing_internal_id'=>$InternalCode])->delete();  //删除对应的内图
+
         $info = DrawingInternal::where(['id'=>intval(input('id'))])->delete();
         if($info){
             return json(1);
@@ -247,7 +256,7 @@ class Internal extends Base
     }
     public function internalBelonged($sort = 'desc'){
         $assembly_code = input('assembly_code');
-        $internal_belonged = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(25);
+        $internal_belonged = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(10);
         $this->assign([
             'internal_belonged'    =>  $internal_belonged,
             'sort'  =>$sort

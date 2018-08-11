@@ -35,7 +35,7 @@
                 <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
             </form>
         </div>
-        <span class="x-right" style="line-height:40px">共有{$countInternalInfo}条数据 · 有{$countInternalInfo/25|getInt}页</span>
+        <span class="x-right" style="line-height:40px">共{$countInternalInfo}条 · 有{$countInternalInfo/25|getInt}页</span>
         <script>
             $(function () {
                 $("input").click(function () {
@@ -63,7 +63,7 @@
                     <a href="{:url('/index/Internal/internalInfo')}"> <span  style="color: red">组</span></a>
                     {elseif $code == 'N'/}
                     {else/}
-                    <a href="{:url('/index/Internal/internalInfo',['code'=>'M'])}"> <span >组</span></a>
+                    <a href="{:url('/index/Internal/internalInfo',['code'=>'M'])}" style="color:#3020d2;"> <span >组</span></a>
                     {/if}
                 </th>
                 <th width="13%">

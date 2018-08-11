@@ -36,7 +36,7 @@
         <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
       </form>
     </div>
-      <span class="x-right" style="line-height:40px">共有{$blueprintInfoCount}条数据 · 有{$blueprintInfoCount/25|getInt}页</span>
+      <span class="x-right" style="line-height:40px">共{$blueprintInfoCount}条 · 有{$blueprintInfoCount/25|getInt}页</span>
     <script>
       $(function () {
           $("input").click(function () {
@@ -117,9 +117,9 @@
           {/if}
         </td>
         {if $Think.session.user.is_price !=0}
-        <td>{$blueprintInfoList.product_mfg_cost}￥</td>
-        <td>{$blueprintInfoList.product_quotation}￥</td>
-        <td>{$blueprintInfoList.product_real_price}￥</td>
+        <td>￥{$blueprintInfoList.product_mfg_cost}</td>
+        <td>￥{$blueprintInfoList.product_quotation}</td>
+        <td>￥{$blueprintInfoList.product_real_price}</td>
         {/if}
         <td> {$blueprintInfoList.if_discard?'<span class="layui-badge">是</span>':'<span class="layui-badge layui-bg-green">否</span>'}  </td>
       </tr>
