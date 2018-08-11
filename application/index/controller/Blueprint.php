@@ -101,6 +101,7 @@ class Blueprint extends Base
             $data['if_length'] = isset($data['if_length']) ? '1' : '0';
             $data['if_width'] = isset($data['if_width']) ? '1' : '0';
             $data['if_discard'] = isset($data['if_discard']) ? '1' : '0';
+            $data['files_state'] = isset($data['files_state']) ? '1' : '0';
             $data['modify_name'] = session('user.user_name');
             //获取提交过来的ID
             $id = $data['id'];

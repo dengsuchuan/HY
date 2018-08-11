@@ -579,6 +579,8 @@
            var client_id = $("#client_id").val();
            var if_batch = $("#if_batch:checked").val();
             if_batch = if_batch==undefined?"0":"1";
+            var files_state = $("#files_state:checked").val();//是否继承图纸
+            files_state = files_state==undefined?"0":"1";
             var layout_qty = $("#layout_qty").val();
             var material_requirements = $("#material_requirements").val();
             var product_mfg_cost = $("#product_mfg_cost").val();
@@ -598,6 +600,7 @@
             materialSelectArray['drawing_type']=drawing_type;//图纸类型
             materialSelectArray['client_id']=client_id; //客户简称  /这里放进去用户ID
             materialSelectArray['if_batch']=if_batch;    //是否批量  1是  0否
+            materialSelectArray['files_state']=files_state;    //是否继承
             materialSelectArray['material']=findText;//材料类型 这里放进去的是材料类型的ID  板 槽  之类的
             materialSelectArray['layout_qty']=layout_qty; //排料数量
             materialSelectArray['material_requirements']=material_requirements;//材料要求
