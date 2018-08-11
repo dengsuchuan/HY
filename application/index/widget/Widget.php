@@ -22,12 +22,12 @@ class Widget
        $data = $model->get(['drawing_id'=>$id]);
        if(!$data||$data[$tip]=="")//没有文件记录
        {
-           echo 'red';
+           echo 'gray';
            return;
        }
        if(!file_exists('.'.$data[$tip]))//文件无效
        {
-           echo 'red';
+           echo 'gray';
            return;
        }
        echo 'green';
