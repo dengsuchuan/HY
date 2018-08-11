@@ -99,18 +99,18 @@
         <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$clienyname.clientName}</span> 的图纸明细','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$clienyname.id,'key'=>'clients'])}')" ><span style="color: #1E9FFF"> <?php  echo $clienyname['clientName'];  ?></span></a></td>
         <td>{$blueprintInfoList.if_batch?"是":"否"}</td>
         <td class="td-manage">
-          {if $blueprintInfoList.files_state==0}<!-- 不继承 -->
+          {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""}<!-- 不继承或者外图继承无效 -->
           <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
-          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\'])}')" href="javascript:;"><span class="layui-badge layui-bg-orange">图</span></a>
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\'])}')" href="javascript:;">
+            <span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'abroad'])}">图</span></a>
           {elseif $blueprintInfoList.files_state==1} <!-- 继承 -->
           <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
           '{:url(\'index/blueprint/is_outDrawing\',[\'id\'=>$blueprintInfoList.drawing_externa_id])}')" href="javascript:;"><span class="layui-badge layui-bg-orange">图</span></a>
           {/if}
           <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的3d模型文件',
-          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\'])}')" href="javascript:;"><span class="layui-badge layui-bg-orange">3D</span></a>
-
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\'])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'within'])}">3D</span></a>
           <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
-          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\'])}')" href="javascript:;"><i class="layui-icon">程</i></a>
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\'])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'engineering'])}">程</span></a>
 
           {if $blueprintInfoList.is_gongxu !=0}
           <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>

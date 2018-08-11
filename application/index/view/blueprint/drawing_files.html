@@ -33,15 +33,20 @@
             <button type="button" onclick="UpFiles()" class="btn btn-primary">更新</button>
         </div>
     </form>
-    <div class="row m-2 p-2 text-center">
+    <div class="col-12 m-2 media-box" onchange="media_load()">
+        <div class="col-12 text-danger">*快速预览不支持手机与平板端</div>
+        <div class="col-12 text-danger">*手机与平板<a href="{$url}">单击此处</a></div>
         <a class="media" href="{$url}"></a>
     </div>
 </div>
 </body>
 <script>
     $(function() {
-        $('a.media').media({width:800, height:600});
+        media_load();
     });
+    function media_load() {
+        $('a.media').media({width:$(".media-box")[0].clientWidth,height:800});
+    }
     function UpFiles(){
         var files = $("#customFile")[0].files[0];//获取文件
         var formFile = new FormData();//文件对象

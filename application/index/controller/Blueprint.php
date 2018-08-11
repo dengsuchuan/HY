@@ -966,4 +966,9 @@ class Blueprint extends Base
         echo $id;
     }
 
+    public function check()//测试
+    {
+        echo 1;
+    }
+
 }
