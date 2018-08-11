@@ -12,6 +12,8 @@
 
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- 预览pdf组件 -->
+    <script src="__STATIC__/js/jquery.media.js"></script>
 </head>
 <body>
 <div class="jumbotron bg-light jumbotron-fluid">
@@ -31,9 +33,15 @@
             <button type="button" onclick="UpFiles()" class="btn btn-primary">更新</button>
         </div>
     </form>
+    <div class="row m-2 p-2 text-center">
+        <a class="media" href="{$url}"></a>
+    </div>
 </div>
 </body>
 <script>
+    $(function() {
+        $('a.media').media({width:800, height:600});
+    });
     function UpFiles(){
         var files = $("#customFile")[0].files[0];//获取文件
         var formFile = new FormData();//文件对象
