@@ -63,6 +63,7 @@
                     <a title="修改" onclick="x_admin_show('修改外图','{:url(\'index/Blueprint/outsideEdit\',[\'id\'=>$blueprintOutsideList.id])}',400,400)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                     <a title="删除" onclick="delete_(this,'{$blueprintOutsideList.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
                     <a title="添加明细" onclick="x_admin_show('为外图 <span class=\'layui-badge layui-bg-blue\'>{$blueprintOutsideList.drawing_external_id}</span> 添加明细','{:url(\'index/blueprint/addDrawingDetial\', [\'id\' => $blueprintOutsideList.drawing_external_id])}')" href="javascript:;"><i style="color: green" class="iconfont nav_right">&#xe6b9;</i></a>
+                    <a title="上传文件" onclick="x_admin_show()" ><i style="color: green" class="iconfont nav_right">&#xe6ab;</i></a>
                 </td>
                 <td>
                     <?php
