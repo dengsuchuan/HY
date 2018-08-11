@@ -953,8 +953,6 @@ class Blueprint extends Base
                 return json(0);
             }
         }
-
-
         $id = intval(input('id'));
         $outsideRow = BlueprintOutside::where('id',$id)->find();
         $this->assign('outsideRow',$outsideRow);
