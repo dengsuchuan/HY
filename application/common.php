@@ -54,8 +54,8 @@ function getCodet($id){
 }
 
 //页数
-function getInt($int){
-    $int = $int > (int)$int ==0?1:(int)$int+1;
+function getInt($int){//4.2
+    $int = $int > (int)$int?(int)$int+1:1;
     return $int;
 }
 
