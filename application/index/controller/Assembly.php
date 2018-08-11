@@ -9,8 +9,10 @@
 namespace app\index\controller;
 
 use app\index\common\controller\Base;
+use app\index\model\BlueprintInfo;
 use app\index\model\LloolingType;
 use app\index\model\Assembly as AssemblyModel;
+use app\index\model\ProductProcess;
 use think\facade\Request;;
 use app\index\model\DrawingInternal;
 class Assembly extends Base
@@ -132,6 +134,19 @@ class Assembly extends Base
     public function delete(){
         $id = intval(input('id'));
         $assembly_code = AssemblyModel::where(['id'=>$id])->value('assembly_code');  //获取编号
+        //获取内图
+        $drawingInternalInfo = DrawingInternal::where(['assembly_code'=>$assembly_code])->field('drawing_Internal_id')->select();
+        //获取内图下面的图纸明细
+        foreach ($drawingInternalInfo as $item){
+            $info = BlueprintInfo::where(['drawing_internal_id'=>$item['drawing_Internal_id']])->field('drawing_detail_id')->select();  //获取到的图纸明细
+            //通过图纸明细获取下面的工序
+            foreach ($info as $item1){
+                $info1 = ProductProcess::where(['drawing_detial_id'=>$item1['drawing_detail_id']])->delete();  //删除对应的工序
+            }
+        }
+        foreach ($drawingInternalInfo as $item){
+            $info = BlueprintInfo::where(['drawing_internal_id'=>$item['drawing_Internal_id']])->delete();  //删除对应的图纸明细
+        }
         $info = AssemblyModel::where(['id'=>intval(input('id'))])->delete();
         if($info){
             DrawingInternal::where(['assembly_code'=>$assembly_code])->delete();
