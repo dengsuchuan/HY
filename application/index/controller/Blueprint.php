@@ -751,7 +751,7 @@ class Blueprint extends Base
         ]);
         return;
     }
-    public function is_DrawingFiles($id,$key)//判断是否存在图纸文件  图纸明细id,类别
+    public function is_DrawingFiles($id,$key,$drawing_num)//判断是否存在图纸文件  图纸明细id,类别
     {
         $model = new DrawingFiles();
         $rel = $model->get(['drawing_id'=>$id]);
@@ -759,7 +759,7 @@ class Blueprint extends Base
         {
             case 'wai':
 //                echo '外图文件';
-                $data=['drawing_id'=>$id,'key'=>'图纸','tip'=>'abroad'];//图纸基本信息
+                $data=['drawing_id'=>$id,'key'=>'图纸','tip'=>'abroad','drawing_num'=>$drawing_num];//图纸基本信息
                 if($rel['abroad']==null||$rel['abroad']=="")//没有文件地址
                 {
                     return $this->fetch('not-files',$data);
@@ -774,7 +774,7 @@ class Blueprint extends Base
 
             case 'nei':
 //                echo '内图文件';
-                $data=['drawing_id'=>$id,'key'=>'模型','tip'=>'within'];//图纸基本信息
+                $data=['drawing_id'=>$id,'key'=>'模型','tip'=>'within','drawing_num'=>$drawing_num];//图纸基本信息
                 if($rel['within']==null||$rel['within']=="")
                 {
                     return $this->fetch('not-files',$data);
@@ -789,7 +789,7 @@ class Blueprint extends Base
 
             case 'cheng':
 //                echo '程序图文件';
-                $data=['drawing_id'=>$id,'key'=>'程序单','tip'=>'engineering'];//图纸基本信息
+                $data=['drawing_id'=>$id,'key'=>'程序单','tip'=>'engineering','drawing_num'=>$drawing_num];//图纸基本信息
                 if($rel['engineering']==null||$rel['engineering']=="")
                 {
                     return $this->fetch('not-files',$data);
