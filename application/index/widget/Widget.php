@@ -33,4 +33,9 @@ class Widget
        echo 'green';
     }
 
+    public function drawing_check()//继承图纸测试
+    {
+
+    }
+
 }

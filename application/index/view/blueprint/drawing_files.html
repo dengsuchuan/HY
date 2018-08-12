@@ -1,6 +1,7 @@
 {include file="public/header" /}
 <head>
 
+    <link rel="stylesheet" href="__STATIC__/pdf/jquery.touchPDF.css">
     <!-- 新 Bootstrap4 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
@@ -13,52 +14,48 @@
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <!-- 预览pdf组件 -->
-    <script src="__STATIC__/js/jquery.media.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+    <script src="__STATIC__/pdf/jquery.mousewheel.js"></script>
+    <script src="__STATIC__/pdf/jquery.panzoom.js"></script>
+    <script src="__STATIC__/pdf/jquery.touchPDF.js"></script>
+    <script src="__STATIC__/pdf/jquery.touchSwipe.js"></script>
+    <script src="__STATIC__/pdf/pdf.compatibility.js"></script>
+    <script src="__STATIC__/pdf/pdf.js"></script>
+    <script src="__STATIC__/pdf/pdf.worker.js"></script>
 </head>
 <body>
-<div class="jumbotron bg-light jumbotron-fluid">
-    <div class="container bg-light">
-        <h1>已上传<a href="{$url}">{$key}</a>文件</h1>
-        <p class="text-danger">您也可以在此界面更新您的{$key}文件</p>
-    </div>
+<div id="myPDF" class="col-12 bg-dark text-dark">
+
 </div>
 <div class="container bg-white">
     <form onsubmit="return false">
-        <p>选择新的{$key}文件:</p>
-        <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="filename">
-            <label class="custom-file-label" for="customFile" id="customFile_log">选择文件</label>
-        </div>
         <div class="mt-3">
-            <button type="button" onclick="UpFiles()" class="btn btn-primary">更新</button>
+            <button type="button" onclick="DelFiles()" class="btn btn-danger">删除</button>
         </div>
     </form>
-    <div class="col-12 m-2 media-box" onchange="media_load()">
-        <div class="col-12 text-danger">*快速预览不支持手机与平板端</div>
-        <div class="col-12 text-danger">*手机与平板<a href="{$url}">单击此处</a></div>
-        <a class="media" href="{$url}"></a>
-    </div>
 </div>
 </body>
 <script>
     $(function() {
-        media_load();
+        $("#myPDF").pdf({
+            source: "{$url}",
+            redrawOnWindowResize:true,
+            color:'black',
+            quality:1
+        });
     });
-    function media_load() {
-        $('a.media').media({width:$(".media-box")[0].clientWidth,height:800});
-    }
-    function UpFiles(){
-        var files = $("#customFile")[0].files[0];//获取文件
-        var formFile = new FormData();//文件对象
-        formFile.append('file',files);
+    function DelFiles() {
         $.ajax({
-            url:"{:url('index/Blueprint/FileUpload',['drawing_id'=>$drawing_id,'tip'=>$tip])}",
-            data:formFile,
-            type: "post",
-            dataType: "json",
-            cache: false,//上传文件无需缓存
-            processData: false,//用于对data参数进行序列化处理 这里必须false
-            contentType: false, //必须
+            url:"{:url('index/Blueprint/DelFiles')}",
+            type:'post',
+            dataType:'json',
+            data:{
+                id:"{$drawing_id}",
+                tip:"{$tip}"
+            },
             success:function (res) {
                 if(res.state==500)
                 {
@@ -67,7 +64,7 @@
                 }
                 if(res.state==200)
                 {
-                    layer.msg(res.msg+',请稍后', {icon: 16,time: 2000},
+                    layer.msg(res.msg, {icon: 1,time: 2000},
                         function () {
                             location.reload();
                         });
@@ -76,16 +73,5 @@
             }
         })
     }
-    $("#customFile").change(function () {
-        $("#customFile_log").html($("#customFile")[0].files[0].name);
-        if(!/^[\S]+.pdf$/.test($("#customFile")[0].files[0].name))
-        {
-            layer.msg('请选择有效的图纸文件', {icon: 0,time: 2000},
-                function () {
-                    location.reload();
-                });
-            return;
-        }
-    });
 </script>
 </html>

@@ -823,7 +823,7 @@ class Blueprint extends Base
                 break;
             //模型文件
             case 'within':
-                if(file_exists('.'.$data[$tip]&&$data[$tip]!=""))
+                if(file_exists('.'.$data[$tip])&&$data[$tip]!="")
                 {
                     unlink('.'.$data[$tip]);
                 }
@@ -959,14 +959,26 @@ class Blueprint extends Base
         return $this->view->fetch('outside-edit');
     }
 
-    public function is_outDrawing($id)
+    public function upDrawing_files($id)
     {
         echo $id;
     }
-
-    public function check()//测试
-    {
-        echo 1;
+    public function DelFiles($id,$tip){//删除图纸
+        $model = new DrawingFiles();
+        $data = $model->get(['drawing_id'=>$id]);
+        if(unlink('.'.$data[$tip]))
+        {
+            echo json_encode([
+                'state'=>200,
+                'msg'=>'删除文件成功'
+            ]);
+            return;
+        }
+        echo json_encode([
+            'state'=>500,
+            'msg'=>'删除文件失败'
+        ]);
+        return;
     }
 
 }
