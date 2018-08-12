@@ -813,9 +813,9 @@ class Blueprint extends Base
         switch ($tip) { //文件分类上传
             //外部图纸
             case 'abroad':
-                if(file_exists('.'.$data[$tip]))
+                if(file_exists('.'.$data[$tip])&&$data[$tip]!="")
                 {
-                    @unlink('.'.$data[$tip]);
+                    unlink('.'.$data[$tip]);
                 }
                 $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/wai',strtoupper($tip).$drawing_id);
@@ -823,9 +823,9 @@ class Blueprint extends Base
                 break;
             //模型文件
             case 'within':
-                if(file_exists('.'.$data[$tip]))
+                if(file_exists('.'.$data[$tip]&&$data[$tip]!=""))
                 {
-                    @unlink('.'.$data[$tip]);
+                    unlink('.'.$data[$tip]);
                 }
                 $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/nei',strtoupper($tip).$drawing_id);
@@ -833,9 +833,9 @@ class Blueprint extends Base
                 break;
             //程序图文件
             case 'engineering':
-                if(file_exists('.'.$data[$tip]))
+                if(file_exists('.'.$data[$tip])&&$data[$tip]!="")
                 {
-                    @unlink('.'.$data[$tip]);
+                    unlink('.'.$data[$tip]);
                 }
                 $info = $files->validate(['ext'=>'pdf'])
                     ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
