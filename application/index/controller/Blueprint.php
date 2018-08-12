@@ -821,7 +821,7 @@ class Blueprint extends Base
                     unlink('.'.$data[$tip]);
                 }
                 $info = $files->validate(['ext'=>'pdf,jpg'])
-                    ->move('./drawing/wai',strtoupper($tip).$drawing_id);
+                    ->move('./drawing/wai',strtoupper($tip).time());
                 $path= '/drawing/wai/';
                 break;
             //模型文件
@@ -831,7 +831,7 @@ class Blueprint extends Base
                     unlink('.'.$data[$tip]);
                 }
                 $info = $files->validate(['ext'=>'pdf,jpg'])
-                    ->move('./drawing/nei',strtoupper($tip).$drawing_id);
+                    ->move('./drawing/nei',strtoupper($tip).time());
                 $path= '/drawing/nei/';
                 break;
             //程序图文件
@@ -841,7 +841,7 @@ class Blueprint extends Base
                     unlink('.'.$data[$tip]);
                 }
                 $info = $files->validate(['ext'=>'pdf,jpg'])
-                    ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
+                    ->move('./drawing/cheng',strtoupper($tip).time());
                 $path= '/drawing/cheng/';
                 break;
         }
