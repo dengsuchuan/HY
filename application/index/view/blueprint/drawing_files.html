@@ -27,9 +27,13 @@
     <script src="__STATIC__/pdf/pdf.worker.js"></script>
 </head>
 <body>
+{if $type=='pdf'}
 <div id="myPDF" class="col-12 bg-dark text-dark">
 
 </div>
+{elseif $type=='jpg'}
+<img src="{$url}" class="p-3" style="width: 100%;height:auto;margin:auto">
+{/if}
 <div class="container bg-white">
     <form onsubmit="return false">
         <div class="mt-3">
@@ -40,6 +44,7 @@
 </div>
 </body>
 <script>
+    {if $type=='pdf'}
     $(function() {
         $("#myPDF").pdf({
             source: "{$url}",
@@ -48,6 +53,7 @@
             quality:1
         });
     });
+    {/if}
     function DelFiles() {
         $.ajax({
             url:"{:url('index/Blueprint/DelFiles')}",

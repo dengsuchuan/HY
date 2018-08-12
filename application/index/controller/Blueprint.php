@@ -769,6 +769,7 @@ class Blueprint extends Base
                     return $this->fetch('not-files',$data);
                 }
                 $data['url']=$rel['abroad'];
+                $data['type']=substr($rel['abroad'],-3);
                 return $this->fetch('drawing_files',$data);
                 break;
 
@@ -784,6 +785,7 @@ class Blueprint extends Base
                     return $this->fetch('not-files',$data);
                 }
                 $data['url']=$rel['within'];
+                $data['type']=substr($rel['within'],-3);
                 return $this->fetch('drawing_files',$data);
                 break;
 
@@ -799,6 +801,7 @@ class Blueprint extends Base
                     return $this->fetch('not-files',$data);
                 }
                 $data['url']=$rel['engineering'];
+                $data['type']=substr($rel['engineering'],-3);
                 return $this->fetch('drawing_files',$data);
                 break;
                 $this->error('非法访问');
@@ -817,9 +820,9 @@ class Blueprint extends Base
                 {
                     unlink('.'.$data[$tip]);
                 }
-                $info = $files->validate(['ext'=>'pdf'])
+                $info = $files->validate(['ext'=>'pdf,jpg'])
                     ->move('./drawing/wai',strtoupper($tip).$drawing_id);
-                $path= '/drawing/wai/'.strtoupper($tip).$drawing_id;
+                $path= '/drawing/wai/';
                 break;
             //模型文件
             case 'within':
@@ -827,9 +830,9 @@ class Blueprint extends Base
                 {
                     unlink('.'.$data[$tip]);
                 }
-                $info = $files->validate(['ext'=>'pdf'])
+                $info = $files->validate(['ext'=>'pdf,jpg'])
                     ->move('./drawing/nei',strtoupper($tip).$drawing_id);
-                $path= '/drawing/nei/'.strtoupper($tip).$drawing_id;
+                $path= '/drawing/nei/';
                 break;
             //程序图文件
             case 'engineering':
@@ -837,9 +840,9 @@ class Blueprint extends Base
                 {
                     unlink('.'.$data[$tip]);
                 }
-                $info = $files->validate(['ext'=>'pdf'])
+                $info = $files->validate(['ext'=>'pdf,jpg'])
                     ->move('./drawing/cheng',strtoupper($tip).$drawing_id);
-                $path= '/drawing/cheng/'.strtoupper($tip).$drawing_id;
+                $path= '/drawing/cheng/';
                 break;
         }
         if(!$info) //上传失败反馈
@@ -850,9 +853,10 @@ class Blueprint extends Base
             ]);
             return;
         }
+        $path=$path.$info->getSaveName();
         if($data) {  //已经存在改图纸明细的文件记录
             $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>'']);//清空原记录
-            $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path.'.pdf']);
+            $rel = $fileModel->where(['drawing_id'=>$drawing_id])->update([$tip=>$path]);
             if(!$rel)
             {
                 echo json_encode([

@@ -65,7 +65,7 @@
     }
     $("#customFile").change(function () {
         $("#customFile_log").html($("#customFile")[0].files[0].name);
-        if(!/^[\S]+.pdf$/.test($("#customFile")[0].files[0].name))
+        if(!/^[\S]+.(pdf|jpg)$/.test($("#customFile")[0].files[0].name))
         {
             layer.msg('请选择有效的图纸文件', {icon: 0,time: 2000},
                 function () {
