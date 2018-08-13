@@ -32,7 +32,7 @@
     <div class="layui-form-item nei"  >
       <label class="layui-form-label">内部图纸</label>
       <div class="layui-input-block">
-        <select name="process_type" lay-verify="required" lay-search="">
+        <select name="process_type"  lay-search="">
           <option value=""></option>
           {volist name="internalInfo" id="info"}
           <option value="0">{$info.drawing_Internal_id}</option>
@@ -44,7 +44,7 @@
     <div class="layui-form-item wai"  >
       <label class="layui-form-label">外部图纸</label>
       <div class="layui-input-block">
-        <select name="process_type" lay-verify="required" lay-search="">
+        <select name="process_type" lay-search="">
           <option value=""></option>
           {volist name="externalInfo" id="info"}
           <option value="0">{$info.drawing_external_id}</option>
@@ -69,8 +69,6 @@
           });
       </script>
     </div>
-
-
 
     <div class="layui-form-item">
       <label class="layui-form-label">收款</label>
@@ -122,7 +120,7 @@
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label"></label>
-      <button class="layui-btn" lay-submit lay-filter="addId">
+      <button class="layui-btn" lay-submit lay-filter="addId" disabled>
         增加
       </button>
     </div>
@@ -147,24 +145,24 @@
             }
         });
 
-        //监听提交
-        form.on('submit(addId)', function(data){
-            //console.log(data);
-            $.post("{:url('index/LoolingType/looingAdd')}",data.field,function(info){
-                if (info) {
-                    layer.alert("添加成功", {icon: 6},function () {
-                        window.parent.location.reload();  //刷新父级页面
-                        // 获得frame索引
-                        var index = parent.layer.getFrameIndex(window.name);
-                        //关闭当前弹出层
-                        parent.layer.close(index);
-                    });
-                }else{
-                    layer.alert("添加失败", {icon: 5});
-                }
-            },'json');
-            return false;
-        });
+        // //监听提交
+        // form.on('submit(addId)', function(data){
+        //     //console.log(data);
+        //     $.post("{:url('index/LoolingType/looingAdd')}",data.field,function(info){
+        //         if (info) {
+        //             layer.alert("添加成功", {icon: 6},function () {
+        //                 window.parent.location.reload();  //刷新父级页面
+        //                 // 获得frame索引
+        //                 var index = parent.layer.getFrameIndex(window.name);
+        //                 //关闭当前弹出层
+        //                 parent.layer.close(index);
+        //             });
+        //         }else{
+        //             layer.alert("添加失败", {icon: 5});
+        //         }
+        //     },'json');
+        //     return false;
+        // });
     });
 
 
