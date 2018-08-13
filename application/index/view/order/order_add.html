@@ -1,0 +1,176 @@
+﻿ {include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    <div class="layui-form-item">
+      <label for="looling_type_name" class="layui-form-label">订单编号</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="looling_type_name" value="{$code}" disabled name="looling_type_name" lay-verify="required" autocomplete="off" class="layui-input" >
+        <p id="pLog" style="color:red"></p>
+      </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">订单说明</label>
+      <div class="layui-input-block">
+        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">内外图</label>
+      <div class="layui-input-block">
+        <select name="city" class="test" lay-filter="myselect" lay-verify="required">
+          <option value=""></option>
+          <option value="0">内图</option>
+          <option value="1">外图</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="layui-form-item nei"  >
+      <label class="layui-form-label">内部图纸</label>
+      <div class="layui-input-block">
+        <select name="process_type" lay-verify="required" lay-search="">
+          <option value=""></option>
+          {volist name="internalInfo" id="info"}
+          <option value="0">{$info.drawing_Internal_id}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item wai"  >
+      <label class="layui-form-label">外部图纸</label>
+      <div class="layui-input-block">
+        <select name="process_type" lay-verify="required" lay-search="">
+          <option value=""></option>
+          {volist name="externalInfo" id="info"}
+          <option value="0">{$info.drawing_external_id}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="factory_date" class="layui-form-label">交货日期</label>
+      <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+        <input type="text" name="factory_date" class="layui-input" id="data" lay-key="1">
+      </div>
+      <script>
+          layui.use('laydate', function(){
+              var laydate = layui.laydate;
+
+              //执行一个laydate实例
+              laydate.render({
+                  elem: '#data' //指定元素
+              });
+          });
+      </script>
+    </div>
+
+
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">收款</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="is_leftis" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="looling_type_name" class="layui-form-label">客户编号</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="looling_type_name" name="looling_type_name" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="looling_type_name" class="layui-form-label">订单报价</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="looling_type_name" name="looling_type_name" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="looling_type_name" class="layui-form-label">备料</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="looling_type_name" name="looling_type_name" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">发货</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="is_leftis" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">是否完成</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="is_leftis" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="looling_type_name" class="layui-form-label">客户项目编号</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="looling_type_name" name="looling_type_name" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId">
+        增加
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+  $(function () {
+      $(".nei").hide();
+      $(".wai").hide();
+  });
+    layui.use(['form'], function(){
+
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+        form.on('select(myselect)', function(data){
+            if(data.value == 0){
+                $(".nei").show();
+                $(".wai").hide();
+            }else if(data.value == 1){
+                $(".nei").hide();
+                $(".wai").show();
+            }
+        });
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/LoolingType/looingAdd')}",data.field,function(info){
+                if (info) {
+                    layer.alert("添加成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+
+
+
+
+</script>
+</body>
+
+</html>
