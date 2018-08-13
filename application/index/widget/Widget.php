@@ -9,6 +9,7 @@
 namespace app\index\widget;
 
 
+use app\index\model\BlueprintOutside;
 use app\index\model\DrawingFiles;
 
 class Widget
@@ -33,9 +34,19 @@ class Widget
        echo 'green';
     }
 
-    public function drawing_check()//继承图纸测试
+    public function drawing_check($drawing_id)//继承图纸测试
     {
-
+        $model = new BlueprintOutside();
+        $data = $model->get(['drawing_external_id'=>$drawing_id]);
+        if($data['files_path']=="")//外图无文件记录
+        {
+            return false;
+        }
+        if(!file_exists('.'.$data['files_path']))//文件无效
+        {
+            return false;
+        }
+        return true;
     }
 
 }

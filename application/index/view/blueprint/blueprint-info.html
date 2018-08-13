@@ -99,7 +99,7 @@
         <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$clienyname.clientName}</span> 的图纸明细','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$clienyname.id,'key'=>'clients'])}')" ><span style="color: #1E9FFF"> <?php  echo $clienyname['clientName'];  ?></span></a></td>
         <td>{$blueprintInfoList.if_batch?"是":"否"}</td>
         <td class="td-manage">
-          {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""}<!-- 不继承或者外图继承无效 -->
+          {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->
           <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;">
             <span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'abroad'])}">图</span></a>

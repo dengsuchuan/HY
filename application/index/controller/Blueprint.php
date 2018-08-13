@@ -962,11 +962,6 @@ class Blueprint extends Base
         $this->assign('outsideRow',$outsideRow);
         return $this->view->fetch('outside-edit');
     }
-
-    public function upDrawing_files($id)
-    {
-        echo $id;
-    }
     public function DelFiles($id,$tip){//删除图纸
         $model = new DrawingFiles();
         $data = $model->get(['drawing_id'=>$id]);
@@ -983,6 +978,97 @@ class Blueprint extends Base
             'msg'=>'删除文件失败'
         ]);
         return;
+    }
+    public function upDrawing_files($id)//外图图纸上传视图
+    {
+        $data = BlueprintOutside::get(['id'=>$id]);
+        if($data['files_path']=="")  //无文件记录
+        {
+            return $this->fetch('updrawing_files',['id'=>$id]);
+        }
+        if(!file_exists('.'.$data['files_path']))//文件无效
+        {
+            return $this->fetch('updrawing_files',['id'=>$id]);
+        }
+        return $this->fetch('outdrawing_files',[
+            'url'=>$data['files_path'],
+            'num'=>$data['drawing_external_id'],
+            'type'=>substr($data['files_path'],-3),
+            'id'=>$id,
+            'state'=>1
+        ]);
+    }
+
+    public function Drawing_files_upload($id)//外图图纸上传
+    {
+        $files = $this->request->file('file');//得到文件
+        $model = new BlueprintOutside();
+        $data = $model->get(['id'=>$id]);
+        if(file_exists('.'.$data['files_path'])&&$data['files_path']!="")
+        {
+            unlink('.'.$data['files_path']);//删除有效文件
+        }
+        $info = $files->validate(['ext'=>'pdf,jpg'])
+            ->move('./drawing/outdrawing',time());
+        if(!$info)
+        {
+            echo json_encode([
+                'state' =>  500,
+                'msg'   =>  '文件上传失败',
+            ]);            return;
+        }
+        $path= '/drawing/outdrawing/'.$info->getSaveName();//得到文件路径记录
+        if($data['files_path']!="")//记录不为空
+        {
+            $model->where(['id'=>$id])->update(['files_path'=>'']);
+        }
+        $rel = $model->where(['id'=>$id])->update(['files_path'=>$path]);//更新记录
+        if(!$rel)
+        {
+            echo json_encode([
+                'state' =>  500,
+                'msg'   =>  '文件记录上传失败',
+            ]);
+            return;
+        }
+        echo json_encode([
+            'state' =>  200,
+            'msg'   =>  '文件上传完成',
+        ]);
+        return;
+    }
+
+    public function DelOutDrawingFiles($id)//删除外图文件
+    {
+        $model = new BlueprintOutside();
+        $data = $model->get(['id'=>$id]);
+        if(!unlink('.'.$data['files_path']))
+        {
+            echo json_encode([
+                'state'=>500,
+                'msg'=>'删除文件失败'
+            ]);
+            return;
+        }
+        $model->where(['id'=>$id])->update(['files_path'=>'']);//纪录刷新
+        echo json_encode([
+            'state'=>200,
+            'msg'=>'删除文件成功'
+        ]);
+        return;
+    }
+
+    public function is_outDrawing($id)//转至外图预览
+    {
+        $model = new BlueprintOutside();
+        $data = $model->get(['drawing_external_id'=>$id]);
+        return $this->fetch('outdrawing_files',[
+            'url'=>$data['files_path'],
+            'num'=>$data['drawing_external_id'],
+            'type'=>substr($data['files_path'],-3),
+            'id'=>$data['id'],
+            'state'=>0
+        ]);
     }
 
 }
