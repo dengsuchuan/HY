@@ -55,4 +55,7 @@ class Index extends Base
 //        $m->set('name','王恒兵',0);
         dump($m->get('name'));
     }
+    public function a(){
+        echo config('database.database');
+    }
 }
