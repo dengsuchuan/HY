@@ -239,10 +239,13 @@ class Blueprint extends Base
             $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25);
         }
         //-----------------------------------------
-
+        $mode = input('model');
+        $order = input('order');
         $this->assign('blueprintOutside',$blueprintOutside);
         $blueprintOutsideCount = $blueprintOutside->total();
         $this->assign('blueprintOutsideCount',$blueprintOutsideCount);
+        $this->assign('mode',$mode);
+        $this->assign('order',$order);
         return $this->view->fetch('blueprint-outside');
     }
     //--|--|添加外图视图生成器

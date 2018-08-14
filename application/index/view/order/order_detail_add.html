@@ -1,0 +1,182 @@
+﻿ {include file="public/header" /}
+ <style>
+   .layui-form-label {
+     float: left;
+     display: block;
+     width: 80px;
+     font-weight: 100;
+     line-height: 20px;
+     text-align: right;
+     padding: 9px 15px;
+   }
+ </style>
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    {volist name="blueprintInfo" id ="info"}
+    <div style="border: 1px #636363 solid;padding-top: 4px;margin: 5px;">
+      <div class="layui-form-item">
+        <div class="layui-form-item">
+          <label class="layui-form-label">明细编号</label>
+          <div class="layui-input-block"  style="width: 150px;" >
+            <input type="text" value="{$info.drawing_detail_id}"  disabled  required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input type="hidden" value="{$info.id}"  disabled  name="drawing_detail_id[]" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">订单号</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" disabled value="{$orderCode}" autocomplete="off" class="layui-input">
+            <input type="hidden" disabled value="{$orderId}" name="order_id[]" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">订单数量</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" autocomplete="off" name="order_qty[]" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">加工安排</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <select >
+              <option ></option>
+              <option value="外协">外协</option>
+              <option value="自加工">自加工</option>
+              <option value="标件不加工">标件不加工</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">单位</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <select  >
+              <option value=""></option>
+              <option value="外协">件</option>
+              <option value="自加工">套</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">加工内容</label>
+          <div class="layui-input-inline" style="width: 340px;">
+            <input type="text" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">厚度</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text"  autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">计划数量</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text"  autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">材料留用</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" value="5" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">交货日期</label>
+
+          <div class="layui-inline"  style="width: 100px;"> <!-- 注意：这一层元素并不是必须的 -->
+            <input type="text" class="layui-input" id="data" lay-key="1">
+          </div>
+          <script>
+              layui.use('laydate', function(){
+                  var laydate = layui.laydate;
+
+                  //执行一个laydate实例
+                  laydate.render({
+                      elem: '#data' //指定元素
+                  });
+              });
+          </script>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">备料单编号</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">材料来源</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <select >
+              <option value=""></option>
+              <option value="来料">来料</option>
+              <option value="外购">外购</option>
+              <option value="自备">自备</option>
+            </select>
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">入库数量</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">备料单编号</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text"  autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">备料单编号</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text"  autocomplete="off" class="layui-input">
+          </div>
+        </div>
+      </div>
+    </div>
+    {/volist}
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId" >
+        增加
+      </button>
+    </div>
+  </form>
+</div>
+
+
+<script>
+
+    layui.use(['form'], function(){
+
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Order/addOrderDetail')}",data.field,function(info){
+                if (info) {
+                    layer.alert("添加成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+
+
+
+
+</script>
+</body>
+
+</html>

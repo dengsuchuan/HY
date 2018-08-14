@@ -35,15 +35,20 @@
             </form>
         </div>
         <span class="x-right" style="line-height:40px">共{$blueprintOutsideCount}条 · 共{$blueprintOutsideCount/25|getInt}页</span>
+        {if $mode == 1}
+         <button class="layui-btn" onclick="exeOrder()"><i class="layui-icon"></i>生成订单明细</button>
+        {/if}
     </xblock>
 <div class="container-wrap">
     <div class="box-1">
         <table class="layui-table">
             <thead>
                 <tr>
-                    <!--<th width="20px;">-->
-                        <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
-                    <!--</th>-->
+                    {if $mode == 1}
+                    <th width="20px;">
+                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                    </th>
+                    {/if}
                     <th width="30px;">操作</th>
                     <th>外来图号</th>
                     <th>建档日期</th>
@@ -56,9 +61,18 @@
             <tbody>
             {volist name="$blueprintOutside" id="blueprintOutsideList"}
             <tr>
-                <!--<td>-->
-                    <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.id}'><i class="layui-icon">&#xe605;</i></div>-->
-                <!--</td>-->
+                <?php
+                    $count = getDetialExternal($blueprintOutsideList['drawing_external_id']);
+                 ?>
+                {if $mode == 1}
+                {if $count != 0}
+                <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$blueprintOutsideList.drawing_external_id}'><i class="layui-icon">&#xe605;</i></div>
+                </td>
+                {else/}
+                <td></td>
+                {/if}
+                {/if}
                 <td class="td-manage">
                     <a title="修改" onclick="x_admin_show('修改外图','{:url(\'index/Blueprint/outsideEdit\',[\'id\'=>$blueprintOutsideList.id])}',400,400)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                     <a title="删除" onclick="delete_(this,'{$blueprintOutsideList.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
@@ -152,6 +166,18 @@
                 },
             });
         });
+    }
+    function exeOrder() {
+        var data = tableCheck.getData();
+        var code = "{$order}";
+        var index = parent.layer.getFrameIndex(window.name);
+        if(data == ''){
+            layer.msg('请选择数据');
+            return;
+        }
+        //关闭当前弹出层
+        x_admin_show('填写订单明细',"{:url('index/Order/addOrderDetail')}?id="+data+"&order="+code);
+
     }
 </script>
 </body>
