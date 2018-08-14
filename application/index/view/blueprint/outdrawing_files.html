@@ -41,6 +41,9 @@
             <button type="button" onclick="DelFiles()" class="btn btn-danger">删除</button>
             {/if}
             <a href="{$url}" download="外图{$num}的文件.{$type}"><button type="button"  class="btn btn-success">下载</button></a>
+            {if $type=='pdf'}
+            <button type="button" onclick="window.location.href='{$url}'" class="btn btn-danger">直接打开</button>
+            {/if}
         </div>
     </form>
 </div>

@@ -39,6 +39,9 @@
         <div class="mt-3">
             <button type="button" onclick="DelFiles()" class="btn btn-danger">删除</button>
             <a href="{$url}" download="{$drawing_num.'的'.$key}文件.pdf"><button type="button"  class="btn btn-success">下载</button></a>
+            {if $type=='pdf'}
+            <button type="button" onclick="window.location.href='{$url}'" class="btn btn-danger">直接打开</button>
+            {/if}
         </div>
     </form>
 </div>
