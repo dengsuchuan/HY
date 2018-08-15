@@ -71,3 +71,7 @@ function getAssembly($id){
     return $count;
 }
 
+//跟据id查询图纸明细编号
+function getDrawingDetailId($id){
+ return BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');
+}

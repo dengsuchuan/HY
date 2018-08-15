@@ -71,7 +71,6 @@
   </fieldset>
   <xblock>
     <button class="layui-btn" onclick="x_admin_show('添加','{:url(\'index/blueprint/blueprintoutside\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}')"><i class="layui-icon"></i>添加</button>
-    <span class="x-right" style="line-height:40px">共{}条 · 共页</span>
   </xblock>
   <div class="layui-row">
     <div class="container-wrap">
@@ -79,26 +78,44 @@
         <table class="layui-table">
           <thead>
             <tr>
-              <th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-              </th>
               <th>操作</th>
-              <th>工艺编号</th>
-              <th>工艺类型</th>
-              <th>工艺说明</th>
-              <th>工序定额h(小时)</th>
-              <th>是否检验</th>
-              <th>报价定额h(小时)</th>
-              <th>工序报价</th>
-              <th>外协费用</th>
-              <th>备注</th>
+              <th>订单明细编号</th>
+              <th>所属图纸明细</th>
+              <th>订单数量</th>
+              <th>加工安排</th>
+              <th>单位</th>
+              <th>加工内容</th>
+              <th>计划数量</th>
+              <th>交货日期</th>
+              <th>备料单编号</th>
+              <th>是否完成</th>
+              <th>入库数量</th>
+              <th>创建人</th>
+              <th>创建时间</th>
             </tr>
           </thead>
           <tbody>
-
-            <tr>
-
-            </tr>
+          {volist name="orderDatailInfo" id="info"}
+          <tr>
+                <td>
+                  <a title="修改" onclick="x_admin_show('修改订单','{:url(\'index/Order/editOrder\',[\'id\'=>1])}',600,600)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+                  <a title="删除" onclick="delete_(this,'')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
+                </td>
+                <td>{$info.order_detail_code}</td>
+                <td>{$info.drawing_detail_id|getDrawingDetailId}</td>
+                <td>{$info.order_qty}</td>
+                <td>{$info.arrange}</td>
+                <td>{$info.company}</td>
+                <td>{$info.content}</td>
+                <td>{$info.plan_qty}</td>
+                <td>{$info.date_delivery}</td>
+                <td>{$info.purchase_id}</td>
+                <td>{$info.if_complete}</td>
+                <td>{$info.warehousing}</td>
+                <td>{$info.create_name}</td>
+                <td>{$info.create_time}</td>
+              </tr>
+          {/volist}
           </tbody>
         </table>
       </div>

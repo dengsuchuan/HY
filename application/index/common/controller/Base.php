@@ -92,7 +92,7 @@ class Base extends Controller
 
 
     //这个函数用来获取最新的编号
-    public  function getNewId($str,$model,$field){//要获取的字符串前部分，实例，表对应的字段名
+    public  function getNewId($str,$model,$field,$mm = 0){//要获取的字符串前部分，实例，表对应的字段名
         //获取数据库中P180706-x的数量实现自动生成编号
         $i = 0;//编号
         $str = $str."-";//可以设置来之数据库的一个自定义字符串
@@ -103,6 +103,9 @@ class Base extends Controller
             }
         }while($model->get(["$field"=>$str.$i])); //如果存在就继续算下去
         $tempArray = $str.$i;//最新的内图
+        if($mm){
+            return $i;
+        }
         return $tempArray;
     }
 }

@@ -14,7 +14,7 @@ use think\Model;
 class OrderDetail extends Model
 {
     protected $pk = 'id';
-    protected $table = 'hy_ order_detail';
+    protected $table = 'hy_order_detail';
     protected $autoWriteTimestamp = true;//自动时间戳
     protected $createTime = 'create_time';
     protected $updateTime = 'update_time';

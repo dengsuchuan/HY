@@ -16,18 +16,35 @@
     {volist name="blueprintInfo" id ="info"}
     <div style="border: 1px #636363 solid;padding-top: 4px;margin: 5px;">
       <div class="layui-form-item">
-        <div class="layui-form-item">
+
+        <div class="layui-inline">
           <label class="layui-form-label">明细编号</label>
-          <div class="layui-input-block"  style="width: 150px;" >
+          <div class="layui-input-inline" style="width: 200px;">
             <input type="text" value="{$info.drawing_detail_id}"  disabled  required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
             <input type="hidden" value="{$info.id}"  disabled  name="drawing_detail_id[]" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
           </div>
         </div>
         <div class="layui-inline">
+          <label class="layui-form-label">产品名称</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" disabled value="{$info.drawing_name}" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <div class="layui-inline">
+          <label class="layui-form-label">材料类型</label>
+          <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" disabled value="{$info.drawing_type}" autocomplete="off" class="layui-input">
+          </div>
+        </div>
+        <hr>
+        <br>
+
+        <div class="layui-inline">
           <label class="layui-form-label">订单号</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" disabled value="{$orderCode}" autocomplete="off" class="layui-input">
+            <input type="text" disabled value="{$orderCode}" autocomplete="off"  class="layui-input" name="ordercode">
             <input type="hidden" disabled value="{$orderId}" name="order_id[]" autocomplete="off" class="layui-input">
+            <input type="hidden" disabled value="{$orderId}" name="order" autocomplete="off" class="layui-input">
           </div>
         </div>
         <div class="layui-inline">
@@ -39,8 +56,7 @@
         <div class="layui-inline">
           <label class="layui-form-label">加工安排</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <select >
-              <option ></option>
+            <select  name="arrange[]">
               <option value="外协">外协</option>
               <option value="自加工">自加工</option>
               <option value="标件不加工">标件不加工</option>
@@ -49,43 +65,32 @@
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">单位</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <select  >
-              <option value=""></option>
-              <option value="外协">件</option>
-              <option value="自加工">套</option>
+          <div class="layui-input-inline"  style="width: 100px;">
+            <select name="company[]" >
+              <option value="件">件</option>
+              <option value="套">套</option>
             </select>
           </div>
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">加工内容</label>
           <div class="layui-input-inline" style="width: 340px;">
-            <input type="text" autocomplete="off" class="layui-input">
+            <input type="text" name="content[]" autocomplete="off" class="layui-input">
           </div>
         </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">厚度</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <input type="text"  autocomplete="off" class="layui-input">
-          </div>
-        </div>
+
         <div class="layui-inline">
           <label class="layui-form-label">计划数量</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text"  autocomplete="off" class="layui-input">
+            <input type="text"  name="plan_qty[]" autocomplete="off" class="layui-input">
           </div>
         </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">材料留用</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" value="5" autocomplete="off" class="layui-input">
-          </div>
-        </div>
+
         <div class="layui-inline">
           <label class="layui-form-label">交货日期</label>
 
           <div class="layui-inline"  style="width: 100px;"> <!-- 注意：这一层元素并不是必须的 -->
-            <input type="text" class="layui-input" id="data" lay-key="1">
+            <input type="text" class="layui-input" name="date_delivery[]" id="data" lay-key="1">
           </div>
           <script>
               layui.use('laydate', function(){
@@ -101,14 +106,13 @@
         <div class="layui-inline">
           <label class="layui-form-label">备料单编号</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" autocomplete="off" class="layui-input">
+            <input type="text" name="purchase_id[]" autocomplete="off" class="layui-input">
           </div>
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">材料来源</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <select >
-              <option value=""></option>
+            <select name="material_source[]" >
               <option value="来料">来料</option>
               <option value="外购">外购</option>
               <option value="自备">自备</option>
@@ -118,21 +122,10 @@
         <div class="layui-inline">
           <label class="layui-form-label">入库数量</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" autocomplete="off" class="layui-input">
+            <input type="text" name="warehousing[]" autocomplete="off" class="layui-input">
           </div>
         </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">备料单编号</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <input type="text"  autocomplete="off" class="layui-input">
-          </div>
-        </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">备料单编号</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <input type="text"  autocomplete="off" class="layui-input">
-          </div>
-        </div>
+
       </div>
     </div>
     {/volist}
@@ -159,9 +152,9 @@
             $.post("{:url('index/Order/addOrderDetail')}",data.field,function(info){
                 if (info) {
                     layer.alert("添加成功", {icon: 6},function () {
-                        window.parent.location.reload();  //刷新父级页面
+                        window.parent.parent.location.reload();  //刷新父级页面
                         // 获得frame索引
-                        var index = parent.layer.getFrameIndex(window.name);
+                        var index = parent.parent.layer.getFrameIndex(window.name);
                         //关闭当前弹出层
                         parent.layer.close(index);
                     });

@@ -35,7 +35,7 @@ class Order extends Base
         if(Request::isPost()){
             $data = Request::post();
             $mode = new OrderMode();
-            $code = $this->getNewId('0'.date('y').date('m').date('d'),$mode,'order_id');
+            $code = $this->getNewId('C'.date('y').date('m').date('d'),$mode,'order_id');
             $data['order_id'] = $code;
             $data['receivables'] = isset($data['receivables']) ? '1' : '0';
             $data['deliver_goods'] = isset($data['deliver_goods']) ? '1' : '0';
@@ -50,7 +50,7 @@ class Order extends Base
         }
         //生成编号
         $mode = new OrderMode();
-        $code = $this->getNewId('0'.date('y').date('m').date('d'),$mode,'order_id');
+        $code = $this->getNewId('C'.date('y').date('m').date('d'),$mode,'order_id');
         //获取外图信息
         $externalInfo = BlueprintOutside::field('id,drawing_external_id')->select();
         //获取内图相关信息
@@ -86,35 +86,60 @@ class Order extends Base
         return  $this->view->fetch('order_edit');
     }
 
+//以斜杠为例
+//查找斜杠第一次出现的位置（在字符串中为第几位）
+//$num=strpos($str, '/');
+//截取字符串第一个字符前面所有的内容
+//echo substr($str,0,strpos($str, '/'))
+//截取字符串第一个字符后面所有的内容
+//echo substr($str,strpos($str,'/'))
+
     public function orderDetail(){
-        $orderRow = OrderMode::where(['id'=>intval(input('id'))])->select();
-        $orderCode = OrderMode::where(['id'=>intval(input('id'))])->value('id');
+        $id = intval(input('id'));
+        $orderRow = OrderMode::where(['id'=>$id])->select();
+        $orderCode = OrderMode::where(['id'=>$id])->value('id');
+        //获取订单明细
+        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->select();
         $this->assign([
-            'orderRow'      => $orderRow,
-            'orderCode'    => $orderCode
+            'orderRow'            => $orderRow,
+            'orderCode'           => $orderCode,
+            'orderDatailInfo'     => $orderDatailInfo
         ]);
         return  $this->view->fetch('order-detail-info');
     }
     public function addOrderDetail(){
         if (Request::isPost()){
             $data = Request::post();
-//            dd($data);
+            $coder = $data['order'];
+            $code = OrderDetail::where(['order_id'=>$coder])->order('order_detail_code desc')->value('order_detail_code');
+            if($code == null){
+                $tempid = 1;
+            }else{
+                $tempid =  substr($code,strripos($code,"-")+1) +1;
+            }
+            unset($data['ordercode']);
+            unset($data['order']);
+            $order_code = Request::post('ordercode');
             $datas = [];
+            $mode =  new OrderDetail();
             foreach ($data as $key=>$value){
                 if($key == 'drawing_detail_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[][$key] = $value[$i];
+                        $datas[$i]['order_detail_code'] = $order_code.'-'. ($tempid<10 ? '0'.$tempid :$tempid);
+                        $datas[$i]['create_name'] =  session('user.user_name');
                         $i++;
+                        $tempid++;
                     }
                 }
+
                 if($key == 'order_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[$i][$key] = $value[$i];
                         $i++;
                     }
-
                 }
                 if($key == 'order_qty'){
                     $i = 0;
@@ -123,9 +148,77 @@ class Order extends Base
                         $i++;
                     }
                 }
-
+                if($key == 'arrange'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'company'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'content'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'plan_qty'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'date_delivery'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'purchase_id'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'material_source'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'warehousing'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'purchase_id'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
             }
-            dd($datas);
+            $orderDetail = new OrderDetail();
+            $info = $orderDetail->saveAll($datas);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
         }
         $id = input('id');
         $ids = explode(',',$id);
