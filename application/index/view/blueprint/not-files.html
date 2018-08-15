@@ -56,7 +56,10 @@
                 {
                     layer.msg(res.msg+',请稍后', {icon: 16,time: 2000},
                     function () {
-                        location.reload();
+                        window.parent.location.reload();  //刷新父级页面
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
                     });
                     return;
                 }
