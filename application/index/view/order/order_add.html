@@ -40,13 +40,24 @@
         <input type="checkbox" name="receivables" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
       </div>
     </div>
-
     <div class="layui-form-item">
-      <label for="client_id" class="layui-form-label">客户编号</label>
-      <div class="layui-input-inline">
-        <input type="text" id="client_id" name="client_id" autocomplete="off" class="layui-input" >
+      <label class="layui-form-label">客户编号</label>
+      <div class="layui-input-block">
+        <select name="client_id" lay-search="">
+          <option value=""></option>
+          {volist name="clientInfo" id="info"}
+          <option value="{$info.id}">{$info.client_abbreviation}</option>
+          {/volist}
+        </select>
       </div>
     </div>
+
+    <!--<div class="layui-form-item">-->
+      <!--<label for="client_id" class="layui-form-label">客户编号</label>-->
+      <!--<div class="layui-input-inline">-->
+        <!--<input type="text" id="client_id" name="client_id" autocomplete="off" class="layui-input" >-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="layui-form-item">
       <label for="order_price" class="layui-form-label">订单报价</label>
       <span style="color: red">*</span>

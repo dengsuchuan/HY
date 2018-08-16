@@ -12,9 +12,11 @@ use app\index\common\controller\Base;
 use app\index\model\Order as OrderMode;
 use app\index\model\BlueprintOutside;
 use app\index\model\DrawingInternal;
+use function Couchbase\defaultDecoder;
 use think\facade\Request;
 use app\index\model\BlueprintInfo;
 use app\index\model\OrderDetail;
+use app\index\model\Client;
 class Order extends Base
 {
     protected $beforeActionList = [
@@ -55,11 +57,13 @@ class Order extends Base
         $externalInfo = BlueprintOutside::field('id,drawing_external_id')->select();
         //获取内图相关信息
         $internalInfo = DrawingInternal::field('id,drawing_Internal_id')->select();
-
+        //获取客户简称
+        $clientInfo = Client::field('id,client_abbreviation')->select();
         $this->assign([
             'code' => $code,
             'externalInfo' =>  $externalInfo,
-            'internalInfo' =>  $internalInfo
+            'internalInfo' =>  $internalInfo,
+            'clientInfo'    =>$clientInfo
         ]);
         return  $this->view->fetch('order_add');
     }
@@ -145,6 +149,7 @@ class Order extends Base
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[$i][$key] = $value[$i];
+                        $datas[$i]['plan_qty'] = $value[$i];
                         $i++;
                     }
                 }
@@ -169,13 +174,13 @@ class Order extends Base
                         $i++;
                     }
                 }
-                if($key == 'plan_qty'){
-                    $i = 0;
-                    foreach ($value as $k1=>$v1){
-                        $datas[$i][$key] = $value[$i];
-                        $i++;
-                    }
-                }
+//                if($key == 'plan_qty'){
+//                    $i = 0;
+//                    foreach ($value as $k1=>$v1){
+//                        $datas[$i][$key] = $value[$i];
+//                        $i++;
+//                    }
+//                }
                 if($key == 'date_delivery'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
@@ -220,6 +225,7 @@ class Order extends Base
                 return json(0);
             }
         }
+
         $id = input('id');
         $ids = explode(',',$id);
         $orderId = input('order');

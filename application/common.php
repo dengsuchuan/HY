@@ -75,3 +75,8 @@ function getAssembly($id){
 function getDrawingDetailId($id){
  return BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');
 }
+
+//跟据id获取客户简称
+function getClientAbbreviation($id){
+    return  $clientName = Client::where("id","$id")->value("client_abbreviation");
+}
