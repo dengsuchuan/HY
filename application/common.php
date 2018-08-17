@@ -14,6 +14,8 @@ use app\index\model\MaterialShape;
 use app\index\model\Section;
 use app\index\model\BlueprintInfo;
 use app\index\model\DrawingInternal;
+use app\index\model\EquipmentType;
+use app\index\model\MeasuringType;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -79,4 +81,14 @@ function getDrawingDetailId($id){
 //跟据id获取客户简称
 function getClientAbbreviation($id){
     return  $clientName = Client::where("id","$id")->value("client_abbreviation");
+}
+
+//获取设备名称
+function getEquipmentName($id){
+    return EquipmentType::where("id",$id)->value("eqpmt_type");
+}
+
+//获取量具名称
+function getMeasuringName($id){
+    return MeasuringType::where("id",$id)->value("measuring_type");
 }

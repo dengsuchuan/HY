@@ -1,0 +1,103 @@
+ {include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">设备和量具</a>
+        <a>
+          <cite>量具管理</cite>
+        </a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock>
+        <button class="layui-btn" onclick="x_admin_show('添加量具','{:url(\'index/Measuring/addMeasuringInfo\')}',500,800)"><i class="layui-icon"></i>添加量具</button>
+        <div class="layui-input-inline">
+            <form class="layui-form" action="{:url('index/Measuring/measuringInfo')}" method="post">
+                <div class="layui-input-inline">
+                    <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
+                </div>
+                <div class="layui-input-inline">
+                    <select name="id" lay-search="" >
+                        <option value=""></option>
+                        <optgroup label="选择名称">
+                            {volist name="$measuringType" id="measuringTypeList"}
+                            <option value="{$measuringTypeList.id}">{$measuringTypeList.measuring_type}</option>
+                            {/volist}
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </form>
+        </div>
+        <span class="x-right" style="line-height:40px">共{$measuringInfoCount}条 · 共{$measuringInfoCount/25|getInt}页</span>
+    </xblock>
+    <div class="container-wrap">
+        <div class="box-1">
+            <table class="layui-table">
+                <thead>
+            <tr>
+                <th width="2%">操作</th>
+                <th>编号</th>
+                <th>名称</th>
+                <th>模型</th>
+                <th>生产场所</th>
+                <th>生产编号</th>
+                <th>检查周期</th>
+                <th>检验日期</th>
+                <th>检测计划</th>
+                <th>保管人</th>
+            </tr>
+        </thead>
+        <tbody>
+        {volist name="$measuringInfo" id="measuringInfoList"}
+        <tr>
+            <td class="td-manage" width="50px;">
+                <a title="编辑"onclick="x_admin_show('修改设备','{:url(\'index/Measuring/editMeasuringInfo\',[\'id\'=>$measuringInfoList.id])}',500,800)" href="javascript:;">
+                    <i style="color: green" class="layui-icon"></i>
+                </a>
+                <a title="删除" onclick="delete_(this,'{$measuringInfoList.id}')" href="javascript:;">
+                    <i  style="color:red;" class="layui-icon"></i>
+                </a>
+            </td>
+            <td>{$measuringInfoList.measuring_id}</td>
+            <td>{$measuringInfoList.measuring_name|getMeasuringName}</td>
+            <td>{$measuringInfoList.model}</td>
+            <td>{$measuringInfoList.place_production}</td>
+            <td>{$measuringInfoList.production_num}</td>
+            <td>{$measuringInfoList.inspection_cycle}</td>
+            <td>{$measuringInfoList.inspection_date}</td>
+            <td>{$measuringInfoList.inspection_scheme}</td>
+            <td>{$measuringInfoList.keeper}</td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+        </div>
+    </div>
+    <div class="page">
+        {$measuringInfo|raw}
+    </div>
+
+</div>
+<script>
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "{:url('/index/Measuring/delete')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
+</html>
