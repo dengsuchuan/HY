@@ -46,8 +46,7 @@
                 <th>生产场所</th>
                 <th>生产编号</th>
                 <th>检查周期</th>
-                <th>检验日期</th>
-                <th>检测计划</th>
+                <th>购买价格</th>
                 <th>保管人</th>
             </tr>
         </thead>
@@ -68,8 +67,7 @@
             <td>{$measuringInfoList.place_production}</td>
             <td>{$measuringInfoList.production_num}</td>
             <td>{$measuringInfoList.inspection_cycle}</td>
-            <td>{$measuringInfoList.inspection_date}</td>
-            <td>{$measuringInfoList.inspection_scheme}</td>
+            <td>￥{$measuringInfoList.price|default="0"}</td>
             <td>{$measuringInfoList.keeper}</td>
         </tr>
         {/volist}

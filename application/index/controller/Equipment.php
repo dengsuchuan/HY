@@ -37,7 +37,7 @@ class Equipment extends Base
         $this->assign("equipmentType",$equipmentType);
 
 
-        return $this->view->fetch("equipment-info");
+        return $this->view->fetch("equipmentInfo");
     }
 
     //展示设备添加页面
