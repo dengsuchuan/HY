@@ -1,0 +1,48 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    {volist name="$equipmentType" id="equipmentTypeList"}
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" name="eqpmt_type" value="{$equipmentTypeList.eqpmt_type}">
+                <input type="hidden" name="id" value="{$equipmentTypeList.id}">
+            </div>
+        </div>
+    {/volist}
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-submit lay-filter="addId" >
+                确认修改
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Equipment/updateEquipmentType')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+
+</html>

@@ -1,17 +1,17 @@
 <?php
 /*
- * 设备管理
+ * 量具管理
  */
 namespace app\index\controller;
 
 use app\index\common\controller\Base;
 use app\index\model\MeasuringInfo;
-use app\index\model\MeasuringType;
+use app\index\model\CostType;
 use think\facade\Request;
 
 class Measuring extends Base
 {
-    //展示设备页面
+    //量具设备页面
     public function measuringInfo(){
         if(Request::isPost()){
             $data = Request::post();
@@ -34,21 +34,21 @@ class Measuring extends Base
         $this->assign("measuringInfo",$measuringInfo);
         $this->assign("measuringInfoCount",$measuringInfoCount);
 
-        $measuringType = MeasuringType::all();
+        $measuringType = CostType::where("pid",36)->select();
         $this->assign("measuringType",$measuringType);
 
 
         return $this->view->fetch("measuring-info");
     }
 
-    //展示设备添加页面
+    //展示量具添加页面
     public function addMeasuringInfo(){
-        $measuringType = MeasuringType::all();
+        $measuringType = CostType::where("pid",36)->select();
         $this->assign("measuringType",$measuringType);
         return $this->view->fetch("add-measuring-info");
     }
 
-    //保存添加的设备函数
+    //保存添加的量具函数
     public function saveMeasuringInfo(){
         $data = Request::post();
         $info = MeasuringInfo::create($data);
@@ -60,7 +60,7 @@ class Measuring extends Base
 
     }
 
-    //删除设备
+    //删除量具
     public function delete(){
         $id = Request::post("id");
         $info = MeasuringInfo::where('id',$id)->delete();
@@ -71,19 +71,19 @@ class Measuring extends Base
         }
     }
 
-    //编辑设备信息
+    //编辑量具信息
     public function editMeasuringInfo(){
         $id = input("id");
         $measuringInfo = MeasuringInfo::where('id',$id)->select();
         $this->assign("measuringInfo",$measuringInfo);
 
-        $measuringType = MeasuringType::all();
+        $measuringType = CostType::where("pid",36)->select();
         $this->assign("measuringType",$measuringType);
 
         return $this->view->fetch("edit-measuring-info");
     }
 
-    //更新设备信息
+    //更新量具信息
     public function update(){
         if(Request::isAjax()) {
             $data = Request::post();

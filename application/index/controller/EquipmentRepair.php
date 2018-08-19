@@ -13,12 +13,31 @@ class EquipmentRepair extends Base
 {
     public function repairInfo(){
         $eqpmt_id = input("eqpmt_id");
-        $repairInfo = Repair::where('eqpmt_id',$eqpmt_id)->order('maintenance_plan_date', 'desc')->paginate(25);
+        if(isset($eqpmt_id)){
+            $repairInfo = Repair::where('eqpmt_id',$eqpmt_id)->order('maintenance_plan_date', 'desc')->paginate(25);
+        }else{
+            $repairInfo = Repair::order('maintenance_plan_date', 'desc')->paginate(25);
+        }
         $repairInfoCount = $repairInfo->total();
         $this->assign("repairInfo",$repairInfo);
         $this->assign("eqpmt_id",$eqpmt_id);
         $this->assign("repairInfoCount",$repairInfoCount);
         return $this->view->fetch("repairInfo");
+    }
+
+    public function allRepairInfo(){
+        if(Request::isPost()){
+            $data = Request::post();
+            $repairInfo = Repair::order('maintenance_plan_date', 'desc')
+                ->where("maintenance_plan_date","LIKE","%".$data['modules']."%")
+                ->paginate(25);
+        }else{
+            $repairInfo = Repair::order('maintenance_plan_date', 'desc')->paginate(25);
+        }
+        $repairInfoCount = $repairInfo->total();
+        $this->assign("repairInfo",$repairInfo);
+        $this->assign("repairInfoCount",$repairInfoCount);
+        return $this->view->fetch("allRepairInfo");
     }
 
     //展示保养添加页面

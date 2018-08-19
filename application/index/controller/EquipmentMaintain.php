@@ -21,6 +21,22 @@ class EquipmentMaintain extends Base
         return $this->view->fetch("maintainInfo");
     }
 
+    public function allMaintainInfo(){
+        if(Request::isPost()){
+            $data = Request::post();
+            $maintenanceInfo = Maintenance::order('date', 'desc')
+                ->where("date","LIKE","%".$data['modules']."%")
+                ->paginate(25);
+        }else{
+            $maintenanceInfo = Maintenance::order('date', 'desc')
+                ->paginate(25);
+        }
+        $maintenanceInfoCount = $maintenanceInfo->total();
+        $this->assign("maintenanceInfo",$maintenanceInfo);
+        $this->assign("maintenanceInfoCount",$maintenanceInfoCount);
+        return $this->view->fetch("allMaintainInfo");
+    }
+
     //展示设备添加页面
     public function addMaintainInfo(){
         $equi_id = input("equi_id");

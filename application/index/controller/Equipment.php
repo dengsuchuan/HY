@@ -97,4 +97,59 @@ class Equipment extends Base
             }
         }
     }
+
+    //---------------------------------------------------------------
+
+    //设备类型展示
+    public function equipmentType(){
+        $equipmentType = EquipmentType::order('create_time', 'desc')->paginate(25);
+        $equipmentTypeCount = $equipmentType->total();
+
+        $this->assign("equipmentType",$equipmentType);
+        $this->assign("equipmentTypeCount",$equipmentTypeCount);
+        return $this->view->fetch("equipmentTypeInfo");
+    }
+    //设备类型添加
+    public function addEquipmentType(){
+        return $this->view->fetch("add-equipment-type");
+    }
+    //设备类型添加保存
+    public function saveEquipmentType(){
+        $data = Request::post();
+        $info = EquipmentType::create($data);
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    //设备类型删除
+    public function deleteEquipmentType(){
+        $id = Request::post("id");
+        $info = EquipmentType::where('id',$id)->delete();
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    //设备类型编辑
+    public function editEquipmentType(){
+        $id = input("id");
+        $equipmentType = EquipmentType::where('id',$id)->select();
+        $this->assign("equipmentType",$equipmentType);
+        return $this->view->fetch("edit-equipment-type");
+    }
+    //设备类型更新
+    public function updateEquipmentType(){
+        $data = Request::post();
+        $id = $data['id'];
+        $info = EquipmentType::update($data, ['id' => $id]);
+        if ($info) {
+            return json(1);
+        } else {
+            return json(0);
+        }
+    }
+
 }

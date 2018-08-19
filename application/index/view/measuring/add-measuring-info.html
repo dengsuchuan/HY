@@ -15,8 +15,8 @@
                     <select name="measuring_name" lay-verify="required" lay-search="">
                         <option value=""></option>
                         <optgroup label="选择名称">
-                            {volist name="$measuringType" id="measuringTypeList"}
-                            <option value="{$measuringTypeList.id}">{$measuringTypeList.measuring_type}</option>
+                            {volist name="$measuringType" id = "measuringTypeList"}
+                            <option value="{$measuringTypeList.id}">{$measuringTypeList.cost_name}</option>
                             {/volist}
                         </optgroup>
                     </select>

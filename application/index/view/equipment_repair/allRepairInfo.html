@@ -1,0 +1,82 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">设备</a>
+        <a>
+          <cite>设备保养</cite>
+        </a>
+      </span>
+</div>
+<div class="x-body">
+    <xblock>
+        <div class="layui-input-inline">
+            <form class="layui-form" action="{:url('index/EquipmentMaintain/allMaintainInfo')}" method="post">
+                <div class="layui-input-inline">
+                    <input type="text" name="modules" autocomplete="off" placeholder="请输入日期..." class="layui-input">
+                </div>
+                <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </form>
+        </div>
+        <span class="x-right" style="line-height:40px">共{$repairInfoCount}条 · 共{$repairInfoCount/25|getInt}页</span>
+    </xblock>
+    <div class="container-wrap">
+        <div class="box-1">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th width="2%">操作</th>
+                    <th>设备编号</th>
+                    <th>维护计划日期</th>
+                    <th>维护内容</th>
+                    <th>维护结果</th>
+                    <th>核对日期</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="$repairInfo" id="repairInfoList"}
+                <tr>
+                    <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的保养记录表-->
+                        <a title="编辑"onclick="x_admin_show('修改记录','{:url(\'index/EquipmentRepair/editRepairInfo\',[\'id\'=>$repairInfoList.id])}')" href="javascript:;">
+                            <i style="color: green" class="layui-icon"></i>
+                        </a>
+                        <a title="删除" onclick="delete_(this,'{$repairInfoList.id}')" href="javascript:;">
+                            <i  style="color:red;" class="layui-icon"></i>
+                        </a>
+                    </td>
+                    <td>{$repairInfoList.eqpmt_id}</td>
+                    <td>{$repairInfoList.maintenance_plan_date}</td>
+                    <td>{$repairInfoList.maintenance_content}</td>
+                    <td>{$repairInfoList.maintenance_result}</td>
+                    <td>{$repairInfoList.check_date}</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$repairInfo|raw}
+    </div>
+
+</div>
+<script>
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "{:url('index/EquipmentRepair/delete')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
+</html>

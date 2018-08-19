@@ -14,6 +14,7 @@
 <div class="x-body">
     <xblock>
         <button class="layui-btn" onclick="x_admin_show('添加设备','{:url(\'index/Equipment/addEquipmentInfo\')}',500,800)"><i class="layui-icon"></i>添加设备</button>
+        <button class="layui-btn"  onclick="openLinke()">所有记录</button>
         <div class="layui-input-inline">
             <form class="layui-form" action="{:url('index/Equipment/equipmentInfo')}" method="post">
                 <div class="layui-input-inline">
@@ -105,6 +106,23 @@
                 }
             },"json");
         });
+    }
+
+    function openLinke() {
+        layer.confirm('请选择要查看的记录', {
+                btn: ['保养','维修'] //按钮
+            }, function(){
+                x_admin_show('保养记录',"{:url('index/EquipmentRepair/allRepairInfo')}");
+                layer.msg('保养', {
+                    time: 500, //20s后自动关闭
+                });
+            }, function(){
+                x_admin_show('维修记录',"{:url('index/EquipmentMaintain/allMaintainInfo')}");
+                layer.msg('维修', {
+                    time: 500, //20s后自动关闭
+                });
+            }
+        );
     }
 </script>
 </body>

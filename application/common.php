@@ -15,7 +15,8 @@ use app\index\model\Section;
 use app\index\model\BlueprintInfo;
 use app\index\model\DrawingInternal;
 use app\index\model\EquipmentType;
-use app\index\model\MeasuringType;
+//use app\index\model\MeasuringType;
+use app\index\model\CostType;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -90,5 +91,5 @@ function getEquipmentName($id){
 
 //获取量具名称
 function getMeasuringName($id){
-    return MeasuringType::where("id",$id)->value("measuring_type");
+    return CostType::where("id",$id)->value("cost_name");
 }

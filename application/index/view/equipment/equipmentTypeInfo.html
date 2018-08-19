@@ -1,0 +1,69 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">基础信息</a>
+        <a>
+          <cite>设备类型</cite>
+        </a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock>
+        <button class="layui-btn" onclick="x_admin_show('添加类型','{:url(\'index/Equipment/addEquipmentType\')}',450,200)"><i class="layui-icon"></i>添加类型</button>
+        <span class="x-right" style="line-height:40px">共{$equipmentTypeCount}条 · 共{$equipmentTypeCount/25|getInt}页</span>
+    </xblock>
+    <div class="container-wrap">
+        <div class="box-1">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th width="2%">操作</th>
+                    <th>类型名称</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="$equipmentType" id="equipmentTypeList"}
+                <tr>
+                    <td class="td-manage" width="50px;">
+                        <a title="编辑"onclick="x_admin_show('修改类型','{:url(\'index/Equipment/editEquipmentType\',[\'id\'=>$equipmentTypeList.id])}',450,200)" href="javascript:;">
+                            <i style="color: green" class="layui-icon"></i>
+                        </a>
+                        <a title="删除" onclick="delete_(this,'{$equipmentTypeList.id}')" href="javascript:;">
+                            <i  style="color:red;" class="layui-icon"></i>
+                        </a>
+                    </td>
+                    <td>{$equipmentTypeList.eqpmt_type}</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$equipmentType|raw}
+    </div>
+
+</div>
+<script>
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "{:url('index/Equipment/deleteEquipmentType')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
+</html>
