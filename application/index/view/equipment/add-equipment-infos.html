@@ -1,13 +1,11 @@
 {include file="public/header" /}
 <body>
 <div class="x-body">
-    {volist name="$equipmentInfo" id="equipmentInfoList"}
     <form class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">编号</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="eqpmt_id" value="{$equipmentInfoList.eqpmt_id}">
-                <input type="hidden" class="layui-input" name="id" value="{$equipmentInfoList.id}">
+                <input type="text" class="layui-input" name="eqpmt_id">
             </div>
         </div>
         <div class="layui-form-item">
@@ -15,7 +13,7 @@
             <div class="layui-input-inline">
                 <div class="layui-input-inline">
                     <select name="eqpmt_type_id" lay-verify="required" lay-search="">
-                        <option value="{$equipmentInfoList.eqpmt_type_id}">{$equipmentInfoList.eqpmt_type_id|getEquipmentName}</option>
+                        <option value=""></option>
                         <optgroup label="选择类型">
                         {volist name="$equipmentType" id="equipmentTypeList"}
                         <option value="{$equipmentTypeList.id}">{$equipmentTypeList.eqpmt_type}</option>
@@ -28,71 +26,97 @@
         <div class="layui-form-item">
             <label class="layui-form-label">名称</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="eqpmt_name" value="{$equipmentInfoList.eqpmt_name}">
+                <input type="text" class="layui-input" name="eqpmt_name">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">模型</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="eqpmt_model" value="{$equipmentInfoList.eqpmt_model}">
+                <input type="text" class="layui-input" name="eqpmt_model">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">生产地</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="manufacturer" value="{$equipmentInfoList.manufacturer}">
+                <input type="text" class="layui-input" name="manufacturer">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">正在运行</label>
             <div class="layui-input-inline">
-                <input type="checkbox" {if  1==$equipmentInfoList.is_working}checked=""{/if} name="is_working" lay-skin="switch" lay-text="是|否" >
+                <input type="checkbox" name="is_working" lay-skin="switch" lay-text="是|否" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">生产日期</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="manufacture_date" value="{$equipmentInfoList.manufacture_date}">
+                <input type="text" name="manufacture_date" id="manufacture_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">购买日期</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="purchasing_date" value="{$equipmentInfoList.purchasing_date}">
+                <input type="text" name="purchasing_date" id="purchasing_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">购买价格</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" name="price">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">当前价值</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" name="current_price">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">卖出日期</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="sell_date" value="{$equipmentInfoList.sell_date}">
+                <input type="text" name="sell_date" id="sell_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">使用者</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="user" value="{$equipmentInfoList.user}">
+                <input type="text" class="layui-input" name="user">
             </div>
         </div>
-        {/volist}
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
             <button class="layui-btn" lay-submit lay-filter="addId" >
-                确认修改
+                确认添加
             </button>
         </div>
     </form>
 </div>
 </body>
 <script>
+    //日期
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#manufacture_date' //指定元素
+        });
+        laydate.render({
+            elem: '#purchasing_date' //指定元素
+        });
+        laydate.render({
+            elem: '#sell_date' //指定元素
+        });
+    });
     layui.use(['form'], function(){
         $ = layui.jquery;
         var form = layui.form,layer = layui.layer;
         //监听提交
         form.on('submit(addId)', function(data){
             //console.log(data);
-            $.post("{:url('index/Equipment/update')}",data.field,function(info){
+            $.post("{:url('index/Equipment/saveEquipmentInfo')}",data.field,function(info){
                 if (info) {
-                    layer.alert("修改成功", {icon: 6},function () {
+                    layer.alert("添加成功", {icon: 6},function () {
                         window.parent.location.reload();  //刷新父级页面
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
@@ -100,7 +124,7 @@
                         parent.layer.close(index);
                     });
                 }else{
-                    layer.alert("修改失败", {icon: 5});
+                    layer.alert("添加失败", {icon: 5});
                 }
             },'json');
             return false;

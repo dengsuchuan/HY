@@ -25,7 +25,7 @@ class EquipmentMaintain extends Base
         if(Request::isPost()){
             $data = Request::post();
             $maintenanceInfo = Maintenance::order('date', 'desc')
-                ->where("date","LIKE","%".$data['modules']."%")
+                ->where('date','between',[$data['start'],$data['end']])
                 ->paginate(25);
         }else{
             $maintenanceInfo = Maintenance::order('date', 'desc')

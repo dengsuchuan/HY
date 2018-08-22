@@ -13,7 +13,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">日期</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="date" value="{$maintenanceInfoList.date}" >
+                <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"  value="{$maintenanceInfoList.date}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -63,6 +63,14 @@
 </div>
 </body>
 <script>
+    //日期
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date' //指定元素
+        });
+    });
     layui.use(['form'], function(){
         $ = layui.jquery;
         var form = layui.form,layer = layui.layer;

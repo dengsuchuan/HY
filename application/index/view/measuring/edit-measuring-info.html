@@ -6,7 +6,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">编号</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="measuring_id" value="{$measuringInfoList.measuring_id}">
+                <input type="text" class="layui-input" name="measuring_id" value="{$measuringInfoList.measuring_id}" title="禁止修改" disabled>
                 <input type="hidden" class="layui-input" name="id" value="{$measuringInfoList.id}">
             </div>
         </div>
@@ -50,12 +50,6 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">购买价格</label>
-            <div class="layui-input-inline">
-                <input type="text" class="layui-input" name="price" value="{$measuringInfoList.price}">
-            </div>
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">保管人</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" name="keeper" value="{$measuringInfoList.keeper}">
@@ -65,7 +59,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
             <button class="layui-btn" lay-submit lay-filter="addId" >
-                确认添加
+                确认修改
             </button>
         </div>
     </form>

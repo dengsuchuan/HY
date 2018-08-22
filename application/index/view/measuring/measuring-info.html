@@ -13,7 +13,7 @@
 </div>
 <div class="x-body">
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加量具','{:url(\'index/Measuring/addMeasuringInfo\')}',500,800)"><i class="layui-icon"></i>添加量具</button>
+        <button class="layui-btn" onclick="x_admin_show('添加量具','{:url(\'index/Measuring/addMeasuringInfo\')}')"><i class="layui-icon"></i>添加量具</button>
         <div class="layui-input-inline">
             <form class="layui-form" action="{:url('index/Measuring/measuringInfo')}" method="post">
                 <div class="layui-input-inline">
@@ -46,7 +46,6 @@
                 <th>生产场所</th>
                 <th>生产编号</th>
                 <th>检查周期</th>
-                <th>购买价格</th>
                 <th>保管人</th>
             </tr>
         </thead>
@@ -54,7 +53,7 @@
         {volist name="$measuringInfo" id="measuringInfoList"}
         <tr>
             <td class="td-manage" width="50px;">
-                <a title="编辑"onclick="x_admin_show('修改设备','{:url(\'index/Measuring/editMeasuringInfo\',[\'id\'=>$measuringInfoList.id])}',500,800)" href="javascript:;">
+                <a title="编辑"onclick="x_admin_show('修改设备','{:url(\'index/Measuring/editMeasuringInfo\',[\'id\'=>$measuringInfoList.id])}')" href="javascript:;">
                     <i style="color: green" class="layui-icon"></i>
                 </a>
                 <a title="删除" onclick="delete_(this,'{$measuringInfoList.id}')" href="javascript:;">
@@ -67,7 +66,6 @@
             <td>{$measuringInfoList.place_production}</td>
             <td>{$measuringInfoList.production_num}</td>
             <td>{$measuringInfoList.inspection_cycle}</td>
-            <td>￥{$measuringInfoList.price|default="0"}</td>
             <td>{$measuringInfoList.keeper}</td>
         </tr>
         {/volist}

@@ -14,7 +14,11 @@
         <div class="layui-input-inline">
             <form class="layui-form" action="{:url('index/EquipmentMaintain/allMaintainInfo')}" method="post">
                 <div class="layui-input-inline">
-                    <input type="text" name="modules" autocomplete="off" placeholder="请输入日期..." class="layui-input">
+                    <!--<input type="date" name="modules"  autocomplete="off" class="layui-input">-->
+                    <input class="layui-input" placeholder="开始日" name="start" id="start">
+                </div>
+                <div class="layui-input-inline">
+                    <input class="layui-input" placeholder="截止日" name="end" id="end">
                 </div>
                 <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
             </form>
@@ -28,13 +32,15 @@
                 <tr>
                     <th width="2%">操作</th>
                     <!--<th>设备编号</th>-->
-                    <th>日期</th>
-                    <th>行为</th>
-                    <th>理由</th>
-                    <th>方法</th>
-                    <th>效果跟踪</th>
+                    <th>故障日期</th>
+                    <th>故障现象</th>
+                    <th>原因分析</th>
+                    <th>维修方法</th>
+                    <th>后期效果跟踪</th>
                     <th>维修人</th>
                     <th>审核人</th>
+                    <th>经办人</th>
+                    <th>备注</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,6 +62,8 @@
                     <td>{$maintenanceInfoList.track}</td>
                     <td>{$maintenanceInfoList.maintenance_staff}</td>
                     <td>{$maintenanceInfoList.auditor}</td>
+                    <td>{$maintenanceInfoList.agent}</td>
+                    <td>{$maintenanceInfoList.remarks}</td>
                 </tr>
                 {/volist}
                 </tbody>
@@ -68,6 +76,19 @@
 
 </div>
 <script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#end' //指定元素
+        });
+    });
     /*删除*/
     function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){

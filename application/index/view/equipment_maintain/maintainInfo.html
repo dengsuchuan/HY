@@ -21,13 +21,15 @@
                 <tr>
                     <th width="2%">操作</th>
                     <!--<th>设备编号</th>-->
-                    <th>日期</th>
-                    <th>行为</th>
-                    <th>理由</th>
-                    <th>方法</th>
-                    <th>效果跟踪</th>
+                    <th>故障日期</th>
+                    <th>故障现象</th>
+                    <th>原因分析</th>
+                    <th>维修方法</th>
+                    <th>后期效果跟踪</th>
                     <th>维修人</th>
                     <th>审核人</th>
+                    <th>经办人</th>
+                    <th>备注</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,6 +51,8 @@
                     <td>{$maintenanceInfoList.track}</td>
                     <td>{$maintenanceInfoList.maintenance_staff}</td>
                     <td>{$maintenanceInfoList.auditor}</td>
+                    <td>{$maintenanceInfoList.agent}</td>
+                    <td>{$maintenanceInfoList.remarks}</td>
                 </tr>
                 {/volist}
                 </tbody>

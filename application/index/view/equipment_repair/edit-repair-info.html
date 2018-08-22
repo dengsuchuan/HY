@@ -13,7 +13,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">保养计划</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" name="maintenance_plan_date" value="{$repairInfoList.maintenance_plan_date}">
+            <input type="text" name="maintenance_plan_date" id="maintenance_plan_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"  value="{$repairInfoList.maintenance_plan_date}">
         </div>
     </div>
     <div class="layui-form-item">
@@ -29,12 +29,30 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">核对日期</label>
+        <label class="layui-form-label">检查日期</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="check_date" value="{$repairInfoList.check_date}">
+            <input type="text" name="check_date" id="check_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input"  value="{$repairInfoList.check_date}">
         </div>
     </div>
-        {/volist}
+    <div class="layui-form-item">
+        <label class="layui-form-label">负责人</label>
+        <div class="layui-input-block">
+            <input type="text" name="person" class="layui-input" value="{$repairInfoList.person}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">检查人</label>
+        <div class="layui-input-block">
+            <input type="text" name="inspector" class="layui-input" value="{$repairInfoList.inspector}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <input type="text" name="remarks" class="layui-input" value="{$repairInfoList.remarks}">
+        </div>
+    </div>
+    {/volist}
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
             <button class="layui-btn" lay-submit lay-filter="addId" >
@@ -45,6 +63,17 @@
 </div>
 </body>
 <script>
+    //日期
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#check_date' //指定元素
+        });
+        laydate.render({
+            elem: '#maintenance_plan_date' //指定元素
+        });
+    });
     layui.use(['form'], function(){
         $ = layui.jquery;
         var form = layui.form,layer = layui.layer;

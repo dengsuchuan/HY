@@ -29,7 +29,7 @@ class EquipmentRepair extends Base
         if(Request::isPost()){
             $data = Request::post();
             $repairInfo = Repair::order('maintenance_plan_date', 'desc')
-                ->where("maintenance_plan_date","LIKE","%".$data['modules']."%")
+                ->where('date','between',[$data['start'],$data['end']])
                 ->paginate(25);
         }else{
             $repairInfo = Repair::order('maintenance_plan_date', 'desc')->paginate(25);

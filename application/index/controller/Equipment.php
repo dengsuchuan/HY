@@ -44,7 +44,7 @@ class Equipment extends Base
     public function addEquipmentInfo(){
         $equipmentType = EquipmentType::all();
         $this->assign("equipmentType",$equipmentType);
-        return $this->view->fetch("add-equipment-info");
+        return $this->view->fetch("add-equipment-infos");
     }
 
     //保存添加的设备函数
@@ -80,7 +80,7 @@ class Equipment extends Base
         $equipmentType = EquipmentType::all();
         $this->assign("equipmentType",$equipmentType);
 
-        return $this->view->fetch("edit-equipment-info");
+        return $this->view->fetch("edit-equipment-infos");
     }
 
     //更新设备信息

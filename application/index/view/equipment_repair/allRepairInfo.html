@@ -14,7 +14,11 @@
         <div class="layui-input-inline">
             <form class="layui-form" action="{:url('index/EquipmentMaintain/allMaintainInfo')}" method="post">
                 <div class="layui-input-inline">
-                    <input type="text" name="modules" autocomplete="off" placeholder="请输入日期..." class="layui-input">
+                    <!--<input type="date" name="modules"  autocomplete="off" class="layui-input">-->
+                    <input class="layui-input" placeholder="开始日" name="start" id="start">
+                </div>
+                <div class="layui-input-inline">
+                    <input class="layui-input" placeholder="截止日" name="end" id="end">
                 </div>
                 <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
             </form>
@@ -31,7 +35,10 @@
                     <th>维护计划日期</th>
                     <th>维护内容</th>
                     <th>维护结果</th>
-                    <th>核对日期</th>
+                    <th>检查日期</th>
+                    <th>负责人</th>
+                    <th>检查人</th>
+                    <th>备注</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -50,6 +57,9 @@
                     <td>{$repairInfoList.maintenance_content}</td>
                     <td>{$repairInfoList.maintenance_result}</td>
                     <td>{$repairInfoList.check_date}</td>
+                    <td>{$repairInfoList.person}</td>
+                    <td>{$repairInfoList.inspector}</td>
+                    <td>{$repairInfoList.remarks}</td>
                 </tr>
                 {/volist}
                 </tbody>
@@ -62,6 +72,19 @@
 
 </div>
 <script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#end' //指定元素
+        });
+    });
     /*删除*/
     function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){

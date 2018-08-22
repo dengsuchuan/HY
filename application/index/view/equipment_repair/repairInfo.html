@@ -24,7 +24,10 @@
                     <th>维护计划日期</th>
                     <th>维护内容</th>
                     <th>维护结果</th>
-                    <th>核对日期</th>
+                    <th>检查日期</th>
+                    <th>负责人</th>
+                    <th>检查人</th>
+                    <th>备注</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,6 +46,9 @@
                     <td>{$repairInfoList.maintenance_content}</td>
                     <td>{$repairInfoList.maintenance_result}</td>
                     <td>{$repairInfoList.check_date}</td>
+                    <td>{$repairInfoList.person}</td>
+                    <td>{$repairInfoList.inspector}</td>
+                    <td>{$repairInfoList.remarks}</td>
                 </tr>
                 {/volist}
                 </tbody>
