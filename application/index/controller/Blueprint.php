@@ -1073,9 +1073,5 @@ class Blueprint extends Base
             'state'=>0
         ]);
     }
-    public function go_files_open($url)
-    {
-
-    }
 
 }
