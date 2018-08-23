@@ -1,0 +1,86 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    {volist name="$meteringInfo" id="meteringInfoList"}
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">计量编号</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" name="eqpmt_id" value="{$meteringInfoList.eqpmt_id}" title="禁止修改" disabled>
+                <input type="hidden" name="id" value="{$meteringInfoList.id}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">计量日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="metering_date" id="metering_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" value="{$meteringInfoList.metering_date}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">实际计量日期</label>
+            <div class="layui-input-inline">
+                <input type="text" name="metering_old_date" id="metering_old_date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" value="{$meteringInfoList.metering_old_date}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">计量单位</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="company" value="{$meteringInfoList.company}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">经办人</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="agent" value="{$meteringInfoList.agent}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <input type="text" class="layui-input" name="remarks" value="{$meteringInfoList.remarks}">
+            </div>
+        </div>
+        {/volist}
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-submit lay-filter="addId" >
+                确认修改
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    //日期
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date' //指定元素
+        });
+    });
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Metering/update')}",data.field,function(info){
+                if (info) {
+                    layer.alert("更新成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("更新失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+
+</html>

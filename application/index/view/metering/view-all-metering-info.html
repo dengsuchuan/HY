@@ -3,18 +3,17 @@
 <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">设备</a>
+        <a href="">计量</a>
         <a>
-          <cite>设备保养</cite>
+          <cite>计量记录</cite>
         </a>
       </span>
 </div>
 <div class="x-body">
     <xblock>
         <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
-
         <div class="layui-input-inline">
-            <form class="layui-form" action="{:url('index/EquipmentRepair/allRepairInfo')}" method="post">
+            <form class="layui-form" action="{:url('index/Metering/allMeteringInfo')}" method="post">
                 <div class="layui-input-inline">
                     <!--<input type="date" name="modules"  autocomplete="off" class="layui-input">-->
                     <input class="layui-input" placeholder="开始日" name="start" id="start">
@@ -25,7 +24,7 @@
                 <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
             </form>
         </div>
-        <span class="x-right" style="line-height:40px">共{$repairInfoCount}条 · 共{$repairInfoCount/25|getInt}页</span>
+        <span class="x-right" style="line-height:40px">共{$meteringInfoCount}条 · 共{$meteringInfoCount/25|getInt}页</span>
     </xblock>
     <div class="container-wrap">
         <div class="box-1">
@@ -33,35 +32,31 @@
                 <thead>
                 <tr>
                     <th width="2%">操作</th>
-                    <th>设备编号</th>
-                    <th>维护计划日期</th>
-                    <th>维护内容</th>
-                    <th>维护结果</th>
-                    <th>检查日期</th>
-                    <th>负责人</th>
-                    <th>检查人</th>
+                    <th>量具编号</th>
+                    <th>计量日期</th>
+                    <th>实际计量日期</th>
+                    <th>计量单位</th>
+                    <th>经办人</th>
                     <th>备注</th>
                 </tr>
                 </thead>
                 <tbody>
-                {volist name="$repairInfo" id="repairInfoList"}
+                {volist name="$meteringInfo" id="meteringInfoList"}
                 <tr>
-                    <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的保养记录表-->
-                        <a title="编辑"onclick="x_admin_show('修改记录','{:url(\'index/EquipmentRepair/editRepairInfo\',[\'id\'=>$repairInfoList.id])}')" href="javascript:;">
+                    <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的维修记录表-->
+                        <a title="编辑"onclick="x_admin_show('修改记录','{:url(\'index/Metering/editMeteringInfo\',[\'id\'=>$meteringInfoList.id])}')" href="javascript:;">
                             <i style="color: green" class="layui-icon"></i>
                         </a>
-                        <a title="删除" onclick="delete_(this,'{$repairInfoList.id}')" href="javascript:;">
+                        <a title="删除" onclick="delete_(this,'{$meteringInfoList.id}')" href="javascript:;">
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
                     </td>
-                    <td>{$repairInfoList.eqpmt_id}</td>
-                    <td>{$repairInfoList.maintenance_plan_date}</td>
-                    <td>{$repairInfoList.maintenance_content}</td>
-                    <td>{$repairInfoList.maintenance_result}</td>
-                    <td>{$repairInfoList.check_date}</td>
-                    <td>{$repairInfoList.person}</td>
-                    <td>{$repairInfoList.inspector}</td>
-                    <td>{$repairInfoList.remarks}</td>
+                    <td>{$meteringInfoList.eqpmt_id}</td>
+                    <td>{$meteringInfoList.metering_date}</td>
+                    <td>{$meteringInfoList.metering_old_date}</td>
+                    <td>{$meteringInfoList.company}</td>
+                    <td>{$meteringInfoList.agent}</td>
+                    <td>{$meteringInfoList.remarks}</td>
                 </tr>
                 {/volist}
                 </tbody>
@@ -69,7 +64,7 @@
         </div>
     </div>
     <div class="page">
-        {$repairInfo|raw}
+        {$meteringInfo|raw}
     </div>
 
 </div>
@@ -90,7 +85,7 @@
     /*删除*/
     function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            var url = "{:url('index/EquipmentRepair/delete')}";
+            var url = "{:url('index/Metering/delete')}";
             var postData ={"id":id};
             $.post(url,postData,function (result) {
                 if(result === 1){

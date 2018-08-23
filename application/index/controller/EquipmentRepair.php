@@ -13,11 +13,7 @@ class EquipmentRepair extends Base
 {
     public function repairInfo(){
         $eqpmt_id = input("eqpmt_id");
-        if(isset($eqpmt_id)){
-            $repairInfo = Repair::where('eqpmt_id',$eqpmt_id)->order('maintenance_plan_date', 'desc')->paginate(25);
-        }else{
-            $repairInfo = Repair::order('maintenance_plan_date', 'desc')->paginate(25);
-        }
+        $repairInfo = Repair::where('eqpmt_id',$eqpmt_id)->order('maintenance_plan_date', 'desc')->paginate(25);
         $repairInfoCount = $repairInfo->total();
         $this->assign("repairInfo",$repairInfo);
         $this->assign("eqpmt_id",$eqpmt_id);
@@ -29,7 +25,7 @@ class EquipmentRepair extends Base
         if(Request::isPost()){
             $data = Request::post();
             $repairInfo = Repair::order('maintenance_plan_date', 'desc')
-                ->where('date','between',[$data['start'],$data['end']])
+                ->where('maintenance_plan_date','between',[$data['start'],$data['end']])
                 ->paginate(25);
         }else{
             $repairInfo = Repair::order('maintenance_plan_date', 'desc')->paginate(25);

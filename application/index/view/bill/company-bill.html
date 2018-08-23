@@ -13,58 +13,68 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
-      <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <input type="text" name="username"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-      </div>
-      <xblock>
+        <xblock>
+        <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
+        <div class="layui-input-inline">
+          <form class="layui-form">
+              <div class="layui-input-inline">
+                  <input type="text" name="username"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-input-inline">
+                  <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+              </div>
+          </form>
+        </div>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
-      </xblock>
-      <table class="layui-table">
-        <thead>
-          <tr>
-            <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
-            <th>产品图号</th>
-            <th>外来图号</th>
-            <th>产品名称</th>
-            <th>材料</th>
-            <th>热处理</th>
-            <th>图纸类型</th>
-            <th>客户简称</th>
-            <th>建档日期</th>
-            <th>模具工装编号</th>
-            <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
-            <td>P14001-071</td>
-            <td>0</td>
-            <td>底板	</td>
-            <td>0</td>
-            <td></td>
-            <td>零件</td>
-            <td>0</td>
-            <td>2014/10/15</td>
-            <td></td>
-            <td class="td-manage">
-              <a title="外" onclick="x_admin_show('外','https://www.geekln.cn')" href="javascript:;"><i class="layui-icon">外</i></a>
-              <a title="内" onclick="x_admin_show('内','order-view.html')" href="javascript:;"><i class="layui-icon">内</i></a>
-              <a title="程" onclick="x_admin_show('程','order-view.html')" href="javascript:;"><i class="layui-icon">程</i></a>
-              <a title="工" onclick="x_admin_show('工','order-view.html')" href="javascript:;"><i class="layui-icon">工</i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </xblock>
+        <div class="container-wrap">
+            <div class="box-1">
+                <table class="layui-table">
+                <thead>
+                  <tr>
+                    <th>
+                      <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                    </th>
+                    <th>产品图号</th>
+                    <th>外来图号</th>
+                    <th>产品名称</th>
+                    <th>材料</th>
+                    <th>热处理</th>
+                    <th>图纸类型</th>
+                    <th>客户简称</th>
+                    <th>建档日期</th>
+                    <th>模具工装编号</th>
+                    <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                    </td>
+                    <td>P14001-071</td>
+                    <td>0</td>
+                    <td>底板	</td>
+                    <td>0</td>
+                    <td></td>
+                    <td>零件</td>
+                    <td>0</td>
+                    <td>2014/10/15</td>
+                    <td></td>
+                    <td class="td-manage">
+                      <a title="外" onclick="x_admin_show('外','https://www.geekln.cn')" href="javascript:;"><i class="layui-icon">外</i></a>
+                      <a title="内" onclick="x_admin_show('内','order-view.html')" href="javascript:;"><i class="layui-icon">内</i></a>
+                      <a title="程" onclick="x_admin_show('程','order-view.html')" href="javascript:;"><i class="layui-icon">程</i></a>
+                      <a title="工" onclick="x_admin_show('工','order-view.html')" href="javascript:;"><i class="layui-icon">工</i></a>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
       <div class="page">
         <div>
           <a class="prev" href="">&lt;&lt;</a>

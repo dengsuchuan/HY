@@ -13,15 +13,20 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
-      <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-          <input type="text" name="username"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-      </div>
       <xblock>
+        <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
+        <div class="layui-input-inline">
+          <form class="layui-form">
+            <div class="layui-input-inline">
+              <input type="text" name="username"  placeholder="请输入订单号" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-input-inline">
+              <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </div>
+          </form>
+        </div>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock>
       <table class="layui-table">

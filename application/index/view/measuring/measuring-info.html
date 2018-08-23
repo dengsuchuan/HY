@@ -13,6 +13,10 @@
 </div>
 <div class="x-body">
     <xblock>
+        <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
+        <button class="layui-btn" title="查看所有计量"onclick="x_admin_show('查看所有计量','{:url(\'index/Metering/allMeteringInfo\')}')" href="javascript:;">
+            <i style="color:white;" class="iconfont">&#xe6f5;</i> 查看所有计量
+        </button>
         <button class="layui-btn" onclick="x_admin_show('添加量具','{:url(\'index/Measuring/addMeasuringInfo\')}')"><i class="layui-icon"></i>添加量具</button>
         <div class="layui-input-inline">
             <form class="layui-form" action="{:url('index/Measuring/measuringInfo')}" method="post">
@@ -59,6 +63,10 @@
                 <a title="删除" onclick="delete_(this,'{$measuringInfoList.id}')" href="javascript:;">
                     <i  style="color:red;" class="layui-icon"></i>
                 </a>
+                <a title="计量" onclick="x_admin_show('{$measuringInfoList.measuring_id}的计量','{:url(\'index/Metering/MeteringInfo\',[\'id\'=>$measuringInfoList.measuring_id])}')" href="javascript:;">
+                    <i style="color:green;" class="iconfont">&#xe6f5;</i>
+                </a>
+                <!--metering-->
             </td>
             <td>{$measuringInfoList.measuring_id}</td>
             <td>{$measuringInfoList.measuring_name|getMeasuringName}</td>

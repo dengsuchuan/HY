@@ -1,0 +1,75 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">量具</a>
+        <a>
+          <cite>计量记录</cite>
+        </a>
+      </span>
+</div>
+<div class="x-body">
+    <xblock>
+        <button class="layui-btn" onclick="x_admin_show('{$id}添加计量','{:url(\'index/Metering/addMeteringInfo\',[\'id\'=>$id])}')"><i class="layui-icon"></i>添加计量</button>
+        <span class="x-right" style="line-height:40px">共{$meteringInfoCount}条 · 共{$meteringInfoCount/25|getInt}页</span>
+    </xblock>
+    <div class="container-wrap">
+        <div class="box-1">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th width="2%">操作</th>
+                    <th>计量日期</th>
+                    <th>实际计量日期</th>
+                    <th>计量单位</th>
+                    <th>经办人</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="$meteringInfo" id="meteringInfoList"}
+                <tr>
+                    <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的维修记录表-->
+                        <a title="编辑"onclick="x_admin_show('修改记录','{:url(\'index/Metering/editMeteringInfo\',[\'id\'=>$meteringInfoList.id])}')" href="javascript:;">
+                            <i style="color: green" class="layui-icon"></i>
+                        </a>
+                        <a title="删除" onclick="delete_(this,'{$meteringInfoList.id}')" href="javascript:;">
+                            <i  style="color:red;" class="layui-icon"></i>
+                        </a>
+                    </td>
+                    <td>{$meteringInfoList.metering_date}</td>
+                    <td>{$meteringInfoList.metering_old_date}</td>
+                    <td>{$meteringInfoList.company}</td>
+                    <td>{$meteringInfoList.agent}</td>
+                    <td>{$meteringInfoList.remarks}</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page">
+        {$meteringInfo|raw}
+    </div>
+
+</div>
+<script>
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('确认要删除吗？',function(index){
+            var url = "{:url('index/Metering/delete')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result === 1){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
+</html>
