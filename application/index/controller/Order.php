@@ -130,7 +130,7 @@ class Order extends Base
                 if($key == 'drawing_detail_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
-                        OrderDetail::where('drawing_detail_id','=',$v1)->delete();
+                        OrderDetail::where('drawing_detail_id','=',$v1)->where(['order_id'=>$coder])->delete();
                         $datas[][$key] = $value[$i];
                         $datas[$i]['order_detail_code'] = $order_code.'-'. ($tempid<10 ? '0'.$tempid :$tempid);
                         $datas[$i]['create_name'] =  session('user.user_name');
