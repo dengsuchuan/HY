@@ -17,6 +17,8 @@ use app\index\model\DrawingInternal;
 use app\index\model\EquipmentType;
 //use app\index\model\MeasuringType;
 use app\index\model\CostType;
+use app\index\model\BlueprintOutside;
+use app\index\model\OrderDetail;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -92,4 +94,30 @@ function getEquipmentName($id){
 //获取量具名称
 function getMeasuringName($id){
     return CostType::where("id",$id)->value("cost_name");
+}
+//获取外图ID
+function getExternaId($code){
+    return BlueprintOutside::where('drawing_external_id','=',$code)->value('id');
+}
+//获取外图编号
+function getExternaCode($id){
+    return BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
+}
+//获取图纸明细编号
+function getDrawingDetailCode($code){
+    return BlueprintInfo::where(['drawing_externa_id'=>$code])->value('id');
+}
+function getCountExterna($id){
+//    return $id;
+//
+//    drawing_externa_or_internal_id
+    $drawing_external_id = BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
+    $d_count = count(BlueprintInfo::where(['drawing_externa_id'=>$drawing_external_id])->select());
+    $o_counrt = count(OrderDetail::where(['drawing_externa_or_internal_id'=>$id])->select());
+    if($d_count > $o_counrt){
+        return true;
+    }else{
+        return false;
+    }
+//    return $d_count.'--'.$o_counrt;
 }

@@ -130,6 +130,7 @@ class Order extends Base
                 if($key == 'drawing_detail_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
+                        OrderDetail::where('drawing_detail_id','=',$v1)->delete();
                         $datas[][$key] = $value[$i];
                         $datas[$i]['order_detail_code'] = $order_code.'-'. ($tempid<10 ? '0'.$tempid :$tempid);
                         $datas[$i]['create_name'] =  session('user.user_name');
@@ -137,7 +138,6 @@ class Order extends Base
                         $tempid++;
                     }
                 }
-
                 if($key == 'order_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
@@ -213,6 +213,13 @@ class Order extends Base
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+                if($key == 'drawing_externa_or_internal_id'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = getExternaId($value[$i]);
                         $i++;
                     }
                 }

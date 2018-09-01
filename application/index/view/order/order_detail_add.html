@@ -53,12 +53,7 @@
             <input type="text" value="0"  name="plan_qty[]" autocomplete="off" class="layui-input">
           </div>
         </div>
-        <!--<div class="layui-inline">-->
-          <!--<label class="layui-form-label">订单数量</label>-->
-          <!--<div class="layui-input-inline" style="width: 100px;">-->
-            <!--<input type="text" autocomplete="off" name="order_qty[]" class="layui-input">-->
-          <!--</div>-->
-        <!--</div>-->
+
 
         <div class="layui-inline">
           <label class="layui-form-label">加工安排</label>
@@ -127,7 +122,12 @@
             <input type="text" name="warehousing[]" autocomplete="off" class="layui-input">
           </div>
         </div>
-
+        <div class="layui-inline">
+          <label class="layui-form-label">所属外图</label>
+          <div class="layui-input-inline" style="width: 300px;">
+            <input type="text" autocomplete="off" name="drawing_externa_or_internal_id[]" value="{$info.drawing_externa_id}" class="layui-input">
+          </div>
+        </div>
       </div>
     </div>
     {/volist}
