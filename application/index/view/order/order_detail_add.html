@@ -123,9 +123,9 @@
           </div>
         </div>
         <div class="layui-inline">
-          <label class="layui-form-label">所属外图</label>
+          <label class="layui-form-label">所属外图编号</label>
           <div class="layui-input-inline" style="width: 300px;">
-            <input type="text" autocomplete="off" name="drawing_externa_or_internal_id[]" value="{$info.drawing_externa_id}" class="layui-input">
+            <input type="text" autocomplete="off" disabled name="drawing_externa_or_internal_id[]" value="{$info.drawing_externa_id}" class="layui-input">
           </div>
         </div>
       </div>
@@ -139,10 +139,7 @@
     </div>
   </form>
 </div>
-
-
 <script>
-
     layui.use(['form'], function(){
 
         $ = layui.jquery;

@@ -107,13 +107,13 @@ function getExternaCode($id){
 function getDrawingDetailCode($code){
     return BlueprintInfo::where(['drawing_externa_id'=>$code])->value('id');
 }
-function getCountExterna($id){
+function getCountExterna($id,$order_id){
 //    return $id;
 //
 //    drawing_externa_or_internal_id
     $drawing_external_id = BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
     $d_count = count(BlueprintInfo::where(['drawing_externa_id'=>$drawing_external_id])->select());
-    $o_counrt = count(OrderDetail::where(['drawing_externa_or_internal_id'=>$id])->select());
+    $o_counrt = count(OrderDetail::where(['drawing_externa_or_internal_id'=>$id])->where('order_id','=',$order_id)->select());
     if($d_count > $o_counrt){
         return true;
     }else{

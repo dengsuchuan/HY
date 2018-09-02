@@ -82,6 +82,7 @@
               <th>操作</th>
               <th>订单明细编号</th>
               <th>所属图纸明细</th>
+              <th>所属内外图</th>
               <th>加工安排</th>
               <th>单位</th>
               <th>加工内容</th>
@@ -90,7 +91,7 @@
               <th>交货日期</th>
               <th>是否完成</th>
               <th>入库数量</th>
-              <th>所属内外图</th>
+
               <th>创建人</th>
               <th>创建时间</th>
             </tr>
@@ -98,12 +99,22 @@
           <tbody>
           {volist name="orderDatailInfo" id="info"}
           <tr>
+            <?php
+                  $count = getCountExterna($info['drawing_externa_or_internal_id'],$info['order_id']);
+                ?>
                 <td>
                   <a title="修改" onclick="x_admin_show('修改订单','{:url(\'index/Order/editOrder\',[\'id\'=>1])}',600,600)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                   <a title="删除" onclick="delete_(this,'')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
                 </td>
                 <td>{$info.order_detail_code}</td>
                 <td>{$info.drawing_detail_id|getDrawingDetailId}</td>
+            <td>
+              {if $count }
+              {$info.drawing_externa_or_internal_id|getExternaCode} <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
+              {else}
+              {$info.drawing_externa_or_internal_id|getExternaCode}
+              {/if}
+            </td>
                 <td>{$info.arrange}</td>
                 <td>{$info.company}</td>
                 <td>{$info.content}</td>
@@ -112,17 +123,8 @@
                 <td>{$info.date_delivery}</td>
                 <td>{$info.if_complete}</td>
                 <td>{$info.warehousing}</td>
-                <?php
-                  $count = getCountExterna($info['drawing_externa_or_internal_id']);
-                ?>
-                <td>
-                  {if $count }
-                  {$info.drawing_externa_or_internal_id|getExternaCode}   <span style="color: red">新</span>
-                  {else}
-                  {$info.drawing_externa_or_internal_id|getExternaCode}
-                  {/if}
-                </td>
-                <td>{$info.create_name}</td>
+
+              <td>{$info.create_name}</td>
                 <td>{$info.create_time}</td>
               </tr>
           {/volist}

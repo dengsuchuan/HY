@@ -245,4 +245,31 @@ class Order extends Base
         ]);
         return  $this->view->fetch('order_detail_add');
     }
+    public function newOrder(){
+        $ids = input();
+        $ocder_id = $ids['id'];
+        $o_drawing_details = OrderDetail::where(['order_id'=>$ids['id']])->where(['drawing_externa_or_internal_id'=>$ids['ex_or_id']])->field('drawing_detail_id')->select();  //现有的明细
+        $ex_or_code = BlueprintOutside::where(['id'=>$ids['ex_or_id']])->value('drawing_external_id');
+        $d_drawing_details = BlueprintInfo::where(['drawing_externa_id'=>$ex_or_code])->field('id')->select();
+
+        $d_ids = [];
+        foreach ( $d_drawing_details as $item) {
+            $d_ids[] = $item['id'];
+        }
+        $o_ids = [];
+        foreach ($o_drawing_details  as $value) {
+            $o_ids[] = $value['drawing_detail_id'];
+        }
+        $ids = array_diff($d_ids,$o_ids);
+        $orderId = $ocder_id;
+        $orderCode = OrderMode::where(['id'=>$orderId])->value('order_id');
+        $blueprintInfo = BlueprintInfo::where('id','in',$ids)->select();
+
+        $this->assign([
+            'orderId'        =>  $orderId,
+            'orderCode'      =>  $orderCode,
+            'blueprintInfo'  =>   $blueprintInfo
+        ]);
+        return  $this->view->fetch('order_detail_add');
+    }
 }
