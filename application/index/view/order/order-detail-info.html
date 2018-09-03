@@ -60,6 +60,7 @@
               </td>
               <td></td>
               <td>{$info.create_time}</td>
+
               <th>报价</th>
             </tr>
             {/volist}
@@ -72,6 +73,14 @@
   <xblock>
     <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
     <button class="layui-btn" onclick="x_admin_show('添加','{:url(\'index/blueprint/blueprintoutside\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}')"><i class="layui-icon"></i>添加</button>
+    {if $model == 1}
+    <a href="{:url('index/Order/orderDetail',['id'=>$id])}"><button class="layui-btn">显示</button></a>
+
+    {else}
+    <a href="{:url('index/Order/orderDetail',['id'=>$id,'model'=>'1'])}"><button class="layui-btn">切换显示</button></a>
+
+    {/if}
+    <span class="x-right" style="line-height:40px">共条{$orderDatailInfoC} · 未显示 {$orderDatailInfoNoShow} 条 </span>
   </xblock>
   <div class="layui-row">
     <div class="container-wrap">
@@ -82,7 +91,7 @@
               <th>操作</th>
               <th>订单明细编号</th>
               <th>所属图纸明细</th>
-              <th>所属内外图</th>
+              <th>外图编号</th>
               <th>加工安排</th>
               <th>单位</th>
               <th>加工内容</th>
@@ -91,8 +100,8 @@
               <th>交货日期</th>
               <th>是否完成</th>
               <th>入库数量</th>
-
               <th>创建人</th>
+              <th>是否显示</th>
               <th>创建时间</th>
             </tr>
           </thead>
@@ -103,14 +112,20 @@
                   $count = getCountExterna($info['drawing_externa_or_internal_id'],$info['order_id']);
                 ?>
                 <td>
-                  <a title="修改" onclick="x_admin_show('修改订单','{:url(\'index/Order/editOrder\',[\'id\'=>1])}',600,600)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
-                  <a title="删除" onclick="delete_(this,'')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
+                  <a title="修改" onclick="x_admin_show('修改订单','{:url(\'index/Order/editOrderDetail\',[\'id\'=>$info.id])}',600,500)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+                  <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
                 </td>
-                <td>{$info.order_detail_code}</td>
+                <td>
+                  {if $count }
+                  <?php echo  substr($info['order_detail_code'],strripos($info['order_detail_code'],"-")+1) ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
+                  {else}
+                  <?php echo  substr($info['order_detail_code'],strripos($info['order_detail_code'],"-")+1) ;?>
+                  {/if}
+                </td>
                 <td>{$info.drawing_detail_id|getDrawingDetailId}</td>
             <td>
               {if $count }
-              {$info.drawing_externa_or_internal_id|getExternaCode} <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
+              {$info.drawing_externa_or_internal_id|getExternaCode}
               {else}
               {$info.drawing_externa_or_internal_id|getExternaCode}
               {/if}
@@ -123,9 +138,16 @@
                 <td>{$info.date_delivery}</td>
                 <td>{$info.if_complete}</td>
                 <td>{$info.warehousing}</td>
+               <td>{$info.create_name}</td>
+               <td>
 
-              <td>{$info.create_name}</td>
-                <td>{$info.create_time}</td>
+                 {if $info.if_show == 1}
+                   <a onclick="show(this,'{$info.id}',0)" href="javascript:void(0);" > <span class="layui-badge layui-bg-green">显示</span></a>
+                 {else}
+                   <a onclick="show(this,'{$info.id}',1)" href="javascript:void(0);" > <span class="layui-badge">不显示</span></a>
+                 {/if}
+               </td>
+               <td>{$info.create_time}</td>
               </tr>
           {/volist}
           </tbody>
@@ -133,107 +155,33 @@
       </div>
     </div>
     <div class="page">
+
     </div>
   </div>
 </div>
 <script>
-    //批量删除
-    function delAll (drawing_detail_id) {
-        var data = tableCheck.getData();
-        if(data == ''){
-            layer.msg('请选择需要删除的数据');
-            return;
-        }
-        layer.confirm('确认要删除吗？',function(index){
-            //捉到所有被选中的，发异步进行删除
-            $.ajax({
-                url:"{:url('/index/Blueprint/processDelAll')}",
-                type:"POST",
-                dataType:"json",
-                data:{
-                    dra_id:drawing_detail_id,
-                    data:data   //数据
-                },
-                success:function (res) {
-                    if(res === 1 ){
-                        layer.alert("删除成功", {icon: 6},function () {
-                            window.location.reload();  //刷新父级页面
-                        });
-                    }else {
-                        layer.alert("删除失败", {icon: 5});
-                    }
-                },
-            });
-        });
-    }
-    //往上走
-    $(".layui-table-sort-asc").click(function () {
-        var url = "{:url('/index/Blueprint/updateAsc')}";
-        var id = $(this).attr('attr-id');
-        var drawing_detial_id = $(this).attr('attr-drawing_detial_id');
-        var postData ={"id":id,"drawing_detial_id":drawing_detial_id};
-        $.post(url,postData,function (result) {
-              if(result.error === 1000 ){
-                  layer.msg(result.msg,{icon:5,time:1000});
-              }else if(result.error === 1) {
-                  window.location.reload();  //刷新父级页面
+  function show(obj,id,show) {
+      layer.confirm('确定要更改吗？',function(index){
+          var url = "{:url('/index/Order/updateShow')}";
+          var postData ={"id":id,"show":show};
+          $.post(url,postData,function (result) {
+              if(result == 1 ){
+                  layer.alert("更改成功", {icon: 6},function () {
+                      window.location.reload();  //刷新父级页面
+                  });
               }else {
-                  layer.msg(result.msg,{icon:5,time:1000});
+                  layer.alert("更改失败", {icon: 5});
               }
-        },"json");
-    });
-    //往下走
-    $(".layui-table-sort-desc").click(function () {
-        var url = "{:url('/index/Blueprint/updateDesc')}";
-        var id = $(this).attr('attr-id');
-        var drawing_detial_id = $(this).attr('attr-drawing_detial_id');
-        var postData ={"id":id,"drawing_detial_id":drawing_detial_id};
-        $.post(url,postData,function (result) {
-            if(result.error === 1000 ){
-                layer.msg(result.msg,{icon:5,time:1000});
-            }else if(result.error === 1) {
-                window.location.reload();  //刷新父级页面
-            }else {
-                layer.msg(result.msg,{icon:5,time:1000});
-            }
-        },"json");
-    });
+          },"json")
+      });
+  }
 
-    //排序
-    $(".listorder input").blur(function () {
-        var listorder =  $(this).val();
-        var id = $(this).attr('attr-id');
-        var url = "{:url('/index/Blueprint/updateSort')}";
-        var postData ={"id":id,"listorder":listorder,'table':"product_process","value":"sort"};
-        $.post(url,postData,function (result) {
-            if(result == 1 ){
-                layer.alert("更新成功、排序对应工序编号", {icon: 6},function () {
-                    window.location.reload();  //刷新父级页面
-                });
-            }else {
-                layer.alert("更新失败", {icon: 5});
-            }
-        },"json")
-    });
-    function sort(id) {
-        var url = "{:url('/index/Blueprint/onekeySort')}";
-        var postData ={"id":id};
-        $.post(url,postData,function (result) {
-            if(result === 1 ){
-                layer.alert("排序成功", {icon: 6},function () {
-                    window.location.reload();  //刷新父级页面
-                });
-            }else {
-                layer.alert("排序失败", {icon: 5});
-            }
-        },"json")
-    }
 
     /*删除*/
-    function delete_process(obj,id,drawing_detial_id){
+    function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            var url = "{:url('/index/Blueprint/deleteProcess')}";
-            var postData ={"id":id,"drawing_detial_id":drawing_detial_id};
+            var url = "{:url('/index/Order/deleteDetail')}";
+            var postData ={"id":id};
             $.post(url,postData,function (result) {
                 if(result === 1 ){
                     layer.alert("删除成功", {icon: 6},function () {

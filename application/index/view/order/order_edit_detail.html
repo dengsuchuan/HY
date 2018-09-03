@@ -1,0 +1,130 @@
+﻿ {include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    <div class="layui-form-item">
+      <label for="order_detail_code" class="layui-form-label">订单号</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="order_detail_code" value="{$ordeDetailRow.order_detail_code}" disabled lay-verify="required" autocomplete="off" class="layui-input" >
+        <input type="hidden" id="id" value="{$ordeDetailRow.id}" name="id" disabled lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="plan_qty" class="layui-form-label">计划数量</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" id="plan_qty"  name="plan_qty" value="{$ordeDetailRow.plan_qty}"  lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="arrange" class="layui-form-label">加工安排</label>
+        <div class="layui-input-inline" style="width: 100px;">
+          <select  name="arrange">
+            <option value="外协" {if $ordeDetailRow.arrange == '外协'} selected {/if}>外协</option>
+            <option value="自加工" {if $ordeDetailRow.arrange == '自加工'} selected {/if}>自加工</option>
+            <option value="标件不加工" {if $ordeDetailRow.arrange == '标件不加工'} selected {/if}>标件不加工</option>
+          </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="company" class="layui-form-label">单位</label>
+      <div class="layui-input-inline">
+        <div class="layui-input-inline"  style="width: 100px;">
+          <select name="company" >
+            <option value="件" {if $ordeDetailRow.company == '件'} selected {/if}>件</option>
+            <option value="套" {if $ordeDetailRow.company == '套'} selected {/if}>套</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">加工内容</label>
+      <div class="layui-input-block">
+        <textarea  placeholder="请输入内容"   name="content" class="layui-textarea">{$ordeDetailRow.content}</textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="date_delivery" class="layui-form-label">交货日期</label>
+      <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+        <input type="text" name="date_delivery"  value="{$ordeDetailRow.date_delivery}" class="layui-input" id="data" lay-key="1">
+      </div>
+      <script>
+          layui.use('laydate', function(){
+              var laydate = layui.laydate;
+
+              //执行一个laydate实例
+              laydate.render({
+                  elem: '#data' //指定元素
+              });
+          });
+      </script>
+    </div>
+    <div class="layui-form-item">
+      <label for="purchase_id" class="layui-form-label">备料单编号</label>
+      <div class="layui-input-inline">
+        <input type="text" id="client_id" name="purchase_id" value="{$ordeDetailRow.purchase_id}" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+
+
+    <div class="layui-form-item">
+      <label for="order_price" class="layui-form-label">材料来源</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <select name="material_source" >
+          <option value="来料" {if $ordeDetailRow.material_source == '来料'} selected {/if} >来料</option>
+          <option value="外购" {if $ordeDetailRow.material_source == '外购'} selected {/if} >外购</option>
+          <option value="自备"  {if $ordeDetailRow.material_source == '自备'} selected {/if}>自备</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="prepare" class="layui-form-label">入库数量</label>
+      <div class="layui-input-inline">
+        <input type="text" id="prepare" name="warehousing"  value="{$ordeDetailRow.warehousing}"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId" >
+        修改
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+
+    layui.use(['form'], function(){
+
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Order/editOrderDetail')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+
+
+
+
+</script>
+</body>
+
+</html>

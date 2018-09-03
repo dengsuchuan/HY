@@ -99,15 +99,42 @@ class Order extends Base
 //echo substr($str,strpos($str,'/'))
 
     public function orderDetail(){
+        $model = intval(input('model'));
         $id = intval(input('id'));
+        if($model == 1){
+            $orderRow = OrderMode::where(['id'=>$id])->select();
+            $orderCode = OrderMode::where(['id'=>$id])->value('id');
+            //获取订单明细
+            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->where(['if_show'=>1])->select();
+            $orderDatailInfoC = count($orderDatailInfo);
+            $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
+            $this->assign([
+                'orderRow'            => $orderRow,
+                'orderCode'           => $orderCode,
+                'orderDatailInfo'     => $orderDatailInfo,
+                'orderDatailInfoNoShow'    =>$orderDatailInfoNoShow,
+                'orderDatailInfoC'    =>$orderDatailInfoC,
+                'id'                   =>$id,
+                'model'                 =>1
+            ]);
+            return  $this->view->fetch('order-detail-info');
+        }
+
         $orderRow = OrderMode::where(['id'=>$id])->select();
         $orderCode = OrderMode::where(['id'=>$id])->value('id');
         //获取订单明细
         $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->select();
+        $orderDatailInfoC = count($orderDatailInfo);
+        $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
         $this->assign([
             'orderRow'            => $orderRow,
             'orderCode'           => $orderCode,
-            'orderDatailInfo'     => $orderDatailInfo
+            'orderDatailInfo'     => $orderDatailInfo,
+            'orderDatailInfoNoShow'    =>$orderDatailInfoNoShow,
+            'orderDatailInfoC'    =>$orderDatailInfoC,
+            'id'                   =>$id,
+            'model'                 =>0
+
         ]);
         return  $this->view->fetch('order-detail-info');
     }
@@ -145,7 +172,7 @@ class Order extends Base
                         $i++;
                     }
                 }
-                if($key == 'order_qty'){
+                if($key == 'plan_qty'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[$i][$key] = $value[$i];
@@ -249,10 +276,9 @@ class Order extends Base
         $ids = input();
         $ocder_id = $ids['id'];
         $o_drawing_details = OrderDetail::where(['order_id'=>$ids['id']])->where(['drawing_externa_or_internal_id'=>$ids['ex_or_id']])->field('drawing_detail_id')->select();  //现有的明细
-        $ex_or_code = BlueprintOutside::where(['id'=>$ids['ex_or_id']])->value('drawing_external_id');
-        $d_drawing_details = BlueprintInfo::where(['drawing_externa_id'=>$ex_or_code])->field('id')->select();
-
-        $d_ids = [];
+        $ex_or_code = BlueprintOutside::where(['id'=>$ids['ex_or_id']])->value('drawing_external_id'); // 跟据外图id获取外图编号
+        $d_drawing_details = BlueprintInfo::where(['drawing_externa_id'=>$ex_or_code])->field('id')->select(); // 跟据外图编号获取图纸明细
+        $d_ids = [];  // 数据转换
         foreach ( $d_drawing_details as $item) {
             $d_ids[] = $item['id'];
         }
@@ -260,11 +286,10 @@ class Order extends Base
         foreach ($o_drawing_details  as $value) {
             $o_ids[] = $value['drawing_detail_id'];
         }
-        $ids = array_diff($d_ids,$o_ids);
+        $ids = array_diff($d_ids,$o_ids);  // 求两个数组的交集
         $orderId = $ocder_id;
         $orderCode = OrderMode::where(['id'=>$orderId])->value('order_id');
         $blueprintInfo = BlueprintInfo::where('id','in',$ids)->select();
-
         $this->assign([
             'orderId'        =>  $orderId,
             'orderCode'      =>  $orderCode,
@@ -272,4 +297,53 @@ class Order extends Base
         ]);
         return  $this->view->fetch('order_detail_add');
     }
+    public function orderDelete(){
+        $id = intval(Request::post('id')); // 获取id
+        //删除订单
+        $info = OrderMode::where(['id'=>$id])->delete(); //
+        if($info){
+            // 删除订单对应的订单详细
+            OrderDetail::where(['order_id'=>$id])->delete();
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    public function editOrderDetail(){
+        if(Request::isPost()){
+            $data = Request::post();
+            $id = $data['id'];
+            unset($data['id']);
+            $info = OrderDetail::update($data,['id'=>$id]);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+        $id = intval(input('id'));
+        $ordeDetailRow = OrderDetail::where(['id'=>$id])->find();
+        $this->assign([
+            'ordeDetailRow' =>  $ordeDetailRow
+        ]);
+        return $this->view->fetch('order_edit_detail');
+    }
+    public function updateShow(){
+        $data = Request::post();
+        $info = OrderDetail::update(['if_show'=>$data['show']],['id'=>$data['id']]);
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    public function deleteDetail(){
+        $info = OrderDetail::where(['id'=>intval(input('id'))])->delete();
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
 }
+
