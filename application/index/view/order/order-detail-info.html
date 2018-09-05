@@ -89,7 +89,7 @@
           <thead>
             <tr>
               <th>操作</th>
-              <th>订单明细编号</th>
+              <th>序号</th>
               <th>所属图纸明细</th>
               <th>外图编号</th>
               <th>加工安排</th>
@@ -101,11 +101,11 @@
               <th>是否完成</th>
               <th>入库数量</th>
               <th>创建人</th>
-              <th>是否显示</th>
               <th>创建时间</th>
             </tr>
           </thead>
           <tbody>
+          <?php $i = 1;?>
           {volist name="orderDatailInfo" id="info"}
           <tr>
             <?php
@@ -117,12 +117,22 @@
                 </td>
                 <td>
                   {if $count }
-                  <?php echo  substr($info['order_detail_code'],strripos($info['order_detail_code'],"-")+1) ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
+                  <?php echo  $i ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
                   {else}
-                  <?php echo  substr($info['order_detail_code'],strripos($info['order_detail_code'],"-")+1) ;?>
+                  <?php echo  $i ;?>
+                  {/if}
+                  <span class="layui-table-sort layui-inline">
+                   <i class="layui-edge layui-table-sort-asc" onclick="SanSort('{$info.id}','asc')"></i>
+                   <i class="layui-edge layui-table-sort-desc"  onclick="SanSort('{$info.id}','desc')"></i>
+                 </span>
+                </td>
+                <td>
+                  {if $info.if_show == 1}
+                   {$info.drawing_detail_id|getDrawingDetailId}
+                  {else}
+                  <span style="color:red;"> {$info.drawing_detail_id|getDrawingDetailId}</span>
                   {/if}
                 </td>
-                <td>{$info.drawing_detail_id|getDrawingDetailId}</td>
             <td>
               {if $count }
               {$info.drawing_externa_or_internal_id|getExternaCode}
@@ -139,14 +149,7 @@
                 <td>{$info.if_complete}</td>
                 <td>{$info.warehousing}</td>
                <td>{$info.create_name}</td>
-               <td>
 
-                 {if $info.if_show == 1}
-                   <a onclick="show(this,'{$info.id}',0)" href="javascript:void(0);" > <span class="layui-badge layui-bg-green">显示</span></a>
-                 {else}
-                   <a onclick="show(this,'{$info.id}',1)" href="javascript:void(0);" > <span class="layui-badge">不显示</span></a>
-                 {/if}
-               </td>
                <td>{$info.create_time}</td>
               </tr>
           {/volist}
@@ -175,7 +178,26 @@
           },"json")
       });
   }
-
+  function SanSort(id,sort) {
+      $.ajax({
+          url:"/index/Order/SanSort",
+          type:"POST",
+          dataType:"json",
+          data:{
+              id:id,
+              sort:sort
+          },
+          success:function (res) {
+              if(res.error === 1000 ){
+                  layer.msg(res.msg, {icon: 5});
+              }else if(res.error === 1) {
+                  window.location.reload();  //刷新父级页面
+              }else {
+                  layer.msg(res.msg, {icon: 5});
+              }
+          },
+      });
+  }
 
     /*删除*/
     function delete_(obj,id){

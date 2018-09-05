@@ -86,6 +86,13 @@
       </div>
     </div>
     <div class="layui-form-item">
+      <label class="layui-form-label">是否显示</label>
+      <div class="layui-input-block">
+        <input type="checkbox"  {if 1==$ordeDetailRow.if_show}checked=""{/if}  name="if_show" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+        <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+      </div>
+    </div>
+    <div class="layui-form-item">
       <label class="layui-form-label"></label>
       <button class="layui-btn" lay-submit lay-filter="addId" >
         修改
