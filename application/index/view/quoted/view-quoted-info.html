@@ -11,7 +11,7 @@
 </div>
 <div class="x-body">
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('{$id}添加计量','{:url(\'index/Metering/addMeteringInfo\',[\'id\'=>$id])}')"><i class="layui-icon"></i>添加计量</button>
+        <button class="layui-btn" onclick="x_admin_show('{$order_id}添加报价','')"><i class="layui-icon"></i>添加报价</button>
         <span class="x-right" style="line-height:40px">共{0}条 · 共{100/25|getInt}页</span>
     </xblock>
     <div class="container-wrap">
@@ -37,29 +37,38 @@
                 </tr>
                 </thead>
                 <tbody>
-                {volist name="$meteringInfo" id="meteringInfoList"}
+
                 <tr>
                     <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的维修记录表-->
-                        <a title="编辑"onclick="x_admin_show('修改记录','{:url(\'index/Metering/editMeteringInfo\',[\'id\'=>$meteringInfoList.id])}')" href="javascript:;">
+                        <a title="编辑"onclick="x_admin_show('修改报价','')" href="javascript:;">
                             <i style="color: green" class="layui-icon"></i>
                         </a>
-                        <a title="删除" onclick="delete_(this,'{$meteringInfoList.id}')" href="javascript:;">
+                        <a title="删除" onclick="delete_(this,'{0}')" href="javascript:;">
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
                     </td>
-                    <td>{$meteringInfoList.metering_date}</td>
-                    <td>{$meteringInfoList.metering_old_date}</td>
-                    <td>{$meteringInfoList.company}</td>
-                    <td>{$meteringInfoList.agent}</td>
-                    <td>{$meteringInfoList.remarks}</td>
+                    <td>{$order_id}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
-                {/volist}
+
                 </tbody>
             </table>
         </div>
     </div>
     <div class="page">
-        {$meteringInfo|raw}
+        {0|0}
     </div>
 
 </div>

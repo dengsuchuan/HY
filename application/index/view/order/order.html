@@ -113,25 +113,23 @@
     </div>
     <script>
         function openLinke(id) {
-            layer.confirm('请选择进入的页面~', {
-                    btn: ['产品报价','定额报价','总价报价'] //按钮
-                }, function(){
-                    x_admin_show("{:url('index/quoted/quotedInfo')}");
-                    layer.msg('加载中', {
-                        time: 500, //20s后自动关闭
-                    });
-                }, function(){
-                    layer.msg('订单', {
-                        time: 20000, //20s后自动关闭
-                        btn: ['明白了', '知道了']
-                    });
-                },function () {
-                    layer.msg('发货单', {
-                        time: 20000, //20s后自动关闭
-                        btn: ['明白了', '知道了']
-                    });
+            layer.open({
+                content: '选择你要进入的报价类型～～'
+                ,btn: ['产品报价', '定额报价', '总价报价'] //按钮
+                ,yes: function(index, layero){
+                    //按钮【按钮一】的回调
+                    x_admin_show("产品报价","{:url('index/quoted/quotedInfoType1')}?id=" + id);
+                },btn2: function(index, layero){
+                    //按钮【按钮二】的回调
+                    x_admin_show("定额报价","{:url('index/quoted/quotedInfoType2')}?id=" + id);
+                },btn3: function(index, layero){
+                    //按钮【按钮三】的回调
+                    x_admin_show("总价报价","{:url('index/quoted/quotedInfoType3')}?id=" + id);
                 }
-            );
+                ,cancel: function(){
+                    //右上角关闭回调
+                }
+            });
         }
 
         /*删除*/
@@ -151,5 +149,6 @@
         }
 
     </script>
+    </div>
   </body>
 </html>
