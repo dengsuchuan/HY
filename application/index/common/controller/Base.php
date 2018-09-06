@@ -65,7 +65,7 @@ class Base extends Controller
             }
         }else if($data['sort'] == 'desc'){
             $ascInfo = $model->where("sort", ">", $infoSort)->field('id,sort')->order("sort", "asc")->find();
-            //如果是第一条数据
+            //如果是最后一条数据
             if($ascInfo == null){
                 return json([
                     'error' => 1000,
@@ -108,4 +108,5 @@ class Base extends Controller
         }
         return $tempArray;
     }
+
 }
