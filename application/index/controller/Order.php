@@ -105,7 +105,7 @@ class Order extends Base
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
             //获取订单明细
-            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->where(['if_show'=>1])->select();
+            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->where(['if_show'=>1])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->select();
             $orderDatailInfoC = count($orderDatailInfo);
             $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
             $this->assign([
@@ -123,7 +123,7 @@ class Order extends Base
         $orderRow = OrderMode::where(['id'=>$id])->select();
         $orderCode = OrderMode::where(['id'=>$id])->value('id');
         //获取订单明细
-        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->select();
+        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->select();
         $orderDatailInfoC = count($orderDatailInfo);
         $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
         $this->assign([
@@ -143,6 +143,10 @@ class Order extends Base
             $data = Request::post();
             $coder = $data['order'];
             $code = OrderDetail::where(['order_id'=>$coder])->order('order_detail_code desc')->value('order_detail_code');
+            $sort = OrderDetail::where(['order_id'=>$coder])->order('sort desc')->value('sort');
+            if($sort == null){
+                $sort = 0;
+            }
             if($code == null){
                 $tempid = 1;
             }else{
@@ -160,6 +164,7 @@ class Order extends Base
                         OrderDetail::where('drawing_detail_id','=',$v1)->where(['order_id'=>$coder])->delete();
                         $datas[][$key] = $value[$i];
                         $datas[$i]['order_detail_code'] = $order_code.'-'. ($tempid<10 ? '0'.$tempid :$tempid);
+                        $datas[$i]['sort'] = ++$sort;
                         $datas[$i]['create_name'] =  session('user.user_name');
                         $i++;
                         $tempid++;
@@ -314,6 +319,7 @@ class Order extends Base
             $data = Request::post();
             $id = $data['id'];
             unset($data['id']);
+            $data['if_show'] =  isset($data['if_show']) ? '1' : '0';
             $info = OrderDetail::update($data,['id'=>$id]);
             if($info){
                 return json(1);
@@ -344,6 +350,12 @@ class Order extends Base
         }else{
             return json(0);
         }
+    }
+    //@DrawingInternal 为当前数据表模型
+    public function SanSort(){
+        $data = Request::post();
+        $OrderDetail = new OrderDetail();
+        return $this->Sort($data,$OrderDetail);
     }
 }
 

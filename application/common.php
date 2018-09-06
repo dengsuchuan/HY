@@ -121,3 +121,12 @@ function getCountExterna($id,$order_id){
     }
 //    return $d_count.'--'.$o_counrt;
 }
+
+// 通过图纸明细ID 获取产品名称
+function getDrawingName($id){
+    return BlueprintInfo::where(['id'=>$id])->value('drawing_name');
+}
+function getblueprintInfoList($id){
+    return (BlueprintInfo::where(['id'=>$id])->find());
+
+}
