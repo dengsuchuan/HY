@@ -99,7 +99,7 @@
             </td>
             <td></td>
             <td>{$info.create_time}</td>
-            <th>报价</th>
+            <td onclick="openLinke('{$info.id}')"><a href="#">报价</a></td>
           </tr>
         {/volist}
         </tbody>
@@ -112,6 +112,28 @@
 
     </div>
     <script>
+        function openLinke(id) {
+            layer.confirm('请选择进入的页面~', {
+                    btn: ['产品报价','定额报价','总价报价'] //按钮
+                }, function(){
+                    x_admin_show("{:url('index/quoted/quotedInfo')}");
+                    layer.msg('加载中', {
+                        time: 500, //20s后自动关闭
+                    });
+                }, function(){
+                    layer.msg('订单', {
+                        time: 20000, //20s后自动关闭
+                        btn: ['明白了', '知道了']
+                    });
+                },function () {
+                    layer.msg('发货单', {
+                        time: 20000, //20s后自动关闭
+                        btn: ['明白了', '知道了']
+                    });
+                }
+            );
+        }
+
         /*删除*/
         function delete_(obj,id){
             layer.confirm('确认要删除吗？',function(index){
