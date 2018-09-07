@@ -1,0 +1,87 @@
+﻿ {include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    <div class="layui-form-item">
+      <label for="process_name" class="layui-form-label">任务编号</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_name" value="{$taskCode}" disabled lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_price" class="layui-form-label">订单明细</label>
+      <div class="layui-input-inline">
+        <input type="text" id="process_price" value="{$orderDetailCode}" disabled  lay-verify="required" name="order_detial_id"  autocomplete="off" class="layui-input"  placeholder="￥">
+        <input type="hidden"  value="{$orderDetailID}" disabled  lay-verify="required" name="order_detial_id"  autocomplete="off" class="layui-input"  placeholder="￥">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_price" class="layui-form-label">计划数量</label>
+      <div class="layui-input-inline">
+        <input type="text" id="cost_price" name="task_qty"  lay-verify="required"  autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">是否完成</label>
+      <div class="layui-input-block">
+        <input type="checkbox"  name="if_completr" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+        <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">设备编号</label>
+      <div class="layui-input-block">
+        <select name="eqpmt_id" lay-verify="required">
+          <option value=""></option>
+          {volist name="equipmentInfo" id="info"}
+          <option value="{$info.id}">{$info.eqpmt_id}--{$info.eqpmt_name}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-block">
+        <textarea class="layui-textarea"  id="remark" name="remark"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId">
+        增加
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/ProductTask/addProductTask')}",data.field,function(info){
+                if (info) {
+                    layer.alert("添加成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+
+
+    });
+</script>
+</body>
+
+</html>

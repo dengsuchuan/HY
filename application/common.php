@@ -19,6 +19,7 @@ use app\index\model\EquipmentType;
 use app\index\model\CostType;
 use app\index\model\BlueprintOutside;
 use app\index\model\OrderDetail;
+use app\index\model\EquipmentInfo;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -129,4 +130,25 @@ function getDrawingName($id){
 function getblueprintInfoList($id){
     return (BlueprintInfo::where(['id'=>$id])->find());
 
+}
+// 传入订单明细编号获取产品名称
+
+function getOrderDrawingName($order_id){
+    // 获取订单明细下面的图纸明细ID
+    $p_id = OrderDetail::where(['id'=>$order_id])->value('drawing_detail_id');
+    // 通过明细id 获取产品名称
+    $drawingName = BlueprintInfo::where(['id'=>$p_id])->value('drawing_name');
+    return $drawingName;
+}
+function getblueprintInfo($order_id){
+    // 获取订单明细下面的图纸明细ID
+    $p_id = OrderDetail::where(['id'=>$order_id])->value('drawing_detail_id');
+    // 通过明细id 获取产品名称
+    $blueprintInfo = BlueprintInfo::where(['id'=>$p_id])->find();
+    return $blueprintInfo;
+}
+// 获取设备详情
+function getEquipmentInfo($id){
+    $EquipmentInfo = EquipmentInfo::where(['id'=>$id])->field('id,eqpmt_id,eqpmt_name')->find();
+    return $EquipmentInfo;
 }

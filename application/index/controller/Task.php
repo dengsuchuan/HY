@@ -9,9 +9,8 @@
 namespace app\index\controller;
 
 
-
 use app\index\common\controller\Base;
-
+use app\index\model\ProductTask;
 class Task extends Base
 {
     public function alreadyTask(){
@@ -27,6 +26,10 @@ class Task extends Base
     }
 
     public function inTask(){
+        $productTaskInfo = ProductTask::where(['if_completr'=>0])->select();
+        $this->assign([
+            'productTaskInfo'   => $productTaskInfo
+        ]);
         return $this->view->fetch('in-task');
     }
 
