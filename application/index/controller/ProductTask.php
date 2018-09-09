@@ -18,7 +18,6 @@ class ProductTask extends Base
     public function addProductTask(){
         if(Request::isAjax()){
             $data = Request::post();
-            $order_detial_id = $data['order_detial_id'];
             $data['if_completr'] =  isset($data['if_completr']) ? '1' : '0';
 
             //生成编号
@@ -33,21 +32,18 @@ class ProductTask extends Base
             $taskCode = 'TK-'.date('Ymd').'-'.$taskCode;
             $data['create_name'] = session('user.user_name');
             $data['task_id'] = $taskCode;
-            $task_qty = $data['task_qty'];  //数量
 
             $info = ProductTaskModel::create($data);
             if($info){
-               $info =  OrderDetail::update(['order_qty'=>$task_qty],['id'=>$order_detial_id]);
-                if($info){
-                    return json(1);
-                }else{
-                    return json(0);
-                }
+                return json(1);
+            }else{
+                return json(0);
             }
         }
         $id = intval(input('id'));
         //获取订单明细编号
         $orderDetailCode = OrderDetail::where(['id'=>$id])->value('order_detail_code');
+        $orderplan_qty = OrderDetail::where(['id'=>$id])->value('plan_qty');
         // 获取 设备编号
         $equipmentInfo = EquipmentInfo::where(['is_working'=>1])->field('id,eqpmt_id,eqpmt_name')->select();
         //生成编号
@@ -64,8 +60,18 @@ class ProductTask extends Base
             'taskCode'  =>  $taskCode,
             'orderDetailCode'  => $orderDetailCode,
             'equipmentInfo'    => $equipmentInfo,
-            'orderDetailID'    => $id
+            'orderDetailID'    => $id,
+            'orderplan_qty'   => $orderplan_qty
         ]);
         return $this->view->fetch('add_product_task');
+    }
+    public function product(){
+        $id = intval(input('id'));
+        $productTaskInfo = ProductTaskModel::where(['order_detial_id'=>$id])->select();
+        $this->assign([
+            'productTaskInfo'   => $productTaskInfo
+        ]);
+        return $this->assign([
+        ]);
     }
 }

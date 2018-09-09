@@ -3,9 +3,9 @@
     <div class="x-nav">
       <span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">演示</a>
+        <a href="">任务管理</a>
         <a>
-          <cite>导航元素</cite></a>
+          <cite>在制任务</cite></a>
       </span>
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -13,8 +13,10 @@
     <div class="x-body">
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        {if $model===1}
+        <button class="layui-btn" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$id])}',600,500)"><i class="layui-icon"></i>添加</button>
+        {/if}
+        <span class="x-right" style="line-height:40px">共{$oCount}条 · 共{$oCount/25|getInt}页</span>
       </xblock>
       <div class="layui-row">
         <div class="container-wrap">
@@ -34,7 +36,7 @@
             <th>图纸工艺</th>
             <th>下达日期</th>
             <th>要求日期</th>
-            <th>设备安排</th>
+            <th>设备名称</th>
             <th>备注</th>
             <th>操作</th>
             </tr>
@@ -67,14 +69,16 @@
               <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'engineering'])}">程</span></a>
               {if $blueprintInfoList.is_gongxu !=0}
-              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>
+              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span class="layui-badge layui-bg-green">工</span></a>
+              {else}
+              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span  class="layui-badge layui-bg-blue">工</span></a>
               {/if}
             </td>
             <td>{$info.create_time}</td>
             <td></td>
           <td>
             <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
-             {$equipmentInfo.eqpmt_name}----{$equipmentInfo.eqpmt_id}
+             {$equipmentInfo.eqpmt_name}
           </td>
           <td>{$info.remark}</td>
             <td class="td-manage">
@@ -88,14 +92,7 @@
         </div>
       </div>
       <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
+       {$productTaskInfo|raw}
       </div>
 
     </div>

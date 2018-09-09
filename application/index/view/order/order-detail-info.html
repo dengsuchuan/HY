@@ -74,10 +74,10 @@
     <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
     <button class="layui-btn" onclick="x_admin_show('添加','{:url(\'index/blueprint/blueprintoutside\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}')"><i class="layui-icon"></i>添加</button>
     {if $model == 1}
-    <a href="{:url('index/Order/orderDetail',['id'=>$id])}"><button class="layui-btn">显示</button></a>
+    <a href="{:url('index/Order/orderDetail',['id'=>$id])}"><button class="layui-btn">隐藏</button></a>
 
     {else}
-    <a href="{:url('index/Order/orderDetail',['id'=>$id,'model'=>'1'])}"><button class="layui-btn">切换显示</button></a>
+    <a href="{:url('index/Order/orderDetail',['id'=>$id,'model'=>'1'])}"><button class="layui-btn">显示</button></a>
 
     {/if}
     <span class="x-right" style="line-height:40px">共条{$orderDatailInfoC} · 未显示 {$orderDatailInfoNoShow} 条 </span>
@@ -104,7 +104,7 @@
               <th>入库数量</th>
               <th>创建人</th>
               <th>创建时间</th>
-              <th>任务</th>
+              <th>订单完成</th>
             </tr>
           </thead>
           <tbody>
@@ -166,7 +166,10 @@
                <td>{$info.create_name}</td>
 
             <td>{$info.create_time}</td>
-            <td><a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a></td>
+            <td>
+              <a title="任务"  href="javascript:;" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')" >下任务</a>
+              <!--<a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a>-->
+            </td>
               </tr>
           {/volist}
           </tbody>

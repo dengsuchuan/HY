@@ -105,7 +105,7 @@ class Order extends Base
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
             //获取订单明细
-            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->where(['if_show'=>1])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->select();
+            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->select();
             $orderDatailInfoC = count($orderDatailInfo);
             $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
             $this->assign([
@@ -123,7 +123,7 @@ class Order extends Base
         $orderRow = OrderMode::where(['id'=>$id])->select();
         $orderCode = OrderMode::where(['id'=>$id])->value('id');
         //获取订单明细
-        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->select();
+        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->where(['if_show'=>1])->order('sort asc')->order('if_show desc')->select();
         $orderDatailInfoC = count($orderDatailInfo);
         $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
         $this->assign([
@@ -206,13 +206,13 @@ class Order extends Base
                         $i++;
                     }
                 }
-//                if($key == 'plan_qty'){
-//                    $i = 0;
-//                    foreach ($value as $k1=>$v1){
-//                        $datas[$i][$key] = $value[$i];
-//                        $i++;
-//                    }
-//                }
+                if($key == 'order_qty'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
                 if($key == 'date_delivery'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){

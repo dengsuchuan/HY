@@ -26,9 +26,24 @@ class Task extends Base
     }
 
     public function inTask(){
-        $productTaskInfo = ProductTask::where(['if_completr'=>0])->select();
+        $id = intval(input('id'));
+        if($id){
+            $productTaskInfo = ProductTask::where(['order_detial_id'=>$id])->paginate(25);
+            $oCount = $productTaskInfo->total();
+            $this->assign([
+                'productTaskInfo'   => $productTaskInfo,
+                'oCount'            => $oCount,
+                'model'             =>1,
+                'id'                =>$id
+            ]);
+            return $this->view->fetch('in-task');
+        }
+        $productTaskInfo = ProductTask::where(['if_completr'=>0])->paginate(25);
+        $oCount = $productTaskInfo->total();
         $this->assign([
-            'productTaskInfo'   => $productTaskInfo
+            'productTaskInfo'   => $productTaskInfo,
+            'oCount'            => $oCount,
+            'model'             => 0
         ]);
         return $this->view->fetch('in-task');
     }
