@@ -150,9 +150,10 @@
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'within'])}">3D</span></a>
               <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'engineering'])}">程</span></a>
-
               {if $blueprintInfoList.is_gongxu !=0}
-              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><i class="layui-icon">工</i></a>
+              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span class="layui-badge layui-bg-green">工</span></a>
+              {else}
+              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span  class="layui-badge layui-bg-blue">工</span></a>
               {/if}
             </td>
                 <td>{$info.arrange}</td>
@@ -164,10 +165,23 @@
                 <td>{$info.if_complete}</td>
                 <td>{$info.warehousing}</td>
                <td>{$info.create_name}</td>
-
             <td>{$info.create_time}</td>
+            <?php
+             $isTask = getIsTask($info['id']);
+             ?>
             <td>
-              <a title="任务"  href="javascript:;" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')" >下任务</a>
+              <a title="任务"  href="javascript:;" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')" >
+                {if $isTask}
+             <?php $wc = getWc($info['id']);?>
+                {if $wc == 1}
+                完成
+                {else}
+                已下任务
+                {/if}
+                {else}
+                未下任务
+                {/if}
+              </a>
               <!--<a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a>-->
             </td>
               </tr>
@@ -177,7 +191,7 @@
       </div>
     </div>
     <div class="page">
-
+      {$orderDatailInfo|raw}
     </div>
   </div>
 </div>

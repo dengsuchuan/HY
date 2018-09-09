@@ -11,6 +11,9 @@ use think\facade\Request;
 
 class EquipmentMaintain extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function maintainInfo(){
         $eqpmt_id = input("eqpmt_id");
         $maintenanceInfo = Maintenance::where('equi_id',$eqpmt_id)->order('date', 'desc')->paginate(25);

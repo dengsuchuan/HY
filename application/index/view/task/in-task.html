@@ -35,6 +35,7 @@
             <th>数量</th>
             <th>图纸工艺</th>
             <th>下达日期</th>
+            <th>是否完成</th>
             <th>要求日期</th>
             <th>设备名称</th>
             <th>备注</th>
@@ -75,6 +76,13 @@
               {/if}
             </td>
             <td>{$info.create_time}</td>
+            <td>
+              {if $info.if_completr == 1}
+                  完成
+               {else}
+                  未完成
+              {/if}
+            </td>
             <td></td>
           <td>
             <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
@@ -82,7 +90,7 @@
           </td>
           <td>{$info.remark}</td>
             <td class="td-manage">
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" ><i class="layui-icon">&#xe642;</i>编辑</button>
             </td>
           </tr>
         {/volist}
@@ -95,6 +103,85 @@
        {$productTaskInfo|raw}
       </div>
 
+      <div class="x-body "  {if $model!==1}hidden{/if} style="margin-bottom: 10em">
+        <form  class="layui-form">
+          <div class="layui-form-item">
+            <label for="process_name" class="layui-form-label">任务编号</label>
+            <div class="layui-input-inline">
+              <input type="text" id="process_name" value="{$taskCode}" disabled lay-verify="required" autocomplete="off" class="layui-input" >
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label for="process_price" class="layui-form-label">订单明细</label>
+            <div class="layui-input-inline">
+              <input type="text" id="process_price" value="{$orderDetailCode}" disabled  lay-verify="required" name="order_detial_id"  autocomplete="off" class="layui-input"  placeholder="￥">
+              <input type="hidden"  value="{$orderDetailID}" disabled  lay-verify="required" name="order_detial_id"  autocomplete="off" class="layui-input"  placeholder="￥">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label for="process_price" class="layui-form-label">任务数量</label>
+            <div class="layui-input-inline">
+              <input type="text" id="cost_price" name="task_qty"  lay-verify="required" value="{$orderplan_qty}" autocomplete="off" class="layui-input"  >
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">是否完成</label>
+            <div class="layui-input-block">
+              <input type="checkbox"  name="if_completr" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
+              <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label">设备编号</label>
+            <div class="layui-input-block">
+              <select name="eqpmt_id" lay-verify="required">
+                <option value=""></option>
+                {volist name="euipmentInfo" id="info"}
+                <option value="{$info.id}">{$info.eqpmt_id}--{$info.eqpmt_name}</option>
+                {/volist}
+              </select>
+            </div>
+          </div>
+
+          <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+              <textarea class="layui-textarea"  id="remark" name="remark"></textarea>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <button class="layui-btn" lay-submit lay-filter="addId">
+              增加
+            </button>
+          </div>
+        </form>
+      </div>
+      <script>
+          layui.use(['form'], function(){
+              $ = layui.jquery;
+              var form = layui.form,layer = layui.layer;
+
+              //监听提交
+              form.on('submit(addId)', function(data){
+                  //console.log(data);
+                  $.post("{:url('index/ProductTask/addProductTask')}",data.field,function(info){
+                      if (info) {
+                          layer.alert("添加成功", {icon: 6},function () {
+                              window.location.reload();  //刷新父级页面
+
+                          });
+                      }else{
+                          layer.alert("添加失败", {icon: 5});
+                      }
+                  },'json');
+                  return false;
+              });
+
+
+          });
+      </script>
     </div>
     <script>
       layui.use('laydate', function(){

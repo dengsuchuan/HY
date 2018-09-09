@@ -11,6 +11,9 @@ use think\facade\Request;
 
 class Equipment extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //展示设备页面
     public function equipmentInfo(){
         if(Request::isPost()){

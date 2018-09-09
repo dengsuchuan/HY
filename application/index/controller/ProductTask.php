@@ -15,6 +15,9 @@ use app\index\model\EquipmentInfo;
 use think\facade\Request;
 class ProductTask extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function addProductTask(){
         if(Request::isAjax()){
             $data = Request::post();

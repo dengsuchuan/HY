@@ -13,6 +13,9 @@ use think\Controller;
 
 class Error extends Controller
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function _empty(){
         return $this->redirect('index/index/index');
     }

@@ -16,7 +16,9 @@ use think\facade\Request;
 
 class Metering extends Base
 {
-
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     public function MeteringInfo(){
         $id = input("id");
         $meteringInfo = MeteringModel::where('eqpmt_id',$id)->order('create_time', 'desc')->paginate(25);

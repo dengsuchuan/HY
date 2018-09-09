@@ -90,14 +90,6 @@ class Order extends Base
         return  $this->view->fetch('order_edit');
     }
 
-//以斜杠为例
-//查找斜杠第一次出现的位置（在字符串中为第几位）
-//$num=strpos($str, '/');
-//截取字符串第一个字符前面所有的内容
-//echo substr($str,0,strpos($str, '/'))
-//截取字符串第一个字符后面所有的内容
-//echo substr($str,strpos($str,'/'))
-
     public function orderDetail(){
         $model = intval(input('model'));
         $id = intval(input('id'));
@@ -105,7 +97,7 @@ class Order extends Base
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
             //获取订单明细
-            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->select();
+            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->paginate(25);
             $orderDatailInfoC = count($orderDatailInfo);
             $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
             $this->assign([
@@ -123,7 +115,7 @@ class Order extends Base
         $orderRow = OrderMode::where(['id'=>$id])->select();
         $orderCode = OrderMode::where(['id'=>$id])->value('id');
         //获取订单明细
-        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->where(['if_show'=>1])->order('sort asc')->order('if_show desc')->select();
+        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->where(['if_show'=>1])->order('sort asc')->order('if_show desc')->paginate(25);
         $orderDatailInfoC = count($orderDatailInfo);
         $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
         $this->assign([
@@ -134,7 +126,6 @@ class Order extends Base
             'orderDatailInfoC'    =>$orderDatailInfoC,
             'id'                   =>$id,
             'model'                 =>0
-
         ]);
         return  $this->view->fetch('order-detail-info');
     }

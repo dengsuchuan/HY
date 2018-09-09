@@ -15,11 +15,12 @@ use app\index\model\Section;
 use app\index\model\BlueprintInfo;
 use app\index\model\DrawingInternal;
 use app\index\model\EquipmentType;
-//use app\index\model\MeasuringType;
 use app\index\model\CostType;
 use app\index\model\BlueprintOutside;
 use app\index\model\OrderDetail;
 use app\index\model\EquipmentInfo;
+use app\index\model\ProductTask;
+
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -60,7 +61,7 @@ function getCodet($id){
 }
 
 //页数
-function getInt($int){//4.2
+function getInt($int){
     $int = $int > (int)$int?(int)$int+1:1;
     return $int;
 }
@@ -109,9 +110,7 @@ function getDrawingDetailCode($code){
     return BlueprintInfo::where(['drawing_externa_id'=>$code])->value('id');
 }
 function getCountExterna($id,$order_id){
-//    return $id;
-//
-//    drawing_externa_or_internal_id
+
     $drawing_external_id = BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
     $d_count = count(BlueprintInfo::where(['drawing_externa_id'=>$drawing_external_id])->select());
     $o_counrt = count(OrderDetail::where(['drawing_externa_or_internal_id'=>$id])->where('order_id','=',$order_id)->select());
@@ -120,7 +119,6 @@ function getCountExterna($id,$order_id){
     }else{
         return false;
     }
-//    return $d_count.'--'.$o_counrt;
 }
 
 // 通过图纸明细ID 获取产品名称
@@ -143,6 +141,7 @@ function getOrderDrawingName($order_id){
 function getblueprintInfo($order_id){
     // 获取订单明细下面的图纸明细ID
     $p_id = OrderDetail::where(['id'=>$order_id])->value('drawing_detail_id');
+
     // 通过明细id 获取产品名称
     $blueprintInfo = BlueprintInfo::where(['id'=>$p_id])->find();
     return $blueprintInfo;
@@ -151,4 +150,33 @@ function getblueprintInfo($order_id){
 function getEquipmentInfo($id){
     $EquipmentInfo = EquipmentInfo::where(['id'=>$id])->field('id,eqpmt_id,eqpmt_name')->find();
     return $EquipmentInfo;
+}
+
+function getIsTask($id){
+    $info = ProductTask::where(['order_detial_id'=>$id])->select();
+    $count = $info->count();
+    if($count){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+function getWc($id){
+    $info = ProductTask::where(['order_detial_id'=>$id])->select();
+    $count = $info->count();
+    $i = 1;
+    if($count){
+        foreach ($info as $item){
+            if($item['if_completr'] != 1){
+                $i = 0;
+                break;
+            }
+        }
+        return $i;
+    }
+}
+
+function getDrawingDetailId1($id){
+    return OrderDetail::where(['id'=>$id])->value('order_detail_code');
 }

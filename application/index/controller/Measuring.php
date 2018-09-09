@@ -11,6 +11,9 @@ use think\facade\Request;
 
 class Measuring extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
     //量具设备页面
     public function measuringInfo(){
         if(Request::isPost()){
