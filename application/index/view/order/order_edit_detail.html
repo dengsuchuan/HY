@@ -21,7 +21,7 @@
       <label for="arrange" class="layui-form-label">加工安排</label>
         <div class="layui-input-inline" style="width: 100px;">
           <select  name="arrange">
-            <option value="外协" {if $ordeDetailRow.arrange == '外协'} selected {/if}>外协</option>
+            <option value="整体外协" {if $ordeDetailRow.arrange == '整体外协'} selected {/if}>整体外协</option>
             <option value="自加工" {if $ordeDetailRow.arrange == '自加工'} selected {/if}>自加工</option>
             <option value="标件不加工" {if $ordeDetailRow.arrange == '标件不加工'} selected {/if}>标件不加工</option>
           </select>
@@ -90,6 +90,30 @@
       <div class="layui-input-block">
         <input type="checkbox"  {if 1==$ordeDetailRow.if_show}checked=""{/if}  name="if_show" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
         <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="create_name" class="layui-form-label">创建人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="create_name" disabled  value="{$ordeDetailRow.create_name}"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="create_time" class="layui-form-label">创建时间</label>
+      <div class="layui-input-inline">
+        <input type="text" id="create_time" disabled  value="{$ordeDetailRow.create_time}"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="modify_name" class="layui-form-label">修改人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="modify_name" name="modify_name"  value="{$Think.session.user.user_name}"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="modify_name" class="layui-form-label">备注</label>
+      <div class="layui-input-inline">
+        <input type="text" id="remark" name="remark"  value="{$ordeDetailRow.remark}"  autocomplete="off" class="layui-input" >
       </div>
     </div>
     <div class="layui-form-item">

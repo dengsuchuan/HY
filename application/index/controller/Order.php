@@ -42,7 +42,7 @@ class Order extends Base
             $data['order_id'] = $code;
             $data['receivables'] = isset($data['receivables']) ? '1' : '0';
             $data['deliver_goods'] = isset($data['deliver_goods']) ? '1' : '0';
-            $data['if_complete'] = isset($data['if_complete']) ? '1' : '0';
+//            $data['if_complete'] = isset($data['if_complete']) ? '1' : '0';
             $data['create_name'] = session('user.user_name');
             $info = OrderMode::create($data);
             if($info){
@@ -98,7 +98,7 @@ class Order extends Base
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
             //获取订单明细
-            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->order('sort asc')->order('if_show desc')->paginate(25);
+            $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('sort asc')->order('if_show desc')->paginate(25);
             $orderDatailInfoC = count($orderDatailInfo);
             $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
             $this->assign([
@@ -116,7 +116,7 @@ class Order extends Base
         $orderRow = OrderMode::where(['id'=>$id])->select();
         $orderCode = OrderMode::where(['id'=>$id])->value('id');
         //获取订单明细
-        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->order('drawing_externa_or_internal_id desc')->where(['if_show'=>1])->order('sort asc')->order('if_show desc')->paginate(25);
+        $orderDatailInfo = OrderDetail::where(['order_id'=>$id])->where(['if_show'=>1])->order('sort asc')->order('if_show desc')->paginate(25);
         $orderDatailInfoC = count($orderDatailInfo);
         $orderDatailInfoNoShow = count(OrderDetail::where(['order_id'=>$id])->where(['if_show'=>0])->select());
         $this->assign([
@@ -226,7 +226,14 @@ class Order extends Base
                         $i++;
                     }
                 }
-                if($key == 'warehousing'){
+//                if($key == 'warehousing'){
+//                    $i = 0;
+//                    foreach ($value as $k1=>$v1){
+//                        $datas[$i][$key] = $value[$i];
+//                        $i++;
+//                    }
+//                }
+               if($key == 'remark'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[$i][$key] = $value[$i];
@@ -316,6 +323,7 @@ class Order extends Base
             $id = $data['id'];
             unset($data['id']);
             $data['if_show'] =  isset($data['if_show']) ? '1' : '0';
+            $data['modify_name'] =  session('user.user_name');
             $info = OrderDetail::update($data,['id'=>$id]);
             if($info){
                 return json(1);

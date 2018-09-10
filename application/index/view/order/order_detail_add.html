@@ -65,8 +65,8 @@
           <label class="layui-form-label">加工安排</label>
           <div class="layui-input-inline" style="width: 100px;">
             <select  name="arrange[]">
-              <option value="外协">外协</option>
-              <option value="自加工">自加工</option>
+              <option value="整体外协">整体外协</option>
+              <option value="自加工" selected>自加工</option>
               <option value="标件不加工">标件不加工</option>
             </select>
           </div>
@@ -122,16 +122,23 @@
             </select>
           </div>
         </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">入库数量</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" name="warehousing[]" autocomplete="off" class="layui-input">
-          </div>
-        </div>
+        <!--<div class="layui-inline">-->
+          <!--<label class="layui-form-label">入库数量</label>-->
+          <!--<div class="layui-input-inline" style="width: 100px;">-->
+            <!--<input type="text" name="warehousing[]" autocomplete="off" class="layui-input">-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="layui-inline">
           <label class="layui-form-label">所属外图编号</label>
           <div class="layui-input-inline" style="width: 300px;">
             <input type="text" autocomplete="off" disabled name="drawing_externa_or_internal_id[]" value="{$info.drawing_externa_id}" class="layui-input">
+          </div>
+        </div>
+
+        <div class="layui-inline">
+          <label class="layui-form-label">备注</label>
+          <div class="layui-input-inline" style="width: 500px;">
+            <input type="text" autocomplete="off"  name="remark[]"  class="layui-input" >
           </div>
         </div>
       </div>

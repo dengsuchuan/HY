@@ -73,13 +73,13 @@
         <input type="checkbox" name="if_complete" {if 1==$orderRow.if_complete}checked=""{/if}  lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
       </div>
     </div>
-
     <div class="layui-form-item">
       <label for="client_prj_id" class="layui-form-label">客户项目编号</label>
       <div class="layui-input-inline">
         <input type="text" id="client_prj_id" name="client_prj_id"  value="{$orderRow.client_prj_id}"  autocomplete="off" class="layui-input" >
       </div>
     </div>
+
     <div class="layui-form-item">
       <label class="layui-form-label"></label>
       <button class="layui-btn" lay-submit lay-filter="addId" >

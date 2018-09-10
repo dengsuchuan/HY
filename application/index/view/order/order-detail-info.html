@@ -89,8 +89,9 @@
           <thead>
             <tr>
               <th>操作</th>
+              <th>订单状态</th>
               <th>序号</th>
-              <th>所属图纸明细</th>
+              <th>图纸明细</th>
               <th>产品名称</th>
               <th>材料</th>
               <th>形状</th>
@@ -99,15 +100,11 @@
               <th>订单数量</th>
               <th>计划数量</th>
               <th>图纸工艺</th>
-              <th>加工安排</th>
               <th>加工内容</th>
-
               <th>交货日期</th>
-              <th>是否完成</th>
+              <th>完成状态</th>
               <th>入库数量</th>
-              <th>创建人</th>
-              <th>创建时间</th>
-              <th>订单完成</th>
+              <th>备注</th>
             </tr>
           </thead>
           <tbody>
@@ -121,6 +118,38 @@
                   <a title="修改" onclick="x_admin_show('修改订单','{:url(\'index/Order/editOrderDetail\',[\'id\'=>$info.id])}',600,500)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                   <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
                 </td>
+            <?php
+             $isTask = getIsTask($info['id']);
+             ?>
+            <td>
+              <a title="任务"  href="javascript:;"    class="renwu" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')" >
+                {if $info.arrange =='自加工'}
+                {if $isTask}
+                <?php $wc = getWc($info['id']);?>
+                {if $wc == 1}
+                完成
+                {else}
+                已下任务
+                {/if}
+                {else/}
+                未下任务
+                {/if}
+                {else/}
+                {if $info.arrange =='整体外协'}
+                外协完成
+                <script>
+                    $(".renwu").attr('onclick', '');
+                </script>
+                {elseif $info.arrange =='标件不加工'/}
+                标件不加工
+                <script>
+                    $(".renwu").attr('onclick', '');
+                </script>
+                {/if}
+                {/if}
+              </a>
+              <!--<a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a>-->
+            </td>
                 <td>
                   {if $count }
                   <?php echo  $i ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
@@ -163,31 +192,17 @@
               <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span  class="layui-badge layui-bg-blue">工</span></a>
               {/if}
             </td>
-                <td>{$info.arrange}</td>
                 <td>{$info.content}</td>
                 <td>{$info.date_delivery}</td>
-                <td>{$info.if_complete}</td>
-                <td>{$info.warehousing}</td>
-               <td>{$info.create_name}</td>
-            <td>{$info.create_time}</td>
-            <?php
-             $isTask = getIsTask($info['id']);
-             ?>
-            <td>
-              <a title="任务"  href="javascript:;" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')" >
-                {if $isTask}
-             <?php $wc = getWc($info['id']);?>
-                {if $wc == 1}
-                完成
-                {else}
-                已下任务
-                {/if}
-                {else}
-                未下任务
-                {/if}
-              </a>
-              <!--<a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a>-->
-            </td>
+                <td>
+                  {if $info.if_complete == 0 }
+                    未完成
+                  {else}
+                    完成
+                  {/if}
+                </td>
+              <td>{$info.warehousing}</td>
+              <td>{$info.remark}</td>
               </tr>
           {/volist}
           </tbody>
