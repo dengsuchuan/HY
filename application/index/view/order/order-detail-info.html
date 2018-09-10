@@ -91,14 +91,17 @@
               <th>操作</th>
               <th>序号</th>
               <th>所属图纸明细</th>
-
               <th>产品名称</th>
-              <th>图纸工艺</th>
-              <th>加工安排</th>
+              <th>材料</th>
+              <th>形状</th>
+              <th>热处理</th>
               <th>单位</th>
-              <th>加工内容</th>
               <th>订单数量</th>
               <th>计划数量</th>
+              <th>图纸工艺</th>
+              <th>加工安排</th>
+              <th>加工内容</th>
+
               <th>交货日期</th>
               <th>是否完成</th>
               <th>入库数量</th>
@@ -133,11 +136,15 @@
                 <td>
                    {$info.drawing_detail_id|getDrawingDetailId}
                 </td>
-
-
-                <td>{$info.drawing_detail_id|getDrawingName}</td>
+            <td>{$info.drawing_detail_id|getDrawingName}</td>
+            <?php $blueprintInfoList = getblueprintInfoList($info['drawing_detail_id']);?>
+            <td>{$blueprintInfoList.material}</td>
+            <td>{$blueprintInfoList.material_type|getMateria}</td>
+            <td>{$blueprintInfoList.heat_treatment}</td>
+            <td>{$info.company}</td>
+            <td>{$info.order_qty}</td>
+            <td>{$info.plan_qty}</td>
             <td class="td-manage">
-              <?php $blueprintInfoList = getblueprintInfoList($info['drawing_detail_id']);?>
               {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->
               <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;">
@@ -157,10 +164,7 @@
               {/if}
             </td>
                 <td>{$info.arrange}</td>
-                <td>{$info.company}</td>
                 <td>{$info.content}</td>
-                <td>{$info.order_qty}</td>
-                <td>{$info.plan_qty}</td>
                 <td>{$info.date_delivery}</td>
                 <td>{$info.if_complete}</td>
                 <td>{$info.warehousing}</td>

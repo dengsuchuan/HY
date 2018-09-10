@@ -17,6 +17,7 @@ use think\facade\Request;
 use app\index\model\BlueprintInfo;
 use app\index\model\OrderDetail;
 use app\index\model\Client;
+use app\index\model\ProductTask;
 class Order extends Base
 {
     protected $beforeActionList = [
@@ -297,8 +298,12 @@ class Order extends Base
         $id = intval(Request::post('id')); // 获取id
         //删除订单
         $info = OrderMode::where(['id'=>$id])->delete(); //
+
         if($info){
-            // 删除订单对应的订单详细
+            $ids = OrderDetail::where(['order_id'=>$id])->field('id')->select();
+            foreach ($ids as $v ){
+                ProductTask::where(['order_detial_id'=>$v['id']])->delete();
+            }
             OrderDetail::where(['order_id'=>$id])->delete();
             return json(1);
         }else{
@@ -337,6 +342,7 @@ class Order extends Base
     public function deleteDetail(){
         $info = OrderDetail::where(['id'=>intval(input('id'))])->delete();
         if($info){
+            ProductTask::where(['order_detial_id'=>intval(input('id'))])->delete();
             return json(1);
         }else{
             return json(0);
