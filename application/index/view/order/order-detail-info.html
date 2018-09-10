@@ -122,7 +122,13 @@
              $isTask = getIsTask($info['id']);
              ?>
             <td>
-              <a title="任务"  href="javascript:;"    class="renwu" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')" >
+              <button title="任务"   style="border: 0;background: transparent;cursor: pointer"  class="renwu" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')"
+                 {if $info.arrange =='整体外协'}
+                       disabled
+                {elseif $info.arrange =='标件不加工'/}
+                       disabled
+                 {/if}
+              >
                 {if $info.arrange =='自加工'}
                 {if $isTask}
                 <?php $wc = getWc($info['id']);?>
@@ -137,17 +143,13 @@
                 {else/}
                 {if $info.arrange =='整体外协'}
                 外协完成
-                <script>
-                    $(".renwu").attr('onclick', '');
-                </script>
+
                 {elseif $info.arrange =='标件不加工'/}
                 标件不加工
-                <script>
-                    $(".renwu").attr('onclick', '');
-                </script>
+
                 {/if}
                 {/if}
-              </a>
+              </button>
               <!--<a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a>-->
             </td>
                 <td>
