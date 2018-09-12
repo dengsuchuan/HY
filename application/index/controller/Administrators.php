@@ -21,10 +21,13 @@ class Administrators extends Base
 
     //渲染列表
     public function adminInfo(){
-        $adminInfo =  AdministratorsModel::select();
+        $adminInfo =  AdministratorsModel::order('create_time', 'desc')->paginate('100');
+        $adminInfoCount = $adminInfo->total();
         $this->assign([
-            'adminInfo'     =>  $adminInfo
+            'adminInfo'     =>  $adminInfo,
+            'adminInfoCount' =>$adminInfoCount
         ]);
+
         return $this->view->fetch('admin-info');
     }
     public function adminAdd(){

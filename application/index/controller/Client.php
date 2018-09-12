@@ -19,9 +19,10 @@ class Client extends Base
     ];
     //渲染列表
     public function clientInfo(){
-
-        $clientInfo  = ClientModel::order('create_time', 'desc')->paginate('15');
+        $clientInfo  = ClientModel::order('create_time', 'desc')->paginate('100');
+        $clientInfoCount = $clientInfo->total();
         $this->assign(['clientInfo' =>   $clientInfo]);
+        $this->assign(['clientInfoCount' => $clientInfoCount]);
         return $this->view->fetch('client-info');
     }
     public function clientAdd(){

@@ -16,7 +16,9 @@
       <xblock>
         <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
         <button class="layui-btn" onclick="x_admin_show('添加管理员','{:url(\'index/Administrators/adminAdd\')}',500,400)"><i class="layui-icon"></i>添加</button>
-        </xblock>
+        <span class="x-right" style="line-height:40px">共有数据：{$adminInfoCount} 条 · 共{$adminInfoCount/100|getInt}页</span>
+
+      </xblock>
       <div class="container-wrap">
         <div class="box-1">
           <table class="layui-table">
@@ -50,7 +52,6 @@
             <td>{$info.login_number}</td>
             <td>超级管理员</td>
             <td>{$info.create_time}</td>
-
           </tr>
         {/volist}
         </tbody>
@@ -58,7 +59,7 @@
         </div>
       </div>
       <div class="page">
-
+        {$adminInfo|raw}
       </div>
     </div>
     <script>

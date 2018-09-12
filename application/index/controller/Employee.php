@@ -27,9 +27,11 @@ class Employee extends Base
             ->join('hy_duties u','e.duties_name=u.id')
             ->field('e.*,d.department_name,u.duties_name')
             ->where('e.is_delete','=',0)
-            ->paginate('15');
+            ->paginate('100');
+        $employeeInfoCount = $employeeInfo->total();
         $this->assign([
-            'employeeInfo' =>   $employeeInfo
+            'employeeInfo' =>   $employeeInfo,
+            'employeeInfoCount' => $employeeInfoCount
         ]);
         return $this->view->fetch('employee-info');
     }
