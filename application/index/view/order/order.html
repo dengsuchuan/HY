@@ -49,7 +49,7 @@
             <th>备料</th>
             <th>订单报价</th>
             <th>客户项目号</th>
-              <!--<th>完成</th>-->
+              <th>完成</th>
               <th>发货</th>
               <th>收款</th>
             <th>评审</th>
@@ -76,13 +76,13 @@
             <td>
              {$info.client_prj_id}
             </td>
-            <!--<td>-->
-              <!--{if $info.if_complete == 1}-->
-              <!--完成-->
-              <!--{else/}-->
-              <!--未完成-->
-              <!--{/if}-->
-            <!--</td>-->
+            <td>
+              {if $info.if_complete == 1}
+              完成
+              {else/}
+              未完成
+              {/if}
+            </td>
             <td>
               {if $info.deliver_goods}
               已发货
