@@ -21,7 +21,7 @@ class Client extends Base
     //渲染列表
     public function clientInfo(){
         //$clientInfo  = ClientModel::order('create_time', 'desc')->paginate('100');
-        $clientInfo = Db::query("SELECT * FROM hy_client ORDER BY CONVERT(client_abbreviation USING gbk) LIMIT 0,100;");
+        $clientInfo = Db::query("SELECT * FROM hy_client ORDER BY CONVERT(client_abbreviation USING gbk);");
         //$clientInfoCount = $clientInfo->total();
         $clientInfoCount = count($clientInfo);
         $this->assign(['clientInfo' =>   $clientInfo]);
