@@ -11,6 +11,7 @@ namespace app\index\controller;
 
 use app\index\common\controller\Base;
 use app\index\model\Material as MaterialModel;
+use think\Db;
 use think\facade\Request;
 class Material extends Base
 {
@@ -19,12 +20,16 @@ class Material extends Base
     ];
     //渲染列表
     public function material(){
-        $materialInfo = MaterialModel::paginate(10);
+        //$materialInfo = MaterialModel::order('material_id','desc')->paginate(25);
+        $materialInfo = Db::query("SELECT * FROM hy_material ORDER BY CONVERT(material_id USING gbk);");
+        $materialInfoCount = count($materialInfo);
         $this->assign([
             'materialInfo'  =>  $materialInfo,
+            'materialInfoCount' => $materialInfoCount
         ]);
         return $this->view->fetch('material');
     }
+
     public function materialAdd(){
         if(Request::isAjax()){
             $data = Request::post();
