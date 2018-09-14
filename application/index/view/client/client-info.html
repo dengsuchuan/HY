@@ -58,7 +58,7 @@
             <td>{$clientInfoList.taxunm}</td>
             <td>{$clientInfoList.opening_bank}</td>
             <td>{$clientInfoList.accoun_num}</td>
-            <td>{$clientInfoList.client_classify_id}</td>
+            <td>{$clientInfoList.client_classify_id=="1"?"公司":"个人"}</td>
           </tr>
         {/volist}
         </tbody>
