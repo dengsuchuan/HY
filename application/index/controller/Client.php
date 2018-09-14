@@ -10,6 +10,7 @@ namespace app\index\controller;
 
 use app\index\common\controller\Base;
 use app\index\model\Client as ClientModel;
+use think\Db;
 use think\facade\Request;
 
 class Client extends Base
@@ -19,8 +20,10 @@ class Client extends Base
     ];
     //渲染列表
     public function clientInfo(){
-        $clientInfo  = ClientModel::order('create_time', 'desc')->paginate('100');
-        $clientInfoCount = $clientInfo->total();
+        //$clientInfo  = ClientModel::order('create_time', 'desc')->paginate('100');
+        $clientInfo = Db::query("SELECT * FROM hy_client ORDER BY CONVERT(client_abbreviation USING gbk) LIMIT 0,100;");
+        //$clientInfoCount = $clientInfo->total();
+        $clientInfoCount = count($clientInfo);
         $this->assign(['clientInfo' =>   $clientInfo]);
         $this->assign(['clientInfoCount' => $clientInfoCount]);
         return $this->view->fetch('client-info');
