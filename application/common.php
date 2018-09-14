@@ -180,3 +180,8 @@ function getWc($id){
 function getDrawingDetailId1($id){
     return OrderDetail::where(['id'=>$id])->value('order_detail_code');
 }
+
+function sjcTime($time){
+    $date_time=date("Y-m-d H:i:s",$time);
+    return $date_time;
+}

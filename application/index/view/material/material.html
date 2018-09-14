@@ -51,8 +51,8 @@
             <td>{$info.material_id}</td>
             <td>{$info.density}</td>
             <td>{$info.material_price}</td>
-            <td>{$info.create_time}</td>
-            <td>{$info.update_time}</td>
+            <td>{$info.create_time|sjcTime}</td>
+            <td>{$info.update_time|sjcTime}</td>
           </tr>
         {/volist}
         </tbody>
