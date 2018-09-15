@@ -68,6 +68,7 @@
               <option value="整体外协">整体外协</option>
               <option value="自加工" selected>自加工</option>
               <option value="标件不加工">标件不加工</option>
+              <option value="外协完成">外协完成</option>
             </select>
           </div>
         </div>
@@ -144,12 +145,12 @@
       </div>
     </div>
     {/volist}
-    <div class="layui-form-item">
-      <label class="layui-form-label"></label>
-      <button class="layui-btn" lay-submit lay-filter="addId" >
-        增加
-      </button>
-    </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <button class="layui-btn" lay-submit lay-filter="addId" >
+          增加
+        </button>
+      </div>
   </form>
 </div>
 <script>
