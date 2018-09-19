@@ -106,7 +106,7 @@
             <span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'abroad'])}">图</span></a>
           {elseif $blueprintInfoList.files_state==1} <!-- 继承 -->
           <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
-          '{:url(\'index/blueprint/is_outDrawing\',[\'id\'=>$blueprintInfoList.drawing_externa_id])}')" href="javascript:;"><span class="layui-badge layui-bg-orange">图</span></a>
+          '{:url(\'index/blueprint/is_outDrawing\',[\'id\'=>$blueprintInfoList.drawing_externa_id])}')" href="javascript:;"><span class="layui-badge layui-bg-green">图</span></a>
           {/if}
           <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的3d模型文件',
           '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'within'])}">3D</span></a>
