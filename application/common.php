@@ -20,6 +20,7 @@ use app\index\model\BlueprintOutside;
 use app\index\model\OrderDetail;
 use app\index\model\EquipmentInfo;
 use app\index\model\ProductTask;
+use app\index\model\Material;
 
 // 应用公共文件
 //截取右边的展示内容
@@ -43,6 +44,12 @@ function getClientName($id){
 function getMateria($id){
     $clientName = MaterialShape::where("id","$id")->value("shape");
     return $clientName;
+}
+
+//获取材料类型
+function getMaterialType($id){
+    $material = Material::where("id",$id)->value("material_id");
+    return $material;
 }
 
 //材料形状的查询

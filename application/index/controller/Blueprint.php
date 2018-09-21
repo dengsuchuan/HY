@@ -137,7 +137,7 @@ class Blueprint extends Base
     public function process(){
         $drawing_detail_id = input('drawing_detail_id');  //获取图纸明细编号
         //获取当前的图纸明细
-        $blueprintInfo = BlueprintInfo::where(['drawing_detail_id'=>$drawing_detail_id])->select();
+        $blueprintInfo = BlueprintInfo::where('drawing_detail_id',$drawing_detail_id)->select();
         //获取工艺/工序信息
         $processInfo = ProductProcess::alias('p')
             ->join('process_type t','p.process_type = t.id')
@@ -145,6 +145,8 @@ class Blueprint extends Base
             ->field('p.*,t.process_name,t.process_price')
             ->order('p.sort','asc')
             ->paginate(25);
+        //$processInfo = ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->paginate(25);
+        //var_dump($processInfo);
         $count = count($processInfo);
         $this->assign([
             'processInfo'           =>  $processInfo,

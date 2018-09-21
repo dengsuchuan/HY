@@ -93,7 +93,7 @@
         <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$blueprintInfoList.drawing_internal_id}</span> 的图纸明细','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$blueprintInfoList.drawing_internal_id,'key'=>'internal'])}')" ><span style="color: #1E9FFF">{$blueprintInfoList.drawing_internal_id}</span></a></td>
         <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$blueprintInfoList.drawing_externa_id}</span> 的图纸明细','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$blueprintInfoList.drawing_externa_id,'key'=>'externa'])}')" ><span style="color: #1E9FFF">{$blueprintInfoList.drawing_externa_id}</span></a></td>
         <td>{$blueprintInfoList.drawing_name}</td>
-        <td>{$blueprintInfoList.material}</td>
+        <td>{$blueprintInfoList.material|getMaterialType}</td>
         <td>{$blueprintInfoList.material_type|getMateria}</td>
         <td>{$blueprintInfoList.drawing_type}</td>
         <?php   $clienyname = getClientName($blueprintInfoList['client_id']);?>
