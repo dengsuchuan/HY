@@ -17,7 +17,7 @@ return [
     // 数据库名
     'database'        => 'hy',
     // 用户名
-    'username'        => 'root', // admin
+    'username'        => 'admin', // admin
     // 密码
     'password'        => 'Tt5201314tyl+-', // Tt5201314tyl+-
     // 端口
