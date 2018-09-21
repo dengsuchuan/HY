@@ -19,11 +19,12 @@
     </div>
     <div class="layui-form-item">
       <label for="arrange" class="layui-form-label">加工安排</label>
-        <div class="layui-input-inline" style="width: 100px;">
+        <div class="layui-input-inline" style="width: 120px;">
           <select  name="arrange">
             <option value="整体外协" {if $ordeDetailRow.arrange == '整体外协'} selected {/if}>整体外协</option>
             <option value="自加工" {if $ordeDetailRow.arrange == '自加工'} selected {/if}>自加工</option>
             <option value="标件不加工" {if $ordeDetailRow.arrange == '标件不加工'} selected {/if}>标件不加工</option>
+            <option value="外协完成" {if $ordeDetailRow.arrange == '外协完成'} selected {/if}>外协完成</option>
           </select>
       </div>
     </div>

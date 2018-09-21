@@ -127,6 +127,8 @@
                        disabled
                 {elseif $info.arrange =='标件不加工'/}
                        disabled
+                  {elseif $info.arrange =='外协完成'/}
+                  disabled
                  {/if}
               >
                 {if $info.arrange =='自加工'}
@@ -142,11 +144,11 @@
                 {/if}
                 {else/}
                 {if $info.arrange =='整体外协'}
-                外协完成
-
+              整体外协
                 {elseif $info.arrange =='标件不加工'/}
-                标件不加工
-
+               标件不加工
+              {elseif $info.arrange =='外协完成'/}
+              外协完成
                 {/if}
                 {/if}
               </button>

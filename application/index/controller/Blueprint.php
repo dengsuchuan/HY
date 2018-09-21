@@ -14,6 +14,7 @@ use app\index\model\ProductProcess;
 use app\index\model\DrawingFiles;
 use app\index\model\Section;
 
+use function Couchbase\defaultDecoder;
 use think\Db;
 use think\facade\Request;
 use app\index\model\ProcessType as ProcessTypeModel;
@@ -136,6 +137,8 @@ class Blueprint extends Base
     //--|--|工艺管理详情
     public function process(){
         $drawing_detail_id = input('drawing_detail_id');  //获取图纸明细编号
+         // 查询图纸明细编号对应的ID
+        $detail_id = BlueprintInfo::where(['drawing_detail_id'=>$drawing_detail_id])->value('id');
         //获取当前的图纸明细
         $blueprintInfo = BlueprintInfo::where('drawing_detail_id',$drawing_detail_id)->select();
         //获取工艺/工序信息
@@ -149,10 +152,11 @@ class Blueprint extends Base
         //var_dump($processInfo);
         $count = count($processInfo);
         $this->assign([
-            'processInfo'           =>  $processInfo,
+            'processInfo'           => $processInfo,
             'drawing_detail_id'    =>  $drawing_detail_id,
             'count'                =>  $count,
-            'blueprintInfo'       =>  $blueprintInfo
+            'blueprintInfo'        =>  $blueprintInfo,
+            'detail_id'           =>   $detail_id
         ]);
         return $this->view->fetch('process');
     }
