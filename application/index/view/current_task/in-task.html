@@ -1,0 +1,108 @@
+﻿{include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">任务管理</a>
+        <a>
+          <cite>{$btnText=="未制任务"?"已制任务":"未制任务"}</cite></a>
+      </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+  <xblock>
+    <a class="layui-btn" href="{:url('index/CurrentTask/inTask',['id'=>$ifCompletr])}" id="switch"><i class="iconfont">&#xe6e3;</i>  切换到{$btnText}</a>
+    <!--<div class="layui-input-inline">-->
+      <!--<form class="layui-form" action="{:url('index/CurrentTask/selectTask')}" method="post">-->
+        <!--<div class="layui-input-inline">-->
+          <!--<input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
+          <!--<input type="hidden" name="ifCompletr" value="{$ifCompletr=='1'?'0':'1'}">-->
+        <!--</div>-->
+        <!--<button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>-->
+      <!--</form>-->
+    <!--</div>-->
+    <span class="x-right" style="line-height:40px">共{$oCount}条 · 共{$oCount/25|getInt}页</span>
+  </xblock>
+  <div class="layui-row">
+    <div class="container-wrap">
+      <div class="box-1">
+        <table class="layui-table">
+          <thead>
+          <tr>
+            <th>操作</th>
+            <th>任务编号</th>
+            <th>产品图号</th>
+            <th>产品名称</th>
+            <th>外来图号</th>
+            <th>材料</th>
+            <th>数量</th>
+            <th>图纸工艺</th>
+            <th>下达日期</th>
+            <th>要求日期</th>
+            <th>设备名称</th>
+            <th>是否完成</th>
+            <th>备注</th>
+          </tr>
+          </thead>
+          <tbody>
+          {volist name="productTaskInfo" id="info"}
+          <?php $blueprintInfoList = getblueprintInfo($info['order_detial_id']);?>
+
+          <tr>
+            <td class="td-manage">
+              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" ><i class="layui-icon">&#xe642;</i>编辑</button>
+            </td>
+            <td>{$info.task_id}</td>
+            <td>{$blueprintInfoList.drawing_detail_id}</td>
+            <td>{$info.order_detial_id|getOrderDrawingName}</td>
+            <td></td>
+            <td></td>
+            <td>{$info.task_qty}</td>
+            <td class="td-manage">
+              {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->
+              <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;">
+                <span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'abroad'])}">图</span></a>
+              {elseif $blueprintInfoList.files_state==1} <!-- 继承 -->
+              <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
+          '{:url(\'index/blueprint/is_outDrawing\',[\'id\'=>$blueprintInfoList.drawing_externa_id])}')" href="javascript:;"><span class="layui-badge layui-bg-orange">图</span></a>
+              {/if}
+              <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的3d模型文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'within'])}">3D</span></a>
+              <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'engineering'])}">程</span></a>
+              {if $blueprintInfoList.is_gongxu !=0}
+              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span class="layui-badge layui-bg-green">工</span></a>
+              {else}
+              <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span  class="layui-badge layui-bg-blue">工</span></a>
+              {/if}
+            </td>
+            <td>{$info.create_time}</td>
+            <td></td>
+            <td>
+              <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
+              {$equipmentInfo.eqpmt_name}
+            </td>
+            <td>{$ifCompletr=="1"?"<li style='color:red'>未完成</li>":"<li style='color:green'>已完成</li>"}</td>
+            <td>{$info.remark}</td>
+          </tr>
+          {/volist}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="page">
+    {$productTaskInfo|raw}
+  </div>
+  <script>
+      $(function () {
+          $("#switch").click(function () {
+              layer.msg('正在切换到:{$btnText} ', {time:2000});
+          })
+      });
+  </script>
+</div>
+</body>
+</html>
