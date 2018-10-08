@@ -41,7 +41,7 @@
             <th>下达日期</th>
             <th>要求日期</th>
             <th>设备名称</th>
-            <th>是否完成</th>
+            <!--<th>是否完成</th>-->
             <th>备注</th>
           </tr>
           </thead>
@@ -84,7 +84,7 @@
               <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
               {$equipmentInfo.eqpmt_name}
             </td>
-            <td>{$ifCompletr=="1"?"<li style='color:red'>未完成</li>":"<li style='color:green'>已完成</li>"}</td>
+            <!--<td>{$ifCompletr=="1"?"<li style='color:red'>未完成</li>":"<li style='color:green'>已完成</li>"}</td>-->
             <td>{$info.remark}</td>
           </tr>
           {/volist}
