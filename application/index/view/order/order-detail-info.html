@@ -75,11 +75,10 @@
     <button class="layui-btn" onclick="x_admin_show('添加','{:url(\'index/blueprint/blueprintoutside\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}')"><i class="layui-icon"></i>添加</button>
     {if $model == 1}
     <a href="{:url('index/Order/orderDetail',['id'=>$id])}"><button class="layui-btn">隐藏</button></a>
-
     {else}
     <a href="{:url('index/Order/orderDetail',['id'=>$id,'model'=>'1'])}"><button class="layui-btn">显示</button></a>
-
     {/if}
+    <button class="layui-btn" onclick ="x_admin_show('一键复制','{:url(\'index/Order/copyOrderDetail\',[\'id\'=>$id])}',500,400)">一键复制</button>
     <span class="x-right" style="line-height:40px">共条{$orderDatailInfoC} · 未显示 {$orderDatailInfoNoShow} 条 </span>
   </xblock>
   <div class="layui-row">

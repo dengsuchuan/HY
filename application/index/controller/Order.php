@@ -362,5 +362,47 @@ class Order extends Base
         $OrderDetail = new OrderDetail();
         return $this->Sort($data,$OrderDetail);
     }
+
+    // 一键复制
+    public function copyOrderDetail(){
+        $order_detail_id = input('id');
+        // 查询不包括自己的订单明细
+        $order_detail_info = OrderMode::where('id','<>',$order_detail_id)->order('create_time', 'desc')->select();
+        // 获取订单编号
+        $order_code = OrderMode::where(['id'=>$order_detail_id])->value('order_id');
+        $this->assign([
+            'order_detail_id'   =>      $order_detail_id,
+            'order_detail_info'     =>  $order_detail_info,
+            'order_code'            =>  $order_code
+        ]);
+        return $this->view->fetch('order-detail-copy');
+    }
+    // 复制
+    public function exeOrderDetail(){
+        $copyCode = OrderMode::where(['order_id'=>Request::post('copy')])->value('id'); ;  //复制到某个下面的编号
+        $original =  OrderMode::where(['order_id'=>Request::post('order_detail_id')])->value('id'); ;  //复制到某个下面的编号
+        //跟据 copyCode 查找出是否有工序
+        $copyOrderDetail = OrderDetail::where(['order_id'=>$copyCode])->select()->toArray();
+        //如果没有一条工序，则直接进行复制
+        if(count($copyOrderDetail) === 0){
+            return json([
+                'code'  =>  1000,
+                'msg'   =>  '选中的订单没有订单明细'
+            ]);
+        }else{
+            foreach ($copyOrderDetail as $item){
+                unset($item['id']);
+                unset($item['create_time']);
+                unset($item['update_time']);
+                $item['order_id'] = $original;
+                $item['create_name'] = session('user.user_name');
+                OrderDetail::create($item);
+            }
+        }
+        return json([
+            'code'  => 1,
+        ]);
+
+    }
 }
 

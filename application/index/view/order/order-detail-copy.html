@@ -1,0 +1,61 @@
+{include file="public/header" /}
+<body>
+
+<div class="x-body">
+    <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
+
+    <form  class="layui-form">
+        <div class="layui-form-item">
+            <label for="" class="layui-form-label" style="width: 120px;">选择订单编号</label>
+            <input type="hidden" value="{$order_code}" id="order_detail_id">
+            <div class="layui-input-inline">
+                <select name="copy" lay-verify="required" lay-search="" id="copy">
+                    <option value="">请输入关键字...</option>
+                    <optgroup label="明细编号">
+                        {volist name="$order_detail_info" id="order_detail_info"}
+                        <option value="{$order_detail_info.order_id}">{$order_detail_info.order_id}</option>
+                        {/volist}
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item"  style="width: 600px;margin-top:100px; ">
+            <label class="layui-form-label"></label>
+            <input type="button" value="复制"  class="layui-btn"  onclick="buttonCope()">
+        </div>
+    </form>
+</div>
+<script>
+    function buttonCope() {
+        var copy = $("#copy").val();
+        if(copy == ''){
+            layer.msg('请选择订单编号');
+            return ;
+        }
+        var order_detail_id =  $("#order_detail_id").val();
+        layer.confirm('确定要将'+copy+'订单下面的订单明细复制到' + order_detail_id +'订单下面吗？',function(index){
+            var url = "{:url('/index/Order/exeOrderDetail')}";
+            var postData ={"copy":copy,"order_detail_id":order_detail_id};
+            $.post(url,postData,function (result) {
+                if(result.code === 1000 ){
+                    layer.alert(result.msg, {icon: 5});
+                    return;
+                }
+                if(result.code === 1 ){
+                    layer.alert("复制成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                    });
+                }else {
+                    layer.alert("复制失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
+
+</html>
