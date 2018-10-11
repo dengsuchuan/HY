@@ -381,6 +381,7 @@ class Order extends Base
     public function exeOrderDetail(){
         $copyCode = OrderMode::where(['order_id'=>Request::post('copy')])->value('id'); ;  //复制到某个下面的编号
         $original =  OrderMode::where(['order_id'=>Request::post('order_detail_id')])->value('id'); ;  //复制到某个下面的编号
+        $delivery_time =  OrderMode::where(['order_id'=>Request::post('order_detail_id')])->value('delivery_time'); ;  //复制到某个下面的编号
         //跟据 copyCode 查找出是否有工序
         $copyOrderDetail = OrderDetail::where(['order_id'=>$copyCode])->select()->toArray();
         //如果没有一条工序，则直接进行复制
@@ -395,6 +396,7 @@ class Order extends Base
                 unset($item['create_time']);
                 unset($item['update_time']);
                 $item['order_id'] = $original;
+                $item['date_delivery'] = $delivery_time;
                 $item['create_name'] = session('user.user_name');
                 OrderDetail::create($item);
             }

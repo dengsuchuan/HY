@@ -9,6 +9,10 @@ use think\facade\Request;
 
 class CurrentTask extends Base
 {
+    protected $beforeActionList = [
+        'isLogin',
+    ];
+
     public function inTask(){
         $ifCompletr = intval(input('id'));
         if($ifCompletr){
