@@ -48,7 +48,7 @@
         //监听提交
         form.on('submit(addId)', function(data){
             //console.log(data);
-            $.post("{:url('index/income_type/costEdit',['id'=>$costRow.id])}",data.field,function(info){
+            $.post("{:url('index/storeroom_type/costEdit',['id'=>$costRow.id])}",data.field,function(info){
                 if (info) {
                     layer.alert("修改成功", {icon: 6},function () {
                         window.parent.location.reload();  //刷新父级页面

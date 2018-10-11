@@ -1,20 +1,20 @@
 ﻿{include file="public/header" /}
-<body>
 
+<body>
 <div class="x-body ">
   <form  class="layui-form">
     <div class="layui-form-item">
       <label for="cost_name" class="layui-form-label">消费名称</label>
       <span style="color: red">*</span>
       <div class="layui-input-inline">
-        <input type="text" id="cost_name" name="cost_name" value="{$costRow.cost_name}" lay-verify="required" autocomplete="off" class="layui-input" >
+        <input type="text" id="cost_name" name="cost_name" lay-verify="required" autocomplete="off" class="layui-input" >
         <p id="pLog" style="color:red"></p>
       </div>
     </div>
     <div class="layui-form-item">
       <label for="cost_content" class="layui-form-label">类型描述</label>
       <div class="layui-input-inline">
-        <input type="text" id="cost_content" name="cost_content"  value="{$costRow.cost_content}"  autocomplete="off" class="layui-input"  >
+        <input type="text" id="cost_content" name="cost_content"   autocomplete="off" class="layui-input"  >
       </div>
     </div>
     <div class="layui-form-item">
@@ -23,11 +23,7 @@
         <select name="pid" lay-verify="required">
           <option value="0">顶级类型</option>
           {volist name="costInfo" id="info"}
-          <option value="{$info.id}"
-            {if $info.id ==$costRow.pid }
-                  selected
-            {/if}
-          ><?php echo "├".str_repeat("─",$info['level']*3)?>{$info.cost_name}</option>
+          <option value="{$info.id}"><?php echo "├".str_repeat("─",$info['level']*3)?>{$info.cost_name}</option>
           {/volist}
         </select>
       </div>
@@ -35,7 +31,7 @@
     <div class="layui-form-item">
       <label class="layui-form-label"></label>
       <button class="layui-btn" lay-submit lay-filter="addId">
-        修改
+        增加
       </button>
     </div>
   </form>
@@ -48,9 +44,9 @@
         //监听提交
         form.on('submit(addId)', function(data){
             //console.log(data);
-            $.post("{:url('index/income_type/costEdit',['id'=>$costRow.id])}",data.field,function(info){
+            $.post("{:url('index/storeroom_type/costAdd')}",data.field,function(info){
                 if (info) {
-                    layer.alert("修改成功", {icon: 6},function () {
+                    layer.alert("添加成功", {icon: 6},function () {
                         window.parent.location.reload();  //刷新父级页面
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
@@ -58,7 +54,7 @@
                         parent.layer.close(index);
                     });
                 }else{
-                    layer.alert("修改失败", {icon: 5});
+                    layer.alert("添加失败", {icon: 5});
                 }
             },'json');
             return false;
