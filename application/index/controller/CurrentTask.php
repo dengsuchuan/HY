@@ -18,7 +18,7 @@ class CurrentTask extends Base
         if($ifCompletr){
             //已制任务
             $ifCompletr = 0;
-            $btnText = "未制任务";
+            $btnText = "在制任务";
             $productTaskInfo = ProductTask::where(['if_completr'=>1])->paginate(25);
         }else{
             //未制任务

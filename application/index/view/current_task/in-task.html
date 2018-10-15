@@ -5,7 +5,7 @@
         <a href="">首页</a>
         <a href="">任务管理</a>
         <a>
-          <cite>{$btnText=="未制任务"?"已制任务":"未制任务"}</cite></a>
+          <cite>{$btnText=="在制任务"?"已制任务":"在制任务"}</cite></a>
       </span>
   <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
     <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -51,7 +51,10 @@
 
           <tr>
             <td class="td-manage">
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" ><i class="layui-icon">&#xe642;</i>编辑</button>
+              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" >编辑</button>
+              {if $ifCompletr==1}
+              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('生产记录','{:url(\'index/ProductionRecords/index\',[\'task_id\'=>$info.task_id])}')" >填</button>
+              {/if}
             </td>
             <td>{$info.task_id}</td>
             <td>{$blueprintInfoList.drawing_detail_id}</td>

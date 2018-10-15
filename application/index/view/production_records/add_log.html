@@ -1,0 +1,157 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">记录编号</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="log_id" value="{$log_id}" disabled >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">员工编号</label>
+            <div class="layui-input-inline">
+                <select name="hr_id" lay-verify="required">
+                    <option value=""></option>
+                    {volist name="$employee" id="list"}
+                    <option value="{$list.employee_code}">{$list.employee_name}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">完成数量</label>
+            <div class="layui-input-inline" >
+                <input type="number" class="layui-input" name="complete_qty" value="" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">完成日期</label>
+            <div class="layui-input-inline" >
+                <input type="date" class="layui-input" name="complete_date" value="" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">任务编号</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="task_id" value="{$task_id}" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">工艺编号</label>
+            <div class="layui-input-inline">
+                <select name="process_id" lay-verify="required">
+                    <option value=""></option>
+                    {volist name="$process" id="list"}
+                    <option value="{$list.process_id}">{$list.process_id}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">设备编号</label>
+            <div class="layui-input-inline">
+                <select name="eqpmt_id" lay-verify="required">
+                    <option value=""></option>
+                    {volist name="$eqpmt" id="list"}
+                    <option value="{$list.eqpmt_id}">{$list.eqpmt_id}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">生产管理签字</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="manege_name" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">签字日期</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="manege_date" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">合格品数量</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="product_qty" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">质量等级</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="quality_grade" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">检验员</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="qc_inspector" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">检验签名日期</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="qc_inspector_date" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">互检人员</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="other_checker" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">互检人员签字日期</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="other_checker_date" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">生产审核</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="if_audit" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline" >
+                <input type="text" class="layui-input" name="remark" value=" ">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-submit lay-filter="addId">
+                确认添加
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Assembly/assemblyAdd')}",data.field,function(info){
+                if (info) {
+                    layer.alert("添加成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>
