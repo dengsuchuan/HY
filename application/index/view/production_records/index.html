@@ -28,7 +28,6 @@
                     <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
                     <!--</th>-->
                     <th>操作</th>
-                    <th>签字</th>
                     <th>生产记录编号</th>
                     <th>员工编号</th>
                     <th>完成数量</th>
@@ -36,14 +35,11 @@
                     <th>任务编号</th>
                     <th>工艺编号</th>
                     <th>设备编号</th>
-                    <th>生产管理签字</th>
-                    <th>生产管理签字日期</th>
+                    <th>管理者</th>
                     <th>合格品数量</th>
                     <th>质量等级</th>
                     <th>检验员</th>
-                    <th>检验签名日期</th>
-                    <th>互检人员</th>
-                    <th>互检人员签字日期</th>
+                    <th>互检人</th>
                     <th>生产管理审核</th>
                     <th>备注</th>
                     <th>创建日期</th>
@@ -61,35 +57,6 @@
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
                     </td>
-                    <td class="td-manage">
-                        {if $list.manege_name==""}
-                        <a title="生产签字" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
-                            <i class="iconfont" style="color:green">&#xe69e;</i>
-                        </a>
-                        {else}
-                        <a title="取消生产签字" onclick="signDown_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
-                            <i class="iconfont" style="color:red">&#xe69a;</i>
-                        </a>
-                        {/if}
-                        {if $list.qc_inspector==""}
-                        <a title="检验签字" onclick="sign_('{$list.log_id}','qc_inspector_date','qc_inspector')" href="javascript:void(0);" >
-                            <i class="iconfont" style="color:green">&#xe69e;</i>
-                        </a>
-                        {else}
-                        <a title="取消检验签字" onclick="signDown_('{$list.log_id}','qc_inspector_date','qc_inspector')" href="javascript:void(0);" >
-                            <i class="iconfont" style="color:red">&#xe69a;</i>
-                        </a>
-                        {/if}
-                        {if $list.other_checker==""}
-                        <a title="互检签字" onclick="sign_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >
-                            <i class="iconfont" style="color:green">&#xe69e;</i>
-                        </a>
-                        {else}
-                        <a title="取消互检签字" onclick="signDown_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >
-                            <i class="iconfont" style="color:red">&#xe69a;</i>
-                        </a>
-                        {/if}
-                    </td>
                     <td>{$list.log_id}</td>
                     <td>{$list.hr_id}</td>
                     <td>{$list.complete_qty}</td>
@@ -97,14 +64,42 @@
                     <td>{$list.task_id}</td>
                     <td>{$list.process_id}</td>
                     <td>{$list.eqpmt_id}</td>
-                    <td>{$list.manege_name==""?"<a style='color:red'>未签字</a>":$list.manege_name}</td>
-                    <td>{$list.manege_date==""?"<a style='color:red'>无效</a>":$list.manege_date}</td>
+                    <td>
+                        {if $list.manege_name==""}
+                        <a title="生产签字" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
+                            未签字
+                        </a>
+                        {else}
+                        <a title="取消生产签字" onclick="signDown_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
+                            {$list.manege_name} : {$list.manege_date}
+                        </a>
+                        {/if}
+                    </td>
                     <td>{$list.product_qty}</td>
                     <td>{$list.quality_grade}</td>
-                    <td>{$list.qc_inspector==""?"<a style='color:red'>未签字</a>":$list.qc_inspector}</td>
-                    <td>{$list.qc_inspector_date==""?"<a style='color:red'>无效</a>":$list.qc_inspector_date}</td>
-                    <td>{$list.other_checker==""?"<a style='color:red'>未签字</a>":$list.other_checker}</td>
-                    <td>{$list.other_checker_date==""?"<a style='color:red'>无效</a>":$list.other_checker_date}</td>
+                    <td>
+                        {if $list.qc_inspector==""}
+                        <a title="检验签字" onclick="sign_('{$list.log_id}','qc_inspector_date','qc_inspector')" href="javascript:void(0);" >
+                            未签字
+                        </a>
+                        {else}
+                        <a title="取消检验签字" onclick="signDown_('{$list.log_id}','qc_inspector_date','qc_inspector')" href="javascript:void(0);" >
+                            {$list.qc_inspector} {$list.qc_inspector_date}
+                        </a>
+                        {/if}
+                    </td>
+                    <td>
+                        {if $list.other_checker==""}
+                        <a title="互检签字" onclick="sign_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >
+                            未签字
+                        </a>
+                        {else}
+                        <a title="取消互检签字" onclick="signDown_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >
+                            {$list.other_checker} {$list.other_checker_date}
+                        </a>
+                        {/if}
+
+                    </td>
                     <td>{$list.if_audit}</td>
                     <td>{$list.remark}</td>
                     <td>{$list.create_time}</td>
@@ -140,7 +135,7 @@
 
         //签字
         function sign_(where,dateKey,nameKey){
-            layer.confirm('确定要签名吗？',function(index){
+            layer.confirm("确定要签名吗？<br>姓名:{$Think.session.user.user_name}<br>日期:{:date('Y-m-d')}",function(index){
                 var url = "{:url('index/ProductionRecords/sign')}";
                 var postData ={"where":where,"dateKey":dateKey,"nameKey":nameKey};
                 $.post(url,postData,function (result) {
