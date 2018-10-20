@@ -1,0 +1,33 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <div>
+        <table id="table0" class="layui-table">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>类型</th>
+                    <th>定额</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+            {volist name="$process" id="processList"}
+                <tr>
+                    <td width="40">
+                        <a href="" style="color: green" data-id="{$processList.process_id}">
+                            {:substr($processList['process_id'],strpos($processList['process_id'],'P'));}
+                        </a>
+                    </td>
+                    <td width="40">{$processList.process_type|getProcess}</td>
+                    <td width="30">{$processList.process_quota}</td>
+                    <td>{$processList.process_content}</td>
+                </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>

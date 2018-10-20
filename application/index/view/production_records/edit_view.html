@@ -2,27 +2,30 @@
 <body>
 <div class="x-body">
     <form class="layui-form">
+        {volist name="$productLog" id="productLogList"}
         <div class="layui-form-item">
             <label class="layui-form-label">记录编号</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="log_id" value="{$log_id}" disabled >
+                <input type="text" class="layui-input" name="log_id" value="{$productLogList.log_id}" disabled >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">员工</label>
             <div class="layui-input-inline">
                 <select name="hr_id" lay-verify="required">
-                    <option value=""></option>
-                    {volist name="$employee" id="list"}
-                    <option value="{$list.employee_name}">{$list.employee_name}</option>
-                    {/volist}
+                    <option value="{$productLogList.hr_id}">{$productLogList.hr_id}</option>
+                    <optgroup label="选择员工">
+                        {volist name="$employee" id="list"}
+                        <option value="{$list.employee_name}">{$list.employee_name}</option>
+                        {/volist}
+                    </optgroup>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">完成数量</label>
             <div class="layui-input-inline" >
-                <input type="number" class="layui-input" name="complete_qty" value="" lay-verify="required">
+                <input type="number" class="layui-input" name="complete_qty" value="{$productLogList.complete_qty}" lay-verify="required">
                 <br>
                 <p style="color: green">当前任务数量: {$taskCount} </p>
             </div>
@@ -32,67 +35,74 @@
             <label class="layui-form-label">完成日期</label>
             <div class="layui-input-inline">
                 <select name="complete_date" lay-verify="required">
-                    <option value='{:date("Y-m-d")}'>今天:{:date("Y-m-d")}</option>
-                    <option value='{:date("Y-m-d",time()-3600*24)}'>昨天:{:date("Y-m-d",time()-3600*24)}</option>
+                    <option value='{$productLogList.complete_date}'>{$productLogList.complete_date}</option>
+                    <optgroup label="选择日期">
+                        <option value='{:date("Y-m-d")}'>今天:{:date("Y-m-d")}</option>
+                        <option value='{:date("Y-m-d",time()-3600*24)}'>昨天:{:date("Y-m-d",time()-3600*24)}</option>
+                    </optgroup>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">任务编号</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="task_id" value="{$task_id}" disabled>
+                <input type="text" class="layui-input" name="task_id" value="{$productLogList.task_id}" disabled>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">工艺编号</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="process_id" id="process_id" value="" disabled>
-            </div><a class="layui-btn layui-btn-sm layui-btn-normal" id="process">选择工艺</a>
+                <input type="text" class="layui-input" name="process_id" id="process_id" value="{$productLogList.process_id}" disabled>
+            </div>
+            <a class="layui-btn layui-btn-sm layui-btn-normal" id="process">选择工艺</a>
         </div>
         <!--<a href="#" id="sss" onclick="x_admin_show('选择 {$drawing} 的工艺','{:url(\'index/ProductionRecords/showProcess\',[\'drawing\'=>$drawing])}')">选择工艺</a>-->
         <div class="layui-form-item">
             <label class="layui-form-label">设备编号</label>
             <div class="layui-input-inline">
                 <select name="eqpmt_id" lay-verify="required">
-                    <option value=""></option>
-                    {volist name="$eqpmt" id="list"}
-                    <option value="{$list.eqpmt_id}">{$list.eqpmt_id}</option>
-                    {/volist}
+                    <option value="{$productLogList.eqpmt_id}">{$productLogList.eqpmt_id}</option>
+                    <optgroup label="选择设备">
+                        {volist name="$eqpmt" id="list"}
+                        <option value="{$list.eqpmt_id}">{$list.eqpmt_id}</option>
+                        {/volist}
+                    </optgroup>
                 </select>
             </div>
         </div>
-        <input type="hidden" name="create_name" value="{$Think.session.user.user_name}">
+        <input type="hidden" name="update_name" value="{$Think.session.user.user_name}">
         <div class="layui-form-item">
             <label class="layui-form-label">合格品数量</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="product_qty" value="" lay-verify="required">
+                <input type="text" class="layui-input" name="product_qty" value="{$productLogList.product_qty}" lay-verify="required">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">质量等级</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="quality_grade" value="1" id="quality_grade" lay-verify="required">
+                <input type="text" class="layui-input" name="quality_grade" value="{$productLogList.quality_grade}" id="quality_grade" lay-verify="required">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">是否审核</label>
             <div class="layui-input-block">
-                <input type="checkbox" name="if_audit" lay-skin="switch" lay-text="已审|未审">
+                <input type="checkbox" name="if_audit" lay-skin="switch" lay-text="已审|未审" {$productLogList.if_audit=='已审'?'checked':''}>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="remark" value="">
+                <input type="text" class="layui-input" name="remark" value="{$productLogList.remark}">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
             <button class="layui-btn" lay-submit lay-filter="addId">
-                确认添加
+                确认修改
             </button>
         </div>
+        {/volist}
     </form>
 </div>
 <script>
@@ -136,9 +146,9 @@
                 data.field['if_audit']="未审"
             }
             //console.log(data.field);
-            $.post("{:url('index/ProductionRecords/saveLog')}",data.field,function(info){
+            $.post("{:url('index/ProductionRecords/saveEdit')}",data.field,function(info){
                 if (info) {
-                    layer.msg("添加成功", {time:1000,icon: 6},function () {
+                    layer.msg("修改成功", {time:1000,icon: 6},function () {
                         window.parent.location.reload();  //刷新父级页面
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
@@ -146,7 +156,7 @@
                         parent.layer.close(index);
                     });
                 }else{
-                    layer.msg("添加失败", {time:1000,icon: 5});
+                    layer.msg("修改失败", {time:1000,icon: 5});
                 }
             },'json');
             return false;

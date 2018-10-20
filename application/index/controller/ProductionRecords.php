@@ -16,6 +16,7 @@ use app\index\model\ProductLog;
 use app\index\model\ProductProcess;
 use app\index\model\Employee;
 use think\facade\Request;
+use app\index\model\ProductTask;
 
 
 class ProductionRecords extends Base
@@ -23,29 +24,34 @@ class ProductionRecords extends Base
 
     public function index(){
         $task_id = input('task_id');
+        $drawing = input('drawing');
         $productLog = ProductLog::order('create_time', 'asc')->paginate(25);
         $productLogCount = $productLog->total();
         $this->view->assign([
             'task_id'=>$task_id,
             'productLog'=>$productLog,
-            'productLogCount'=>$productLogCount
+            'productLogCount'=>$productLogCount,
+            'drawing'=>$drawing,
         ]);
         return $this->view->fetch();
     }
 
     public function addLog(){
+        $taskCount = count(ProductTask::where(['if_completr'=>1])->select());
         $task_id = input('task_id');
+        $drawing = input('drawing');
         $model = new ProductionRecordsModel();//实例
         $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
         $eqpmt = EquipmentInfo::all();
-        $process = ProductProcess::all();
+        //$process = ProductProcess::where('drawing_detial_id',$drawing)->select();
         $employee = Employee::all();
         $this->view->assign([
             'task_id'=>$task_id,
             'log_id'=>$log_id,
             'eqpmt'=>$eqpmt,
-            'process'=>$process,
             'employee'=>$employee,
+            'taskCount'=>$taskCount,
+            'drawing'=>$drawing,
         ]);
         return $this->view->fetch();
     }
@@ -95,6 +101,66 @@ class ProductionRecords extends Base
                 "$dateKey"=>$date
             ];
             if(ProductLog::where("log_id",$log_id)->update($array)){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+
+    public function showProcess(){
+        $drawing = input('drawing');
+        $process = ProductProcess::where('drawing_detial_id',$drawing)->select();
+        $this->assign("process",$process);
+        return $this->view->fetch('view_process');
+    }
+
+    public function delete(){
+        if(Request::isAjax()){
+            $data = Request::post('id');
+            $info = ProductLog::where(['log_id'=>$data])->delete();
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+
+    public function edit(){
+        $id = input('id');
+        $productLog = ProductLog::where(['log_id'=>$id])->select();
+        //基本输出
+        $taskCount = count(ProductTask::where(['if_completr'=>1])->select());
+        $task_id = input('task_id');
+        $drawing = input('drawing');
+        $model = new ProductionRecordsModel();//实例
+        $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
+        $eqpmt = EquipmentInfo::all();
+        //$process = ProductProcess::where('drawing_detial_id',$drawing)->select();
+        $employee = Employee::all();
+        $this->view->assign([
+            'productLog'=>$productLog,
+            'task_id'=>$task_id,
+            'log_id'=>$log_id,
+            'eqpmt'=>$eqpmt,
+            'employee'=>$employee,
+            'taskCount'=>$taskCount,
+            'drawing'=>$drawing,
+        ]);
+
+
+        $this->assign(compact('productLog'));
+        return $this->fetch('edit_view');
+    }
+
+    public function saveEdit(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $log_id = $data['log_id'];
+            unset($data['log_id']);
+            $info = ProductLog::where('log_id',$log_id)->update($data);
+            if($info){
                 return json(1);
             }else{
                 return json(0);

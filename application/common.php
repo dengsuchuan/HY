@@ -21,6 +21,7 @@ use app\index\model\OrderDetail;
 use app\index\model\EquipmentInfo;
 use app\index\model\ProductTask;
 use app\index\model\Material;
+use app\index\model\ProcessType;
 
 // 应用公共文件
 //截取右边的展示内容
@@ -191,4 +192,9 @@ function getDrawingDetailId1($id){
 function sjcTime($time){
     $date_time=date("Y-m-d H:i:s",$time);
     return $date_time;
+}
+
+function getProcess($id){
+    $processName = ProcessType::where('id',$id)->value('process_name');
+    return $processName;
 }

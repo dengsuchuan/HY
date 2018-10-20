@@ -53,7 +53,7 @@
             <td class="td-manage">
               <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" >编辑</button>
               {if $ifCompletr==1}
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('生产记录','{:url(\'index/ProductionRecords/index\',[\'task_id\'=>$info.task_id])}')" >填</button>
+              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('生产记录','{:url(\'index/ProductionRecords/index\',[\'task_id\'=>$info.task_id,\'drawing\'=>$blueprintInfoList.drawing_detail_id])}')" >填</button>
               {/if}
             </td>
             <td>{$info.task_id}</td>
