@@ -11,26 +11,10 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">员工</label>
-            <div class="layui-input-inline">
-                <select name="hr_id" lay-verify="required">
-                    <option value="{$productLogList.hr_id}">{$productLogList.hr_id}</option>
-                    <optgroup label="选择员工">
-                        {volist name="$employee" id="list"}
-                        <option value="{$list.employee_name}">{$list.employee_name}</option>
-                        {/volist}
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">完成数量</label>
             <div class="layui-input-inline" >
-                <input type="number" class="layui-input" name="complete_qty" value="{$productLogList.complete_qty}" lay-verify="required">
-                <br>
-                <p style="color: green">当前任务数量: {$taskCount} </p>
+                <input type="text" class="layui-input" name="hr_id" value="{$productLogList.hr_id}" disabled >
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">完成日期</label>
             <div class="layui-input-inline">
@@ -50,9 +34,19 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">完成数量</label>
+            <div class="layui-input-inline" >
+                <input type="number" class="layui-input" name="complete_qty" value="{$productLogList.complete_qty}" lay-verify="required">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">工艺编号</label>
             <div class="layui-input-inline" >
                 <input type="text" class="layui-input" name="process_id" id="process_id" value="{$productLogList.process_id}" disabled>
+                <br>
+                <a style="color: green">任务数量: <span>空</span> </a>
+                <a style="color: green">已填写: <span>空</span> </a>
+                <a style="color: green">剩余: <span>空</span> </a>
             </div>
             <a class="layui-btn layui-btn-sm layui-btn-normal" id="process">选择工艺</a>
         </div>

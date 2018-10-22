@@ -37,20 +37,20 @@ class ProductionRecords extends Base
     }
 
     public function addLog(){
-        $taskCount = count(ProductTask::where(['if_completr'=>1])->select());
+        //$taskCount = count(ProductTask::where(['if_completr'=>1])->select());
         $task_id = input('task_id');
         $drawing = input('drawing');
         $model = new ProductionRecordsModel();//实例
         $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
         $eqpmt = EquipmentInfo::all();
         //$process = ProductProcess::where('drawing_detial_id',$drawing)->select();
-        $employee = Employee::all();
+        //$employee = Employee::all();
         $this->view->assign([
             'task_id'=>$task_id,
             'log_id'=>$log_id,
             'eqpmt'=>$eqpmt,
-            'employee'=>$employee,
-            'taskCount'=>$taskCount,
+            //'employee'=>$employee,
+            //'taskCount'=>$taskCount,
             'drawing'=>$drawing,
         ]);
         return $this->view->fetch();
@@ -131,21 +131,21 @@ class ProductionRecords extends Base
         $id = input('id');
         $productLog = ProductLog::where(['log_id'=>$id])->select();
         //基本输出
-        $taskCount = count(ProductTask::where(['if_completr'=>1])->select());
+        //$taskCount = count(ProductTask::where(['if_completr'=>1])->select());
         $task_id = input('task_id');
         $drawing = input('drawing');
         $model = new ProductionRecordsModel();//实例
         $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
         $eqpmt = EquipmentInfo::all();
         //$process = ProductProcess::where('drawing_detial_id',$drawing)->select();
-        $employee = Employee::all();
+        //$employee = Employee::all();
         $this->view->assign([
             'productLog'=>$productLog,
             'task_id'=>$task_id,
             'log_id'=>$log_id,
             'eqpmt'=>$eqpmt,
-            'employee'=>$employee,
-            'taskCount'=>$taskCount,
+            //'employee'=>$employee,
+            //'taskCount'=>$taskCount,
             'drawing'=>$drawing,
         ]);
 
@@ -167,6 +167,19 @@ class ProductionRecords extends Base
             }
         }
     }
+
+    public function getCount(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $process_id = $data['process_id'];
+            $task_id = $data['task_id'];
+            $ProductLogCount = count(ProductLog::where(['process_id'=>$process_id])->select());
+            $task_qty = ProductTask::where(['task_id'=>$task_id])->value("task_qty");
+            $array = ["ProductLogCount"=>$ProductLogCount,"task_qty"=>$task_qty];
+            return $array;
+        }
+    }
+
 }
 
 

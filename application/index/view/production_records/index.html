@@ -52,7 +52,7 @@
                 {volist name="$productLog" id="list"}
                 <tr>
                     <td class="td-manage">
-                        <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+                        <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing])}',500,700)" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                         <a title="删除" onclick="delete_(this,'{$list.log_id}')" href="javascript:void(0);" >
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>

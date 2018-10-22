@@ -4,43 +4,37 @@
     <form class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">记录编号</label>
-            <div class="layui-input-inline" >
+            <div class="layui-input-block" >
                 <input type="text" class="layui-input" name="log_id" value="{$log_id}" disabled >
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">员工</label>
-            <div class="layui-input-inline">
-                <select name="hr_id" lay-verify="required">
-                    <option value=""></option>
-                    {volist name="$employee" id="list"}
-                    <option value="{$list.employee_name}">{$list.employee_name}</option>
-                    {/volist}
-                </select>
+            <label class="layui-form-label">任务编号</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="task_id" value="{$task_id}" disabled>
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">完成数量</label>
-            <div class="layui-input-inline" >
-                <input type="number" class="layui-input" name="complete_qty" value="" lay-verify="required">
-                <br>
-                <p style="color: green">当前任务数量: {$taskCount} </p>
+            <label class="layui-form-label">员工</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="hr_id" value="{$Think.session.user.user_name}" disabled >
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">完成日期</label>
-            <div class="layui-input-inline">
+            <div class="layui-input-block">
                 <select name="complete_date" lay-verify="required">
                     <option value='{:date("Y-m-d")}'>今天:{:date("Y-m-d")}</option>
                     <option value='{:date("Y-m-d",time()-3600*24)}'>昨天:{:date("Y-m-d",time()-3600*24)}</option>
                 </select>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">任务编号</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="task_id" value="{$task_id}" disabled>
+        <div class="layui-form-item" hidden id="completeDiv">
+            <label class="layui-form-label">完成数量</label>
+            <div class="layui-input-block" >
+                <input type="number" class="layui-input" name="complete_qty" id="complete" value="" lay-verify="required">
+                <br>
+                <a style="color: red" hidden id="ifCount">完成数量不得超过剩余数量</a>
             </div>
         </div>
         <div class="layui-form-item">
@@ -49,14 +43,21 @@
                 <input type="text" class="layui-input" name="process_id" id="process_id" value="" disabled>
             </div><a class="layui-btn layui-btn-sm layui-btn-normal" id="process">选择工艺</a>
         </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" >
+            <a style="color: green">任务数量: <span id="taskCount">0</span> </a>
+            <a style="color: green">已填写: <span id="logCount">0</span> </a>
+            <a style="color: green">剩余: <span id="lastCount">0</span> </a>
+            </div>
+        </div>
         <!--<a href="#" id="sss" onclick="x_admin_show('选择 {$drawing} 的工艺','{:url(\'index/ProductionRecords/showProcess\',[\'drawing\'=>$drawing])}')">选择工艺</a>-->
         <div class="layui-form-item">
             <label class="layui-form-label">设备编号</label>
-            <div class="layui-input-inline">
-                <select name="eqpmt_id" lay-verify="required">
+            <div class="layui-input-block">
+                <select name="eqpmt_id" lay-verify="required" lay-search="" >
                     <option value=""></option>
                     {volist name="$eqpmt" id="list"}
-                    <option value="{$list.eqpmt_id}">{$list.eqpmt_id}</option>
+                    <option value="{$list.eqpmt_name}">{$list.eqpmt_name}</option>
                     {/volist}
                 </select>
             </div>
@@ -64,17 +65,17 @@
         <input type="hidden" name="create_name" value="{$Think.session.user.user_name}">
         <div class="layui-form-item">
             <label class="layui-form-label">合格品数量</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="product_qty" value="" lay-verify="required">
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="product_qty" id="product_qty" value="" lay-verify="required" placeholder="禁止修改:请填写完成数量参数" disabled>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">质量等级</label>
-            <div class="layui-input-inline" >
+            <div class="layui-input-block" >
                 <input type="text" class="layui-input" name="quality_grade" value="1" id="quality_grade" lay-verify="required">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" hidden>
             <label class="layui-form-label">是否审核</label>
             <div class="layui-input-block">
                 <input type="checkbox" name="if_audit" lay-skin="switch" lay-text="已审|未审">
@@ -82,7 +83,7 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
-            <div class="layui-input-inline" >
+            <div class="layui-input-block" >
                 <input type="text" class="layui-input" name="remark" value="">
             </div>
         </div>
@@ -107,14 +108,42 @@
                success: function () {
                    $(top.document.body).find('#layui-layer-iframe' + top.SearchTeacherLayerId).contents().find("td a").on('click', function () {
                        //alert($(this).attr('data-id'));
-                       $("#process_id").val($(this).attr('data-id'));
+                       var process_id = $(this).attr('data-id');//工艺序号
+                       var url = "{:url('index/ProductionRecords/getCount')}";
+                       var data = {"process_id":process_id,"task_id":"{$task_id}"};
+                       $.post(url,data,function(info){
+                           var taskCount = info['task_qty'];//任务总数
+                           var logCount = info['ProductLogCount'];//目标记录总数
+                           var lastCount = taskCount - logCount;
+                           $("#taskCount").text(taskCount?taskCount:"0");
+                           $("#logCount").text(logCount?logCount:"0");
+                           $("#lastCount").text(lastCount?lastCount:"0");
+                           $("#process_id").val(process_id);
+                           $("#completeDiv").show();
+                       },'json');
+
                        top.layer.close(top.SearchTeacherLayerId);
                    });
                }
            });
        });
-    });
 
+       //监听输入input
+        //complete_qty
+        $("#complete").bind("input propertychange",function(event){
+            var inputVal = $("#complete").val();
+            inputVal = parseInt(inputVal);
+            var lastCount = $("#lastCount").text();
+            lastCount = parseInt(lastCount);
+            if(inputVal > lastCount || inputVal<0){
+                $("#ifCount").show();
+                $("#product_qty").val(inputVal);
+            }else{
+                $("#ifCount").hide();
+            }
+        });
+
+    });
 
     layui.use(['form'], function(){
         $ = layui.jquery;
@@ -125,9 +154,10 @@
                 layer.alert("质量等级为0~1之间的小数", {icon: 5});
                 return false;
             }
-
-            if(data.field['complete_qty']>"{$taskCount}" || data.field['complete_qty']<0){
-                layer.alert("完成数量不得超过现有任务数量: {$taskCount}", {icon: 5});
+            var lastCount = $("#lastCount").text();
+            lastCount = parseInt(lastCount);
+            if(data.field['complete_qty']>lastCount || data.field['complete_qty']<0){
+                layer.alert("完成数量不得超过剩余数量: "+lastCount, {icon: 5});
                 return false;
             }
             if(data.field['if_audit']){
