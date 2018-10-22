@@ -16,7 +16,7 @@
 <div class="x-body" >
     <xblock>
         <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
-        <button class="layui-btn" id="addLog" onclick="x_admin_show('添加生产记录','{:url(\'index/ProductionRecords/addLog\',[\'task_id\'=>$task_id,\'drawing\'=>$drawing])}',500,700)"><i class="layui-icon"></i>添加生产记录</button>
+        <button class="layui-btn" id="addLog" onclick="x_admin_show('添加生产记录','{:url(\'index/ProductionRecords/addLog\',[\'task_id\'=>$task_id,\'drawing\'=>$drawing])}')"><i class="layui-icon"></i>添加生产记录</button>
         <span class="x-right" style="line-height:40px">共{$productLogCount}条 · 共{$productLogCount/25|getInt}页</span>
     </xblock>
     <div class="container-wrap">

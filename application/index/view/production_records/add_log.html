@@ -29,14 +29,6 @@
                 </select>
             </div>
         </div>
-        <div class="layui-form-item" hidden id="completeDiv">
-            <label class="layui-form-label">完成数量</label>
-            <div class="layui-input-block" >
-                <input type="number" class="layui-input" name="complete_qty" id="complete" value="" lay-verify="required">
-                <br>
-                <a style="color: red" hidden id="ifCount">完成数量不得超过剩余数量</a>
-            </div>
-        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">工艺编号</label>
             <div class="layui-input-inline" >
@@ -45,9 +37,17 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block" >
-            <a style="color: green">任务数量: <span id="taskCount">0</span> </a>
-            <a style="color: green">已填写: <span id="logCount">0</span> </a>
-            <a style="color: green">剩余: <span id="lastCount">0</span> </a>
+                <a style="color: green">任务数量: <span id="taskCount">0</span> </a>
+                <a style="color: green">已完成: <span id="logCount">0</span> </a>
+                <a style="color: green">剩余: <span id="lastCount">0</span> </a>
+            </div>
+        </div>
+        <div class="layui-form-item" hidden id="completeDiv">
+            <label class="layui-form-label">完成数量</label>
+            <div class="layui-input-block" >
+                <input type="number" class="layui-input" name="complete_qty" id="complete" value="" lay-verify="required">
+                <br>
+                <a style="color: red" hidden id="ifCount">完成数量不得超过剩余数量</a>
             </div>
         </div>
         <!--<a href="#" id="sss" onclick="x_admin_show('选择 {$drawing} 的工艺','{:url(\'index/ProductionRecords/showProcess\',[\'drawing\'=>$drawing])}')">选择工艺</a>-->

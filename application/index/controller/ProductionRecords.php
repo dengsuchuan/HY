@@ -173,7 +173,7 @@ class ProductionRecords extends Base
             $data = Request::post();
             $process_id = $data['process_id'];
             $task_id = $data['task_id'];
-            $ProductLogCount = count(ProductLog::where(['process_id'=>$process_id])->select());
+            $ProductLogCount = ProductLog::where(['process_id'=>$process_id])->value('complete_qty');
             $task_qty = ProductTask::where(['task_id'=>$task_id])->value("task_qty");
             $array = ["ProductLogCount"=>$ProductLogCount,"task_qty"=>$task_qty];
             return $array;
