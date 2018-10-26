@@ -25,7 +25,9 @@ class ProductionRecords extends Base
     public function index(){
         $task_id = input('task_id');
         $drawing = input('drawing');
-        $productLog = ProductLog::order('create_time', 'asc')->paginate(25);
+        $productLog = ProductLog::order('create_time', 'asc')
+            ->where(["task_id"=>$task_id])
+            ->paginate(25);
         $productLogCount = $productLog->total();
         $this->view->assign([
             'task_id'=>$task_id,
