@@ -22,6 +22,7 @@ use app\index\model\EquipmentInfo;
 use app\index\model\ProductTask;
 use app\index\model\Material;
 use app\index\model\ProcessType;
+use app\index\model\ProductProcess;
 
 // 应用公共文件
 //截取右边的展示内容
@@ -197,4 +198,10 @@ function sjcTime($time){
 function getProcess($id){
     $processName = ProcessType::where('id',$id)->value('process_name');
     return $processName;
+}
+
+function getGyType($id){
+    $typeId = ProductProcess::where(['process_id'=>$id])->value('process_type');
+    $tyepName = ProcessType::where(['id'=>$typeId])->value('process_name');
+    return $tyepName;
 }

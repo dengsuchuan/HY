@@ -58,7 +58,6 @@
                 </thead>
                 <tbody>
                 {volist name="$equipmentInfo" id="equipmentInfoList"}
-                    {if $equipmentInfoList.is_working}
                 <tr>
                     <td class="td-manage" width="50px;">
                         <a title="编辑"onclick="x_admin_show('修改设备','{:url(\'index/Equipment/editEquipmentInfo\',[\'id\'=>$equipmentInfoList.id])}')" href="javascript:;">
@@ -83,11 +82,10 @@
                     <td>{$equipmentInfoList.purchasing_date}</td>
                     <td>{$equipmentInfoList.price}</td>
                     <td>{$equipmentInfoList.current_price}</td>
-                    <td> {$equipmentInfoList.is_working?'<span class="layui-badge layui-bg-green">是</span>':'<span class="layui-badge">否</span>'}  </td>
+                    <td>{$equipmentInfoList.is_working?'<span class="layui-badge layui-bg-green">是</span>':'<span class="layui-badge">否</span>'}  </td>
                     <td>{$equipmentInfoList.sell_date}</td>
                     <td>{$equipmentInfoList.user}</td>
                 </tr>
-                    {/if}
                 {/volist}
                 </tbody>
             </table>

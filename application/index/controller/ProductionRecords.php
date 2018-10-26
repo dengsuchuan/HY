@@ -27,6 +27,7 @@ class ProductionRecords extends Base
         $drawing = input('drawing');
         $productLog = ProductLog::order('create_time', 'asc')
             ->where(["task_id"=>$task_id])
+            ->order('create_time','DESC')
             ->paginate(25);
         $productLogCount = $productLog->total();
         $this->view->assign([
@@ -39,23 +40,38 @@ class ProductionRecords extends Base
     }
 
     public function addLog(){
-        //$taskCount = count(ProductTask::where(['if_completr'=>1])->select());
         $task_id = input('task_id');
         $drawing = input('drawing');
         $model = new ProductionRecordsModel();//实例
         $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
-        $eqpmt = EquipmentInfo::all();
-        //$process = ProductProcess::where('drawing_detial_id',$drawing)->select();
-        //$employee = Employee::all();
+        $eqpmt = EquipmentInfo::where(['is_working'=>1])->select();
         $this->view->assign([
             'task_id'=>$task_id,
             'log_id'=>$log_id,
             'eqpmt'=>$eqpmt,
-            //'employee'=>$employee,
-            //'taskCount'=>$taskCount,
             'drawing'=>$drawing,
         ]);
         return $this->view->fetch();
+    }
+
+    public function edit(){
+        $id = input('id');
+        $productLog = ProductLog::where(['log_id'=>$id])->select();
+        //基本输出
+        $task_id = input('task_id');
+        $drawing = input('drawing');
+        $model = new ProductionRecordsModel();//实例
+        $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
+        $eqpmt = EquipmentInfo::where(['is_working'=>1])->select();
+        $this->view->assign([
+            'productLog'=>$productLog,
+            'task_id'=>$task_id,
+            'log_id'=>$log_id,
+            'eqpmt'=>$eqpmt,
+            'drawing'=>$drawing,
+        ]);
+        $this->assign(compact('productLog'));
+        return $this->fetch('edit_view');
     }
 
     public function saveLog(){
@@ -129,32 +145,6 @@ class ProductionRecords extends Base
         }
     }
 
-    public function edit(){
-        $id = input('id');
-        $productLog = ProductLog::where(['log_id'=>$id])->select();
-        //基本输出
-        //$taskCount = count(ProductTask::where(['if_completr'=>1])->select());
-        $task_id = input('task_id');
-        $drawing = input('drawing');
-        $model = new ProductionRecordsModel();//实例
-        $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
-        $eqpmt = EquipmentInfo::all();
-        //$process = ProductProcess::where('drawing_detial_id',$drawing)->select();
-        //$employee = Employee::all();
-        $this->view->assign([
-            'productLog'=>$productLog,
-            'task_id'=>$task_id,
-            'log_id'=>$log_id,
-            'eqpmt'=>$eqpmt,
-            //'employee'=>$employee,
-            //'taskCount'=>$taskCount,
-            'drawing'=>$drawing,
-        ]);
-
-
-        $this->assign(compact('productLog'));
-        return $this->fetch('edit_view');
-    }
 
     public function saveEdit(){
         if(Request::isAjax()){

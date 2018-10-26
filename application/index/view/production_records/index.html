@@ -29,12 +29,13 @@
                     <!--</th>-->
                     <th>操作</th>
                     <!--<th>生产记录编号</th>-->
-                    <th>员工编号</th>
-                    <th>完成数量</th>
+                    <th>序号</th>
+                    <th>类型</th>
+                    <th>操作者</th>
+                    <th>数量</th>
                     <th>完成日期</th>
-                    <th>任务编号</th>
-                    <th>工艺编号</th>
-                    <th>设备编号</th>
+                    <th>设备</th>
+                    <!--<th>任务编号</th>-->
                     <th>管理者</th>
                     <th>合格数</th>
                     <th>质量等级</th>
@@ -52,18 +53,19 @@
                 {volist name="$productLog" id="list"}
                 <tr>
                     <td class="td-manage">
-                        <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing])}',500,700)" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+                        <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing,\'task_id\'=>$task_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                         <a title="删除" onclick="delete_(this,'{$list.log_id}')" href="javascript:void(0);" >
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
                     </td>
                     <!--<td>{$list.log_id}</td>-->
+                    <td>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
+                    <td>{$list.process_id|getGyType}</td>
                     <td>{$list.hr_id}</td>
                     <td>{$list.complete_qty}</td>
                     <td>{$list.complete_date}</td>
-                    <td>{$list.task_id}</td>
-                    <td>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
                     <td>{$list.eqpmt_id}</td>
+                    <!--<td>{$list.task_id}</td>-->
                     <td>
                         {if $list.manege_name==""}
                         <a title="生产签字" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >

@@ -2,24 +2,30 @@
 <body>
 <div class="x-body">
     <form class="layui-form">
-        {volist name="$productLog" id="productLogList"}
+        {volist name="$productLog" id="logList"}
         <div class="layui-form-item">
             <label class="layui-form-label">记录编号</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="log_id" value="{$productLogList.log_id}" disabled >
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="log_id" value="{$logList.log_id}" disabled >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">任务编号</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="task_id" value="{$logList.task_id}" disabled>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">员工</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="hr_id" value="{$productLogList.hr_id}" disabled >
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="hr_id" value="{$logList.hr_id}" disabled >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">完成日期</label>
-            <div class="layui-input-inline">
+            <div class="layui-input-block">
                 <select name="complete_date" lay-verify="required">
-                    <option value='{$productLogList.complete_date}'>{$productLogList.complete_date}</option>
+                    <option value='{$logList.complete_date}'>{$logList.complete_date}</option>
                     <optgroup label="选择日期">
                         <option value='{:date("Y-m-d")}'>今天:{:date("Y-m-d")}</option>
                         <option value='{:date("Y-m-d",time()-3600*24)}'>昨天:{:date("Y-m-d",time()-3600*24)}</option>
@@ -28,111 +34,139 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">任务编号</label>
+            <label class="layui-form-label">工艺编号</label>
             <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="task_id" value="{$productLogList.task_id}" disabled>
+                <input type="text" class="layui-input" name="process_id" id="process_id" value="{$logList.process_id}" disabled>
+            </div><a class="layui-btn layui-btn-sm layui-btn-normal" id="process">选择工艺</a>
+        </div>
+        <div class="layui-form-item" hidden id="processInfo">
+            <div class="layui-input-block" >
+                <a style="color: green">任务数量: <span id="taskCount">0</span> </a>
+                <a style="color: green">已完成: <span id="logCount">0</span> </a>
+                <a style="color: green">剩余: <span id="lastCount">0</span> </a>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">完成数量</label>
-            <div class="layui-input-inline" >
-                <input type="number" class="layui-input" name="complete_qty" value="{$productLogList.complete_qty}" lay-verify="required">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">工艺编号</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="process_id" id="process_id" value="{$productLogList.process_id}" disabled>
+            <div class="layui-input-block" >
+                <input type="number" class="layui-input" name="complete_qty" id="complete" value="{$logList.complete_qty}" lay-verify="required" title="选择工艺后才可修改" disabled>
                 <br>
-                <a style="color: green">任务数量: <span>空</span> </a>
-                <a style="color: green">已填写: <span>空</span> </a>
-                <a style="color: green">剩余: <span>空</span> </a>
+                <a style="color: red" hidden id="ifCount">完成数量不得超过剩余数量</a>
             </div>
-            <a class="layui-btn layui-btn-sm layui-btn-normal" id="process">选择工艺</a>
         </div>
         <!--<a href="#" id="sss" onclick="x_admin_show('选择 {$drawing} 的工艺','{:url(\'index/ProductionRecords/showProcess\',[\'drawing\'=>$drawing])}')">选择工艺</a>-->
         <div class="layui-form-item">
             <label class="layui-form-label">设备编号</label>
-            <div class="layui-input-inline">
-                <select name="eqpmt_id" lay-verify="required">
-                    <option value="{$productLogList.eqpmt_id}">{$productLogList.eqpmt_id}</option>
+            <div class="layui-input-block">
+                <select name="eqpmt_id" lay-verify="required" lay-search="" >
+                    <option value="{$logList.eqpmt_id}">{$logList.eqpmt_id}</option>
                     <optgroup label="选择设备">
-                        {volist name="$eqpmt" id="list"}
-                        <option value="{$list.eqpmt_id}">{$list.eqpmt_id}</option>
-                        {/volist}
+                    {volist name="$eqpmt" id="list"}
+                    <option value="{$list.eqpmt_name}">{$list.eqpmt_name?$list.eqpmt_name:"空名称 编号:-".$list.eqpmt_id}</option>
+                    {/volist}
                     </optgroup>
                 </select>
             </div>
         </div>
-        <input type="hidden" name="update_name" value="{$Think.session.user.user_name}">
+        <input type="hidden" name="create_name" value="{$Think.session.user.user_name}">
         <div class="layui-form-item">
             <label class="layui-form-label">合格品数量</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="product_qty" value="{$productLogList.product_qty}" lay-verify="required">
+            <div class="layui-input-block" >
+                <input type="number" class="layui-input" name="product_qty" id="product_qty" value="{$logList.product_qty}" lay-verify="required" placeholder="禁止修改:请填写完成数量参数" disabled>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">质量等级</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="quality_grade" value="{$productLogList.quality_grade}" id="quality_grade" lay-verify="required">
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="quality_grade" value="{$logList.quality_grade}" id="quality_grade" lay-verify="required">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">是否审核</label>
             <div class="layui-input-block">
-                <input type="checkbox" name="if_audit" lay-skin="switch" lay-text="已审|未审" {$productLogList.if_audit=='已审'?'checked':''}>
+                <input type="checkbox" name="if_audit" lay-skin="switch" lay-text="已审|未审" {$logList.if_audit=="未审"?"":"checked=''"}>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
-            <div class="layui-input-inline" >
-                <input type="text" class="layui-input" name="remark" value="{$productLogList.remark}">
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="remark" value="{$logList.remark}">
             </div>
         </div>
+        {/volist}
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
             <button class="layui-btn" lay-submit lay-filter="addId">
-                确认修改
+                提交修改
             </button>
         </div>
-        {/volist}
     </form>
 </div>
 <script>
     $(function () {
-       $("#process").click(function () {
-           top.SearchTeacherLayerId = top.layer.open({
-               title: "选择{$drawing}的工艺",
-               type: 2,
-               shadeClose: true,
-               area: ['85%', '590px'],
-               content: "{:url('index/ProductionRecords/showProcess',['drawing'=>$drawing])}",
-               success: function () {
-                   $(top.document.body).find('#layui-layer-iframe' + top.SearchTeacherLayerId).contents().find("td a").on('click', function () {
-                       //alert($(this).attr('data-id'));
-                       $("#process_id").val($(this).attr('data-id'));
-                       top.layer.close(top.SearchTeacherLayerId);
-                   });
-               }
-           });
-       });
-    });
+        $("#process").click(function () {
+            top.SearchTeacherLayerId = top.layer.open({
+                title: "选择{$drawing}的工艺",
+                type: 2,
+                shadeClose: true,
+                area: ['85%', '590px'],
+                content: "{:url('index/ProductionRecords/showProcess',['drawing'=>$drawing])}",
+                success: function () {
+                    $(top.document.body).find('#layui-layer-iframe' + top.SearchTeacherLayerId).contents().find("td a").on('click', function () {
+                        //alert($(this).attr('data-id'));
+                        var process_id = $(this).attr('data-id');//工艺序号
+                        var url = "{:url('index/ProductionRecords/getCount')}";
+                        var data = {"process_id":process_id,"task_id":"{$task_id}"};
+                        $.post(url,data,function(info){
+                            var taskCount = info['task_qty'];//任务总数
+                            var logCount = info['ProductLogCount'];//目标记录总数
+                            var lastCount = (taskCount - logCount).toFixed(2);
+                            $("#taskCount").text(taskCount?taskCount:"0");
+                            $("#logCount").text(logCount?logCount:"0");
+                            $("#lastCount").text(lastCount?lastCount:"0");
+                            $("#process_id").val(process_id);
+                            $("#completeDiv").show();
+                            $("#processInfo").show();
+                            $('#complete').attr("disabled",false);
+                        },'json');
 
+                        top.layer.close(top.SearchTeacherLayerId);
+                    });
+                }
+            });
+        });
+
+        //监听输入input
+        //complete_qty
+        $("#complete").bind("input propertychange",function(event){
+            var inputVal = $("#complete").val();
+            inputVal = parseFloat(inputVal);
+            var lastCount = $("#lastCount").text();
+            lastCount = parseFloat(lastCount);
+            if(inputVal > lastCount || inputVal<0){
+                $("#ifCount").show();
+            }else{
+                $("#product_qty").val(inputVal);
+                $("#ifCount").hide();
+            }
+        });
+
+    });
 
     layui.use(['form'], function(){
         $ = layui.jquery;
         var form = layui.form,layer = layui.layer;
         //监听提交
         form.on('submit(addId)', function(data){
-            if(data.field['quality_grade']<=0 || data.field['quality_grade'] >1 || data.field['quality_grade']==""){
-                layer.alert("质量等级为0~1之间的小数", {icon: 5});
-                return false;
-            }
-
-            if(data.field['complete_qty']>"{$taskCount}" || data.field['complete_qty']<0){
-                layer.alert("完成数量不得超过现有任务数量: {$taskCount}", {icon: 5});
-                return false;
+            if(!$('#complete').attr("disabled")){
+                var lastCount = $("#lastCount").text();
+                lastCount = parseFloat(lastCount);
+                data.field['complere_qty'] = lastCount;
+                if(data.field['complete_qty']>lastCount || data.field['complete_qty']<0){
+                    layer.alert("完成数量不得超过剩余数量: "+lastCount, {icon: 5});
+                    return false;
+                }
             }
             if(data.field['if_audit']){
                 data.field['if_audit']="已审"

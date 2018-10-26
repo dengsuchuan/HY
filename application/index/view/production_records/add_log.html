@@ -57,7 +57,7 @@
                 <select name="eqpmt_id" lay-verify="required" lay-search="" >
                     <option value=""></option>
                     {volist name="$eqpmt" id="list"}
-                    <option value="{$list.eqpmt_name}">{$list.eqpmt_name}</option>
+                    <option value="{$list.eqpmt_name}">{$list.eqpmt_name?$list.eqpmt_name:"空名称 编号:-".$list.eqpmt_id}</option>
                     {/volist}
                 </select>
             </div>
