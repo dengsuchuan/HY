@@ -116,7 +116,7 @@
                        $.post(url,data,function(info){
                            var taskCount = info['task_qty'];//任务总数
                            var logCount = info['ProductLogCount'];//目标记录总数
-                           var lastCount = (taskCount - logCount).toFixed(1);
+                           var lastCount = (taskCount - logCount).toFixed(2);
                            $("#taskCount").text(taskCount?taskCount:"0");
                            $("#logCount").text(logCount?logCount:"0");
                            $("#lastCount").text(lastCount?lastCount:"0");
