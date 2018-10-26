@@ -69,7 +69,7 @@
                 <input type="number" class="layui-input" name="product_qty" id="product_qty" value="" lay-verify="required" placeholder="禁止修改:请填写完成数量参数" disabled>
             </div>
         </div>
-        <div class="layui-form-item" hidden>
+        <div class="layui-form-item">
             <label class="layui-form-label">质量等级</label>
             <div class="layui-input-block" >
                 <input type="text" class="layui-input" name="quality_grade" value="1" id="quality_grade" lay-verify="required">
@@ -116,7 +116,7 @@
                        $.post(url,data,function(info){
                            var taskCount = info['task_qty'];//任务总数
                            var logCount = info['ProductLogCount'];//目标记录总数
-                           var lastCount = taskCount - logCount;
+                           var lastCount = (taskCount - logCount).toFixed(1);
                            $("#taskCount").text(taskCount?taskCount:"0");
                            $("#logCount").text(logCount?logCount:"0");
                            $("#lastCount").text(lastCount?lastCount:"0");
@@ -134,9 +134,9 @@
         //complete_qty
         $("#complete").bind("input propertychange",function(event){
             var inputVal = $("#complete").val();
-            inputVal = parseInt(inputVal);
+            inputVal = parseFloat(inputVal);
             var lastCount = $("#lastCount").text();
-            lastCount = parseInt(lastCount);
+            lastCount = parseFloat(lastCount);
             if(inputVal > lastCount || inputVal<0){
                 $("#ifCount").show();
             }else{
@@ -152,12 +152,9 @@
         var form = layui.form,layer = layui.layer;
         //监听提交
         form.on('submit(addId)', function(data){
-            if(data.field['quality_grade']<=0 || data.field['quality_grade'] >1 || data.field['quality_grade']==""){
-                layer.alert("质量等级为0~1之间的小数", {icon: 5});
-                return false;
-            }
             var lastCount = $("#lastCount").text();
-            lastCount = parseInt(lastCount);
+            lastCount = parseFloat(lastCount)
+            data.field['complere_qty'] = lastCount;
             if(data.field['complete_qty']>lastCount || data.field['complete_qty']<0){
                 layer.alert("完成数量不得超过剩余数量: "+lastCount, {icon: 5});
                 return false;
