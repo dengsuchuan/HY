@@ -42,7 +42,7 @@
                 <a style="color: green">剩余: <span id="lastCount">0</span> </a>
             </div>
         </div>
-        <div class="layui-form-item" hidden id="completeDiv">
+        <div class="layui-form-item">
             <label class="layui-form-label">完成数量</label>
             <div class="layui-input-block" >
                 <input type="number" class="layui-input" name="complete_qty" id="complete" value="" lay-verify="required">
@@ -66,10 +66,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">合格品数量</label>
             <div class="layui-input-block" >
-                <input type="text" class="layui-input" name="product_qty" id="product_qty" value="" lay-verify="required" placeholder="禁止修改:请填写完成数量参数" disabled>
+                <input type="number" class="layui-input" name="product_qty" id="product_qty" value="" lay-verify="required" placeholder="禁止修改:请填写完成数量参数" disabled>
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" hidden>
             <label class="layui-form-label">质量等级</label>
             <div class="layui-input-block" >
                 <input type="text" class="layui-input" name="quality_grade" value="1" id="quality_grade" lay-verify="required">
@@ -137,8 +137,8 @@
             lastCount = parseInt(lastCount);
             if(inputVal > lastCount || inputVal<0){
                 $("#ifCount").show();
-                $("#product_qty").val(inputVal);
             }else{
+                $("#product_qty").val(inputVal);
                 $("#ifCount").hide();
             }
         });
