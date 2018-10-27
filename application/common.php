@@ -23,6 +23,7 @@ use app\index\model\ProductTask;
 use app\index\model\Material;
 use app\index\model\ProcessType;
 use app\index\model\ProductProcess;
+use app\index\model\ProductLog;
 
 // 应用公共文件
 //截取右边的展示内容
@@ -204,4 +205,18 @@ function getGyType($id){
     $typeId = ProductProcess::where(['process_id'=>$id])->value('process_type');
     $tyepName = ProcessType::where(['id'=>$typeId])->value('process_name');
     return $tyepName;
+}
+function getOrderStaus($cp_id,$id){
+    $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
+//    获取生产记录
+    $ProductLogs = ProductLog::where(['task_id'=>$id])->field('count(process_id)')->group('process_id')->select();
+    $ProductLogs = $ProductLogs->toArray();
+//    $i = 0;
+//    foreach ($ProductLogs as $item){
+//        if($item['']){
+//
+//        }
+//    }
+    return (count($ProductLogs) .'/'.$sum_count);
+
 }
