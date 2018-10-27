@@ -208,15 +208,30 @@ function getGyType($id){
 }
 function getOrderStaus($cp_id,$id){
     $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
-//    获取生产记录
-    $ProductLogs = ProductLog::where(['task_id'=>$id])->field('count(process_id)')->group('process_id')->select();
-    $ProductLogs = $ProductLogs->toArray();
-//    $i = 0;
-//    foreach ($ProductLogs as $item){
-//        if($item['']){
-//
-//        }
-//    }
-    return (count($ProductLogs) .'/'.$sum_count);
+    $ProductLogs = ProductLog::where(['task_id'=>$id])->field('process_id,process_id')->order('process_id desc')->find();
+    $sum = cut_str($ProductLogs['process_id'],'P',-1)+1;
+    $sum = $sum < 10 ? substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P0'.$sum : substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'p'.$sum;
+    $leix = getGyType($ProductLogs['process_id']);
+    return ($ProductLogs['process_id'] != null ? substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1).$leix.'>'.getGyType($sum).'/'.$sum_count : 0 .'>/'.$sum_count);
 
+}
+
+function cut_str($str,$sign,$number){
+    $array=explode($sign, $str);
+    $length=count($array);
+    if($number<0){
+        $new_array=array_reverse($array);
+        $abs_number=abs($number);
+        if($abs_number>$length){
+            return 'error';
+        }else{
+            return $new_array[$abs_number-1];
+        }
+    }else{
+        if($number>=$length){
+            return 'error';
+        }else{
+            return $array[$number];
+        }
+    }
 }
