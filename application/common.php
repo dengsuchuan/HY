@@ -206,16 +206,55 @@ function getGyType($id){
     $tyepName = ProcessType::where(['id'=>$typeId])->value('process_name');
     return $tyepName;
 }
-function getOrderStaus($cp_id,$id){
+function getOrderStaus($cp_id,$id,$p_id){
     $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
     $ProductLogs = ProductLog::where(['task_id'=>$id])->field('process_id,process_id')->order('process_id desc')->find();
     $sum = cut_str($ProductLogs['process_id'],'P',-1)+1;
     $sum = $sum < 10 ? substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P0'.$sum : substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'p'.$sum;
     $leix = getGyType($ProductLogs['process_id']);
-    return ($ProductLogs['process_id'] != null ? substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1).$leix.'>'.getGyType($sum).'/'.$sum_count : 0 .'>/'.$sum_count);
+    $uu = substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1)+1-1;
+
+    // 颜色
+    $xx = $uu <10 ? $cp_id.'-P0'.$uu:$cp_id.'-P'.$uu;
+    $yanse = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$xx])->select();
+    $num = ProductTask::where(['id'=>$p_id])->value('task_qty');
+    $x_num = 0;
+    foreach ($yanse as $item){
+        $x_num += $item['complete_qty'];
+    }
+    if($x_num == $num){
+       $code = "<span style='color: #28ac17'>";
+
+    }else{
+        $code = "<span style='color: #666'>";
+
+    }
+    if ($uu == $sum_count){
+        $k = '';
+    }else{
+        $k = '>';
+    }
+    $centent = $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count;
+    return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>/'.$sum_count);
 
 }
-
+function yanz($cp_id,$id,$p_id){
+    $ProductLogs = ProductLog::where(['task_id'=>$id])->field('process_id,process_id')->order('process_id desc')->find();
+    $uu = substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1)+1-1;
+    // 颜色
+    $xx = $uu <10 ? $cp_id.'-P0'.$uu:$cp_id.'-P'.$uu;
+    $yanse = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$xx])->select();
+    $num = ProductTask::where(['id'=>$p_id])->value('task_qty');
+    $x_num = 0;
+    foreach ($yanse as $item){
+        $x_num += $item['complete_qty'];
+    }
+    if($x_num == $num){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 function cut_str($str,$sign,$number){
     $array=explode($sign, $str);
     $length=count($array);
