@@ -51,7 +51,7 @@
                 </thead>
                 <tbody>
                 {volist name="$productLog" id="list"}
-                <tr {$list.fulfill==0?'':'style="background:greenyellow"'} >
+                <tr>
                     <td class="td-manage">
                         <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing,\'task_id\'=>$task_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                         <a title="删除" onclick="delete_(this,'{$list.log_id}')" href="javascript:void(0);" >
@@ -59,7 +59,7 @@
                         </a>
                     </td>
                     <!--<td>{$list.log_id}</td>-->
-                    <td>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
+                    <td {$list.fulfill==0?'':'style="background:greenyellow"'}>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
                     <td>{$list.process_id|getGyType}</td>
                     <td>{$list.hr_id}</td>
                     <td>{$list.complete_qty}</td>
