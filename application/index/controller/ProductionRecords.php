@@ -27,7 +27,6 @@ class ProductionRecords extends Base
         $drawing = input('drawing');
         $productLog = ProductLog::order('create_time', 'asc')
             ->where(["task_id"=>$task_id])
-            ->order('create_time','DESC')
             ->paginate(25);
         $productLogCount = $productLog->total();
         $this->view->assign([

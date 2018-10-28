@@ -82,6 +82,12 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">是否完成</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="fulfill" lay-skin="switch" lay-text="已完|未完">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block" >
                 <input type="text" class="layui-input" name="remark" value="">
@@ -163,6 +169,11 @@
                 data.field['if_audit']="已审"
             }else{
                 data.field['if_audit']="未审"
+            }
+            if(data.field['fulfill']){
+                data.field['fulfill']="1"
+            }else{
+                data.field['fulfill']="0"
             }
             //console.log(data.field);
             $.post("{:url('index/ProductionRecords/saveLog')}",data.field,function(info){
