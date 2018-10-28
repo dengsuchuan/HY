@@ -210,10 +210,10 @@ function getOrderStaus($cp_id,$id,$p_id){
     $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
     $ProductLogs = ProductLog::where(['task_id'=>$id])->field('process_id,process_id')->order('process_id desc')->find();
     $sum = cut_str($ProductLogs['process_id'],'P',-1)+1;
-    $sum = $sum < 10 ? substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P0'.$sum : substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'p'.$sum;
+    $sum = $sum < 10 ? substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P0'.$sum : substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P'.$sum;
     $leix = getGyType($ProductLogs['process_id']);
     $uu = substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1)+1-1;
-
+    $yanse1 = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$cp_id.'-P'.$uu])->where(['fulfill'=>1])->find();
     // 颜色
     $xx = $uu <10 ? $cp_id.'-P0'.$uu:$cp_id.'-P'.$uu;
     $yanse = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$xx])->select();
@@ -222,7 +222,7 @@ function getOrderStaus($cp_id,$id,$p_id){
     foreach ($yanse as $item){
         $x_num += $item['complete_qty'];
     }
-    if($x_num == $num){
+    if($x_num == $num || $yanse1!=null){
        $code = "<span style='color: #28ac17'>";
 
     }else{
@@ -234,8 +234,11 @@ function getOrderStaus($cp_id,$id,$p_id){
     }else{
         $k = '>';
     }
+    if($ProductLogs['process_id'] == null){
+        $dier = getGyType($cp_id.'-P01');
+    }
     $centent = $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count;
-    return ($ProductLogs['process_id'] != null ?  $centent : 1 .'>/'.$sum_count);
+    return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
 
 }
 function yanz($cp_id,$id,$p_id){
@@ -273,4 +276,10 @@ function cut_str($str,$sign,$number){
             return $array[$number];
         }
     }
+}
+
+function getexternal($t_id){
+    $order = OrderDetail::where(['id'=>$t_id])->value('drawing_externa_or_internal_id');
+    $BlueprintInfo = BlueprintOutside::where(['id'=>$order])->value('drawing_external_id');
+    return ($BlueprintInfo);
 }

@@ -32,7 +32,7 @@
           <tr>
             <th>操作</th>
             <th>任务编号</th>
-            <th>产品图号</th>
+            <th>外部图号</th>
             <th>产品名称</th>
             <th>外来图号</th>
             <th>材料</th>
@@ -59,7 +59,11 @@
             <td>{$info.task_id}</td>
             <td>{$blueprintInfoList.drawing_detail_id}</td>
             <td>{$info.order_detial_id|getOrderDrawingName}</td>
-            <td></td>
+            <td>
+                <?php $getexternal = getexternal($info['order_detial_id']);?>
+              <a title="序号{$getexternal}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$getexternal}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $getexternal])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$getexternal}</i></a>
+
+             </td>
             <td></td>
             <td>{$info.task_qty}</td>
             <td class="td-manage">
