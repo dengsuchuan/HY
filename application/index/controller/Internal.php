@@ -37,6 +37,7 @@ class Internal extends Base
             $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
             $countInternalInfo = $internalInfo->total();
             $this->assign("countInternalInfo",$countInternalInfo);
+
             $this->assign([
                 'internalInfo'  => $internalInfo,
                 'sort'          =>$sort,
@@ -76,7 +77,7 @@ class Internal extends Base
             $this->assign("countInternalInfo",$countInternalInfo);
             return $this->view->fetch('internal-info');
         }
-        $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=','')->paginate(25);
+        $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=',null)->paginate(25);
         $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
         $this->assign([
             'internalInfo'  => $internalInfo,
