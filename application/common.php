@@ -213,7 +213,7 @@ function getOrderStaus($cp_id,$id,$p_id){
     $sum = $sum < 10 ? substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P0'.$sum : substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P'.$sum;
     $leix = getGyType($ProductLogs['process_id']);
     $uu = substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1)+1-1;
-    $yanse1 = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$cp_id.'-P'.$uu])->where(['fulfill'=>1])->find();
+    $yanse1 = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$uu<10 ? $cp_id.'-P0'.$uu:$cp_id.'-P'.$uu])->where(['fulfill'=>1])->find();
     // 颜色
     $xx = $uu <10 ? $cp_id.'-P0'.$uu:$cp_id.'-P'.$uu;
     $yanse = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$xx])->select();
@@ -222,7 +222,7 @@ function getOrderStaus($cp_id,$id,$p_id){
     foreach ($yanse as $item){
         $x_num += $item['complete_qty'];
     }
-    if($x_num == $num || $yanse1!=null){
+    if($x_num == $num || $yanse1 != null){
        $code = "<span style='color: #28ac17'>";
 
     }else{
