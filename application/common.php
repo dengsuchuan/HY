@@ -235,7 +235,7 @@ function getOrderStaus($cp_id,$id,$p_id){
         $k = '>';
     }
     $centent = $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count;
-    return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>/'.$sum_count);
+    return ($ProductLogs['process_id'] != null ?  $centent : 1 .'>/'.$sum_count);
 
 }
 function yanz($cp_id,$id,$p_id){
