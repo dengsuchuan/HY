@@ -107,8 +107,8 @@ class Delivery extends Base
             foreach ($deliverOrder as $value){
                 $tempArray[] = $value['orderId'];
             }
-            $countOrder = count($tempArray);
             $orderInfo = Order::where(['order_id'=>$tempArray])->select();
+            $countOrder = count($orderInfo);
             $this->view->assign(compact('delivery','deliverId','orderInfo','countOrder'));
         }else{
             $countOrder = 0;
