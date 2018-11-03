@@ -1,0 +1,89 @@
+﻿ {include file="public/header" /}
+  <body>
+    <div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">订单管理</a>
+        <a>
+          <cite>送货单</cite></a>
+      </span>
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+    </div>
+    <div class="x-body">
+        <xblock>
+          <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
+
+          <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+          <button class="layui-btn" onclick="x_admin_show('添加送货单','{:url(\'index/Delivery/addShow\')}',500,700)"><i class="layui-icon"></i>添加送货单</button>
+          <span class="x-right" style="line-height:40px">共条{$deliveryCount} · 共{$deliveryCount|getInt}页</span>
+        </xblock>
+  <div class="layui-row">
+    <div class="container-wrap">
+      <div class="box-1">
+      <table class="layui-table">
+        <thead>
+          <tr>
+            <th>操作</th>
+            <th>单据编号</th>
+            <th>客户名称</th>
+            <th>单据说明</th>
+            <th>收款账户</th>
+            <th>收款金额</th>
+            <th>单据日期</th>
+            <th>创建人</th>
+            <th>是否打印</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {volist name="delivery" id="deliveryList"}
+          <tr>
+            <td class="td-manage" width="50px;">
+              <a title="编辑" onclick="x_admin_show('修改送货单: {$deliveryList.deliveryId}','{:url(\'index/Delivery/editShow\',[\'id\'=>$deliveryList.id])}',500,700)" href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
+              <a title="删除" onclick="delete_process(this,'{$deliveryList.id}')" href="javascript:;">
+                <i  style="color:red;" class="layui-icon"></i>
+              </a>
+            </td>
+            <td><a onclick="x_admin_show('添加 {$deliveryList.deliveryId} 的发货单明细','{:url(\'index/Delivery/deliveryDetails\',[\'id\'=>$deliveryList.id])}')" style="color: #0000cc" href="#">{$deliveryList.deliveryId}</a></td>
+            <td>{$deliveryList.clientName|getClientAbbreviation}</td>
+            <td>{$deliveryList.deliveryText}</td>
+            <td>{$deliveryList.accounts}</td>
+            <td>{$deliveryList.amount}</td>
+            <td>{$deliveryList.document}</td>
+            <td>{$deliveryList.create_name}</td>
+            <td>{$deliveryList.if_print?"是":"否"}</td>
+            <td>{$deliveryList.remarks}</td>
+          </tr>
+          {/volist}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page">
+  {$delivery|raw}
+  </div>
+</div>
+    <script>
+        /*删除*/
+        function delete_(obj,id){
+            layer.confirm('确认要删除吗？',function(index){
+                var url = "{:url('/index/Delivery/delete')}";
+                var postData ={"id":id};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        $(obj).parents("tr").remove();
+                        layer.msg('已删除!',{icon:1,time:1000});
+                    }else {
+                        layer.alert("删除失败", {icon: 5});
+                    }
+                },"json");
+            });
+        }
+    </script>
+    </div>
+  </body>
+</html>

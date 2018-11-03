@@ -4,7 +4,7 @@
         {if $Think.session.user.user_id}
         {if $Think.session.user.admin ==='admin'}
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">{$Think.session.user.user_name}</span>！当前时间:2018-04-25 20:50:53
+            <span class="x-red">{$Think.session.user.user_name}</span>！当前时间:{:date("Y-m-d H:i:s")}
         </blockquote>
         {else/}
 

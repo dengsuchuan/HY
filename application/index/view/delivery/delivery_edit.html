@@ -1,0 +1,95 @@
+﻿ {include file="public/header" /}
+<body>
+<div class="x-body ">
+  <form  class="layui-form">
+    {volist name="delivery" id="deliveryList"}
+    <div class="layui-form-item">
+      <label class="layui-form-label">单据编号</label>
+      <span style="color: red">*</span>
+      <div class="layui-input-inline">
+        <input type="text" value="{$deliveryList.deliveryId}" disabled name="deliveryId" lay-verify="required" autocomplete="off" class="layui-input" >
+        <!--<input type="hidden" value="{:date('Y-m-d H:i:s')}" name="document" lay-verify="required" autocomplete="off" class="layui-input" >-->
+        <input type="hidden" value="{$deliveryList.id}" name="id" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">客户名称</label>
+      <div class="layui-input-block">
+        <select name="clientName" lay-search="">
+          <option value="{$deliveryList.clientName}">{$deliveryList.clientName|getClientAbbreviation}</option>
+          <optgroup label="选择客户">
+            {volist name="clientInfo" id="info"}
+            <option value="{$info.id}">{$info.client_abbreviation} - {$info.client_name?$info.client_name:"无全称"}</option>
+            {/volist}
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">收款账户</label>
+      <div class="layui-input-block">
+        <input type="text" name="accounts" value="{$deliveryList.accounts}" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">单据说明</label>
+      <div class="layui-input-block">
+        <input type="text" name="deliveryText" value="{$deliveryList.deliveryText}" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">收款金额</label>
+      <div class="layui-input-block">
+        <input type="text" name="amount" value="{$deliveryList.amount}" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">是否打印</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="if_print" lay-skin="switch" lay-text="是|否" {$deliveryList.if_print==1?"checked":""}>
+      </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-block">
+        <input type="text" name="remarks" value="{$deliveryList.remarks}" lay-verify="required" autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-submit lay-filter="addId" >
+        提交修改
+      </button>
+    </div>
+    {/volist}
+  </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/Delivery/editUpdate')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>
