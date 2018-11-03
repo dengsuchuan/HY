@@ -38,31 +38,25 @@
             <table class="layui-table">
               <thead>
               <tr>
-            <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
-              <th>操作</th>
-            <th>订单编号</th>
-            <th>订单内容</th>
-            <th>交货日期</th>
-            <th>客户简称</th>
-            <th>备料</th>
-            <th>订单报价</th>
-            <th>客户项目号</th>
-              <th>完成</th>
-              <th>发货</th>
-              <th>收款</th>
-            <th>评审</th>
-            <th>建档时间</th>
-            <th>报价</th>
+                <th>操作</th>
+                <th>订单编号</th>
+                <th>订单内容</th>
+                <th>交货日期</th>
+                <th>客户简称</th>
+                <th>备料</th>
+                <th>订单报价</th>
+                <th>客户项目号</th>
+                <th>完成</th>
+                <th>发货</th>
+                <th>收款</th>
+                <th>评审</th>
+                <th>建档时间</th>
+                <th>报价</th>
               </tr>
         </thead>
         <tbody>
         {volist name ="orderInfo" id="info"}
           <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
             <td class="td-manage">
               <a title="修改" onclick="x_admin_show('修改订单明细','{:url(\'index/Order/editOrder\',[\'id\'=>$info.id])}',600,600)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
               <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
@@ -77,25 +71,13 @@
              {$info.client_prj_id}
             </td>
             <td>
-              {if $info.if_complete == 1}
-              完成
-              {else/}
-              未完成
-              {/if}
+              {if $info.if_complete == 1} 完成 {else/} 未完成 {/if}
             </td>
             <td>
-              {if $info.deliver_goods}
-              已发货
-              {else/}
-              未发货
-              {/if}
+              {if $info.deliver_goods}已发货{else/}未发货{/if}
             </td>
             <td>
-              {if $info.receivables == 1}
-              已收款
-              {else/}
-              未收款
-              {/if}
+              {if $info.receivables == 1} 已收款 {else/} 未收款 {/if}
             </td>
             <td></td>
             <td>{$info.create_time}</td>

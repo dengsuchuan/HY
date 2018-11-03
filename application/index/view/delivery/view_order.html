@@ -1,0 +1,60 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <div class="layui-row">
+        <div class="container-wrap">
+            <div class="box-1">
+                <table id="table0" class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>订单编号</th>
+                        <th>订单内容</th>
+                        <th>交货日期</th>
+                        <th>客户简称</th>
+                        <th>备料</th>
+                        <th>订单报价</th>
+                        <th>客户项目号</th>
+                        <th>完成</th>
+                        <th>发货</th>
+                        <th>收款</th>
+                        <th>评审</th>
+                        <th>建档时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name ="orderInfo" id="info"}
+                    <tr>
+                        <td><a title="订单明细" href="" style="color: green"  data-id="{$info.order_id}"> {$info.order_id} </a></td>
+                        <td>{$info.order_content}</td>
+                        <td>{$info.delivery_time}</td>
+                        <td>{$info.client_id|getClientAbbreviation}</td>
+                        <td>{$info.prepare}</td>
+                        <td>{$info.order_price}</td>
+                        <td>
+                            {$info.client_prj_id}
+                        </td>
+                        <td>
+                            {if $info.if_complete == 1} 完成 {else/} 未完成 {/if}
+                        </td>
+                        <td>
+                            {if $info.deliver_goods}已发货{else/}未发货{/if}
+                        </td>
+                        <td>
+                            {if $info.receivables == 1} 已收款 {else/} 未收款 {/if}
+                        </td>
+                        <td></td>
+                        <td>{$info.create_time}</td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="page">
+            {$orderInfo|raw}
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

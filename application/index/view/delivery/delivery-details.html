@@ -1,90 +1,136 @@
-﻿ {include file="public/header" /}
-  <body>
-    <div class="x-nav">
-      <span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">订单管理</a>
-        <a href="">送货单</a>
-        <a>
-          <cite>送货单明细</cite></a>
-      </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
-    </div>
-    <div class="x-body">
-        <xblock>
-          <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
+﻿{include file="public/header" /}
+<body>
 
-          <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-          <button class="layui-btn" onclick="x_admin_show('添加送货单','{:url(\'index/Delivery/addShow\')}',500,700)"><i class="layui-icon"></i>添加送货单</button>
-          <span class="x-right" style="line-height:40px">共条{$deliveryCount} · 共{$deliveryCount|getInt}页</span>
-        </xblock>
+<div class="x-body">
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
+    <legend>送货单明细</legend>
+    <div class="layui-row">
+      <div class="container-wrap">
+        <div class="box-1">
+          <table class="layui-table">
+            <thead>
+            <tr>
+              <th>单据编号</th>
+              <th>发货数量</th>
+              <!--<th>备注</th>-->
+            </tr>
+            </thead>
+
+            <tbody>
+            {volist name="delivery" id="deliveryList"}
+            <tr>
+              <td>{$deliveryList.deliveryId}</td>
+              <td id="countOrder">{$countOrder}</td>
+              <!--<td>{$deliveryList.remarks}</td>-->
+            </tr>
+            {/volist}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <xblock>
+    <button class="layui-btn" id="addOrder"><i class="layui-icon"></i>添加订单</button>
+    <!--<span class="x-right" style="line-height:40px">共{count}条 · 共{count/25|getInt}页</span>-->
+  </xblock>
   <div class="layui-row">
     <div class="container-wrap">
       <div class="box-1">
-      <table class="layui-table">
-        <thead>
+        <table class="layui-table">
+          <thead>
           <tr>
-            <th>操作</th>
-            <th>单据编号</th>
-            <th>客户名称</th>
-            <th>单据说明</th>
-            <th>收款账户</th>
-            <th>收款金额</th>
-            <th>单据日期</th>
-            <th>创建人</th>
-            <th>是否打印</th>
-            <th>备注</th>
+            <th>删除</th>
+            <th>订单编号</th>
+            <th>订单内容</th>
+            <th>交货日期</th>
+            <th>客户简称</th>
+            <th>备料</th>
+            <th>订单报价</th>
+            <th>客户项目号</th>
+            <th>完成</th>
+            <th>发货</th>
+            <th>收款</th>
+            <th>评审</th>
+            <th>建档时间</th>
           </tr>
-        </thead>
-
-        <tbody>
-          {volist name="delivery" id="deliveryList"}
+          </thead>
+          <tbody>
+          {if $orderInfo}
+          {volist name ="orderInfo" id="info"}
           <tr>
-            <td class="td-manage" width="50px;">
-              <a title="编辑" onclick="x_admin_show('修改送货单: {$deliveryList.deliveryId}','{:url(\'index/Delivery/editShow\',[\'id\'=>$deliveryList.id])}',500,700)" href="javascript:;">
-                <i style="color: green" class="layui-icon"></i>
-              </a>
-              <a title="删除" onclick="delete_process(this,'{$deliveryList.id}')" href="javascript:;">
-                <i  style="color:red;" class="layui-icon"></i>
-              </a>
+            <td class="td-manage">
+              <a title="删除" onclick="delete_(this,'{$info.order_id}')" href="#" ><i  style="color:red;" class="layui-icon"></i></a>
             </td>
-            <td><a onclick="x_admin_show('添加 {$deliveryList.deliveryId} 的发货单明细','{:url(\'index/Delivery/editShow\',[\'id\'=>$deliveryList.id])}',500,700)" style="color: #0000cc" href="#">{$deliveryList.deliveryId}</a></td>
-            <td>{$deliveryList.clientName|getClientAbbreviation}</td>
-            <td>{$deliveryList.deliveryText}</td>
-            <td>{$deliveryList.accounts}</td>
-            <td>{$deliveryList.amount}</td>
-            <td>{$deliveryList.document}</td>
-            <td>{$deliveryList.create_name}</td>
-            <td>{$deliveryList.if_print?"是":"否"}</td>
-            <td>{$deliveryList.remarks}</td>
+            <td>{$info.order_id}</td>
+            <td>{$info.order_content}</td>
+            <td>{$info.delivery_time}</td>
+            <td>{$info.client_id|getClientAbbreviation}</td>
+            <td>{$info.prepare}</td>
+            <td>{$info.order_price}</td>
+            <td>
+              {$info.client_prj_id}
+            </td>
+            <td>
+              {if $info.if_complete == 1} 完成 {else/} 未完成 {/if}
+            </td>
+            <td>
+              {if $info.deliver_goods}已发货{else/}未发货{/if}
+            </td>
+            <td>
+              {if $info.receivables == 1} 已收款 {else/} 未收款 {/if}
+            </td>
+            <td></td>
+            <td>{$info.create_time}</td>
           </tr>
           {/volist}
-        </tbody>
-      </table>
+          {/if}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="page">
-  {$delivery|raw}
   </div>
 </div>
-    <script>
-        /*删除*/
-        function delete_(obj,id){
-            layer.confirm('确认要删除吗？',function(index){
-                var url = "{:url('/index/Delivery/delete')}";
-                var postData ={"id":id};
-                $.post(url,postData,function (result) {
-                    if(result === 1 ){
-                        $(obj).parents("tr").remove();
-                        layer.msg('已删除!',{icon:1,time:1000});
-                    }else {
-                        layer.alert("删除失败", {icon: 5});
-                    }
-                },"json");
-            });
-        }
-    </script>
-    </div>
-  </body>
+<script>
+    $("#addOrder").click(function () {
+        top.SearchTeacherLayerId = top.layer.open({
+            title: "给送货单: {$deliverId} 添加订单产品",
+            type: 2,
+            shadeClose: true,
+            area: ['85%', '590px'],
+            content: "{:url('index/Delivery/selectOrder')}",
+            success: function () {
+                $(top.document.body).find('#layui-layer-iframe' + top.SearchTeacherLayerId).contents().find("td a").on('click', function () {
+                    //alert($(this).attr('data-id'));
+                    var order_id = $(this).attr('data-id');//订单编号
+                    var url = "{:url('index/Delivery/addNexus')}";
+                    var data = {'deliverId':'{$deliverId}','orderId':order_id};
+                    $.post(url,data,function(info){
+                    },'json');
+                    window.location.reload();  //刷新父级页面
+                    top.layer.close(top.SearchTeacherLayerId);
+                });
+            }
+        });
+    });
+
+    /*删除*/
+    function delete_(obj,id){
+        layer.confirm('从发货单列表中删除？',function(index){
+            var url = "{:url('/index/Delivery/delOrder')}";
+            var postData ={"id":id};
+            $.post(url,postData,function (result) {
+                if(result){
+                    $(obj).parents("tr").remove();
+                    var countOrder = $("#countOrder").text();
+                    $("#countOrder").text(countOrder-1);
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }else {
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },"json");
+        });
+    }
+</script>
+</body>
 </html>

@@ -15,6 +15,7 @@ use app\index\model\DrawingFiles;
 use app\index\model\Section;
 
 use function Couchbase\defaultDecoder;
+use think\cache\driver\Redis;
 use think\Db;
 use think\facade\Request;
 use app\index\model\ProcessType as ProcessTypeModel;

@@ -10,8 +10,11 @@ namespace app\index\controller;
 
 
 use app\index\common\controller\Base;
+use app\index\model\DeliveryInfoModel;
 use app\index\model\DeliveryModel;
 use app\index\model\Client;
+use app\index\model\DeliveryOrderModel;
+use app\index\model\Order;
 use think\facade\Request;
 
 class Delivery extends Base
@@ -43,6 +46,7 @@ class Delivery extends Base
         }
         $info = DeliveryModel::create($data);
         if ($info){
+            DeliveryInfoModel::create(['deliveryId'=>$data['deliveryId']]);
             return json(1);
         }else{
             return json(0);
@@ -79,8 +83,10 @@ class Delivery extends Base
     public function delete(){
         if(Request::isAjax()){
             $id = Request::post('id');
+            $deliveryId = Request::post('deliveryId');
             $info = DeliveryModel::where(['id'=>$id])->delete();
             if($info){
+                DeliveryInfoModel::where(['deliveryId'=>$deliveryId])->delete();
                 return json(1);
             }else{
                 return json(0);
@@ -90,7 +96,66 @@ class Delivery extends Base
 
     //送货单明细
     public function deliveryDetails(){
+        //对应的送货单
+        $deliverId = input('deliverId');
+        $delivery = DeliveryInfoModel::where(['deliveryId'=>$deliverId])->select();
+        //该送货单拥有的订单
+
+        //查询所有对应的订单
+        $deliverOrder = DeliveryOrderModel::where(['deliverId'=>$deliverId])->select();
+        if(count($deliverOrder)>0){
+            foreach ($deliverOrder as $value){
+                $tempArray[] = $value['orderId'];
+            }
+            $countOrder = count($tempArray);
+            $orderInfo = Order::where(['order_id'=>$tempArray])->select();
+            $this->view->assign(compact('delivery','deliverId','orderInfo','countOrder'));
+        }else{
+            $countOrder = 0;
+            $orderInfo = 0;
+            $this->view->assign(compact('delivery','deliverId','countOrder','orderInfo'));
+        }
+
         return $this->view->fetch('delivery-details');
     }
+
+    //查看订单
+    public function selectOrder(){
+        $orderInfo = Order::where(['if_complete'=>0])->order('order_id asc')->paginate(25);
+        $count =  $orderInfo->total();
+        $this->assign(compact('orderInfo','count'));
+        return $this->view->fetch('view_order');
+    }
+
+    //订单表和订单项目关系
+    public function addNexus(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $info = DeliveryOrderModel::create($data);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+
+    //删除发货单和订单的关系
+    public function delOrder(){
+        if(Request::isAjax()){
+            $id = Request::post();
+            $info = DeliveryOrderModel::where(['orderId'=>$id])->delete();
+            if ($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+
+    }
+
+
+
+
 
 }

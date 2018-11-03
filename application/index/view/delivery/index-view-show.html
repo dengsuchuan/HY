@@ -44,11 +44,11 @@
               <a title="编辑" onclick="x_admin_show('修改送货单: {$deliveryList.deliveryId}','{:url(\'index/Delivery/editShow\',[\'id\'=>$deliveryList.id])}',500,700)" href="javascript:;">
                 <i style="color: green" class="layui-icon"></i>
               </a>
-              <a title="删除" onclick="delete_process(this,'{$deliveryList.id}')" href="javascript:;">
+              <a title="删除" onclick="delete_(this,'{$deliveryList.id}','{$deliveryList.deliveryId}')" href="javascript:;">
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
             </td>
-            <td><a onclick="x_admin_show('添加 {$deliveryList.deliveryId} 的发货单明细','{:url(\'index/Delivery/deliveryDetails\',[\'id\'=>$deliveryList.id])}')" style="color: #0000cc" href="#">{$deliveryList.deliveryId}</a></td>
+            <td><a onclick="x_admin_show('添加 {$deliveryList.deliveryId} 的发货单明细','{:url(\'index/Delivery/deliveryDetails\',[\'deliverId\'=>$deliveryList.deliveryId])}')" style="color: #0000cc" href="#">{$deliveryList.deliveryId}</a></td>
             <td>{$deliveryList.clientName|getClientAbbreviation}</td>
             <td>{$deliveryList.deliveryText}</td>
             <td>{$deliveryList.accounts}</td>
@@ -69,10 +69,10 @@
 </div>
     <script>
         /*删除*/
-        function delete_(obj,id){
+        function delete_(obj,id,deliveryId){
             layer.confirm('确认要删除吗？',function(index){
                 var url = "{:url('/index/Delivery/delete')}";
-                var postData ={"id":id};
+                var postData ={"id":id,"deliveryId":deliveryId};
                 $.post(url,postData,function (result) {
                     if(result === 1 ){
                         $(obj).parents("tr").remove();
