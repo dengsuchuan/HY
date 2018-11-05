@@ -111,6 +111,11 @@ function getMeasuringName($id){
 function getExternaId($code){
     return BlueprintOutside::where('drawing_external_id','=',$code)->value('id');
 }
+
+//获取外图ID
+function getNExternaId($code){
+    return DrawingInternal::where('drawing_Internal_id','=',$code)->value('id');
+}
 //获取外图编号
 function getExternaCode($id){
     return BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
@@ -119,10 +124,16 @@ function getExternaCode($id){
 function getDrawingDetailCode($code){
     return BlueprintInfo::where(['drawing_externa_id'=>$code])->value('id');
 }
-function getCountExterna($id,$order_id){
+function getCountExterna($id,$order_id,$if_tu){
 
-    $drawing_external_id = BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
-    $d_count = count(BlueprintInfo::where(['drawing_externa_id'=>$drawing_external_id])->select());
+    if($if_tu == 1){
+        $drawing_external_id = DrawingInternal::where('id','=',$id)->value('drawing_Internal_id');
+        $d_count = count(BlueprintInfo::where(['drawing_internal_id'=>$drawing_external_id])->select());
+
+    }else{
+        $drawing_external_id = BlueprintOutside::where('id','=',$id)->value('drawing_external_id');
+        $d_count = count(BlueprintInfo::where(['drawing_externa_id'=>$drawing_external_id])->select());
+    }
     $o_counrt = count(OrderDetail::where(['drawing_externa_or_internal_id'=>$id])->where('order_id','=',$order_id)->select());
     if($d_count > $o_counrt){
         return true;

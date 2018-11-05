@@ -72,7 +72,9 @@
   </fieldset>
   <xblock>
     <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
-    <button class="layui-btn" onclick="x_admin_show('添加','{:url(\'index/blueprint/blueprintoutside\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}')"><i class="layui-icon"></i>添加</button>
+
+    <button class="layui-btn"  onclick="openLinke('{$info.id}')"><i class="layui-icon"></i>添加</button>
+
     {if $model == 1}
     <a href="{:url('index/Order/orderDetail',['id'=>$id])}"><button class="layui-btn">隐藏</button></a>
     {else}
@@ -124,7 +126,7 @@
                     {volist name="orderDatailInfo" id="info"}
                     <tr>
                         <?php
-                    $count = getCountExterna($info['drawing_externa_or_internal_id'],$info['order_id']);
+                    $count = getCountExterna($info['drawing_externa_or_internal_id'],$info['order_id'],$info['if_tu']);
                   ?>
 
                         {if $actrion}
@@ -176,7 +178,7 @@
                         </td>
                         <td>
                             {if $count }
-                            <?php echo  $i ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
+                            <?php echo  $i ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id,\'type\'=>$info.if_tu])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
                             {else}
                             <?php echo  $i ;?>
                             {/if}
@@ -239,6 +241,27 @@
     </div>
 </div>
 <script>
+
+    function openLinke(id) {
+        layer.open({
+            content: '选择你要进入的图纸类型～～'
+            ,btn: ['外图', '内图'] //按钮
+            ,yes: function(index, layero){
+                //按钮【按钮一】的回调
+                x_admin_show("外图",'{:url(\'index/blueprint/blueprintoutside\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}');
+            },btn2: function(index, layero){
+                //按钮【按钮二】的回调
+                x_admin_show("内图",'{:url(\'index/internal/internalinfo\',[\'id\'=>1,'model'=>1,'order'=>$orderCode])}');
+            },btn3: function(index, layero){
+                //按钮【按钮三】的回调
+                x_admin_show("总价报价","{:url('index/quoted/quotedInfoType3')}?id=" + id);
+            }
+            ,cancel: function(){
+                //右上角关闭回调
+            }
+        });
+    }
+
     function openAll () {
         var data = tableCheck.getData();
         to(data);

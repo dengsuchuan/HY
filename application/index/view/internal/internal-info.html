@@ -37,6 +37,9 @@
                 <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
             </form>
         </div>
+        {if $mode == 1}
+        <button class="layui-btn" onclick="exeOrder()"><i class="layui-icon"></i>生成订单明细</button>
+        {/if}
         <span class="x-right" style="line-height:40px">共{$countInternalInfo}条 · 共{$countInternalInfo/25|getInt}页</span>
         <script>
             $(function () {
@@ -55,9 +58,11 @@
             <table class="layui-table">
                 <thead>
             <tr>
-                <!--<th width="2%">-->
-                    <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
-                <!--</th>-->
+                {if $mode == 1}
+                <th width="20px;">
+                    <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                </th>
+                {/if}
                 <th width="2%">
                     操作
                     &nbsp;
@@ -87,9 +92,12 @@
         <tbody>
         {volist name="internalInfo" id="info"}
         <tr>
-            <!--<td>-->
-                <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.id}'><i class="layui-icon">&#xe605;</i></div>-->
-            <!--</td>-->
+            {if $mode == 1}
+            <td>
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$info.drawing_Internal_id}'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            {/if}
+
             <td class="td-manage" width="50px;">
                 <a title="编辑"onclick="x_admin_show('修改操作','{:url(\'index/Internal/edit\',[\'id\'=>$info.id])}',500,400)" href="javascript:;">
                     <i style="color: green" class="layui-icon"></i>
@@ -136,7 +144,20 @@
 
 </div>
 <script>
+    function exeOrder() {
+        var data = tableCheck.getData();
+        var code = "{$order}";
+        var index = parent.layer.getFrameIndex(window.name);
+        if(data == ''){
+            layer.msg('请选择数据');
+            return;
+        }
+        //关闭当前弹出层
+        x_admin_show('填写订单明细',"{:url('index/Order/addOrderDetail')}?id="+data+"&order="+code+"&type=n");
+
+    }
     /*删除*/
+
     function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             var url = "{:url('/index/Internal/delete')}";

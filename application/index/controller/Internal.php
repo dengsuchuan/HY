@@ -79,6 +79,10 @@ class Internal extends Base
         }
         $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=',null)->paginate(25);
         $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
+        $mode = input('model');
+        $order = input('order');
+        $this->assign('mode',$mode);
+        $this->assign('order',$order);
         $this->assign([
             'internalInfo'  => $internalInfo,
             'sort'          =>$sort,
