@@ -35,6 +35,8 @@
             <th>数量</th>
             <th>图纸工艺</th>
             <th>下达日期</th>
+            <th>内图编号</th>
+            <th>外图编号</th>
             {if $model===1}
             <th>是否完成</th>
             {/if}
@@ -78,6 +80,10 @@
               {/if}
             </td>
             <td>{$info.create_time}</td>
+          <?php $order_detial_id = getTaskIdExternal($info['order_detial_id'])?>
+          <td> <a href="javascript:;" onclick="x_admin_show('','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$order_detial_id,'key'=>'internal'])}')" ><span style="color: #1E9FFF">{$info.order_detial_id|getTaskIdExternal}</span></a></td>
+          <?php $drawing_externa_id = getTaskIdWaiExternal($info['order_detial_id'])?>
+          <td> <a href="javascript:;" onclick="x_admin_show('','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$drawing_externa_id,'key'=>'externa'])}')" ><span style="color: #1E9FFF">{$info.order_detial_id|getTaskIdWaiExternal}</span></a></td>
           {if $model===1}
             <td>
               {if $info.if_completr == 1}
@@ -87,7 +93,7 @@
               {/if}
             </td>
           {/if}
-            <td></td>
+          <td></td>
           <td>
             <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
              {$equipmentInfo.eqpmt_name}

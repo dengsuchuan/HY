@@ -283,3 +283,16 @@ function getexternal($t_id){
     $BlueprintInfo = BlueprintOutside::where(['id'=>$order])->value('drawing_external_id');
     return ($BlueprintInfo);
 }
+
+// 跟据任务ID 获取内图
+function getTaskIdExternal($t_id){
+    $order = OrderDetail::where(['id'=>$t_id])->value('drawing_detail_id');
+    $drawing_detail =BlueprintInfo::where(['id'=>$order])->value('drawing_internal_id');
+    return ($drawing_detail);
+}
+// 跟据任务ID 获取外图
+function getTaskIdWaiExternal($t_id){
+    $order = OrderDetail::where(['id'=>$t_id])->value('drawing_detail_id');
+    $drawing_detail =BlueprintInfo::where(['id'=>$order])->value('drawing_externa_id');
+    return ($drawing_detail);
+}
