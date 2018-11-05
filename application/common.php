@@ -227,7 +227,6 @@ function getOrderStaus($cp_id,$id,$p_id){
     foreach ($yanse as $item){
         $x_num += $item['complete_qty'];
     }
-
     if($x_num == $num || $yanse1 != null){
        $code = "<span style='color: #28ac17'>";
 
@@ -243,10 +242,17 @@ function getOrderStaus($cp_id,$id,$p_id){
         $dier = getGyType($cp_id.'-P01');
     }
     $xb = count($yanse) - 1;
-    if($x_num == $num && $yanse[$xb]['qc_inspector'] != null){
-        $centent = "<span style='color: #28ac17'>" . $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count ."</style>";
-        return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
+    $c_cum = 0;
+    if($xb != -1){
+        $c_cum = cut_str($yanse[$xb]['process_id'],'P',-1)+1-1;
     }
+    if($yanse !=''){
+        if($sum_count == $c_cum  && $yanse[$xb]['qc_inspector'] != null){
+            $centent = "<span style='color: #28ac17'>" . $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count ."</style>";
+            return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
+        }
+    }
+
     $centent = $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count;
     return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
 
