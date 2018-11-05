@@ -95,6 +95,10 @@ class Order extends Base
         $model = intval(input('model'));
         $id = input('id');
         if($model == 1){
+            $actrion = input('actrion');
+            if(!isset($actrion)){
+                $actrion = 1;
+            }
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
             //获取订单明细
@@ -108,7 +112,8 @@ class Order extends Base
                 'orderDatailInfoNoShow' =>$orderDatailInfoNoShow,
                 'orderDatailInfoC'    =>$orderDatailInfoC,
                 'id'                  =>$id,
-                'model'               =>1
+                'model'               =>1,
+                'actrion'             =>$actrion
             ]);
             return  $this->view->fetch('order-detail-info');
         }
@@ -137,6 +142,12 @@ class Order extends Base
     public function addOrderDetail(){
         if (Request::isPost()){
             $data = Request::post();
+            $type = $data['type'];
+            if($type == 'n'){
+                $tu = 1;
+            }else{
+                $tu = 0;
+            }
             $coder = $data['order'];
             $code = OrderDetail::where(['order_id'=>$coder])->order('order_detail_code desc')->value('order_detail_code');
             $sort = OrderDetail::where(['order_id'=>$coder])->order('sort desc')->value('sort');
@@ -162,6 +173,7 @@ class Order extends Base
                         $datas[$i]['order_detail_code'] = $order_code.'-'. ($tempid<10 ? '0'.$tempid :$tempid);
                         $datas[$i]['sort'] = ++$sort;
                         $datas[$i]['create_name'] =  session('user.user_name');
+                        $datas[$i]['if_tu'] = $tu;
                         $i++;
                         $tempid++;
                     }
@@ -254,7 +266,11 @@ class Order extends Base
                 if($key == 'drawing_externa_or_internal_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
-                        $datas[$i][$key] = getExternaId($value[$i]);
+                        if($type == 'n'){
+                            $datas[$i][$key] = getNExternaId($value[$i]);
+                        }else{
+                            $datas[$i][$key] = getExternaId($value[$i]);
+                        }
                         $i++;
                     }
                 }
@@ -267,25 +283,41 @@ class Order extends Base
                 return json(0);
             }
         }
-
+        $type =  input('type');
         $id = input('id');
         $ids = explode(',',$id);
         $orderId = input('order');
         $orderCode = OrderMode::where(['id'=>$orderId])->value('order_id');
-        $blueprintInfo = BlueprintInfo::where('drawing_externa_id','in',$ids)->select();
+
+        if($type == 'n'){
+            $a = 1;
+            $blueprintInfo = BlueprintInfo::where('drawing_internal_id','in',$ids)->select();
+        }else if($type=='w'){
+            $a = 0;
+            $blueprintInfo = BlueprintInfo::where('drawing_externa_id','in',$ids)->select();
+        }
         $this->assign([
             'orderId'        =>  $orderId,
             'orderCode'      =>  $orderCode,
-            'blueprintInfo'  =>   $blueprintInfo
+            'blueprintInfo'  =>   $blueprintInfo,
+            'type' =>$type,
+            'a'    => $a
         ]);
         return  $this->view->fetch('order_detail_add');
     }
     public function newOrder(){
         $ids = input();
         $ocder_id = $ids['id'];
+        $type = input('type');
         $o_drawing_details = OrderDetail::where(['order_id'=>$ids['id']])->where(['drawing_externa_or_internal_id'=>$ids['ex_or_id']])->field('drawing_detail_id')->select();  //现有的明细
-        $ex_or_code = BlueprintOutside::where(['id'=>$ids['ex_or_id']])->value('drawing_external_id'); // 跟据外图id获取外图编号
-        $d_drawing_details = BlueprintInfo::where(['drawing_externa_id'=>$ex_or_code])->field('id')->select(); // 跟据外图编号获取图纸明细
+        if($type == '1') {
+            $ex_or_code =DrawingInternal::where(['id' => $ids['ex_or_id']])->value('drawing_Internal_id'); // 跟据外图id获取外图编号
+            $d_drawing_details = BlueprintInfo::where(['drawing_internal_id'=>$ex_or_code])->field('id')->select(); // 跟据外图编号获取图纸明细
+        }else{
+            $ex_or_code = BlueprintOutside::where(['id' => $ids['ex_or_id']])->value('drawing_external_id'); // 跟据外图id获取外图编号
+            $d_drawing_details = BlueprintInfo::where(['drawing_externa_id'=>$ex_or_code])->field('id')->select(); // 跟据外图编号获取图纸明细
+        }
+
         $d_ids = [];  // 数据转换
         foreach ( $d_drawing_details as $item) {
             $d_ids[] = $item['id'];
@@ -297,11 +329,22 @@ class Order extends Base
         $ids = array_diff($d_ids,$o_ids);  // 求两个数组的交集
         $orderId = $ocder_id;
         $orderCode = OrderMode::where(['id'=>$orderId])->value('order_id');
-        $blueprintInfo = BlueprintInfo::where('id','in',$ids)->select();
+
+        if($type == '1'){
+            $type = 'n';
+            $a = 1;
+            $blueprintInfo = BlueprintInfo::where('id','in',$ids)->select();
+        }else if($type=='0'){
+            $type = 'w';
+            $a = 0;
+            $blueprintInfo = BlueprintInfo::where('id','in',$ids)->select();
+        }
         $this->assign([
             'orderId'        =>  $orderId,
             'orderCode'      =>  $orderCode,
-            'blueprintInfo'  =>   $blueprintInfo
+            'blueprintInfo'  =>   $blueprintInfo,
+            'type' =>$type,
+            'a'    => $a
         ]);
         return  $this->view->fetch('order_detail_add');
     }
