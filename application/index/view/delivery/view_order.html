@@ -75,11 +75,11 @@
                     //alert($(this).attr('data-id'));
                     var order_id = $(this).attr('data-id');//订单编号
                     var url = "{:url('index/Delivery/addNexus')}";
-                    // var data = {'id':id};
                     var data = {'deliverId':'{$deliveryId}','orderId':order_id};
                     $.post(url,data,function(info){
                     },'json');
                     top.layer.close(top.SearchTeacherLayerId);
+                    layer.msg('等待刷新中...', {icon:3,time:5000});
                     //window.location.reload();  //刷新父级页面
                     window.parent.location.reload();
                 });
