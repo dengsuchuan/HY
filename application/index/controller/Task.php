@@ -55,7 +55,7 @@ class Task extends Base
                 $i = substr($task_id,strripos($task_id,"-")+1) +1;
             }
             $taskCode = $i<10 ? '0'.$i :$i;
-            $taskCode = 'TK-'.date('md').'-'.$taskCode;
+            $taskCode = 'TK'.date('ymd').'-'.$taskCode;
             $this->assign([
                 'taskCode'  =>  $taskCode,
                 'orderDetailCode'  => $orderDetailCode,
