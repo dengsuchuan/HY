@@ -207,6 +207,8 @@ function getGyType($id){
     return $tyepName;
 }
 function getOrderStaus($cp_id,$id,$p_id){
+    $productprocess = ProductProcess::where('drawing_detial_id',$cp_id)->order('id desc')->find();
+//    dd($productprocess);
     $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
     $ProductLogs = ProductLog::where(['task_id'=>$id])->field('process_id,process_id')->order('process_id desc')->find();
     $sum = cut_str($ProductLogs['process_id'],'P',-1)+1;
@@ -217,17 +219,18 @@ function getOrderStaus($cp_id,$id,$p_id){
     // 颜色
     $xx = $uu <10 ? $cp_id.'-P0'.$uu:$cp_id.'-P'.$uu;
     $yanse = ProductLog::where(['task_id'=>$id])->where(['process_id'=>$xx])->select();
+//    dd($yanse);
     $num = ProductTask::where(['id'=>$p_id])->value('task_qty');
     $x_num = 0;
     foreach ($yanse as $item){
         $x_num += $item['complete_qty'];
     }
+
     if($x_num == $num || $yanse1 != null){
        $code = "<span style='color: #28ac17'>";
 
     }else{
         $code = "<span style='color: #666'>";
-
     }
     if ($uu == $sum_count){
         $k = '';
@@ -236,6 +239,11 @@ function getOrderStaus($cp_id,$id,$p_id){
     }
     if($ProductLogs['process_id'] == null){
         $dier = getGyType($cp_id.'-P01');
+    }
+    $xb = count($yanse) - 1;
+    if($x_num == $num && $yanse[$xb]['qc_inspector'] != null){
+        $centent = "<span style='color: #28ac17'>" . $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count ."</style>";
+        return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
     }
     $centent = $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count;
     return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
