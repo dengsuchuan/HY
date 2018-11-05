@@ -93,7 +93,7 @@ class Order extends Base
 
     public function orderDetail(){
         $model = intval(input('model'));
-        $id = intval(input('id'));
+        $id = input('id');
         if($model == 1){
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
@@ -105,14 +105,17 @@ class Order extends Base
                 'orderRow'            => $orderRow,
                 'orderCode'           => $orderCode,
                 'orderDatailInfo'     => $orderDatailInfo,
-                'orderDatailInfoNoShow'    =>$orderDatailInfoNoShow,
+                'orderDatailInfoNoShow' =>$orderDatailInfoNoShow,
                 'orderDatailInfoC'    =>$orderDatailInfoC,
-                'id'                   =>$id,
-                'model'                 =>1
+                'id'                  =>$id,
+                'model'               =>1
             ]);
             return  $this->view->fetch('order-detail-info');
         }
-
+        $actrion = input('actrion');
+        if(!isset($actrion)){
+            $actrion = 1;
+        }
         $orderRow = OrderMode::where(['id'=>$id])->select();
         $orderCode = OrderMode::where(['id'=>$id])->value('id');
         //获取订单明细
@@ -123,10 +126,11 @@ class Order extends Base
             'orderRow'            => $orderRow,
             'orderCode'           => $orderCode,
             'orderDatailInfo'     => $orderDatailInfo,
-            'orderDatailInfoNoShow'    =>$orderDatailInfoNoShow,
+            'orderDatailInfoNoShow' =>$orderDatailInfoNoShow,
             'orderDatailInfoC'    =>$orderDatailInfoC,
-            'id'                   =>$id,
-            'model'                 =>0
+            'id'                  =>$id,
+            'actrion'             =>$actrion,
+            'model'               =>0
         ]);
         return  $this->view->fetch('order-detail-info');
     }

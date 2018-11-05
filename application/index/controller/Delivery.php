@@ -15,6 +15,7 @@ use app\index\model\DeliveryModel;
 use app\index\model\Client;
 use app\index\model\DeliveryOrderModel;
 use app\index\model\Order;
+use app\index\model\OrderDetail;
 use think\facade\Request;
 
 class Delivery extends Base
@@ -107,14 +108,24 @@ class Delivery extends Base
             foreach ($deliverOrder as $value){
                 $tempArray[] = $value['orderId'];
             }
-            $orderInfo = Order::where(['order_id'=>$tempArray])->select();
-            $countOrder = count($orderInfo);
-            $this->view->assign(compact('delivery','deliverId','orderInfo','countOrder'));
+//--------------------
+            $actrion = input('actrion');
+            if(!isset($actrion)){
+                $actrion = 1;
+            }
+            //获取订单明细
+            $orderDatailInfo = OrderDetail::where(['id'=>$tempArray])->select();
+            //var_dump($orderDatailInfo);
+
+            $orderDatailInfoCount = count($orderDatailInfo);
+//---------------------
+            $this->view->assign(compact('delivery','deliverId','orderDatailInfo','orderDatailInfoCount'));
         }else{
-            $countOrder = 0;
-            $orderInfo = 0;
-            $this->view->assign(compact('delivery','deliverId','countOrder','orderInfo'));
+            $orderDatailInfoCount = 0;
+            $orderDatailInfo = 0;
+            $this->view->assign(compact('delivery','deliverId','orderDatailInfo','orderDatailInfoCount'));
         }
+
 
         return $this->view->fetch('delivery-details');
     }
@@ -123,7 +134,8 @@ class Delivery extends Base
     public function selectOrder(){
         $orderInfo = Order::where(['if_complete'=>0])->order('order_id asc')->paginate(25);
         $count =  $orderInfo->total();
-        $this->assign(compact('orderInfo','count'));
+        $deliveryId = input('deliveryId');
+        $this->assign(compact('orderInfo','count','deliveryId'));
         return $this->view->fetch('view_order');
     }
 
@@ -131,7 +143,12 @@ class Delivery extends Base
     public function addNexus(){
         if(Request::isAjax()){
             $data = Request::post();
-            $info = DeliveryOrderModel::create($data);
+            $fin = DeliveryOrderModel::where(['deliverId'=>$data['deliverId'],'orderId'=>$data['orderId']])->find();
+            if(!$fin){
+                $info = DeliveryOrderModel::create($data);
+            }else{
+                $info = 0;
+            }
             if($info){
                 return json(1);
             }else{

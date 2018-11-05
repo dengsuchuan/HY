@@ -114,8 +114,12 @@
                   $count = getCountExterna($info['drawing_externa_or_internal_id'],$info['order_id']);
                 ?>
                 <td>
+                  {if $actrion}
                   <a title="修改" onclick="x_admin_show('修改订单','{:url(\'index/Order/editOrderDetail\',[\'id\'=>$info.id])}',600,500)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                   <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
+                  {else}
+                  <a title="选择" href="javascript:void(0);" data-id="{$info.id}" style="color: green">选中</a>
+                  {/if}
                 </td>
             <?php
              $isTask = getIsTask($info['id']);
