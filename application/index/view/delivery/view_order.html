@@ -68,7 +68,7 @@
             title: "选择产品",
             type: 2,
             shadeClose: true,
-            area: ['85%', '590px'],
+            area: ['85%', '90%'],
             content: url,
             success: function () {
                 $(top.document.body).find('#layui-layer-iframe' + top.SearchTeacherLayerId).contents().find("td a").on('click', function () {
@@ -79,9 +79,10 @@
                     $.post(url,data,function(info){
                     },'json');
                     top.layer.close(top.SearchTeacherLayerId);
-                    layer.msg('等待刷新中...', {icon:3,time:5000});
-                    //window.location.reload();  //刷新父级页面
-                    window.parent.location.reload();
+                    window.location.reload();  //刷新父级页面
+                    layer.msg('请稍后...', {icon:3,time:5000});
+                    layer.msg('写入成功!',{icon:1,time:1000});
+
                 });
             }
         });

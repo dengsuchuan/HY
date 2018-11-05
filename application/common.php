@@ -211,7 +211,9 @@ function getOrderStaus($cp_id,$id,$p_id){
 //    dd($productprocess);
     $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
     $ProductLogs = ProductLog::where(['task_id'=>$id])->field('process_id,process_id')->order('process_id desc')->find();
-    $sum = cut_str($ProductLogs['process_id'],'P',-1)+1;
+//    dd(cut_str($ProductLogs['process_id'],'P',-1));
+    $sum = intval(cut_str($ProductLogs['process_id'],'P',-1))+1;
+
     $sum = $sum < 10 ? substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P0'.$sum : substr($ProductLogs['process_id'],0,strpos($ProductLogs['process_id'], 'P')).'P'.$sum;
     $leix = getGyType($ProductLogs['process_id']);
     $uu = substr($ProductLogs['process_id'],strpos($ProductLogs['process_id'],'P')+1)+1-1;

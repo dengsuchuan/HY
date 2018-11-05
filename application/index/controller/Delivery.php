@@ -88,6 +88,7 @@ class Delivery extends Base
             $info = DeliveryModel::where(['id'=>$id])->delete();
             if($info){
                 DeliveryInfoModel::where(['deliveryId'=>$deliveryId])->delete();
+                DeliveryOrderModel::where(['deliverId'=>$deliveryId])->delete();
                 return json(1);
             }else{
                 return json(0);
@@ -143,11 +144,14 @@ class Delivery extends Base
     public function addNexus(){
         if(Request::isAjax()){
             $data = Request::post();
-            $fin = DeliveryOrderModel::where(['deliverId'=>$data['deliverId'],'orderId'=>$data['orderId']])->find();
-            if(!$fin){
-                $info = DeliveryOrderModel::create($data);
-            }else{
-                $info = 0;
+            $orderIdArray = explode(",",$data['orderId']);
+            foreach ($orderIdArray as $value){
+                $fin = DeliveryOrderModel::where(['deliverId'=>$data['deliverId'],'orderId'=>$value])->find();
+                if(!$fin){
+                    $info = DeliveryOrderModel::create(['deliverId'=>$data['deliverId'],'orderId'=>$value]);
+                }else{
+                    $info = 0;
+                }
             }
             if($info){
                 return json(1);
