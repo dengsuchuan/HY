@@ -246,6 +246,9 @@
     function to(data) {
         $("#data_a").attr('data-id',data);
         $("#data_a").text(data+" 已选"+data.length+"项");
+        if(!data.length){
+            $("#data_a").text("");
+        }
     }
   function show(obj,id,show) {
       layer.confirm('确定要更改吗？',function(index){
