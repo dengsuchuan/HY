@@ -79,6 +79,7 @@
                     $.post(url,data,function(info){
                     },'json');
                     top.layer.close(top.SearchTeacherLayerId);
+                    location.replace(location.href);
                     window.location.reload();  //刷新父级页面
                     //layer.msg('请稍后...', {icon:3,time:5000});
                     layer.msg('写入成功!',{icon:1,time:1000});

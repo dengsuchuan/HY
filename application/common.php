@@ -156,6 +156,11 @@ function getblueprintInfo($order_id){
     $blueprintInfo = BlueprintInfo::where(['id'=>$p_id])->find();
     return $blueprintInfo;
 }
+
+function getOrderId($order_id){
+    $order_id = \app\index\model\Order::where(['id'=>$order_id])->value('order_id');
+    return $order_id;
+}
 // 获取设备详情
 function getEquipmentInfo($id){
     $EquipmentInfo = EquipmentInfo::where(['id'=>$id])->field('id,eqpmt_id,eqpmt_name')->find();

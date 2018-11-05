@@ -47,7 +47,9 @@ class Delivery extends Base
         }
         $info = DeliveryModel::create($data);
         if ($info){
-            DeliveryInfoModel::create(['deliveryId'=>$data['deliveryId']]);
+            $deliveryClass = new DeliveryInfoModel();
+            $deliveryIdInfo = $this->getNewId($data['deliveryId'],$deliveryClass,'deliveryId');
+            DeliveryInfoModel::create(['deliveryInfoId'=>$deliveryIdInfo,'deliveryId'=>$data['deliveryId']]);
             return json(1);
         }else{
             return json(0);
@@ -101,10 +103,14 @@ class Delivery extends Base
         //对应的送货单
         $deliverId = input('deliverId');
         $delivery = DeliveryInfoModel::where(['deliveryId'=>$deliverId])->select();
+        $deliverId = $delivery[0]['deliveryInfoId'];
         //该送货单拥有的订单
+//        $deliveryClass = new DeliveryInfoModel();
+//        $this->getNewId($delivery['deliveryId'],$deliveryClass,'deliveryId');
 
         //查询所有对应的订单
         $deliverOrder = DeliveryOrderModel::where(['deliverId'=>$deliverId])->select();
+        //var_dump($deliverOrder);
         if(count($deliverOrder)>0){
             foreach ($deliverOrder as $value){
                 $tempArray[] = $value['orderId'];
@@ -115,10 +121,17 @@ class Delivery extends Base
                 $actrion = 1;
             }
             //获取订单明细
-            $orderDatailInfo = OrderDetail::where(['id'=>$tempArray])->select();
-            //var_dump($orderDatailInfo);
 
-            $orderDatailInfoCount = count($orderDatailInfo);
+            $orderDatailInfo = OrderDetail::where(['id'=>$tempArray])->select();
+            //var_dump($orderDatailInfo[0]['order_qty']);
+            $sum = 0;
+            foreach ($orderDatailInfo as $value){
+                $sum += $value['order_qty'];
+            }
+
+
+            $orderDatailInfoCount = $sum;
+            DeliveryInfoModel::where(['deliveryInfoId'=>$deliverId])->update(['quantity'=>$sum]);
 //---------------------
             $this->view->assign(compact('delivery','deliverId','orderDatailInfo','orderDatailInfoCount'));
         }else{
@@ -147,6 +160,7 @@ class Delivery extends Base
             $orderIdArray = explode(",",$data['orderId']);
             foreach ($orderIdArray as $value){
                 $fin = DeliveryOrderModel::where(['deliverId'=>$data['deliverId'],'orderId'=>$value])->find();
+
                 if(!$fin){
                     $info = DeliveryOrderModel::create(['deliverId'=>$data['deliverId'],'orderId'=>$value]);
                 }else{
@@ -165,7 +179,9 @@ class Delivery extends Base
     public function delOrder(){
         if(Request::isAjax()){
             $id = Request::post();
-            $info = DeliveryOrderModel::where(['orderId'=>$id])->delete();
+            $info = DeliveryOrderModel::where(['orderId'=>$id['id']])->delete();
+            $orderId = DeliveryOrderModel::where(['orderId'=>$id['id']])->value('deliverId');
+            DeliveryInfoModel::where(['deliveryInfoId'=>$orderId])->update(['quantity'=>$id['qty']]);
             if ($info){
                 return json(1);
             }else{

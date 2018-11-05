@@ -93,7 +93,8 @@ class Order extends Base
 
     public function orderDetail(){
         $model = intval(input('model'));
-        $id = input('id');
+        $id = intval(input('id'));
+        //echo $id;
         if($model == 1){
             $orderRow = OrderMode::where(['id'=>$id])->select();
             $orderCode = OrderMode::where(['id'=>$id])->value('id');
