@@ -340,7 +340,6 @@ class Order extends Base
             $a = 0;
             $blueprintInfo = BlueprintInfo::where('id','in',$ids)->select();
         }
-        dd($type);
         $this->assign([
             'orderId'        =>  $orderId,
             'orderCode'      =>  $orderCode,
