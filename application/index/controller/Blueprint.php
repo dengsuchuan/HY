@@ -238,7 +238,7 @@ class Blueprint extends Base
         if(Request::isPost()){
             $data = Request::param();
             if($data['id']!=""){//这个ID是主键
-                $blueprintOutside = BlueprintOutside::where("id",$data['id'])->paginate(25,false,['model'=>1,'order'=>$order]);
+                $blueprintOutside = BlueprintOutside::where("id",$data['id'])->paginate(25,false,['query'=>request()->param()]);
             }else{
 
                 $blueprintOutside = BlueprintOutside::order('drawing_external_id', 'asc')
@@ -246,7 +246,7 @@ class Blueprint extends Base
                     ->paginate(25,false,['query'=>request()->param()]);
             }
         }else{
-            $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25,false,['model'=>1,'order'=>$order]);
+            $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25,false,['query'=>request()->param()]);
         }
         //-----------------------------------------
 
