@@ -246,7 +246,7 @@ class Blueprint extends Base
                     ->paginate(25,false,['query'=>request()->param()]);
             }
         }else{
-            $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25);
+            $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25,false,['model'=>1,'order'=>$order]);
         }
         //-----------------------------------------
 
