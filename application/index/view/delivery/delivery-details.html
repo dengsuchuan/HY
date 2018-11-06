@@ -55,9 +55,6 @@
             <?php $i = 1;?>
             {volist name="orderDatailInfo" id="info"}
             <tr>
-              <?php
-                    $count = getCountExterna($info['drawing_externa_or_internal_id'],$info['order_id']);
-                  ?>
               <td>
                 <a title="删除" href="javascript:void(0);" onclick="delete_(this,'{$info.id}','{$info.order_qty}')" style="color: red">删除</a>
               </td>
