@@ -91,6 +91,24 @@
       </div>
     </div>
     <div class="layui-form-item">
+      <label for="client_prj_id" class="layui-form-label">申请人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="application" name="application"  autocomplete="off" class="layui-input" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="client_prj_id" class="layui-form-label">下单时间</label>
+      <div class="layui-input-inline">
+        <input type="date" id="order_time" name="order_time"  autocomplete="off" class="layui-input" value="{:date('Y-m-d')}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="client_prj_id" class="layui-form-label">评审</label>
+      <div class="layui-input-inline">
+        <input type="text" id="review_content" name="review_content"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
       <label class="layui-form-label"></label>
       <button class="layui-btn" lay-submit lay-filter="addId" >
         增加

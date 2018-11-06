@@ -48,7 +48,7 @@
                 <i  style="color:red;" class="layui-icon"></i>
               </a>
             </td>
-            <td><a onclick="x_admin_show('添加 {$deliveryList.deliveryId} 的发货单明细','{:url(\'index/Delivery/deliveryDetails\',[\'deliverId\'=>$deliveryList.deliveryId])}')" style="color: #0000cc" href="#">{$deliveryList.deliveryId}</a></td>
+            <td><a onclick="x_admin_show('添加 {$deliveryList.deliveryId} 的发货单明细','{:url(\'index/Delivery/deliveryDetails\',[\'deliverId\'=>$deliveryList.deliveryId,\'show\'=>\'1\'])}')" style="color: #0000cc" href="#">{$deliveryList.deliveryId}</a></td>
             <td>{$deliveryList.clientName|getClientAbbreviation}</td>
             <td>{$deliveryList.deliveryText}</td>
             <td>{$deliveryList.accounts}</td>

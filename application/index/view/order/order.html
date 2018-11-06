@@ -41,6 +41,8 @@
                 <th>操作</th>
                 <th>订单编号</th>
                 <th>订单内容</th>
+                <th>申请人</th>
+                <th>下单时间</th>
                 <th>交货日期</th>
                 <th>客户简称</th>
                 <th>备料</th>
@@ -63,6 +65,8 @@
             </td>
             <td>  <a title="订单明细" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$info.order_id}</span> 订单明细','{:url(\'index/Order/orderDetail\',[\'id\'=>$info.id])}')", href="javascript:;"> {$info.order_id} </a></td>
             <td>{$info.order_content}</td>
+            <td>{$info.application}</td>
+            <td>{$info.order_time}</td>
             <td>{$info.delivery_time}</td>
             <td>{$info.client_id|getClientAbbreviation}</td>
             <td>{$info.prepare}</td>
@@ -79,7 +83,7 @@
             <td>
               {if $info.receivables == 1} 已收款 {else/} 未收款 {/if}
             </td>
-            <td></td>
+            <td>{$info.review_content}</td>
             <td>{$info.create_time}</td>
             <td onclick="openLinke('{$info.id}')"><a href="#">报价</a></td>
           </tr>

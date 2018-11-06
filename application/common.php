@@ -24,6 +24,7 @@ use app\index\model\Material;
 use app\index\model\ProcessType;
 use app\index\model\ProductProcess;
 use app\index\model\ProductLog;
+use app\index\model\Order;
 
 // 应用公共文件
 //截取右边的展示内容
@@ -146,6 +147,7 @@ function getCountExterna($id,$order_id,$if_tu){
 function getDrawingName($id){
     return BlueprintInfo::where(['id'=>$id])->value('drawing_name');
 }
+
 function getblueprintInfoList($id){
     return (BlueprintInfo::where(['id'=>$id])->find());
 
@@ -330,4 +332,21 @@ function getTaskIdWaiExternal($t_id){
     $order = OrderDetail::where(['id'=>$t_id])->value('drawing_detail_id');
     $drawing_detail =BlueprintInfo::where(['id'=>$order])->value('drawing_externa_id');
     return ($drawing_detail);
+}
+// 跟据任务ID 获得材料名称
+function getMaterialName($id){
+    $material = OrderDetail::where(['id'=>$id])->value('material');
+    $material_id = Material::where(['id'=>$material])->value('material_id');
+    return ($material_id);
+}
+// 跟据ID 获得版本号
+function getMaterialVersion($id){
+    $material = OrderDetail::where(['id'=>$id])->value('material');
+    $version = Material::where(['id'=>$material])->value('version');
+    return ($version);
+}
+
+function getOrderInfo($order_id){
+    $order = Order::where(['order_id'=>$order_id])->select();
+    return $order;
 }

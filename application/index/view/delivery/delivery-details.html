@@ -1,10 +1,13 @@
 ﻿{include file="public/header" /}
 <body>
 <div class="x-body">
+  {if $show}
   <xblock>
+    <a class="layui-btn"  target="_blank" href="{:url('index/Delivery/deliveryDetails',['deliverId'=>$deliveryId,'show'=>'0'])}"><i class="iconfont">&#xe718;</i> 框架页面</a>
     <button class="layui-btn" onclick="x_admin_show('选择明细','{:url(\'index/Delivery/selectOrder\',[\'deliveryId\'=>$deliveryId])}')"><i class="layui-icon"></i>添加订单</button>
-    <a class="layui-btn" href="javascript:location.replace(location.href);">刷新</a>
+    <!--<a class="layui-btn" href="javascript:location.replace(location.href);">刷新</a>-->
   </xblock>
+  {/if}
   <fieldset class="layui-elem-field layui-field-title" style="margin-top: 5px;">
     <legend>送货单明细</legend>
   <div class="layui-row">
@@ -13,33 +16,66 @@
         <table class="layui-table">
           <thead>
           <tr>
+            {if $show}
             <th width="40px;">操作</th>
-            <th>明细编号</th>
-            <th>所属订单</th>
+            {/if}
+            <!--<th>明细编号</th>-->
+            <th>序号</th>
+            <th>订单明细</th>
             <th width="70">送货数量</th>
+            <th>内图编号</th>
+            <th>外图编号</th>
+            <th>图纸名称</th>
+            <th>材料</th>
+            <th>客户项目号</th>
+            <th>版本</th>
+            <th>下单时间</th>
+            <th>申请人</th>
+            <th>产品价格</th>
+            <th>备注（送货单的备注）</th>
           </tr>
           </thead>
           {if $deliverOrderCount}
           <tbody>
             <?php $i = 1;?>
+            <?php $count = 1; ?>
             {volist name="orderDatailInfo" id="info"}
             <tr>
+              {if $show}
               <td>
-                <a title="删除" href="javascript:void(0);" onclick="delete_(this,'{$info.deliveryInfoId}')" style="color: red">删除</a>
+                <a title="删除" href="javascript:void(0);" onclick="delete_(this,'{$info.deliveryInfoId}')" style="color: red">
+                  <i  style="color:red;" class="layui-icon"></i>
+                </a>
+                <!--<a href="#" onclick="updateNum('{$info.deliveryInfoId}')" style="color:green;">修改</a>-->
+                <a href="#" onclick="x_admin_show('选择明细','{:url(\'index/Delivery/editOrder\',[\'id\'=>$info.id,\'quantity\'=>$info.quantity,\'remarks\'=>$info.remarks])}',500,300)" style="color:green;">
+                  <i style="color: green" class="layui-icon"></i>
+                </a>
               </td>
+              {/if}
               <?php
                $isTask = getIsTask($info['id']);
                ?>
-              <td>{$info.deliveryInfoId}</td>
+              <!--<td>{$info.deliveryInfoId}</td>-->
+              <td>{$count}</td>
+              <?php $count++ ?>
               <td>{$info.orderCode}</td>
-              <td>
-                <div class="layui-inline">
-                  <div class="layui-input-inline">
-                    <input type="number" style="width: 50px;" id="{$info.deliveryInfoId}" autocomplete="off" class="layui-input" value="{$info.quantity}">
-                  </div>
-                  <a href="#" onclick="updateNum('{$info.deliveryInfoId}')" style="color:green;">修改</a>
-                </div>
+              <td>{$info.quantity}
+                <!--<div class="layui-inline">-->
+                  <!--<div class="layui-input-inline">-->
+                    <!--<input type="number" style="width: 50px;" id="{$info.deliveryInfoId}" autocomplete="off" class="layui-input" value="{$info.quantity}">-->
+                  <!--</div>-->
+                <!--</div>-->
               </td>
+              <td>{$info.external}</td>
+              <td>{$info.waiExternal}</td>
+              <td>{$info.drawingName}</td>
+              <td>{$info.materialName}</td>
+              <td>{$info.client_prj_id}</td>
+              <td>{$info.materialVersion}</td>
+              <td>{$info.order_time}</td>
+              <td>{$info.application}</td>
+              <td>{$info.price}</td>
+              <td>{$info.remarks}</td>
             </tr>
             {/volist}
           </tbody>

@@ -111,6 +111,12 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">版本</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" value=" " id="version" >
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">材料类型</label>
             <div class="layui-input-inline">
                 <div class="layui-input-inline">
@@ -585,6 +591,7 @@
             var remark = $("#remark").val();
             var mesInput = $("#mesInput").val();//编号描述
             var materialSelect = $("#materialSelect").val();//材料形状
+            var version = $("#version").val();//材料形状
 
             //组装数组
             materialSelectArray['drawing_detail_id']=drawing_detail_id;//明细编号
@@ -604,6 +611,7 @@
             materialSelectArray['product_quotation']=product_quotation;//产品报价
             materialSelectArray['product_real_price']=product_real_price;//产品实际价格
             materialSelectArray['remark']=remark;//备注
+            materialSelectArray['version']=version;//备注
             materialSelectArray['create_name']="{$Think.session.user.user_name}";//创建人
             materialSelectArray['modify_name']="";//修改人
             materialSelectArray['material_type']=materialSelect;//材料形状
