@@ -178,7 +178,7 @@
                         </td>
                         <td>
                             {if $count }
-                            <?php echo  $i ;?>  <a onclick="x_admin_show('修改订单','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id,\'type\'=>$info.if_tu])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
+                            <?php echo  $i ;?>  <a onclick="x_admin_show('添加订单明细','{:url(\'index/Order/newOrder\',[\'id\'=>$info.order_id,\'ex_or_id\'=>$info.drawing_externa_or_internal_id,\'type\'=>$info.if_tu])}',800,500)", href="javascript:;"><span style="color: red">新</span></a>
                             {else}
                             <?php echo  $i ;?>
                             {/if}

@@ -223,6 +223,7 @@ function getGyType($id){
     return $tyepName;
 }
 function getOrderStaus($cp_id,$id,$p_id){
+
     $productprocess = ProductProcess::where('drawing_detial_id',$cp_id)->order('id desc')->find();
 //    dd($productprocess);
     $sum_count = ProductProcess::where('drawing_detial_id',$cp_id)->select()->count();
@@ -254,6 +255,7 @@ function getOrderStaus($cp_id,$id,$p_id){
     }else{
         $k = '>';
     }
+
     if($ProductLogs['process_id'] == null){
         $dier = getGyType($cp_id.'-P01');
     }
@@ -262,7 +264,8 @@ function getOrderStaus($cp_id,$id,$p_id){
     if($xb != -1){
         $c_cum = cut_str($yanse[$xb]['process_id'],'P',-1)+1-1;
     }
-    if($yanse !=''){
+
+    if($xb != -1){
         if($sum_count == $c_cum  && $yanse[$xb]['qc_inspector'] != null){
             $centent = "<span style='color: #28ac17'>" . $code.$uu.$leix."</span>".$k.getGyType($sum).'/'.$sum_count ."</style>";
             return ($ProductLogs['process_id'] != null ?  $centent : 0 .'>'.$dier.'/'.$sum_count);
@@ -319,7 +322,7 @@ function getexternal($t_id){
 // 跟据任务ID 获取内图
 function getTaskIdExternal($t_id){
     $order = OrderDetail::where(['id'=>$t_id])->value('drawing_detail_id');
-    $drawing_detail =BlueprintInfo::where(['id'=>$order])->value('drawing_internal_id');
+    $drawing_detail = BlueprintInfo::where(['id'=>$order])->value('drawing_internal_id');
     return ($drawing_detail);
 }
 // 跟据任务ID 获取外图
