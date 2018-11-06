@@ -22,6 +22,10 @@
                 <div class="layui-input-inline">
                     <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
                 </div>
+                {if $mode == 1}
+                <input type="hidden" name="model" value="1">
+                <input type="hidden" name="order" value="{$order}">
+                {/if}
                 <div class="layui-input-inline">
                     <select name="id" lay-search="" >
                         <option value=""></option>

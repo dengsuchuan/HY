@@ -28,16 +28,20 @@ class Internal extends Base
         if(Request::isPost()){
             $data = Request::post();
             if($data['id']!=""){//这个ID是主键
-                $internalInfo = DrawingInternal::where('id',$data['id'])->order('sort '.$sort.' ')->paginate(25);
+                $internalInfo = DrawingInternal::where('id',$data['id'])->order('sort '.$sort.' ')->paginate(25,false,['query'=>request()->param()]);
             }else{
                 $internalInfo = DrawingInternal::order('create_time', 'desc')
                     ->where("drawing_Internal_id","LIKE","%".$data['modules']."%")
-                    ->paginate(25);
+                    ->paginate(25,false,['query'=>request()->param()]);
             }
             $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
             $countInternalInfo = $internalInfo->total();
             $this->assign("countInternalInfo",$countInternalInfo);
+            $mode = Request::post('model');
+            $order = Request::post('order');
 
+            $this->assign('mode',$mode);
+            $this->assign('order',$order);
             $this->assign([
                 'internalInfo'  => $internalInfo,
                 'sort'          =>$sort,
@@ -50,14 +54,17 @@ class Internal extends Base
         $assembly_code = input('assembly_code');
         $code = input('code');
         if(isset($assembly_code)){
-            $internalInfo = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(25);
+            $mode = input('model');
+            $order = input('order');
+            $this->assign('mode',$mode);
+            $this->assign('order',$order);
+            $internalInfo = DrawingInternal::where('assembly_code',$assembly_code)->order('sort '.$sort.' ')->paginate(25,false,['query'=>request()->param()]);
             $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
             $this->assign([
                 'internalInfo'  => $internalInfo,
                 'sort'          =>$sort,
                 'internalCode'  =>  $internalCode,
                 'code'          =>  'N'
-
             ]);
 
             $countInternalInfo = $internalInfo->total();
@@ -65,7 +72,11 @@ class Internal extends Base
             return $this->view->fetch('internal-info');
         }
         if($code == 'M'){
-            $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->paginate(25);
+            $mode = input('model');
+            $order = input('order');
+            $this->assign('mode',$mode);
+            $this->assign('order',$order);
+            $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->paginate(25,false,['query'=>request()->param()]);
             $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
             $this->assign([
                 'internalInfo'  => $internalInfo,
@@ -77,10 +88,11 @@ class Internal extends Base
             $this->assign("countInternalInfo",$countInternalInfo);
             return $this->view->fetch('internal-info');
         }
-        $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=',null)->paginate(25);
+        $internalInfo = DrawingInternal::order('drawing_Internal_id '.$sort.' ')->where('assembly_code','=',null)->paginate(25,false,['query'=>request()->param()]);
         $internalCode = DrawingInternal::field('drawing_Internal_id,id')->select();
         $mode = input('model');
         $order = input('order');
+
         $this->assign('mode',$mode);
         $this->assign('order',$order);
         $this->assign([

@@ -231,23 +231,25 @@ class Blueprint extends Base
     }
     //--|外图控制器以及子控制器
     public function blueprintOutside(){
+        $mode = input('model');
+        $order = input('order');
         //-----------------------------------------
         //搜索功能
         if(Request::isPost()){
-            $data = Request::post();
+            $data = Request::param();
             if($data['id']!=""){//这个ID是主键
-                $blueprintOutside = BlueprintOutside::where("id",$data['id'])->paginate(25);
+                $blueprintOutside = BlueprintOutside::where("id",$data['id'])->paginate(25,false,['model'=>1,'order'=>$order]);
             }else{
+
                 $blueprintOutside = BlueprintOutside::order('drawing_external_id', 'asc')
                     ->where("drawing_external_id","LIKE","%".$data['modules']."%")
-                    ->paginate(25);
+                    ->paginate(25,false,['query'=>request()->param()]);
             }
         }else{
             $blueprintOutside = BlueprintOutside::order('drawing_external_id','asc')->paginate(25);
         }
         //-----------------------------------------
-        $mode = input('model');
-        $order = input('order');
+
         $this->assign('blueprintOutside',$blueprintOutside);
         $blueprintOutsideCount = $blueprintOutside->total();
         $this->assign('blueprintOutsideCount',$blueprintOutsideCount);

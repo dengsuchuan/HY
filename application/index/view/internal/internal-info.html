@@ -21,6 +21,10 @@
         <div class="layui-input-inline">
             <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
             <form class="layui-form" action="{:url('index/Internal/internalInfo')}" method="post">
+                {if $mode == 1}
+                <input type="hidden" name="model" value="1" >
+                <input type="hidden" name="order" value="{$order}" >
+                {/if}
                 <div class="layui-input-inline">
                     <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
                 </div>
@@ -42,15 +46,14 @@
         {/if}
         <span class="x-right" style="line-height:40px">共{$countInternalInfo}条 · 共{$countInternalInfo/25|getInt}页</span>
         <script>
-            $(function () {
-                $("input").click(function () {
-                    $("input").val("");
-                });
-                $("xblock").click(function () {
-                    $("dd").val("");
-                });
-
-            });
+            // $(function () {
+            //     $("input").click(function () {
+            //         $("input").val("");
+            //     });
+            //     $("xblock").click(function () {
+            //         $("dd").val("");
+            //     });
+            // });
         </script>
     </xblock>
     <div class="container-wrap">
@@ -65,12 +68,23 @@
                 {/if}
                 <th width="2%">
                     操作
+                    {if $mode == 1}
+                    &nbsp;
+                    {if $code == 'M'}
+                    <a href="{:url('/index/Internal/internalInfo',['model'=>1,'order'=>$order])}"> <span  style="color: red">组</span></a>
+                    {elseif $code == 'N'/}
+                    {else/}
+                    <a href="{:url('/index/Internal/internalInfo',['code'=>'M','model'=>1,'order'=>$order])}" style="color:#3020d2;"> <span >组</span></a>
+                    {/if}
+
+                    {else}
                     &nbsp;
                     {if $code == 'M'}
                     <a href="{:url('/index/Internal/internalInfo')}"> <span  style="color: red">组</span></a>
                     {elseif $code == 'N'/}
                     {else/}
                     <a href="{:url('/index/Internal/internalInfo',['code'=>'M'])}" style="color:#3020d2;"> <span >组</span></a>
+                    {/if}
                     {/if}
                 </th>
                 <th width="13%">

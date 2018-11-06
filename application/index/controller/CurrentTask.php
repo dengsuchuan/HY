@@ -26,8 +26,8 @@ class CurrentTask extends Base
             $btnText = "已制任务";
             $productTaskInfo = ProductTask::where(['if_completr'=>0])->paginate(25);
         }
-
         $oCount = $productTaskInfo->total();
+
         $this->assign([
             'productTaskInfo'   => $productTaskInfo,
             'oCount'            => $oCount,
