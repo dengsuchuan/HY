@@ -47,9 +47,6 @@ class Delivery extends Base
         }
         $info = DeliveryModel::create($data);
         if ($info){
-            $deliveryClass = new DeliveryInfoModel();
-            $deliveryIdInfo = $this->getNewId($data['deliveryId'],$deliveryClass,'deliveryId');
-            DeliveryInfoModel::create(['deliveryInfoId'=>$deliveryIdInfo,'deliveryId'=>$data['deliveryId']]);
             return json(1);
         }else{
             return json(0);
@@ -101,43 +98,17 @@ class Delivery extends Base
     //送货单明细
     public function deliveryDetails(){
         //对应的送货单
-        $deliverId = input('deliverId');
-        $delivery = DeliveryInfoModel::where(['deliveryId'=>$deliverId])->select();
-        $deliverId = $delivery[0]['deliveryInfoId'];
-        //该送货单拥有的订单
-//        $deliveryClass = new DeliveryInfoModel();
-//        $this->getNewId($delivery['deliveryId'],$deliveryClass,'deliveryId');
+        $deliveryId = input('deliverId');
 
-        //查询所有对应的订单
-        $deliverOrder = DeliveryOrderModel::where(['deliverId'=>$deliverId])->select();
-        //var_dump($deliverOrder);
-        if(count($deliverOrder)>0){
-            foreach ($deliverOrder as $value){
-                $tempArray[] = $value['orderId'];
-            }
-//--------------------
-            $actrion = input('actrion');
-            if(!isset($actrion)){
-                $actrion = 1;
-            }
-            //获取订单明细
-
-            $orderDatailInfo = OrderDetail::where(['id'=>$tempArray])->select();
-            //var_dump($orderDatailInfo[0]['order_qty']);
-            $sum = 0;
-            foreach ($orderDatailInfo as $value){
-                $sum += $value['order_qty'];
-            }
-
-
-            $orderDatailInfoCount = $sum;
-            DeliveryInfoModel::where(['deliveryInfoId'=>$deliverId])->update(['quantity'=>$sum]);
-//---------------------
-            $this->view->assign(compact('delivery','deliverId','orderDatailInfo','orderDatailInfoCount'));
+        //查询送货单和订单的关系
+        $orderDatailInfo = DeliveryInfoModel::where(['deliveryId'=>$deliveryId])->select();
+        //获得数量
+        $deliverOrderCount = count($orderDatailInfo);
+        //如果存在数据
+        if($deliverOrderCount>0){
+            $this->view->assign(compact('deliveryId','orderDatailInfo','deliverOrderCount'));
         }else{
-            $orderDatailInfoCount = 0;
-            $orderDatailInfo = 0;
-            $this->view->assign(compact('delivery','deliverId','orderDatailInfo','orderDatailInfoCount'));
+            $this->view->assign(compact('deliveryId','deliverOrderCount'));
         }
 
 
@@ -157,17 +128,70 @@ class Delivery extends Base
     public function addNexus(){
         if(Request::isAjax()){
             $data = Request::post();
+            $deliveryId = $data['deliverId'];
+            //获取到订单产品的编号
             $orderIdArray = explode(",",$data['orderId']);
+            //循环批量入库
+            $res = 0;
             foreach ($orderIdArray as $value){
-                $fin = DeliveryOrderModel::where(['deliverId'=>$data['deliverId'],'orderId'=>$value])->find();
-
+                $orderDetailInfo = OrderDetail::where(['id'=>$value])->select();
+                //查询是否已经存在对应的关系
+                $fin = DeliveryOrderModel::where(['deliverId'=>$deliveryId,'orderId'=>$value])->find();
                 if(!$fin){
-                    $info = DeliveryOrderModel::create(['deliverId'=>$data['deliverId'],'orderId'=>$value]);
-                }else{
-                    $info = 0;
+                    //不存在，开始准备入库
+                    //开始入库到送货单和订单产品单关系表
+                    $info = DeliveryOrderModel::create(['deliverId'=>$deliveryId,'orderId'=>$value]);
+                    //创建送货明细单，先拿出对应订单产品单里面的产品数量
+                    //查询数量
+                    if($info){
+                        $res = $this->saveDeliveryInfo($deliveryId,$orderDetailInfo[0]);
+                    }
                 }
             }
-            if($info){
+            if($res){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+    public function saveDeliveryInfo($deliveryId,$orderDetailInfo){
+
+        //$orderDetailInfo = OrderDetail::where(['id'=>$value])->value('order_qty,order_detail_code');
+        //$orderDetailInfo = ['order_qty'=>12345,'order_detail_code'=>"A01-7F"];
+        //$orderDetailInfo = ['order_qty'=>$order['order_qty'],'order_detail_code'=>$order['order_detail_code']];
+        //拿到数量之后，开始生成明细单编号，写入明细对应
+        //我现在需要，送货明细编号，送货单编号，送货数量，对应订单编号
+        //送货单编号
+        $deliveryId = $deliveryId;
+        //送货明细编号
+        $deliveryInfo = new DeliveryInfoModel();
+        $deliveryInfoId = $this->getNewId($deliveryId,$deliveryInfo,'deliveryInfoId');
+        //送货数量
+        $quantity = $orderDetailInfo['order_qty'];
+        //对应订单编号
+        $orderStr = $orderDetailInfo['order_detail_code'];
+        $orderCode = substr($orderStr, 0, -3);
+        //创建入库
+        $info = DeliveryInfoModel::create([
+            'deliveryInfoId'=>$deliveryInfoId,
+            'deliveryId'=>$deliveryId,
+            'orderCode'=>$orderCode,
+            'quantity'=>$quantity
+        ]);
+        if ($info){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    //删除发货单和订单的关系
+    public function delOrder(){
+        if(Request::isAjax()){
+            $id = Request::post('id');
+            $info = DeliveryInfoModel::where(['deliveryInfoId'=>$id])->delete();
+            if ($info){
                 return json(1);
             }else{
                 return json(0);
@@ -175,20 +199,18 @@ class Delivery extends Base
         }
     }
 
-    //删除发货单和订单的关系
-    public function delOrder(){
+    public function updateNum(){
         if(Request::isAjax()){
-            $id = Request::post();
-            $info = DeliveryOrderModel::where(['orderId'=>$id['id']])->delete();
-            $orderId = DeliveryOrderModel::where(['orderId'=>$id['id']])->value('deliverId');
-            DeliveryInfoModel::where(['deliveryInfoId'=>$orderId])->update(['quantity'=>$id['qty']]);
+            $data = Request::post();
+            $id = $data['deliveryInfoId'];
+            unset($data['deliveryInfoId']);
+            $info = DeliveryInfoModel::where(['deliveryInfoId'=>$id])->update($data);
             if ($info){
                 return json(1);
             }else{
                 return json(0);
             }
         }
-
     }
 
 
