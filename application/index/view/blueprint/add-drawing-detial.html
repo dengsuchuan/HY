@@ -114,10 +114,10 @@
             <label class="layui-form-label">材料类型</label>
             <div class="layui-input-inline">
                 <div class="layui-input-inline">
-                    <select name="modules" lay-verify="required" lay-search="" id="findText">
+                    <select name="material" lay-verify="required" lay-search="" id="findText">
                         <option value=""></option>
                         {volist name="$detailArray.material" id="materialList"}
-                        <option value="{$materialList.material_id}">{$materialList.material_id}</option>
+                        <option value="{$materialList.id}">{$materialList.material_id}</option>
                         {/volist}
                     </select>
                 </div>

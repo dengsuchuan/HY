@@ -193,7 +193,7 @@
                         </td>
                         <td>{$info.drawing_detail_id|getDrawingName}</td>
                         <?php $blueprintInfoList = getblueprintInfoList($info['drawing_detail_id']);?>
-                        <td>{$blueprintInfoList.material}</td>
+                        <td>{$blueprintInfoList.material|getMaterialType}</td>
                         <td>{$blueprintInfoList.material_type|getMateria}</td>
                         <td>{$blueprintInfoList.heat_treatment}</td>
                         <td>{$info.company}</td>
