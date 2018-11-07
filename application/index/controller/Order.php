@@ -12,12 +12,16 @@ use app\index\common\controller\Base;
 use app\index\model\Order as OrderMode;
 use app\index\model\BlueprintOutside;
 use app\index\model\DrawingInternal;
+use app\index\model\Order_files;
 use function Couchbase\defaultDecoder;
+use think\debug\Html;
 use think\facade\Request;
 use app\index\model\BlueprintInfo;
 use app\index\model\OrderDetail;
 use app\index\model\Client;
 use app\index\model\ProductTask;
+use think\facade\Session;
+
 class Order extends Base
 {
     protected $beforeActionList = [
@@ -453,6 +457,173 @@ class Order extends Base
             'code'  => 1,
         ]);
 
+    }
+
+    public function OrderFile()
+    {
+        $id = input('id');
+        $model = new OrderMode();
+        if(!$model->get(['id'=>$id]))
+        {
+            echo '<h1 class="layui-text">无效订单</h1>';
+            return;
+        }
+        $model = new Order_files();
+        $rel = $model->where(['order_id'=>$id])->order('type','desc')->paginate(15);
+        $this->assign('files',$rel);
+        $this->assign('page',$rel->render());
+        return $this->fetch('upload_views',['id'=>$id]);
+    }
+
+    public function upOrderFile()
+    {
+        $order_id = input('id');
+        $model = new OrderMode();
+        if(!$model->get(['id'=>$order_id]))
+        {
+            echo '<h1 class="layui-text">无效订单</h1>';
+            return;
+        }
+        return $this->fetch('uploads',['order_id'=>$order_id]);
+    }
+
+    public function upOrderFiles()
+    {
+        $order_id = input('order_id');
+        $describe = $this->request->post('describe');
+        if($describe == "")
+        {
+            $describe ='合同文件';
+        }else{
+            $describe = htmlspecialchars($describe);
+        }
+        $files = $this->request->file('file');
+        $yesNum =0;
+        $noNum = 0;
+        $model = new Order_files();
+        try {
+            foreach ($files as $file) {
+                //支持常见图片,文档的上传
+                $info = $file
+                    ->validate([
+                        'ext' => 'docx,doc,jpg,png,pdf,tif'])
+                    ->move('./order_files/', time() . rand(rand(1, 1000), rand(1000, 100000)));
+                if (!$info) {
+                    $noNum += 1;
+                    continue;
+                }
+                $model->insert([
+                    'order_id'=>$order_id,
+                    'path'=>'/order_files/' . $info->getSaveName(),
+                    'describe'=>$describe,
+                    'create_time'=>time(),
+                    'type'=>$info->getExtension(),
+                    'create_user'=>Session::get('user.user_name')
+                ]);
+                $yesNum += 1;
+            }
+            echo json_encode([
+                'state'=>200,
+                'count' => $yesNum + $noNum,
+                'yes' => $yesNum,
+                'no' => $noNum,
+                'msg' => '上传完成'
+            ]);
+            return;
+        }catch (Exception $e)
+        {
+            echo json_encode([
+                'state'=>400,
+                'msg' => '上传失败'
+            ]);
+            return;
+        }
+    }
+
+    public function DelFiles()
+    {
+        $id = input('id');
+        $model = new Order_files();
+        $data = $model->get(['id'=>$id]);
+        if(!$data)
+        {
+            echo json_encode([
+                'state'=>400,
+                'msg'=>'删除失败'
+            ]);
+            return;
+        }
+        if(file_exists('.'.$data['path']))
+        {
+            if(!unlink('.'.$data['path']))
+            {
+                echo json_encode([
+                    'state'=>400,
+                    'msg'=>'删除失败'
+                ]);
+                return;
+            }
+        }
+        if(!$model->where(["id"=>$id])->delete())
+        {
+            echo json_encode([
+                'state'=>400,
+                'msg'=>'记录删除失败'
+            ]);
+            return;
+        }
+        echo json_encode([
+            'state'=>200,
+            'msg'=>'已删除'
+        ]);
+        return;
+    }
+
+    public function DelAllFiles()
+    {
+        $order_id = input('order_id');
+        $model = new Order_files();
+        $data = $model->where(['order_id'=>$order_id])->select();
+        foreach ($data as $list)
+        {
+            try {
+                if (!file_exists('.' . $list['path'])) {
+                    $model->where(['id' => $list['id']])->delete();
+                }
+            }catch (Exception $e){
+                continue;
+            }
+        }
+        echo json_encode([
+            'state'=>200,
+            'msg'=>'清理完成'
+        ]);
+        return;
+    }
+
+    public function previewPdf()
+    {
+        $id=input('id');
+        echo $id;
+        $model = new Order_files();
+        if(!$rel = $model->get(['id'=>$id]))
+        {
+            $this->error('非法操作');
+            return;
+        }
+        return $this->fetch('order_pdf',['path'=>$rel['path']]);
+    }
+    public function editName()
+    {
+        $describe = htmlspecialchars($this->request->post('name'));
+        $id = input('Id');
+        $model = new Order_files();
+        try {
+            $model->where(['id' => $id])->update(['describe' => $describe]);
+        }catch (Exception $e) {
+            return $e->getMessage();
+        }
+        return;
     }
 }
 
