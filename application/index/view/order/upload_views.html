@@ -43,7 +43,11 @@
                                 <button onclick="YuLans('{$data.path}')">方式二</button>
                                 {/if}
                                 {if $data.type =='doc'||$data.type =='docx'}
-                                预留
+                                <button class="layui-btn layui-btn-xs">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}.{$data.type}">
+                                        <i class="layui-icon">WORD</i>
+                                    </a>
+                                </button>
                                 {/if}
                                 {if $data.type =='tif'}
                                 <button class="layui-btn layui-btn-xs">
