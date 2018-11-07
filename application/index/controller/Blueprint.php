@@ -19,7 +19,8 @@ use think\cache\driver\Redis;
 use think\Db;
 use think\facade\Request;
 use app\index\model\ProcessType as ProcessTypeModel;
-
+use app\index\model\OrderDetail;
+use app\index\model\ProductTask;
 class Blueprint extends Base
 {
     protected $beforeActionList = [
@@ -902,10 +903,18 @@ class Blueprint extends Base
 
     public function delete(){
         $id = intval(input('id'));
+
         $drawing_detail_id = BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');  //获取编号
+        $order_id = OrderDetail::where(['drawing_detail_id'=>$id])->value('id');
+        ProductTask::where(['order_detial_id'=>$order_id])->delete();
+        ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->delete();
+        // 删除任务
+        OrderDetail::where(['drawing_detail_id'=>$id])->delete();
+//        dd($order_id);
         $info =  BlueprintInfo::where('id',$id)->delete();
         if($info){
-            ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->delete();
+
+
             return 1;
         }else{
             return 0;

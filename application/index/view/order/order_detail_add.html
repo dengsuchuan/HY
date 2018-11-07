@@ -52,13 +52,13 @@
         <div class="layui-inline">
           <label class="layui-form-label">订单数量</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" value="0"  name="order_qty[]" autocomplete="off" class="layui-input">
+            <input type="number" value="1" id="order_num{$info.drawing_detail_id}" oninput="orderinput('{$info.drawing_detail_id}')"  name="order_qty[]" autocomplete="off" class="layui-input">
           </div>
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">计划数量</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" value="0"  name="plan_qty[]" autocomplete="off" class="layui-input">
+            <input type="number" value="1"  id="jihua_num{$info.drawing_detail_id}" oninput="jiahua('{$info.drawing_detail_id}')" name="plan_qty[]" autocomplete="off" class="layui-input">
           </div>
         </div>
 
@@ -174,6 +174,23 @@
   </form>
 </div>
 <script>
+  function orderinput(d_id){
+      var order_num = $("#order_num"+d_id).val();
+      if(order_num < 1){
+          $("#order_num"+d_id).val(1);
+          $("#jihua_num"+d_id).val(1);
+      }
+
+      $("#jihua_num"+d_id).val(order_num);
+      // alert(order_num);
+  }
+
+  function jiahua(d_id){
+      var order_num = $("#jihua_num"+d_id).val();
+      if(order_num < 1){
+          $("#jihua_num"+d_id).val(1);
+      }
+  }
     $(function () {
        var code = {$code};
        var state = {$state};
