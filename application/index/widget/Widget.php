@@ -11,6 +11,7 @@ namespace app\index\widget;
 
 use app\index\model\BlueprintOutside;
 use app\index\model\DrawingFiles;
+use app\index\model\Order_files;
 
 class Widget
 {
@@ -49,4 +50,14 @@ class Widget
         return true;
     }
 
+    public function order_files($id)
+    {
+        $model = new Order_files();
+        if(!$model->get(['order_id'=>$id]))
+        {
+            echo 'blue';
+        }else{
+            echo 'green';
+        }
+    }
 }
