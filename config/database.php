@@ -13,13 +13,16 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => "118.24.184.68",  // 118.24.184.68
+//    'hostname'        => "118.24.184.68",  // 118.24.184.68
+    'hostname'        => "127.0.0.1",  // 118.24.184.68
     // 数据库名
     'database'        => 'hy',
     // 用户名
-    'username'        => 'admin', // admin
+//    'username'        => 'admin', // admin
+    'username'        => 'root', // admin
     // 密码
-    'password'        => 'Tt5201314tyl+-', // Tt5201314tyl+-
+//    'password'        => 'Tt5201314tyl+-', // Tt5201314tyl+-
+    'password'        => 'www.geekln.cn', // Tt5201314tyl+-
     // 端口
     'hostport'        => '',
     // 连接dsn

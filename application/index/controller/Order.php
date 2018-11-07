@@ -9,6 +9,7 @@
 namespace app\index\controller;
 
 use app\index\common\controller\Base;
+use app\index\model\DeliveryInfoModel;
 use app\index\model\Order as OrderMode;
 use app\index\model\BlueprintOutside;
 use app\index\model\DrawingInternal;
@@ -396,9 +397,13 @@ class Order extends Base
         }
     }
     public function deleteDetail(){
-        $info = OrderDetail::where(['id'=>intval(input('id'))])->delete();
+        //对应订单明细的ID  数字
+        $id = input('id');
+        $order_detail_code = OrderDetail::where(['id'=>$id])->value('order_detail_code');
+        $info = OrderDetail::where(['id'=>$id])->delete();
         if($info){
             ProductTask::where(['order_detial_id'=>intval(input('id'))])->delete();
+            DeliveryInfoModel::where(['orderCode'=>$order_detail_code])->delete();
             return json(1);
         }else{
             return json(0);
