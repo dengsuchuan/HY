@@ -47,7 +47,7 @@
                                 {/if}
                                 {if $data.type =='tif'}
                                 <button class="layui-btn layui-btn-xs">
-                                    <a style="color: white" href="{$data.path}" download="{$order_number}">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}.{$data.type}">
                                         <i class="layui-icon">TIF</i>
                                     </a>
                                 </button>
@@ -64,6 +64,11 @@
                                        value="{$data.describe}" onchange="editName('name{$key+1}',{$data.id})">
                             </td>
                             <td>
+                                <button class="layui-btn layui-btn-xs">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}.{$data.type}">
+                                        <i class="layui-icon layui-icon-download-circle"></i>
+                                    </a>
+                                </button>
                                 <button class="layui-btn layui-btn-xs layui-btn-danger"
                                 onclick="delFiles('{$data.id}')">
                                     <i class="layui-icon layui-icon-delete"></i>
