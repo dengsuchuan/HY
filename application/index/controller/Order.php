@@ -463,7 +463,7 @@ class Order extends Base
     {
         $id = input('id');
         $model = new OrderMode();
-        if(!$model->get(['id'=>$id]))
+        if(!$data = $model->get(['id'=>$id]))
         {
             echo '<h1 class="layui-text">无效订单</h1>';
             return;
@@ -472,7 +472,7 @@ class Order extends Base
         $rel = $model->where(['order_id'=>$id])->order('type','desc')->paginate(15);
         $this->assign('files',$rel);
         $this->assign('page',$rel->render());
-        return $this->fetch('upload_views',['id'=>$id]);
+        return $this->fetch('upload_views',['id'=>$id,'order_number'=>$data['order_id']]);
     }
 
     public function upOrderFile()
@@ -604,14 +604,20 @@ class Order extends Base
     public function previewPdf()
     {
         $id=input('id');
-        echo $id;
         $model = new Order_files();
         if(!$rel = $model->get(['id'=>$id]))
         {
             $this->error('非法操作');
             return;
         }
-        return $this->fetch('order_pdf',['path'=>$rel['path']]);
+        $model = new OrderMode();
+        if(!$data = $model->get(['id'=>$rel['order_id']]))
+        {
+            $name = '已删除订单的文件';
+        }else{
+            $name = $data['order_id'];
+        }
+        return $this->fetch('order_pdf',['path'=>$rel['path'],'name'=>$name]);
     }
     public function editName()
     {

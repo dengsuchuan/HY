@@ -46,10 +46,14 @@
                                 预留
                                 {/if}
                                 {if $data.type =='tif'}
-                                tif
+                                <button class="layui-btn layui-btn-xs">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}">
+                                        <i class="layui-icon">TIF</i>
+                                    </a>
+                                </button>
                                 {/if}
                                 {if $data.type == 'pdf'}
-                                <button class="layui-btn layui-btn-sm"
+                                <button class="layui-btn layui-btn-xs"
                                 onclick="x_admin_show('合同文件预览','{:url(\'index/Order/previewPdf\',[\'id\'=>$data.id])}')">
                                     <i class="layui-icon">PDF</i>
                                 </button>
@@ -60,7 +64,7 @@
                                        value="{$data.describe}" onchange="editName('name{$key+1}',{$data.id})">
                             </td>
                             <td>
-                                <button class="layui-btn layui-btn-sm layui-btn-danger"
+                                <button class="layui-btn layui-btn-xs layui-btn-danger"
                                 onclick="delFiles('{$data.id}')">
                                     <i class="layui-icon layui-icon-delete"></i>
                                 </button>
