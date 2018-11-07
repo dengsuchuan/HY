@@ -43,24 +43,37 @@
                                 <button onclick="YuLans('{$data.path}')">方式二</button>
                                 {/if}
                                 {if $data.type =='doc'||$data.type =='docx'}
-                                预留
+                                <button class="layui-btn layui-btn-xs">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}.{$data.type}">
+                                        <i class="layui-icon">WORD</i>
+                                    </a>
+                                </button>
                                 {/if}
                                 {if $data.type =='tif'}
-                                tif
+                                <button class="layui-btn layui-btn-xs">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}.{$data.type}">
+                                        <i class="layui-icon">TIF</i>
+                                    </a>
+                                </button>
                                 {/if}
                                 {if $data.type == 'pdf'}
-                                <button class="layui-btn layui-btn-sm"
+                                <button class="layui-btn layui-btn-xs"
                                 onclick="x_admin_show('合同文件预览','{:url(\'index/Order/previewPdf\',[\'id\'=>$data.id])}')">
                                     <i class="layui-icon">PDF</i>
                                 </button>
                                 {/if}
                             </td>
                             <td>
-                                <input id="name{$key+1}" class="layui-input" type="text" style="text-align: center"
+                                <input id="name{$key+1}" class="layui-input" type="text" style="min-width: 100px;text-align: center"
                                        value="{$data.describe}" onchange="editName('name{$key+1}',{$data.id})">
                             </td>
                             <td>
-                                <button class="layui-btn layui-btn-sm layui-btn-danger"
+                                <button class="layui-btn layui-btn-xs">
+                                    <a style="color: white" href="{$data.path}" download="{$order_number}.{$data.type}">
+                                        <i class="layui-icon layui-icon-download-circle"></i>
+                                    </a>
+                                </button>
+                                <button class="layui-btn layui-btn-xs layui-btn-danger"
                                 onclick="delFiles('{$data.id}')">
                                     <i class="layui-icon layui-icon-delete"></i>
                                 </button>

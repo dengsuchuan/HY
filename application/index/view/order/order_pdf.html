@@ -26,6 +26,14 @@
     <script src="__STATIC__/pdf/pdf.worker.js"></script>
 </head>
 <body>
+<div class="container bg-white">
+    <form onsubmit="return false">
+        <div class="mt-3">
+            <a href="{$path}" download="{$name}.pdf"><button type="button"  class="btn btn-success">下载</button></a>
+            <button type="button" onclick="window.location.href='{$path}'" class="btn btn-danger">直接打开</button>
+        </div>
+    </form>
+</div>
 <div id="myPDF" class="col-12 bg-dark text-dark">
 
 </div>
