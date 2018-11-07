@@ -146,6 +146,11 @@ class Order extends Base
         return  $this->view->fetch('order-detail-info');
     }
     public function addOrderDetail(){
+        $this->assign([
+            'code'   =>  4,
+            'msg'    => '',
+            'state'  => 0
+        ]);
         if (Request::isPost()){
             $data = Request::post();
             $type = $data['type'];
@@ -169,13 +174,12 @@ class Order extends Base
             unset($data['order']);
             $order_code = Request::post('ordercode');
             $datas = [];
-            $mode =  new OrderDetail();
             foreach ($data as $key=>$value){
                 if($key == 'drawing_detail_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
-                        OrderDetail::where('drawing_detail_id','=',$v1)->where(['order_id'=>$coder])->delete();
-                        $datas[][$key] = $value[$i];
+//                        OrderDetail::where('drawing_detail_id','=',$v1)->where(['order_id'=>$coder])->delete();
+                        $datas[$i][$key] = $value[$i];
                         $datas[$i]['order_detail_code'] = $order_code.'-'. ($tempid<10 ? '0'.$tempid :$tempid);
                         $datas[$i]['sort'] = ++$sort;
                         $datas[$i]['create_name'] =  session('user.user_name');
@@ -184,6 +188,15 @@ class Order extends Base
                         $tempid++;
                     }
                 }
+
+                if($key == 'drawing_detail_code'){
+                    $i = 0;
+                    foreach ($value as $k1=>$v1){
+                        $datas[$i][$key] = $value[$i];
+                        $i++;
+                    }
+                }
+
                 if($key == 'order_id'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
@@ -213,6 +226,7 @@ class Order extends Base
                         $i++;
                     }
                 }
+
                 if($key == 'content'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
@@ -283,6 +297,7 @@ class Order extends Base
             }
             $orderDetail = new OrderDetail();
             $info = $orderDetail->saveAll($datas);
+//            dd($datas);
             if($info){
                 return json(1);
             }else{
@@ -294,13 +309,116 @@ class Order extends Base
         $ids = explode(',',$id);
         $orderId = input('order');
         $orderCode = OrderMode::where(['id'=>$orderId])->value('order_id');
-
         if($type == 'n'){
             $a = 1;
-            $blueprintInfo = BlueprintInfo::where('drawing_internal_id','in',$ids)->select();
+            $blueprintInfoId = BlueprintInfo::where('drawing_internal_id','in',$ids)->field('id')->select();
+            $b_id = [];
+            foreach ($blueprintInfoId as $itme){
+                $b_id[] = $itme['id'];
+            }
+            $orderDetail =  OrderDetail::where(['order_id'=>$orderId])->where('drawing_detail_id','in',$b_id)->field('drawing_detail_id')->select();
+            $b_id = [];
+            foreach ($orderDetail as $itme){
+                $b_id[] = $itme['drawing_detail_id'];
+            }
+            $blueprintInfo_ = BlueprintInfo::where('id','in',$b_id)->field('drawing_internal_id')->select();
+
+            $blueprintInfo = BlueprintInfo::where('drawing_internal_id','in',$ids)->where('id','not in',$b_id)->select();
+//            dd($blueprintInfo_);
+
+            if($blueprintInfo_->count() !=0){
+
+                $blueprintInfo_istr = '';
+                foreach ($blueprintInfo_ as $itme){
+                    $blueprintInfo_istr .= $itme['drawing_internal_id'].'   ';
+                }
+                $state = 0;
+                if($blueprintInfo->count() == 0){
+                    $state = -10;
+                }
+                $this->assign([
+                    'code'   =>  -4,
+                    'msg'    => $blueprintInfo_istr,
+                    'state'  => $state
+                ]);
+                $this->assign([
+                    'orderId'        =>  $orderId,
+                    'orderCode'      =>  $orderCode,
+                    'blueprintInfo'  =>   $blueprintInfo,
+                    'type' =>$type,
+                    'a'    => $a
+                ]);
+
+                return  $this->view->fetch('order_detail_add');
+            }
+            if($blueprintInfo->count() == 0){
+                $this->assign([
+                    'code'   =>  -5
+                ]);
+                $this->assign([
+                    'orderId'        =>  $orderId,
+                    'orderCode'      =>  $orderCode,
+                    'blueprintInfo'  =>   $blueprintInfo,
+                    'type' =>$type,
+                    'a'    => $a
+                ]);
+                return  $this->view->fetch('order_detail_add');
+            }
+
         }else if($type=='w'){
             $a = 0;
-            $blueprintInfo = BlueprintInfo::where('drawing_externa_id','in',$ids)->select();
+            $blueprintInfoId = BlueprintInfo::where('drawing_externa_id','in',$ids)->field('id')->select();
+            $b_id = [];
+            foreach ($blueprintInfoId as $itme){
+                $b_id[] = $itme['id'];
+            }
+            $orderDetail =  OrderDetail::where(['order_id'=>$orderId])->where('drawing_detail_id','in',$b_id)->field('drawing_detail_id')->select();
+            $b_id = [];
+            foreach ($orderDetail as $itme){
+                $b_id[] = $itme['drawing_detail_id'];
+            }
+//            dd($b_id);
+            $blueprintInfo_ = BlueprintInfo::where('id','in',$b_id)->field('drawing_detail_id')->select();
+            $blueprintInfo = BlueprintInfo::where('drawing_externa_id','in',$ids)->where('id','not in',$b_id)->select();
+
+            if($blueprintInfo_->count() !=0){
+                $blueprintInfo_istr = '';
+                foreach ($blueprintInfo_ as $itme){
+                    $blueprintInfo_istr .= $itme['drawing_detail_id'].'   ';
+                }
+                $state = 0;
+                if($blueprintInfo->count() == 0){
+                    $state = -10;
+                }
+                $this->assign([
+                    'code'   =>  -4,
+                    'msg'    => $blueprintInfo_istr,
+                    'state'  => $state
+                ]);
+
+                $this->assign([
+                    'orderId'        =>  $orderId,
+                    'orderCode'      =>  $orderCode,
+                    'blueprintInfo'  =>   $blueprintInfo,
+                    'type' =>$type,
+                    'a'    => $a
+                ]);
+
+                return  $this->view->fetch('order_detail_add');
+            }
+            if($blueprintInfo->count() == 0){
+                $this->assign([
+                   'code'   =>  -5
+                ]);
+                $this->assign([
+                    'orderId'        =>  $orderId,
+                    'orderCode'      =>  $orderCode,
+                    'blueprintInfo'  =>   $blueprintInfo,
+                    'type' =>$type,
+                    'a'    => $a
+                ]);
+                return  $this->view->fetch('order_detail_add');
+            }
         }
         $this->assign([
             'orderId'        =>  $orderId,
@@ -312,6 +430,11 @@ class Order extends Base
         return  $this->view->fetch('order_detail_add');
     }
     public function newOrder(){
+        $this->assign([
+            'code'   =>  0,
+            'msg'    => '',
+            'state'  => 0
+        ]);
         $ids = input();
         $ocder_id = $ids['id'];
         $type = input('type');

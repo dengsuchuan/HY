@@ -150,7 +150,6 @@ function getDrawingName($id){
 
 function getblueprintInfoList($id){
     return (BlueprintInfo::where(['id'=>$id])->find());
-
 }
 
 function getOrderSelect($id){
