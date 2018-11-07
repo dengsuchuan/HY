@@ -61,6 +61,13 @@
           <tr>
             <td class="td-manage">
               <a title="修改" onclick="x_admin_show('修改订单明细','{:url(\'index/Order/editOrder\',[\'id\'=>$info.id])}',600,600)", href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+              <!-- 合同文件 -->
+              <a title="合同文件" onclick="x_admin_show('上传合同文件','{:url(\'index/Order/OrderFile\',[\'id\'=>$info.id])}')",
+                 href="javascript:;">
+                <i style="color: green" class="layui-icon">
+                  &#xe681;
+                </i>
+              </a>
               <a title="删除" onclick="delete_(this,'{$info.id}')" href="javascript:void(0);" ><i  style="color:red;" class="layui-icon"></i></a>
             </td>
             <td>  <a title="订单明细" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$info.order_id}</span> 订单明细','{:url(\'index/Order/orderDetail\',[\'id\'=>$info.id])}')", href="javascript:;"> {$info.order_id} </a></td>
