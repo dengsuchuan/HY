@@ -199,7 +199,7 @@ class Delivery extends Base
         //得到申请人
         $application = Order::where(['order_id'=>$order_id])->value("application");
         //得到产品价格
-        $price = "0";
+        $price = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('product_real_price');
 
         //通过图纸明细，拿到外图和内图的编号
         //创建入库

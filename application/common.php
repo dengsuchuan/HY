@@ -152,6 +152,12 @@ function getblueprintInfoList($id){
     return (BlueprintInfo::where(['id'=>$id])->find());
 
 }
+
+function getOrderSelect($id){
+    $drawing_detail_id = OrderDetail::where(['order_detail_code'=>$id])->value('drawing_detail_id');
+    return (getblueprintInfoList($drawing_detail_id));
+
+}
 // 传入订单明细编号获取产品名称
 
 function getOrderDrawingName($order_id){
