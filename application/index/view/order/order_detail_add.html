@@ -21,7 +21,8 @@
           <label class="layui-form-label">明细编号</label>
           <div class="layui-input-inline" style="width: 200px;">
             <input type="text" value="{$info.drawing_detail_id}"  disabled  required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-            <input type="hidden" value="{$info.id}"  disabled  name="drawing_detail_id[]" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            <input type="hidden" value="{$info.drawing_detail_id}"  name="drawing_detail_code[]"  >
+            <input type="hidden" value="{$info.id}"    name="drawing_detail_id[]" required="" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
           <input type="hidden" value="{$type}" name="type">
           </div>
         </div>
@@ -165,19 +166,40 @@
     {/volist}
       <div class="layui-form-item">
         <label class="layui-form-label"></label>
-        <button class="layui-btn" lay-submit lay-filter="addId" >
+        <button class="layui-btn" lay-submit lay-filter="addId" id="butt" >
           增加
         </button>
+
       </div>
   </form>
 </div>
 <script>
+    $(function () {
+       var code = {$code};
+       var state = {$state};
+       // alert(code);
+       //  $ = layui.jquery;
+       //  var layer = layui.layer;
+       //  $ = layui.jquery;
+       //  var form = layui.form,layer = layui.layer;
+       if (code === -5){
+           alert('暂无数据或者数据已添加');
+           window.parent.location.reload();  //刷新父级页面
+       }
+       if(code === -4){
+           alert('图纸明细为以下编码: '+'{$msg}'+'已经入库！');
+           if(state === -10){
+               window.parent.location.reload();  //刷新父级页面
+           }
+       }
+    });
     layui.use(['form'], function(){
         $ = layui.jquery;
         var form = layui.form,layer = layui.layer;
 
         //监听提交
         form.on('submit(addId)', function(data){
+            $("#butt").attr("disabled", true);
             //console.log(data);
             $.post("{:url('index/Order/addOrderDetail')}",data.field,function(info){
                 if (info) {

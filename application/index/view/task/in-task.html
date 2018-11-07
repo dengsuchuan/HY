@@ -57,8 +57,8 @@
             <td>{$info.task_id}</td>
             <td>{$blueprintInfoList.drawing_detail_id}</td>
             <td>{$info.order_detial_id|getOrderDrawingName}</td>
-          <td></td>
             <td></td>
+            <td>{$blueprintInfoList.material|getMaterialType}</td>
             <td>{$info.task_qty}</td>
             <td class="td-manage">
               {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->

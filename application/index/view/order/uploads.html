@@ -42,6 +42,7 @@
             fileAry.append('file[]',files[i]);
         }
         fileAry.append('describe',$("#describe").val());
+
         layer.msg('正在上传...',{icon:6,time:5000});
         $.ajax({
             url:'{:url("index/Order/upOrderFiles",["order_id"=>$order_id])}',
