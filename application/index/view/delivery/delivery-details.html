@@ -67,8 +67,12 @@
                   <!--</div>-->
                 <!--</div>-->
               </td>
-              <td>{$info.external}</td>
-              <td>{$info.waiExternal}</td>
+              <td>
+                <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$info.external}</span> 的图纸明细','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$info.external,\'key\'=>\'internal\'])}')" ><span style="color: #1E9FFF">{$info.external}</span></a>
+              </td>
+              <td>
+                <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'>{$info.waiExternal}</span> 的图纸明细','{:url(\'index/blueprint/blueprintInfo\',[\'codeId\'=>$info.waiExternal,\'key\'=>\'externa\'])}')" ><span style="color: #1E9FFF">{$info.waiExternal}</span></a>
+              </td>
               <td>{$info.drawingName}</td>
               <td>{$info.materialName}</td>
               <?php $blueprintInfoList = getOrderSelect($info['orderCode']);?>
