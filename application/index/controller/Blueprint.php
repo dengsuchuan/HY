@@ -7,6 +7,7 @@ use app\index\model\BlueprintOutside;
 use app\index\model\Client;
 use app\index\model\ComparnyM;
 use app\index\model\ComparnyP;
+use app\index\model\DeliveryInfoModel;
 use app\index\model\DrawingInternal;
 use app\index\model\Material;
 use app\index\model\MaterialShape;
@@ -906,6 +907,7 @@ class Blueprint extends Base
 
         $drawing_detail_id = BlueprintInfo::where(['id'=>$id])->value('drawing_detail_id');  //获取编号
         $order_id = OrderDetail::where(['drawing_detail_id'=>$id])->value('id');
+        $order_detail_code = OrderDetail::where(['drawing_detail_id'=>$id])->value('order_detail_code');
         ProductTask::where(['order_detial_id'=>$order_id])->delete();
         ProductProcess::where(['drawing_detial_id'=>$drawing_detail_id])->delete();
         // 删除任务
@@ -913,7 +915,6 @@ class Blueprint extends Base
 //        dd($order_id);
         $info =  BlueprintInfo::where('id',$id)->delete();
         if($info){
-
 
             return 1;
         }else{
