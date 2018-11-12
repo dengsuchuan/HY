@@ -88,11 +88,35 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">是否完成</label>
+            <label class="layui-form-label">是否外协</label>
             <div class="layui-input-block">
-                <input type="checkbox" name="fulfill" lay-skin="switch" lay-text="已完|未完" {$logList.fulfill==0?"":"checked=''"}>
+                <input type="checkbox" name="fulfill" lay-filter="fulfill" lay-skin="switch" lay-text="是|否" {$logList.fulfill==0?"":"checked=''"}>
+            </div>
+            <p style="color: red" id="costP" hidden>忽略显示，外协单位和外协费用已清空，请重新选择。</p>
+        </div>
+        {if $logList.fulfill == "1"}
+        <div id="cost">
+            <div class="layui-form-item">
+                <label class="layui-form-label">外协费用</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="costInput" name="cost" value="{$logList.cost}" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">外协单位</label>
+                <div class="layui-input-block">
+                    <select name="costUnit" lay-verify="required" lay-search="" >
+                        <option value="{$logList.costUnit}">{$logList.costUnit}</option>
+                        <optgroup label="选择客户">
+                            {volist name="$client" id="list"}
+                            <option value="{$list.client_name}">{$list.client_name}</option>
+                            {/volist}
+                        </optgroup>
+                    </select>
+                </div>
             </div>
         </div>
+        {/if}
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block" >
@@ -199,6 +223,19 @@
                 }
             },'json');
             return false;
+        });
+
+        //监听是否外协
+        form.on('switch(fulfill)',function (data) {
+            $("#costInput").val("0");
+            if(data.elem.checked){
+                $("#cost").show();
+                $("#costP").show();
+            }else{
+                $("#cost").hide();
+                $("select[name='costUnit']").val("");
+                $("#costP").hide();
+            }
         });
     });
 </script>

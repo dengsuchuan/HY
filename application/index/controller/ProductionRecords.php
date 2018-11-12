@@ -15,6 +15,7 @@ use app\index\model\ProductionRecordsModel;
 use app\index\model\ProductLog;
 use app\index\model\ProductProcess;
 use app\index\model\Employee;
+use app\index\model\Client;
 use think\facade\Request;
 use app\index\model\ProductTask;
 
@@ -44,10 +45,12 @@ class ProductionRecords extends Base
         $model = new ProductionRecordsModel();//实例
         $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
         $eqpmt = EquipmentInfo::where(['is_working'=>1])->select();
+        $client = Client::all();
         $this->view->assign([
             'task_id'=>$task_id,
             'log_id'=>$log_id,
             'eqpmt'=>$eqpmt,
+            'client'=>$client,
             'drawing'=>$drawing,
         ]);
         return $this->view->fetch();
@@ -62,11 +65,13 @@ class ProductionRecords extends Base
         $model = new ProductionRecordsModel();//实例
         $log_id = $this->getNewId("PL-".date('Ymd'),$model,'log_id');
         $eqpmt = EquipmentInfo::where(['is_working'=>1])->select();
+        $client = Client::all();
         $this->view->assign([
             'productLog'=>$productLog,
             'task_id'=>$task_id,
             'log_id'=>$log_id,
             'eqpmt'=>$eqpmt,
+            'client'=>$client,
             'drawing'=>$drawing,
         ]);
         $this->assign(compact('productLog'));

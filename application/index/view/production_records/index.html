@@ -30,13 +30,16 @@
                     <th>操作</th>
                     <!--<th>生产记录编号</th>-->
                     <th>序号</th>
+                    <th>检验记录</th>
                     <th>类型</th>
                     <th>操作者</th>
                     <th>数量</th>
                     <th>完成日期</th>
                     <th>设备</th>
                     <!--<th>任务编号</th>-->
-                    <th>管理者</th>
+                    <!--<th>管理者</th>-->
+                    <th>外协费用</th>
+                    <th>外协单位</th>
                     <th>合格数</th>
                     <th>质量等级</th>
                     <th>检验员</th>
@@ -58,25 +61,27 @@
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
                     </td>
-                    <!--<td>{$list.log_id}</td>-->
                     <td {$list.fulfill==0?'':'style="background:greenyellow"'}>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
+                    <td><a href="" style="color: green">占位/检验</a></td>
                     <td>{$list.process_id|getGyType}</td>
                     <td>{$list.hr_id}</td>
                     <td>{$list.complete_qty}</td>
                     <td>{$list.complete_date}</td>
                     <td>{$list.eqpmt_id}</td>
                     <!--<td>{$list.task_id}</td>-->
-                    <td>
-                        {if $list.manege_name==""}
-                        <a title="生产签字" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
-                            未签字
-                        </a>
-                        {else}
-                        <a title="取消生产签字" onclick="signDown_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
-                            {$list.manege_name} : {$list.manege_date}
-                        </a>
-                        {/if}
-                    </td>
+                    <!--<td>-->
+                        <!--{if $list.manege_name==""}-->
+                        <!--<a title="生产签字" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >-->
+                            <!--未签字-->
+                        <!--</a>-->
+                        <!--{else}-->
+                        <!--<a title="取消生产签字" onclick="signDown_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >-->
+                            <!--{$list.manege_name} : {$list.manege_date}-->
+                        <!--</a>-->
+                        <!--{/if}-->
+                    <!--</td>-->
+                    <td>{$list.cost}</td>
+                    <td>{$list.costUnit}</td>
                     <td>{$list.product_qty}</td>
                     <td>{$list.quality_grade}</td>
                     <td>

@@ -82,9 +82,28 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">是否完成</label>
+            <label class="layui-form-label">是否外协</label>
             <div class="layui-input-block">
-                <input type="checkbox" name="fulfill" lay-skin="switch" lay-text="已完|未完">
+                <input type="checkbox" name="fulfill" lay-filter="fulfill" lay-skin="switch" lay-text="是|否">
+            </div>
+            <p style="color: red" id="costP" hidden>忽略显示，外协单位和外协费用已清空，请重新选择。</p>
+        </div>
+        <div id="cost" hidden>
+            <div class="layui-form-item">
+                <label class="layui-form-label">外协费用</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="costInput" name="cost" value="0" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">外协单位</label>
+                <div class="layui-input-block">
+                    <select name="costUnit" lay-verify="required" lay-search="" >
+                        {volist name="$client" id="list"}
+                        <option value="{$list.client_name}">{$list.client_name}</option>
+                        {/volist}
+                    </select>
+                </div>
             </div>
         </div>
         <div class="layui-form-item">
@@ -99,12 +118,7 @@
             <button class="layui-btn" lay-submit lay-filter="addId">
                 确认添加
             </button>
-            <br>
-            {$drawing}<br>
-            {$task_id}
         </div>
-
-
     </form>
 </div>
 <script>
@@ -193,6 +207,19 @@
                 }
             },'json');
             return false;
+        });
+
+        //监听是否外协
+        form.on('switch(fulfill)',function (data) {
+            $("#costInput").val("0");
+            if(data.elem.checked){
+                $("#cost").show();
+                $("#costP").show();
+            }else{
+                $("#cost").hide();
+                $("select[name='costUnit']").val("");
+                $("#costP").hide();
+            }
         });
     });
 </script>
