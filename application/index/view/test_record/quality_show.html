@@ -1,0 +1,306 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        {volist name="quality" id="list"}
+        <div class="layui-form-item">
+            <label class="layui-form-label">生产记录</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="log_id" value="{$list.log_id}" disabled>
+                <input type="hidden" class="layui-input" name="id" value="{$list.id}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">质量描述</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="quality" value="{$list.quality}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">错误原因</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="cause" value="{$list.cause}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">扣款金额</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="cost" value="{$list.cost}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">落实跟踪</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="result" value="{$list.result}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">落实人员</label>
+            <div class="layui-input-block" >
+                {if $list.tracer}
+                <a class="layui-btn" title="点击取消签名" id="tracerQx">取消签名</a>
+                {else}
+                <a class="layui-btn" title="检验员签名" id="tracerQm">签名</a>
+                {/if}
+                <script>
+                    $(function () {
+                        $("#tracerQm").click(function () {
+                            $("#tracerQm").text("已签名，请先保存");
+                            $("#tracer").val("{$Think.session.user.user_name}");
+                            $("#tracerTime").val("{:date('Y-m-d H:i:s')}");
+                        });
+                        $("#tracerQx").click(function () {
+                            $("#tracerQx").text("已取消，请先保存");
+                            $("#tracer").val("");
+                            $("#tracerTime").val("");
+                        });
+                    });
+                </script>
+                <input type="hidden" class="layui-input" name="tracer" id="tracer" value="{$list.tracer}">
+            </div>
+        </div>
+        <div class="layui-form-item" hidden>
+            <label class="layui-form-label">落实日期</label>
+            <div class="layui-input-block" >
+                <input type="hidden" class="layui-input" name="tracerTime" id="tracerTime" value="{$list.tracerTime}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">检验员</label>
+            <div class="layui-input-block" >
+                {if $list.inspector}
+                <a class="layui-btn" title="点击取消签名" id="inspectorQx">取消签名</a>
+                {else}
+                <a class="layui-btn" title="检验员签名" id="inspectorQm">签名</a>
+                {/if}
+                <script>
+                    $(function () {
+                        $("#inspectorQm").click(function () {
+                            $("#inspectorQm").text("已签名，请先保存");
+                            $("#inspector").val("{$Think.session.user.user_name}");
+                            $("#inspectorTime").val("{:date('Y-m-d H:i:s')}");
+                        });
+                        $("#inspectorQx").click(function () {
+                            $("#inspectorQx").text("已取消，请先保存");
+                            $("#inspector").val("");
+                            $("#inspectorTime").val("");
+                        });
+                    });
+                </script>
+                <input type="hidden" class="layui-input" name="inspector" id="inspector" value="{$list.inspector}">
+            </div>
+        </div>
+        <div class="layui-form-item" hidden>
+            <label class="layui-form-label">检验日期</label>
+            <div class="layui-input-block" >
+                <input type="hidden" class="layui-input" name="inspectorTime" id="inspectorTime" value="{$list.inspectorTime}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">质量主管</label>
+            <div class="layui-input-block">
+                {if $list.manager}
+                <a class="layui-btn" title="点击取消签名" id="managerQx">{$list.manager}  /  取消签名</a>
+                {else}
+                <a class="layui-btn" title="检验员签名" id="managerQm">签名</a>
+                {/if}
+                <script>
+                    $(function () {
+                        $("#managerQm").click(function () {
+                            $("#managerQm").text("已签名，请先保存");
+                            $("#manager").val("{$Think.session.user.user_name}");
+                        });
+                        $("#managerQx").click(function () {
+                            $("#managerQx").text("已取消，请先保存");
+                            $("#manager").val("");
+                        });
+                    });
+                </script>
+                <input type="hidden" class="layui-input" name="manager" id="manager" value="{$list.manager}">
+            </div>
+        </div>
+        <div style="border: 2px black solid;box-shadow: 10px 10px 5px #888888;">
+            <br><br>
+            <div class="layui-form-item">
+                <label class="layui-form-label">责任人1</label>
+                <div class="layui-input-block">
+                    {if $list.person1}
+                    <a class="layui-btn" title="点击取消签名" id="person1Qx">{$list.person1} / {$list.person1Time} / 取消签名</a>
+                    {else}
+                    <a class="layui-btn" id="person1Btn" hidden>等待签名</a>
+                    {/if}
+                    <script>
+                        $(function () {
+                            $("#person1Qx").click(function () {
+                                $("#person1Qx").text("已取消，请先保存");
+                                $("#person1").val("");
+                                $("#person1Time").val("");
+                            });
+                        });
+                    </script>
+                    <input type="hidden" class="layui-input" name="person1" id="person1" value="{$list.person1}">
+                </div>
+            </div>
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">责任人1日期</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" name="person1Time" id="person1Time" value="{$list.person1Time}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">责任人2</label>
+                <div class="layui-input-block" >
+                    {if $list.person2}
+                    <a class="layui-btn" title="点击取消签名" id="person2Qx">{$list.person2} / {$list.person2Time} / 取消签名</a>
+                    {else}
+                    <a class="layui-btn" id="person2Btn" hidden>等待签名</a>
+                    {/if}
+                    <script>
+                        $(function () {
+                            $("#person2Qx").click(function () {
+                                $("#person2Qx").text("已取消，请先保存");
+                                $("#person2").val("");
+                                $("#person2Time").val("");
+                            });
+                        });
+                    </script>
+                    <input type="hidden" class="layui-input" name="person2" id="person2" value="{$list.person2}">
+                </div>
+            </div>
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">责任人2日期</label>
+                <div class="layui-input-block" >
+                    <input type="text" class="layui-input" name="person2Time" id="person2Time" value="{$list.person2Time}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">责任人3</label>
+                <div class="layui-input-block" >
+                    {if $list.person3}
+                    <a class="layui-btn" title="点击取消签名" id="person3Qx">{$list.person3} / {$list.person3Time} / 取消签名</a>
+                    {else}
+                    <a class="layui-btn" id="person3Btn" hidden>等待签名</a>
+                    {/if}
+                    <script>
+                        $(function () {
+                            $("#person3Qx").click(function () {
+                                $("#person3Qx").text("已取消，请先保存");
+                                $("#person3").val("");
+                                $("#person3Time").val("");
+                            });
+                        });
+                    </script>
+                    <input type="hidden" class="layui-input" name="person3" id="person3" value="{$list.person3}">
+                </div>
+            </div>
+            <div class="layui-form-item" hidden>
+                <label class="layui-form-label">责任人3日期</label>
+                <div class="layui-input-block" >
+                    <input type="text" class="layui-input" name="person3Time" id="person3Time" value="{$list.person3Time}">
+                </div>
+            </div>
+            <center><button class="layui-btn" type="button" lay-submit id="allQm">责任人签名</button></center>
+            <script>
+                $(function () {
+                    $("#allQm").click(function () {
+                       var person1 = $("#person1").val();
+                       var person2 = $("#person2").val();
+                       var person3 = $("#person3").val();
+
+                        if(!person1){
+                            $("#person1Btn").text("{$Think.session.user.user_name} / {:date('Y-m-d H:i:s')}");
+                            $("#person1Btn").show();
+                            $("#person1").val("{$Think.session.user.user_name}");
+                            $("#person1Time").val("{:date('Y-m-d H:i:s')}");
+                            return false;
+                        }
+
+                        if (!person2){
+                            $("#person2Btn").text("{$Think.session.user.user_name} / {:date('Y-m-d H:i:s')}");
+                            $("#person2Btn").show();
+                            $("#person2").val("{$Think.session.user.user_name}");
+                            $("#person2Time").val("{:date('Y-m-d H:i:s')}");
+                            return false;
+                        }
+
+                        if(!person3){
+                            $("#person3Btn").text("{$Think.session.user.user_name} / {:date('Y-m-d H:i:s')}");
+                            $("#person3Btn").show();
+                            $("#person3").val("{$Think.session.user.user_name}");
+                            $("#person3Time").val("{:date('Y-m-d H:i:s')}");
+                            return false;
+                        }
+                        if(person1 && person2 && person3){
+                            layer.alert("签名人数已到上限", {icon: 5,time:700});
+                        }
+                    });
+                });
+            </script>
+            <br><br>
+        </div>
+        <br><br>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="remark" value="{$list.remark}">
+            </div>
+        </div>
+        {/volist}
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-submit lay-filter="addId">
+                修改
+            </button>
+            <button class="layui-btn" lay-submit lay-filter="delId">
+                删除
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/TestRecord/qualitySave')}",data.field,function(info){
+                if (info) {
+                    layer.alert("添加成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("添加失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+        //监听删除
+        form.on('submit(delId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/TestRecord/qualityDel')}",data.field,function(info){
+                if (info) {
+                    layer.alert("删除成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("删除失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

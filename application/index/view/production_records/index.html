@@ -31,6 +31,7 @@
                     <!--<th>生产记录编号</th>-->
                     <th>序号</th>
                     <th>检验记录</th>
+                    <th>品管</th>
                     <th>类型</th>
                     <th>操作者</th>
                     <th>数量</th>
@@ -62,7 +63,22 @@
                         </a>
                     </td>
                     <td {$list.fulfill==0?'':'style="background:greenyellow"'}>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
-                    <td><a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$task_id])}')" href="javascript:;">查看</a></td>
+                    <td>
+                        <?php $ifczs = ifCz($list['process_id']);?>
+                        {if $ifczs}
+                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.process_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$list.process_id])}')" href="javascript:;">记录</a>
+                        {else}
+                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.process_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$list.process_id])}')" href="javascript:;">无</a>
+                        {/if}
+                    </td>
+                    <td>
+                        <?php $ifczs = ifPk($list['process_id']);?>
+                        {if $ifczs}
+                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.process_id}</span> 的品管','{:url(\'index/TestRecord/qualityShow\',[\'task_id\'=>$list.process_id])}',500)" href="javascript:;">品管</a>
+                        {else}
+                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.process_id}</span> 的品管','{:url(\'index/TestRecord/qualityShow\',[\'task_id\'=>$list.process_id])}',500)" href="javascript:;">无</a>
+                        {/if}
+                    </td>
                     <td>{$list.process_id|getGyType}</td>
                     <td>{$list.hr_id}</td>
                     <td>{$list.complete_qty}</td>

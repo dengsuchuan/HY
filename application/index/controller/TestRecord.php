@@ -9,6 +9,7 @@
 namespace app\index\controller;
 
 use app\index\common\controller\Base;
+use app\index\model\QualityModel;
 use app\index\model\TestRecordModel;
 use think\facade\Request;
 
@@ -77,6 +78,47 @@ class TestRecord extends Base
             return 1;
         }else{
             return 0;
+        }
+    }
+    //---------------------------华丽丽的分割线-------------------------
+    //显示质量界面
+    public function qualityShow(){
+        $id = input("task_id");
+        $ifQuality = QualityModel::where(['log_id'=>$id])->find();
+        if(!$ifQuality){
+            QualityModel::create(['log_id'=>$id]);
+        }
+        $quality = QualityModel::where(['log_id'=>$id])->select();
+
+        $this->view->assign(compact("quality"));
+        return $this->view->fetch();
+    }
+    //保存质量修改
+    public function qualitySave(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            unset($data['id']);
+            $info = QualityModel::where(['id'=>$id])->update($data);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+
+    //保存质量修改
+    public function qualityDel(){
+        if(Request::isAjax()){
+            $data = Request::post();
+            $id = $data['id'];
+            $info = QualityModel::where(['id'=>$id])->delete();
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
         }
     }
 
