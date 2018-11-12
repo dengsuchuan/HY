@@ -62,7 +62,7 @@
                         </a>
                     </td>
                     <td {$list.fulfill==0?'':'style="background:greenyellow"'}>{:substr($list['process_id'],strpos($list['process_id'],'P'));}</td>
-                    <td><a href="" style="color: green">占位/检验</a></td>
+                    <td><a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$task_id])}')" href="javascript:;">查看</a></td>
                     <td>{$list.process_id|getGyType}</td>
                     <td>{$list.hr_id}</td>
                     <td>{$list.complete_qty}</td>

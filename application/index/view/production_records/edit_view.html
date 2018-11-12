@@ -100,6 +100,7 @@
                 <label class="layui-form-label">外协费用</label>
                 <div class="layui-input-block">
                     <input type="text" class="layui-input" id="costInput" name="cost" value="{$logList.cost}" lay-verify="required">
+                    <p style="color: red" id="costInputP" hidden>外协费用费用必须大于0</p>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -182,6 +183,18 @@
             }
         });
 
+        //判断外协费用
+        $("#costInput").bind("input propertychange",function(event){
+            var costInput = $("#costInput").val();
+            costInput = parseFloat(costInput);
+            if(costInput <=0){
+                $("#costInputP").show();
+                $("#costInput").val("");
+            }else{
+                $("#costInputP").hide();
+            }
+        });
+
     });
 
     layui.use(['form'], function(){
@@ -227,7 +240,7 @@
 
         //监听是否外协
         form.on('switch(fulfill)',function (data) {
-            $("#costInput").val("0");
+            $("#costInput").val("");
             if(data.elem.checked){
                 $("#cost").show();
                 $("#costP").show();

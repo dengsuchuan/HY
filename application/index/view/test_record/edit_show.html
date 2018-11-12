@@ -1,0 +1,80 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        {volist name="testRecord" id="list"}
+        <div class="layui-form-item">
+            <label class="layui-form-label">检验记录编号</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="check_id" value="{$list.check_id}" disabled>
+                <input type="hidden" class="layui-input" name="id" value="{$list.id}" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属生产记录</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="log_id" value="{$list.log_id}" disabled>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">名义尺寸</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="nromal_dim" value="{$list.nromal_dim}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">实际尺寸1</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="real_dim1" value="{$list.real_dim1}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">实际尺寸2</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="real_dim2" value="{$list.real_dim2}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block" >
+                <input type="text" class="layui-input" name="remark" value="{$list.remark}">
+            </div>
+        </div>
+        {/volist}
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-submit lay-filter="addId">
+                提交修改
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form'], function(){
+        $ = layui.jquery;
+        var form = layui.form,layer = layui.layer;
+
+        //监听提交
+        form.on('submit(addId)', function(data){
+            //console.log(data);
+            $.post("{:url('index/TestRecord/editSave')}",data.field,function(info){
+                if (info) {
+                    layer.alert("修改成功", {icon: 6},function () {
+                        window.parent.location.reload();  //刷新父级页面
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前弹出层
+                        parent.layer.close(index);
+                    });
+                }else{
+                    layer.alert("修改失败", {icon: 5});
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>
