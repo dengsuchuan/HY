@@ -251,8 +251,14 @@ function getOrderStaus($cp_id,$id,$p_id){
     foreach ($yanse as $item){
         $x_num += $item['complete_qty'];
     }
+//    if($x_num == $num || $yanse1 != null){
+//       $code = "<span style='color: #28ac17'>";
+//
+//    }else{
+//        $code = "<span style='color: #666'>";
+//    }
     if($x_num == $num || $yanse1 != null){
-       $code = "<span style='color: #28ac17'>";
+        $code = "<span style='color: #28ac17'>";
 
     }else{
         $code = "<span style='color: #666'>";
