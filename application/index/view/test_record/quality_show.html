@@ -38,7 +38,7 @@
             <label class="layui-form-label">落实人员</label>
             <div class="layui-input-block" >
                 {if $list.tracer}
-                <a class="layui-btn" title="点击取消签名" id="tracerQx">取消签名</a>
+                <a class="layui-btn" title="点击取消签名" id="tracerQx">{$list.tracer} / {$list.tracerTime} / 取消签名</a>
                 {else}
                 <a class="layui-btn" title="检验员签名" id="tracerQm">签名</a>
                 {/if}
@@ -69,7 +69,7 @@
             <label class="layui-form-label">检验员</label>
             <div class="layui-input-block" >
                 {if $list.inspector}
-                <a class="layui-btn" title="点击取消签名" id="inspectorQx">取消签名</a>
+                <a class="layui-btn" title="点击取消签名" id="inspectorQx">{$list.inspector} / {$list.inspectorTime} / 取消签名</a>
                 {else}
                 <a class="layui-btn" title="检验员签名" id="inspectorQm">签名</a>
                 {/if}
