@@ -172,6 +172,7 @@ function getblueprintInfo($order_id){
 
     // 通过明细id 获取产品名称
     $blueprintInfo = BlueprintInfo::where(['id'=>$p_id])->find();
+//    dd($blueprintInfo);
     return $blueprintInfo;
 }
 
@@ -360,4 +361,15 @@ function getMaterialVersion($id){
 function getOrderInfo($order_id){
     $order = Order::where(['order_id'=>$order_id])->select();
     return $order;
+}
+
+
+// 跟据 订单明细编号获取材料
+function getCaiLiao($order_d_code){
+    // 查询订单明细下的图纸明细信息
+    $orderInfodrawing_detail_id = OrderDetail::where(['id'=>$order_d_code])->value('drawing_detail_id');
+    // 查询图纸明细下面的材料ID
+    $materialCode = BlueprintInfo::where(['id'=>$orderInfodrawing_detail_id])->value('material');
+    // 跟据材料ID 查询材料名称
+    return Material::where(['id'=>$materialCode])->value('material_id');
 }

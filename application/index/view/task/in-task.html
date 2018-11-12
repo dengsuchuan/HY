@@ -42,6 +42,8 @@
             {/if}
             <th>要求日期</th>
             <th>设备名称</th>
+            <th>创建人</th>
+            <th>创建时间</th>
             <th>备注</th>
             <th>操作</th>
             </tr>
@@ -98,6 +100,8 @@
             <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
              {$equipmentInfo.eqpmt_name}
           </td>
+          <td>{$info.create_name}</td>
+          <td>{$info.create_time}</td>
           <td>{$info.remark}</td>
             <td class="td-manage">
               <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" ><i class="layui-icon">&#xe642;</i>编辑</button>
@@ -142,17 +146,17 @@
               <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
             </div>
           </div>
-          <div class="layui-form-item">
-            <label class="layui-form-label">设备编号</label>
-            <div class="layui-input-block">
-              <select name="eqpmt_id" lay-verify="required">
-                <option value=""></option>
-                {volist name="euipmentInfo" id="info"}
-                <option value="{$info.id}">{$info.eqpmt_id}--{$info.eqpmt_name}</option>
-                {/volist}
-              </select>
-            </div>
-          </div>
+          <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">设备编号</label>-->
+            <!--<div class="layui-input-block">-->
+              <!--<select name="eqpmt_id" lay-verify="required">-->
+                <!--<option value=""></option>-->
+                <!--{volist name="euipmentInfo" id="info"}-->
+                <!--<option value="{$info.id}">{$info.eqpmt_id}&#45;&#45;{$info.eqpmt_name}</option>-->
+                <!--{/volist}-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
 
           <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
