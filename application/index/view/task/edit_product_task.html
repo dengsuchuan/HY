@@ -41,19 +41,26 @@
           <!--</select>-->
       <!--</div>-->
     <!--</div>-->
-    <div class="layui-form-item">
-      <label for="process_price" class="layui-form-label">修改人</label>
-      <div class="layui-input-inline">
-        <input type="text" id="modify_name" name="modify_name"  lay-verify="required"  value="{$Think.Session.user.user_name}" autocomplete="off" class="layui-input"  >
-      </div>
-    </div>
+
     <div class="layui-form-item layui-form-text">
       <label class="layui-form-label">备注</label>
       <div class="layui-input-block">
         <textarea class="layui-textarea"  id="remark" name="remark">{$taskrow.remark}</textarea>
       </div>
     </div>
-
+    <div class="layui-form-item">
+      <label for="process_price" class="layui-form-label">创建人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="create_name" name="create_name" disabled  lay-verify="required"  value="{$taskrow.create_name}" autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_price" class="layui-form-label">修改人</label>
+      <div class="layui-input-inline">
+        <input type="text" disabled   lay-verify="required"  value="{$Think.Session.user.user_name}" autocomplete="off" class="layui-input"  >
+        <input type="hidden" id="modify_name" name="modify_name"  lay-verify="required"  value="{$Think.Session.user.user_name}" autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
     <div class="layui-form-item">
       <label class="layui-form-label"></label>
       <button class="layui-btn" lay-submit lay-filter="addId">
