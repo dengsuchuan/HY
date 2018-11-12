@@ -18,12 +18,12 @@ class CurrentTask extends Base
         if($ifCompletr){
             //已制任务
             $ifCompletr = 0;
-            $btnText = "在制";
+            $btnText = "未完";
             $productTaskInfo = ProductTask::where(['if_completr'=>1])->paginate(25);
         }else{
             //未制任务
             $ifCompletr = 1;
-            $btnText = "已制";
+            $btnText = "已完";
             $productTaskInfo = ProductTask::where(['if_completr'=>0])->paginate(25);
         }
         $oCount = $productTaskInfo->total();

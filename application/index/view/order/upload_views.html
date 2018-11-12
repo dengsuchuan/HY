@@ -39,8 +39,7 @@
                             <td>{$data.create_user}</td>
                             <td>
                                 {if $data.type =='png'||$data.type =='jpg'}
-                                <button onclick="YuLan('{$data.path}')">方式一</button>
-                                <button onclick="YuLans('{$data.path}')">方式二</button>
+                                <button class="layui-btn layui-btn-sm" onclick="ifBas('{$data.path}')">预览</button>
                                 {/if}
                                 {if $data.type =='doc'||$data.type =='docx'}
                                 <button class="layui-btn layui-btn-xs">
@@ -204,6 +203,19 @@
                 })
             }
         })
+    }
+    function ifBas(url) {
+        layer.confirm('选择打开方式!', {
+            btn: ['弹出层','新窗口'] //按钮
+        }, function(){
+            YuLan(url);
+            layer.msg('ok',{time:1000});
+            return false;
+        }, function(){
+            YuLans(url);
+            layer.msg('ok',{time:1000});
+            return false;
+        });
     }
 </script>
 </body>
