@@ -30,15 +30,21 @@
       </div>
     </div>
 
+    <!--<div class="layui-form-item">-->
+      <!--<label class="layui-form-label">设备编号</label>-->
+      <!--<div class="layui-input-block">-->
+        <!--<select name="eqpmt_id" lay-verify="required">-->
+          <!--<option value=""></option>-->
+            <!--{volist name="equipmentInfo" id="info"}-->
+            <!--<option value="{$info.id}"  {if $taskrow.eqpmt_id == $info.id} selected {/if}>{$info.eqpmt_id}&#45;&#45;{$info.eqpmt_name} </option>-->
+            <!--{/volist}-->
+          <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="layui-form-item">
-      <label class="layui-form-label">设备编号</label>
-      <div class="layui-input-block">
-        <select name="eqpmt_id" lay-verify="required">
-          <option value=""></option>
-            {volist name="equipmentInfo" id="info"}
-            <option value="{$info.id}"  {if $taskrow.eqpmt_id == $info.id} selected {/if}>{$info.eqpmt_id}--{$info.eqpmt_name} </option>
-            {/volist}
-          </select>
+      <label for="process_price" class="layui-form-label">修改人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="modify_name" name="modify_name"  lay-verify="required"  value="{$Think.Session.user.user_name}" autocomplete="off" class="layui-input"  >
       </div>
     </div>
     <div class="layui-form-item layui-form-text">
@@ -47,6 +53,7 @@
         <textarea class="layui-textarea"  id="remark" name="remark">{$taskrow.remark}</textarea>
       </div>
     </div>
+
     <div class="layui-form-item">
       <label class="layui-form-label"></label>
       <button class="layui-btn" lay-submit lay-filter="addId">

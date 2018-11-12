@@ -11,17 +11,6 @@
     <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-  <xblock>
-    <a class="layui-btn" href="{:url('index/CurrentTask/inTask',['id'=>$ifCompletr])}" id="switch"><i class="iconfont">&#xe6e3;</i>  切换到{$btnText}</a>
-    <!--<div class="layui-input-inline">-->
-      <!--<form class="layui-form" action="{:url('index/CurrentTask/selectTask')}" method="post">-->
-        <!--<div class="layui-input-inline">-->
-          <!--<input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
-          <!--<input type="hidden" name="ifCompletr" value="{$ifCompletr=='1'?'0':'1'}">-->
-        <!--</div>-->
-        <!--<button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>-->
-      <!--</form>-->
-    <!--</div>-->
     <span class="x-right" style="line-height:40px">共{$oCount}条 · 共{$oCount/25|getInt}页</span>
   </xblock>
   <div class="layui-row">
@@ -30,13 +19,14 @@
         <table class="layui-table">
           <thead>
           <tr>
-            <th>操作</th>
+            <th>操作
+              <a  href="{:url('index/CurrentTask/inTask',['id'=>$ifCompletr])}" ><button class="layui-btn layui-btn-sm">{$btnText}</button></a>
+            </th>
             <th>任务编号</th>
             <th>内部图号</th>
             <th>产品名称</th>
             <th>外部图号</th>
             <th>材料</th>
-
             <th>数量</th>
             <th>图纸工艺</th>
             <th>进度</th>
@@ -52,20 +42,27 @@
           <?php $blueprintInfoList = getblueprintInfo($info['order_detial_id']);?>
           <tr>
             <td class="td-manage">
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)" >编辑</button>
+              <a title="编辑" onclick="x_admin_show('编辑','{:url(\'index/Task/editTask\',[\'id\'=>$info.id])}',600,500)"  href="javascript:;">
+                <i style="color: green" class="layui-icon"></i>
+              </a>
               {if $ifCompletr==1}
-              <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('生产记录','{:url(\'index/ProductionRecords/index\',[\'task_id\'=>$info.task_id,\'drawing\'=>$blueprintInfoList.drawing_detail_id])}')" >填</button>
+              <i class="layui-icon layui-icon-add-1" style="cursor: pointer" onclick="x_admin_show('生产记录','{:url(\'index/ProductionRecords/index\',[\'task_id\'=>$info.task_id,\'drawing\'=>$blueprintInfoList.drawing_detail_id])}')" ></i>
               {/if}
+              <a title="删除" onclick="" href="javascript:;">
+                <i style="color:red;" class="layui-icon"></i>
+              </a>
             </td>
             <td>{$info.task_id}</td>
-            <td>{$blueprintInfoList.drawing_detail_id}</td>
+            <td>
+              <a title="序号 {$blueprintInfoList.drawing_internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'> {$blueprintInfoList.drawing_internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $blueprintInfoList.drawing_internal_id])}')" href="javascript:;"> <span style="color: #1E9FFF"> {$blueprintInfoList.drawing_internal_id}</span></a>
+            </td>
             <td>{$info.order_detial_id|getOrderDrawingName}</td>
             <td>
                 <?php $getexternal = getexternal($info['order_detial_id']);?>
               <a title="序号{$getexternal}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$getexternal}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $getexternal])}')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF">{$getexternal}</i></a>
 
              </td>
-            <td></td>
+            <td>{$info.order_detial_id|getCaiLiao}</td>
             <td>{$info.task_qty}</td>
 
             <td class="td-manage">
