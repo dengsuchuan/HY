@@ -479,6 +479,24 @@ class Order extends Base
     }
     public function orderDelete(){
         $id = intval(Request::post('id')); // 获取id
+        //删除已有订单合同文件
+        $model = new Order_files();
+        $rel = $model->where(['order_id'=>$id])->select();
+        foreach ($rel as $item)
+        {
+            //文件有效,则删除
+            if(file_exists('.'.$item['path']))
+            {
+                if(!unlink('.'.$item['path']))
+                {
+                    return json(0);
+                }
+            }
+            if(!$model->where(["id"=>$item['id']])->delete())
+            {
+                return json(0);
+            }
+        }
         //删除订单
         $info = OrderMode::where(['id'=>$id])->delete(); //
 
@@ -706,7 +724,6 @@ class Order extends Base
         ]);
         return;
     }
-
     public function DelAllFiles()
     {
         $order_id = input('order_id');
