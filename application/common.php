@@ -373,3 +373,22 @@ function getCaiLiao($order_d_code){
     // 跟据材料ID 查询材料名称
     return Material::where(['id'=>$materialCode])->value('material_id');
 }
+
+//检验是否记录是否存在
+function ifCz($id){
+    $test = \app\index\model\TestRecordModel::where(['log_id'=>$id])->find();
+    if ($test){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+//品控是否记录是否存在
+function ifPk($id){
+    $test = \app\index\model\QualityModel::where(['log_id'=>$id])->find();
+    if ($test){
+        return 1;
+    }else{
+        return 0;
+    }
+}

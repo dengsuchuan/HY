@@ -94,29 +94,28 @@
             </div>
             <p style="color: red" id="costP" hidden>忽略显示，外协单位和外协费用已清空，请重新选择。</p>
         </div>
-        {if $logList.fulfill == "1"}
-        <div id="cost">
+        <div id="cost" {$logList.fulfill=="1"?"":"hidden"} >
             <div class="layui-form-item">
                 <label class="layui-form-label">外协费用</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="costInput" name="cost" value="{$logList.cost}" lay-verify="required">
+                    <input type="text" class="layui-input" id="costInput" name="cost" value="{$logList.cost}">
+                    <p style="color: red" id="costInputP" hidden>外协费用费用必须大于0</p>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">外协单位</label>
                 <div class="layui-input-block">
-                    <select name="costUnit" lay-verify="required" lay-search="" >
+                    <select name="costUnit" lay-search="" >
                         <option value="{$logList.costUnit}">{$logList.costUnit}</option>
                         <optgroup label="选择客户">
                             {volist name="$client" id="list"}
-                            <option value="{$list.client_name}">{$list.client_name}</option>
+                            <option value="{$list.client_abbreviation}">{$list.client_abbreviation}</option>
                             {/volist}
                         </optgroup>
                     </select>
                 </div>
             </div>
         </div>
-        {/if}
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block" >
@@ -182,6 +181,18 @@
             }
         });
 
+        //判断外协费用
+        $("#costInput").bind("input propertychange",function(event){
+            var costInput = $("#costInput").val();
+            costInput = parseFloat(costInput);
+            if(costInput <=0){
+                $("#costInputP").show();
+                $("#costInput").val("");
+            }else{
+                $("#costInputP").hide();
+            }
+        });
+
     });
 
     layui.use(['form'], function(){
@@ -227,7 +238,7 @@
 
         //监听是否外协
         form.on('switch(fulfill)',function (data) {
-            $("#costInput").val("0");
+            $("#costInput").val("");
             if(data.elem.checked){
                 $("#cost").show();
                 $("#costP").show();
