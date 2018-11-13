@@ -92,17 +92,17 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">外协费用</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="costInput" name="cost" value="" lay-verify="required">
+                    <input type="text" class="layui-input" id="costInput" name="cost" value="">
                     <p style="color: red" id="costInputP" hidden>外协费用费用必须大于0</p>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">外协单位</label>
                 <div class="layui-input-block">
-                    <select name="costUnit" lay-verify="required" lay-search="" >
+                    <select name="costUnit" lay-search="" >
                         <option value=""></option>
                         {volist name="$client" id="list"}
-                        <option value="{$list.client_name}">{$list.client_name}</option>
+                        <option value="{$list.client_abbreviation}">{$list.client_abbreviation}</option>
                         {/volist}
                     </select>
                 </div>
