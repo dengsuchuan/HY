@@ -145,34 +145,46 @@
              ?>
                         <td>
                             <button title="任务"   style="border: 0;background: transparent;cursor: pointer"  class="renwu" onclick="x_admin_show('订单任务','{:url(\'index/task/inTask\',[\'id\'=>$info.id])}')"
-                                    {if $info.arrange =='整体外协'}
-                                    disabled
-                                    {elseif $info.arrange =='标件不加工'/}
-                                    disabled
-                                    {elseif $info.arrange =='外协完成'/}
+                                    {if $info.arrange =='否'}
                                     disabled
                                     {/if}
                             >
-                            {if $info.arrange =='自加工'}
+
+                            {if $info.arrange =='否'}
+                            无需加工
+                            {else}
                             {if $isTask}
                             <?php $wc = getWc($info['id']);?>
                             {if $wc == 1}
-                            完成
+                            任务完成
                             {else}
                             已下任务
                             {/if}
                             {else/}
                             未下任务
                             {/if}
-                            {else/}
-                            {if $info.arrange =='整体外协'}
-                            整体外协
-                            {elseif $info.arrange =='标件不加工'/}
-                            标件不加工
-                            {elseif $info.arrange =='外协完成'/}
-                            外协完成
+
                             {/if}
-                            {/if}
+                            <!--{if $info.arrange =='自加工'}-->
+                            <!--{if $isTask}-->
+                            <!--<?php $wc = getWc($info['id']);?>-->
+                            <!--{if $wc == 1}-->
+                            <!--完成-->
+                            <!--{else}-->
+                            <!--已下任务-->
+                            <!--{/if}-->
+                            <!--{else/}-->
+                            <!--未下任务-->
+                            <!--{/if}-->
+                            <!--{else/}-->
+                            <!--{if $info.arrange =='整体外协'}-->
+                            <!--整体外协-->
+                            <!--{elseif $info.arrange =='标件不加工'/}-->
+                            <!--标件不加工-->
+                            <!--{elseif $info.arrange =='外协完成'/}-->
+                            <!--外协完成-->
+                            <!--{/if}-->
+                            <!--{/if}-->
                             </button>
                             <!--<a title="任务"  href="javascript:;" onclick="x_admin_show('下达任务','{:url(\'index/ProductTask/addProductTask\',[\'id\'=>$info.id])}',600,500)" >下任务</a>-->
                         </td>

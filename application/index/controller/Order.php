@@ -309,13 +309,6 @@ class Order extends Base
                }
             }else{
                 foreach ($datas as $key => &$item){
-                    foreach ($arrange as $key1=>$value){
-                        if($key == $key1){
-                            $item['arrange'] = '是';
-                        }else{
-                            $item['arrange'] = '否';
-                        }
-                    }
                     $item['arrange'] = isset($arrange[$key]) ?"是":"否";
                 }
             }
@@ -540,6 +533,8 @@ class Order extends Base
             $id = $data['id'];
             unset($data['id']);
             $data['if_show'] =  isset($data['if_show']) ? '1' : '0';
+            $data['arrange'] =  isset($data['arrange']) ? '是' : '否';
+
             $data['modify_name'] =  session('user.user_name');
             $info = OrderDetail::update($data,['id'=>$id]);
             if($info){
