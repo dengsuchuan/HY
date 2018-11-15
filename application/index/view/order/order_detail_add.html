@@ -61,19 +61,34 @@
             <input type="number" value="1"  id="jihua_num{$info.drawing_detail_id}" oninput="jiahua('{$info.drawing_detail_id}')" name="plan_qty[]" autocomplete="off" class="layui-input">
           </div>
         </div>
-
-
+        <!--<div class="layui-inline">-->
+          <!--<label class="layui-form-label">加工安排</label>-->
+          <!--<div class="layui-input-inline" style="width: 100px;">-->
+            <!--<select  name="arrange[]">-->
+              <!--<option value="是">是</option>-->
+              <!--<option value="否">否</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="layui-inline">
           <label class="layui-form-label">加工安排</label>
-          <div class="layui-input-inline" style="width: 100px;">
-            <select  name="arrange[]">
-              <option value="整体外协">整体外协</option>
-              <option value="自加工" selected>自加工</option>
-              <option value="标件不加工">标件不加工</option>
-              <option value="外协完成">外协完成</option>
-            </select>
+          <div class="layui-input-block">
+            <input type="checkbox" name="arrange[]" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
           </div>
         </div>
+
+
+        <!--<div class="layui-inline">-->
+          <!--<label class="layui-form-label">加工安排</label>-->
+          <!--<div class="layui-input-inline" style="width: 100px;">-->
+            <!--<select  name="arrange[]">-->
+              <!--<option value="整体外协">整体外协</option>-->
+              <!--<option value="自加工" selected>自加工</option>-->
+              <!--<option value="标件不加工">标件不加工</option>-->
+              <!--<option value="外协完成">外协完成</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="layui-inline">
           <label class="layui-form-label">单位</label>
           <div class="layui-input-inline"  style="width: 100px;">

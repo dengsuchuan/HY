@@ -206,7 +206,9 @@ class Order extends Base
                 }
                 if($key == 'plan_qty'){
                     $i = 0;
+
                     foreach ($value as $k1=>$v1){
+
                         $datas[$i][$key] = $value[$i];
                         $datas[$i]['plan_qty'] = $value[$i];
                         $i++;
@@ -216,6 +218,7 @@ class Order extends Base
                     $i = 0;
                     foreach ($value as $k1=>$v1){
                         $datas[$i][$key] = $value[$i];
+//                        $datas[$i][$key] =  isset($value[$i]) ? '是' : '否';
                         $i++;
                     }
                 }
@@ -296,8 +299,9 @@ class Order extends Base
                 }
             }
             $orderDetail = new OrderDetail();
+            dd($datas);
+
             $info = $orderDetail->saveAll($datas);
-//            dd($datas);
             if($info){
                 return json(1);
             }else{
