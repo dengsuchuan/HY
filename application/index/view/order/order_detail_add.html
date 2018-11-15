@@ -231,7 +231,7 @@
 
         //监听提交
         form.on('submit(addId)', function(data){
-            $("#butt").attr("disabled", true);
+            // $("#butt").attr("disabled", true);
             //console.log(data);
             $.post("{:url('index/Order/addOrderDetail')}",data.field,function(info){
                 if (info) {

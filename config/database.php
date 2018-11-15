@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => "118.24.184.68",  // 118.24.184.68
+    'hostname'        => "127.0.0.1",  // 35.229.149.165
     // 数据库名
-    'database'        => 'hy',
+    'database'        => 'hy',  //hy_1flove_com
     // 用户名
-    'username'        => 'admin', // admin
+    'username'        => 'root', // hy_1flove_com
     // 密码
-    'password'        => 'Tt5201314tyl+-', // Tt5201314tyl+-
+    'password'        => 'root', // EGG3hnNyx76ZyjGm
     // 端口
     'hostport'        => '',
     // 连接dsn

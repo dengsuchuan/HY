@@ -153,6 +153,7 @@ class Order extends Base
         ]);
         if (Request::isPost()){
             $data = Request::post();
+            $arrange = isset($data['arrange']) ? $data['arrange'] :[];
             $type = $data['type'];
             if($type == 'n'){
                 $tu = 1;
@@ -184,6 +185,8 @@ class Order extends Base
                         $datas[$i]['sort'] = ++$sort;
                         $datas[$i]['create_name'] =  session('user.user_name');
                         $datas[$i]['if_tu'] = $tu;
+//                        dd(isset($value['arrange'][$i]) ? '是' : '否');
+//                        $datas[$i]['arrange'] =  isset($value['arrange'][$i]) ? '是' : '否';
                         $i++;
                         $tempid++;
                     }
@@ -214,14 +217,14 @@ class Order extends Base
                         $i++;
                     }
                 }
-                if($key == 'arrange'){
-                    $i = 0;
-                    foreach ($value as $k1=>$v1){
-                        $datas[$i][$key] = $value[$i];
+//                if($key == 'arrange'){
+//                    $i = 0;
+//                    foreach ($value as $k1=>$v1){
+////                        $datas[$i][$key] = $value[$i];
 //                        $datas[$i][$key] =  isset($value[$i]) ? '是' : '否';
-                        $i++;
-                    }
-                }
+//                        $i++;
+//                    }
+//                }
                 if($key == 'company'){
                     $i = 0;
                     foreach ($value as $k1=>$v1){
@@ -299,7 +302,23 @@ class Order extends Base
                 }
             }
             $orderDetail = new OrderDetail();
-            dd($datas);
+
+            if(empty($arrange)){
+               foreach ($datas as &$item){
+                   $item['arrange'] = '否';
+               }
+            }else{
+                foreach ($datas as $key => &$item){
+                    foreach ($arrange as $key1=>$value){
+                        if($key == $key1){
+                            $item['arrange'] = '是';
+                        }else{
+                            $item['arrange'] = '否';
+                        }
+                    }
+                    $item['arrange'] = isset($arrange[$key]) ?"是":"否";
+                }
+            }
 
             $info = $orderDetail->saveAll($datas);
             if($info){
