@@ -53,7 +53,7 @@
               {/if}
 
             </td>
-            <td>{$info.task_id}</td>
+            <td><span style="cursor: pointer" onclick="x_admin_show('生产记录','{:url(\'index/ProductionRecords/index\',[\'task_id\'=>$info.task_id,\'drawing\'=>$blueprintInfoList.drawing_detail_id])}')">{$info.task_id}</span></td>
             <td>
               <a title="序号 {$blueprintInfoList.drawing_internal_id}" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'> {$blueprintInfoList.drawing_internal_id}</span> 的所有明细','{:url(\'index/Blueprint/blueprintInfo\', [\'modules\' => $blueprintInfoList.drawing_internal_id])}')" href="javascript:;"> <span style="color: #1E9FFF"> {$blueprintInfoList.drawing_internal_id}</span></a>
             </td>

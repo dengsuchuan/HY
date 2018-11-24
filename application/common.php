@@ -25,7 +25,7 @@ use app\index\model\ProcessType;
 use app\index\model\ProductProcess;
 use app\index\model\ProductLog;
 use app\index\model\Order;
-
+use app\index\model\DeliveryInfoModel;
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -391,4 +391,39 @@ function ifPk($id){
     }else{
         return 0;
     }
+}
+
+
+function getOrderOk($orderId){
+    //1 、首先判断是否要加工 如果不需要加工则为2
+    $arrange = OrderDetail::where(['id'=>$orderId])->value('arrange');
+    if($arrange == "否"){
+        return "<span style='color:#ff000f;'>0</span>";
+    }
+    // 2、 获取最后一个任务且已完成的任务
+    $producttask = ProductTask::where(['order_detial_id'=>$orderId])->where(['if_completr'=>1])->field('task_id')->select();
+    if(!$producttask){
+        return 0;
+    }
+    // 3、获取所有任务的任务记录
+    $wancheng = 0;
+    $producLog = [];
+    foreach ($producttask  as $value){
+        $producLog[] = ProductLog::where(['task_id'=>$value['task_id']])->order('log_id desc')->field('product_qty')->find();
+    }
+    foreach ($producLog as $value){
+        $wancheng += $value['product_qty'] ;
+    }
+    return $wancheng;
+
+}
+
+
+function getSonghuo($order_detail_code){
+    $DeliveryInfo = DeliveryInfoModel::where(['orderCode'=>$order_detail_code])->field("quantity")->select();
+    $quantity = 0;
+    foreach ($DeliveryInfo as $value){
+        $quantity += $value['quantity'];
+    }
+    return $quantity;
 }
