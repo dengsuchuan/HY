@@ -19,10 +19,23 @@ use app\index\model\Order;
 use app\index\model\OrderDetail;
 use app\index\model\Material;
 use think\facade\Request;
-
 class Delivery extends Base
 {
     public function viewShow(){
+        $model = Request::get();
+        if($model){
+           $order_detail_code = $model['order_detail_code'];
+           $Delivery = DeliveryInfoModel::where(['orderCode'=>$order_detail_code])->field("deliveryId")->select();
+           $DeliveryId = [];
+           foreach ($Delivery as $value){
+               $DeliveryId[] = $value['deliveryId'];
+           }
+
+            $delivery = DeliveryModel::order('create_time desc')->where('deliveryId','in',$DeliveryId)->paginate(25);
+            $deliveryCount = $delivery->total();
+            $this->assign(compact('delivery','deliveryCount'));
+            return $this->fetch('index-view-show');
+        }
         $delivery = DeliveryModel::order('create_time desc')->paginate(25);
         $deliveryCount = $delivery->total();
         $this->assign(compact('delivery','deliveryCount'));

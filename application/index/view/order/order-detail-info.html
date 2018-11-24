@@ -111,13 +111,13 @@
                         <th>形状</th>
                         <th>热处理</th>
                         <th>单位</th>
-                        <th>订单数量</th>
-                        <th>计划数量</th>
+                        <th>订单 / 计划 / 完成 / 发货 </th>
+                        <!--<th>计划数量 </th>-->
                         <th>图纸工艺</th>
                         <th>加工内容</th>
                         <th>交货日期</th>
                         <th>完成状态</th>
-                        <th>入库数量</th>
+                        <!--<th>入库数量</th>-->
                         <th>备注</th>
                     </tr>
                     </thead>
@@ -163,7 +163,6 @@
                             {else/}
                             未下任务
                             {/if}
-
                             {/if}
                             <!--{if $info.arrange =='自加工'}-->
                             <!--{if $isTask}-->
@@ -208,9 +207,16 @@
                         <td>{$blueprintInfoList.material|getMaterialType}</td>
                         <td>{$blueprintInfoList.material_type|getMateria}</td>
                         <td>{$blueprintInfoList.heat_treatment}</td>
-                        <td>{$info.company}</td>
-                        <td>{$info.order_qty}</td>
-                        <td>{$info.plan_qty}</td>
+                        <td>{$info.company} </td>
+                        <?php $wangc =  getOrderOk($info['id']);
+                              $fahuo =  getSonghuo($info['order_detail_code']);
+                              $flag = 0;
+                               if($wangc == $fahuo){
+                               $flag = 1;
+                               }
+                               ?>
+                        <td>{$info.order_qty} /  {$info.plan_qty} / <span {if $flag == 1} style="color: #28ac17" {/if}  ><?php echo getOrderOk($info['id']);?></span> /  [<span style="cursor: pointer" onclick="x_admin_show('送货单明细','{:url(\'index/Delivery/viewShow\')}'+'?model=1&order_detail_code='+'{$info.order_detail_code}')"><?php echo getSonghuo($info['order_detail_code']);?></span>]</td>
+                        <!--<td>计划</td>-->
                         <td class="td-manage">
                             {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->
                             <button title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
@@ -239,7 +245,7 @@
                             完成
                             {/if}
                         </td>
-                        <td>{$info.warehousing}</td>
+                        <!--<td>{$info.warehousing} 入库</td>-->
                         <td>{$info.remark}</td>
                     </tr>
                     {/volist}
