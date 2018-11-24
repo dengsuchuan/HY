@@ -66,11 +66,11 @@
                 var url = "{:url('index/Quote/delete')}";
                 var postData = {"id":id};
                  $.post(url,postData,function (result) {
-                    if(result){
-                         (obj).parents("tr").remove();
-                        layer.msg('已删除!',{icon:1,time:1000});
+                    if(result != 0){
+                        $(obj).parents("tr").remove();
+                        layer.alert('已删除!',{icon:1,time:1000});
                     }else {
-                        layer.msg("删除失败", {icon:5,time:1000});
+                        layer.alert("删除失败", {icon:5,time:1000});
                     }
                 },"json");
             });
