@@ -1,0 +1,82 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">订单管理</a>
+        <a href="">单据报价</a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="{:url()}" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+<div class="x-body" >
+    <xblock>
+        <button class="layui-btn" id="addLog" onclick="x_admin_show('添加生产记录','{:url(\'index/Quote/addquote\')}',500,600)"><i class="layui-icon"></i>添加单据</button>
+        <a class="layui-btn" href="{:url('index/Quote/viewShow',['action'=>$action])}" title="{$action?'切换到已确认列表':'切换到未确认列表'}"><i class="layui-icon"></i>{$action?'切换到已确认列表':'切换到未确认列表'}</a>
+        <span class="x-right" style="line-height:40px">共{$quoteCount}条 · 共{$quoteCount/25|getInt}页</span>
+    </xblock>
+    <div class="container-wrap">
+        <div class="box-1">
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th width="40">操作</th>
+                    <th>报价单编号</th>
+                    <th>摘要说明</th>
+                    <th>确认金额</th>
+                    <th>客户简称</th>
+                    <th>是否定额</th>
+                    <th>客户确认</th>
+                    <th>确认日期</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="quote" id="list"}
+                <tr>
+                    <td class="td-manage">
+                        <a title="修改" onclick="x_admin_show('修改{$list.quoteId}的报价单信息','{:url(\'index/Quote/edit\',[\'id\'=>$list.id])}',500,600)" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+                        <a title="删除" onclick="delete_(this,'{$list.id}')" href="javascript:void(0);" >
+                            <i  style="color:red;" class="layui-icon"></i>
+                        </a>
+                    </td>
+                    <td>{$list.quoteId}</td>
+                    <td>{$list.summary}</td>
+                    <td>{$list.amount}</td>
+                    <td>{$list.clientName}</td>
+                    <td>{$list.ifPrice?"是":"否"}</td>
+                    <td>{$list.determine?"已确认":"未确认"}</td>
+                    <td>{$list.determineTime}</td>
+                    <td>{$list.remarks}</td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--___________________________________-->
+    <div class="page">
+        {$quote|raw}
+    </div>
+    <script>
+        /*删除*/
+        function delete_(obj,id){
+            layer.confirm('确认要删除吗？',function(index){
+                var url = "{:url('index/Quote/delete')}";
+                var postData = {"id":id};
+                 $.post(url,postData,function (result) {
+                    if(result){
+                         (obj).parents("tr").remove();
+                        layer.msg('已删除!',{icon:1,time:1000});
+                    }else {
+                        layer.msg("删除失败", {icon:5,time:1000});
+                    }
+                },"json");
+            });
+        }
+    </script>
+</div>
+
+</body>
+</html>

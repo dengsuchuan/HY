@@ -1,15 +1,11 @@
 <?php
-/**
- * 报价明细
- */
-
 namespace app\index\model;
 
 use think\Model;
-class  QuotedMode extends Model
+class  QuoteModel extends Model
 {
     protected $pk = 'id';
-    protected $table = 'hy_quoted_price';
+    protected $table = 'hy_quote';
     protected $autoWriteTimestamp = true;//自动时间戳
     protected $createTime = 'create_time';
     protected $updateTime = 'update_time';

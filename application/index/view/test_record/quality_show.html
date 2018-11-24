@@ -22,12 +22,12 @@
                 <textarea placeholder="请输入内容" class="layui-textarea" name="cause">{$list.cause}</textarea>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">扣款金额</label>
-            <div class="layui-input-block" >
-                <input type="text" class="layui-input" name="cost" value="{$list.cost}">
-            </div>
-        </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">扣款金额</label>-->
+            <!--<div class="layui-input-block" >-->
+                <!--<input type="text" class="layui-input" name="cost" value="{$list.cost}">-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">落实跟踪</label>
             <div class="layui-input-block" >
@@ -196,7 +196,7 @@
                 <script>
                     $(function () {
                         $("#tracerQm").click(function () {
-                            $("#tracerQm").text("已签名，请先保存");
+                            $("#tracerQm").text("{$Think.session.user.user_name}:已签名，请先保存");
                             $("#tracer").val("{$Think.session.user.user_name}");
                             $("#tracerTime").val("{:date('Y-m-d H:i:s')}");
                         });
@@ -227,7 +227,7 @@
                 <script>
                     $(function () {
                         $("#inspectorQm").click(function () {
-                            $("#inspectorQm").text("已签名，请先保存");
+                            $("#inspectorQm").text("{$Think.session.user.user_name}:已签名，请先保存");
                             $("#inspector").val("{$Think.session.user.user_name}");
                             $("#inspectorTime").val("{:date('Y-m-d H:i:s')}");
                         });
@@ -258,7 +258,7 @@
                 <script>
                     $(function () {
                         $("#managerQm").click(function () {
-                            $("#managerQm").text("已签名，请先保存");
+                            $("#managerQm").text("{$Think.session.user.user_name}:已签名，请先保存");
                             $("#manager").val("{$Think.session.user.user_name}");
                         });
                         $("#managerQx").click(function () {
