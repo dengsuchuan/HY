@@ -12,7 +12,7 @@
 
 <div class="x-body" >
     <xblock>
-        <button class="layui-btn" id="addLog" onclick="x_admin_show('添加生产记录','{:url(\'index/Quote/addquote\')}',500,600)"><i class="layui-icon"></i>添加单据</button>
+        <button class="layui-btn" onclick="x_admin_show('添加单据','{:url(\'index/Quote/addquote\')}',500,600)"><i class="layui-icon"></i>添加单据</button>
         <a class="layui-btn" href="{:url('index/Quote/viewShow',['action'=>$action])}" title="{$action?'切换到已确认列表':'切换到未确认列表'}"><i class="layui-icon"></i>{$action?'切换到已确认列表':'切换到未确认列表'}</a>
         <span class="x-right" style="line-height:40px">共{$quoteCount}条 · 共{$quoteCount/25|getInt}页</span>
     </xblock>
@@ -41,7 +41,7 @@
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
                     </td>
-                    <td>{$list.quoteId}</td>
+                    <td><a href="#" style="color: green" onclick="x_admin_show('{$list.quoteId}的报价明细','{:url(\'index/Quoted/viewshow\',[\'quoteId\'=>$list.quoteId])}')">{$list.quoteId}</a></td>
                     <td>{$list.summary}</td>
                     <td>{$list.amount}</td>
                     <td>{$list.clientName}</td>

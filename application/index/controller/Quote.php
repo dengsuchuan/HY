@@ -83,7 +83,7 @@ class Quote extends Base
             $data = Request::post();
             $id = $data['id'];
             unset($data['id']);
-            $info = ProductLog::where('id',$id)->update($data);
+            $info = QuoteModel::where('id',$id)->update($data);
             if($info){
                 return json(1);
             }else{

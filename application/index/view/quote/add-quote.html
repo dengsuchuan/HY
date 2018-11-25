@@ -44,10 +44,20 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">确认日期</label>
-            <div class="layui-input-block" >
-                <input type="date" class="layui-input" name="determineTime" value="">
+            <label for="factory_date" class="layui-form-label">确认日期</label>
+            <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+                <input type="text" name="determineTime" class="layui-input" id="determineTime">
             </div>
+            <script>
+                layui.use('laydate', function(){
+                    var laydate = layui.laydate;
+
+                    //执行一个laydate实例
+                    laydate.render({
+                        elem: '#determineTime' //指定元素
+                    });
+                });
+            </script>
         </div>
         <input type="hidden" class="layui-input" name="create_name" value="{$Think.session.user.user_name}">
         <input type="hidden" class="layui-input" name="quoteId" value="{$quoteId}">
