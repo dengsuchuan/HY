@@ -1,27 +1,23 @@
 {include file="public/header" /}
 <body>
-<div class="x-nav">
-      <span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">报价</a>
-        <a>
-          <cite>报价详情</cite>
-        </a>
-      </span>
-</div>
 <div class="x-body">
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加单据明细','{:url(\'index/Quoted/addquoted\',[\'quoteId\'=>$quoteId])}')"><i class="layui-icon"></i>添加单据明细</button>
+        <a class="layui-btn"  target="_blank" href="{:url('')}"><i class="iconfont">&#xe718;</i> 框架页面</a>
+        <!--<button class="layui-btn" onclick="x_admin_show('添加单据明细','{:url(\'index/Quoted/addquoted\',[\'quoteId\'=>$quoteId])}',500,600)"><i class="layui-icon"></i>选择订单</button>-->
+        <button class="layui-btn"
+                onclick="x_admin_show('选择订单','{:url(\'index/Quoted/selectOrder\',[\'quoteId\'=>$quoteId])}')"><i
+                class="layui-icon"></i>添加订单</button>
         <span class="x-right" style="line-height:40px">共{$quotedCount}条 · 共{$quotedCount/25|getInt}页</span>
     </xblock>
+
     <div class="container-wrap">
         <div class="box-1">
             <table class="layui-table">
                 <thead>
                 <tr>
-                    <th width="40">操作</th>
-                    <th>报价明细编号</th>
-                    <th>订单明细编号</th>
+                    <th width="40px;">操作</th>
+                    <th>报价明细</th>
+                    <th>订单明细</th>
                     <th>外图编号</th>
                     <th>内图编号</th>
                     <th>产品名称</th>
@@ -52,6 +48,7 @@
                     <th>修改时间</th>
                 </tr>
                 </thead>
+                {if $quotedCount}
                 <tbody>
                 {volist name="quoted" id="quotedList"}
                 <tr>
@@ -91,13 +88,10 @@
                 </tr>
                 {/volist}
                 </tbody>
+                {/if}
             </table>
         </div>
     </div>
-    <div class="page">
-        {$quoted|raw}
-    </div>
-
 </div>
 <script>
     /*删除*/

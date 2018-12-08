@@ -38,6 +38,7 @@ class Quote extends Base
         return $this->view->fetch();
     }
 
+
     public function addquote(){
         $client = ClientModel::all();
         $model = new QuoteModel();
