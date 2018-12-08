@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'            => 'mysql',
     // 服务器地址
-    'hostname'        => "127.0.0.1",  // 35.229.149.165
+    'hostname'        => "35.229.149.165",  // 35.229.149.165
     // 数据库名
     'database'        => 'hy_1flove_com',  //hy_1flove_com
     // 用户名
-    'username'        => 'root', // hy_1flove_com
+    'username'        => 'hy_1flove_com', // hy_1flove_com
     // 密码
-    'password'        => 'www.geekln.cn', // EGG3hnNyx76ZyjGm
+    'password'        => 'EGG3hnNyx76ZyjGm', // EGG3hnNyx76ZyjGm
     // 端口
     'hostport'        => '',
     // 连接dsn
