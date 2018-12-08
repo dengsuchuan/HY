@@ -97,7 +97,7 @@
     /*删除*/
     function delete_(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            var url = "{:url('index/Metering/delete')}";
+            var url = "{:url('index/Quoted/delete')}";
             var postData ={"id":id};
             $.post(url,postData,function (result) {
                 if(result === 1){

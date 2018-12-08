@@ -147,7 +147,17 @@ class Quoted extends  Base{
 
     }
 
-
+    public function delete(){
+        if(Request::isAjax()){
+            $id = Request::post('id');
+            $info = QuotedMode::where(['id'=>$id])->delete();
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
 
 
 
