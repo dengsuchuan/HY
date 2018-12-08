@@ -1,0 +1,141 @@
+---------------------------------------------------------------
+[ 2018-11-11T01:19:35+08:00 ] 127.0.0.1 POST /index/Login/handleLogin
+[ info ] hy.me/index/Login/handleLogin [运行时间：0.344076s][吞吐率：2.91req/s] [内存消耗：2,924.16kb] [文件加载：76]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.060530s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_employee` [ RunTime:0.022547s ]
+[ sql ] [ SQL ] SELECT `id`,`employee_code`,`employee_name`,`employee_lv`,`is_quota`,`is_price`,`is_offer` FROM `hy_employee` WHERE  `employee_code` = ''  AND `password` = '' LIMIT 1 [ RunTime:0.025143s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+---------------------------------------------------------------
+[ 2018-11-11T01:19:39+08:00 ] 127.0.0.1 POST /index/Login/handleLogin
+[ info ] hy.me/index/Login/handleLogin [运行时间：0.135823s][吞吐率：7.36req/s] [内存消耗：2,924.17kb] [文件加载：76]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029347s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_employee` [ RunTime:0.019466s ]
+[ sql ] [ SQL ] SELECT `id`,`employee_code`,`employee_name`,`employee_lv`,`is_quota`,`is_price`,`is_offer` FROM `hy_employee` WHERE  `employee_code` = ''  AND `password` = '' LIMIT 1 [ RunTime:0.018772s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+---------------------------------------------------------------
+[ 2018-11-11T01:19:41+08:00 ] 127.0.0.1 POST /index/Login/handleLogin
+[ info ] hy.me/index/Login/handleLogin [运行时间：0.142277s][吞吐率：7.03req/s] [内存消耗：2,924.17kb] [文件加载：76]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026576s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_employee` [ RunTime:0.018713s ]
+[ sql ] [ SQL ] SELECT `id`,`employee_code`,`employee_name`,`employee_lv`,`is_quota`,`is_price`,`is_offer` FROM `hy_employee` WHERE  `employee_code` = ''  AND `password` = '' LIMIT 1 [ RunTime:0.017938s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+---------------------------------------------------------------
+[ 2018-11-11T01:19:47+08:00 ] 127.0.0.1 POST /index/Login/handleLogin
+[ info ] hy.me/index/Login/handleLogin [运行时间：0.121995s][吞吐率：8.20req/s] [内存消耗：2,924.33kb] [文件加载：76]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.023218s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_employee` [ RunTime:0.016305s ]
+[ sql ] [ SQL ] SELECT `id`,`employee_code`,`employee_name`,`employee_lv`,`is_quota`,`is_price`,`is_offer` FROM `hy_employee` WHERE  `employee_code` = '邓素川'  AND `password` = 'admin' LIMIT 1 [ RunTime:0.015919s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+---------------------------------------------------------------
+[ 2018-11-11T01:27:29+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：0.223343s][吞吐率：4.48req/s] [内存消耗：2,915.95kb] [文件加载：76]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.045006s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.030722s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '1373518279@qq.com'  AND `password` = 'fdfdf' LIMIT 1 [ RunTime:0.030176s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'filtered' => 25.0,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-11T01:27:35+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：0.158556s][吞吐率：6.31req/s] [内存消耗：2,915.95kb] [文件加载：76]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035708s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.024508s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '1373518279@qq.com'  AND `password` = 'fdfdf' LIMIT 1 [ RunTime:0.024377s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'filtered' => 25.0,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-11T22:18:00+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：0.373444s][吞吐率：2.68req/s] [内存消耗：2,884.39kb] [文件加载：77]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.075047s ] mysql:host=118.24.184.68;dbname=hy;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.018329s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '邓素川'  AND `password` = 'admin' LIMIT 1 [ RunTime:0.024043s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'filtered' => 25.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `hy_administrators`  SET `login_number` = 147 , `update_time` = 1541945880  WHERE  `id` = 2 [ RunTime:0.043352s ]

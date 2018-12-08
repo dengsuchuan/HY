@@ -1,0 +1,1072 @@
+---------------------------------------------------------------
+[ 2018-11-24T19:29:48+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.130550s][吞吐率：7.66req/s] [内存消耗：1,473.08kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-11-24T20:01:21+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.147598s][吞吐率：6.78req/s] [内存消耗：1,897.48kb] [文件加载：67]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[ 2018-11-24T20:02:03+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.111418s][吞吐率：8.98req/s] [内存消耗：1,897.16kb] [文件加载：67]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\view\driver\Think.php:86]
+---------------------------------------------------------------
+[ 2018-11-24T20:03:35+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.140934s][吞吐率：7.10req/s] [内存消耗：2,083.74kb] [文件加载：71]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [8]未定义变量: task_id[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:54]
+---------------------------------------------------------------
+[ 2018-11-24T20:03:47+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.111045s][吞吐率：9.01req/s] [内存消耗：2,139.99kb] [文件加载：73]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [8]未定义变量: task_id[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:61]
+---------------------------------------------------------------
+[ 2018-11-24T20:04:18+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.152335s][吞吐率：6.56req/s] [内存消耗：2,062.24kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected '.', expecting '('[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:102]
+---------------------------------------------------------------
+[ 2018-11-24T20:04:43+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.049112s][吞吐率：20.36req/s] [内存消耗：2,062.24kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected '.', expecting '('[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:102]
+---------------------------------------------------------------
+[ 2018-11-24T20:05:08+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.053051s][吞吐率：18.85req/s] [内存消耗：2,062.24kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected '[', expecting '('[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:107]
+---------------------------------------------------------------
+[ 2018-11-24T20:05:22+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.052269s][吞吐率：19.13req/s] [内存消耗：2,058.21kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected '='[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:109]
+---------------------------------------------------------------
+[ 2018-11-24T20:05:41+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.043817s][吞吐率：22.82req/s] [内存消耗：2,058.24kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected '.', expecting '('[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:109]
+---------------------------------------------------------------
+[ 2018-11-24T20:06:05+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.089331s][吞吐率：11.19req/s] [内存消耗：2,114.10kb] [文件加载：73]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [2]Use of undefined constant task_id - assumed 'task_id' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:61]
+---------------------------------------------------------------
+[ 2018-11-24T20:06:23+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.063567s][吞吐率：15.73req/s] [内存消耗：2,114.07kb] [文件加载：73]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+) ]
+[ error ] [2]Use of undefined constant productLog - assumed 'productLog' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:73]
+---------------------------------------------------------------
+[ 2018-11-24T20:30:53+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.075469s][吞吐率：13.25req/s] [内存消耗：1,897.54kb] [文件加载：67]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\view\driver\Think.php:86]
+---------------------------------------------------------------
+[ 2018-11-24T20:31:15+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.035873s][吞吐率：27.88req/s] [内存消耗：1,897.60kb] [文件加载：67]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\view\driver\Think.php:86]
+---------------------------------------------------------------
+[ 2018-11-24T20:36:24+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.065852s][吞吐率：15.19req/s] [内存消耗：2,051.63kb] [文件加载：71]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+) ]
+[ error ] [8]未定义变量: client[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:73]
+---------------------------------------------------------------
+[ 2018-11-24T20:36:42+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.085709s][吞吐率：11.67req/s] [内存消耗：2,051.30kb] [文件加载：71]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+) ]
+[ error ] [8]未定义变量: list[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:73]
+---------------------------------------------------------------
+[ 2018-11-24T20:36:53+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.051534s][吞吐率：19.40req/s] [内存消耗：2,051.30kb] [文件加载：71]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+) ]
+[ error ] [8]未定义变量: list[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:73]
+---------------------------------------------------------------
+[ 2018-11-24T20:36:58+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.067091s][吞吐率：14.91req/s] [内存消耗：1,906.69kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="document", site="cross-site"',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+) ]
+[ error ] [8]未定义变量: list[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:73]
+---------------------------------------------------------------
+[ 2018-11-24T20:37:01+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.081822s][吞吐率：12.22req/s] [内存消耗：1,906.77kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="document", site="cross-site"',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+) ]
+[ error ] [8]未定义变量: list[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:73]
+---------------------------------------------------------------
+[ 2018-11-24T20:58:39+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：1.789704s][吞吐率：0.56req/s] [内存消耗：3,625.76kb] [文件加载：86]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+  0 => 'client',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.180769s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.379681s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.121368s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.385817s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `quoteId` = 'QT-20181124-01' LIMIT 1 [ RunTime:0.117559s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ error ] [8]未定义变量: quoteId[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:53]
+---------------------------------------------------------------
+[ 2018-11-24T20:58:42+08:00 ] 127.0.0.1 GET /index/quote/addquote.html
+[ info ] hy.me/index/quote/addquote.html [运行时间：0.892845s][吞吐率：1.12req/s] [内存消耗：3,476.37kb] [文件加载：84]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\add-quote.html [ array (
+  0 => 'client',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.164405s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.109964s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.109678s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.108675s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `quoteId` = 'QT-20181124-01' LIMIT 1 [ RunTime:0.109115s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ error ] [8]未定义变量: quoteId[I:\Project\WebServer\www\project\Hy\runtime\temp\3a7e50d6749b3c07259a6614da4ed04e.php:53]
+---------------------------------------------------------------
+[ 2018-11-24T21:18:46+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.617812s][吞吐率：1.62req/s] [内存消耗：3,285.60kb] [文件加载：83]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+  0 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.172275s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.117895s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` [ RunTime:0.117315s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected 'id' (T_STRING), expecting ']'[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:82]
+---------------------------------------------------------------
+[ 2018-11-24T21:20:33+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.588410s][吞吐率：1.70req/s] [内存消耗：3,285.60kb] [文件加载：83]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+  0 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.168344s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.117807s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` [ RunTime:0.115295s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ error ] [0]语法解析错误: syntax error, unexpected 'id' (T_STRING), expecting ']'[I:\Project\WebServer\www\project\Hy\runtime\temp\bc1d2d3e024b494d67fa1b146dc86299.php:82]
+---------------------------------------------------------------
+[ 2018-11-24T21:21:36+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：0.583852s][吞吐率：1.71req/s] [内存消耗：3,347.93kb] [文件加载：85]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\viewshow.html [ array (
+  0 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.169721s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.115719s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` [ RunTime:0.115827s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\QuoteModel->remark[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-24T21:38:09+08:00 ] 127.0.0.1 GET /index/quote/viewshow.html
+[ info ] hy.me/index/quote/viewshow.html [运行时间：21.119601s][吞吐率：0.05req/s] [内存消耗：3,074.72kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [2002]SQLSTATE[HY000] [2002] �������ӷ���һ��ʱ���û����ȷ�𸴻����ӵ�����û�з�Ӧ�����ӳ���ʧ�ܡ�
+[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-11-24T21:40:39+08:00 ] 127.0.0.1 GET /index/quote/edit/id/4.html
+[ info ] hy.me/index/quote/edit/id/4.html [运行时间：1.234538s][吞吐率：0.81req/s] [内存消耗：3,639.27kb] [文件加载：85]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\edit-quote.html [ array (
+  0 => 'client',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.338007s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.232906s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.251108s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ error ] [8]未定义变量: quoteId[I:\Project\WebServer\www\project\Hy\runtime\temp\c6fb34c9034ba69bbde60edd9f217f71.php:53]
+---------------------------------------------------------------
+[ 2018-11-24T21:44:42+08:00 ] 127.0.0.1 GET /index/quote/edit/id/4.html
+[ info ] hy.me/index/quote/edit/id/4.html [运行时间：1.244633s][吞吐率：0.80req/s] [内存消耗：3,632.33kb] [文件加载：84]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\edit-quote.html [ array (
+  0 => 'client',
+  1 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.435478s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.113400s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.115936s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.115916s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `id` = 4 [ RunTime:0.114035s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\Client->quoteId[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-24T21:46:32+08:00 ] 127.0.0.1 GET /index/quote/edit/id/4.html
+[ info ] hy.me/index/quote/edit/id/4.html [运行时间：1.267639s][吞吐率：0.79req/s] [内存消耗：3,632.09kb] [文件加载：84]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="document", site="cross-site"',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\edit-quote.html [ array (
+  0 => 'client',
+  1 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.178808s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.116096s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.113189s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.121975s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `id` = 4 [ RunTime:0.372415s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\Client->quoteId[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-24T21:46:38+08:00 ] 127.0.0.1 GET /index/quote/edit/id/4.html
+[ info ] hy.me/index/quote/edit/id/4.html [运行时间：0.976733s][吞吐率：1.02req/s] [内存消耗：3,482.23kb] [文件加载：82]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\edit-quote.html [ array (
+  0 => 'client',
+  1 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.173094s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.115106s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.116108s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.119415s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `id` = 4 [ RunTime:0.116843s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\Client->quoteId[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-24T21:52:38+08:00 ] 127.0.0.1 GET /index/quote/edit/id/6.html
+[ info ] hy.me/index/quote/edit/id/6.html [运行时间：0.876739s][吞吐率：1.14req/s] [内存消耗：3,634.48kb] [文件加载：84]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => '6',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\quote\edit-quote.html [ array (
+  0 => 'client',
+  1 => 'quote',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.170135s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.107274s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.106753s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.102017s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `id` = 6 [ RunTime:0.101600s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\QuoteModel->remark[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-24T22:15:08+08:00 ] 127.0.0.1 GET /index/quote/viewshow/action/0.html
+[ info ] hy.me/index/quote/viewshow/action/0.html [运行时间：0.136163s][吞吐率：7.34req/s] [内存消耗：3,085.37kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow/action/1.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'action' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'hy_1flove_com'@'localhost' (using password: YES)[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-11-24T22:15:10+08:00 ] 127.0.0.1 GET /index/quote/viewshow/action/0.html
+[ info ] hy.me/index/quote/viewshow/action/0.html [运行时间：0.063686s][吞吐率：15.70req/s] [内存消耗：3,085.37kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow/action/1.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'action' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'hy_1flove_com'@'localhost' (using password: YES)[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-11-24T22:15:16+08:00 ] 127.0.0.1 GET /index/quote/viewshow/action/0.html
+[ info ] hy.me/index/quote/viewshow/action/0.html [运行时间：0.062112s][吞吐率：16.10req/s] [内存消耗：3,085.37kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow/action/1.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'action' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'hy_1flove_com'@'localhost' (using password: YES)[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-11-24T22:15:23+08:00 ] 127.0.0.1 GET /index/quote/viewshow/action/0.html
+[ info ] hy.me/index/quote/viewshow/action/0.html [运行时间：0.082205s][吞吐率：12.16req/s] [内存消耗：3,085.37kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/quote/viewshow/action/1.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=3qgbeqedau1ifnlrr36lgrvshs; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'action' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'hy_1flove_com'@'localhost' (using password: YES)[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]

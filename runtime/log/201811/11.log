@@ -1,0 +1,72 @@
+---------------------------------------------------------------
+[ 2018-11-11T01:27:20+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.175060s][吞吐率：5.71req/s] [内存消耗：1,469.62kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-11-11T22:17:25+08:00 ] 127.0.0.1 POST /index/Login/handleLogin.php
+[ info ] hy.me/index/Login/handleLogin.php [运行时间：0.142943s][吞吐率：7.00req/s] [内存消耗：1,764.52kb] [文件加载：65]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'content-length' => '55',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'sec-metadata' => 'destination="", site=cross-site',
+  'origin' => 'chrome-extension://bafodfjpelfoogdmhdbhbbhaephelhec',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541587037,1541591229,1541593272,1541870201; PHPSESSID=9pc3ap0v6724aqocn0gijg10ht; thinkphp_show_page_trace=0|0; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1541945666',
+)
+[ info ] [ PARAM ] array (
+  'employee_code' => '邓素川',
+  'password' => 'ffff',
+)
+---------------------------------------------------------------
+[ 2018-11-11T22:18:24+08:00 ] 127.0.0.1 POST /index/Login/handleLogin.php
+[ info ] hy.me/index/Login/handleLogin.php [运行时间：0.041043s][吞吐率：24.36req/s] [内存消耗：1,764.48kb] [文件加载：65]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'sec-metadata' => 'destination="", site=cross-site',
+  'origin' => 'chrome-extension://bafodfjpelfoogdmhdbhbbhaephelhec',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'dnt' => '1',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541587037,1541591229,1541593272,1541870201; PHPSESSID=9pc3ap0v6724aqocn0gijg10ht; thinkphp_show_page_trace=0|0; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1541945881',
+)
+[ info ] [ PARAM ] array (
+  'employee_code' => '',
+  'password' => '',
+)
+---------------------------------------------------------------
+[ 2018-11-11T22:19:39+08:00 ] 127.0.0.1 GET /index/Login/handleLogin.php
+[ info ] hy.me/index/Login/handleLogin.php [运行时间：0.039235s][吞吐率：25.49req/s] [内存消耗：1,777.25kb] [文件加载：66]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="document", site="cross-site"',
+  'dnt' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541587037,1541591229,1541593272,1541870201; PHPSESSID=9pc3ap0v6724aqocn0gijg10ht; thinkphp_show_page_trace=0|0; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1541945881',
+)
+[ info ] [ PARAM ] array (
+)

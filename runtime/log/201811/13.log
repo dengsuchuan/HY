@@ -1,0 +1,197 @@
+---------------------------------------------------------------
+[ 2018-11-13T01:09:15+08:00 ] 127.0.0.1 GET /index/test_record/qualityshow/task_id/00047MC161-P01.html
+[ info ] hy.me/index/test_record/qualityshow/task_id/00047MC161-P01.html [运行时间：1.082638s][吞吐率：0.92req/s] [内存消耗：3,350.74kb] [文件加载：84]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => '00047MC161-P01',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\quality_show.html [ array (
+  0 => 'quality',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.253042s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.142656s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '00047MC161-P01' LIMIT 1 [ RunTime:0.141258s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '00047MC161-P01' [ RunTime:0.141533s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ error ] [0]类的属性不存在:app\index\model\QualityModel->managerTime[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-13T01:22:27+08:00 ] 127.0.0.1 GET /index/test_record/qualityshow/task_id/00047MC161-P03.html
+[ info ] hy.me/index/test_record/qualityshow/task_id/00047MC161-P03.html [运行时间：12.349658s][吞吐率：0.08req/s] [内存消耗：3,039.96kb] [文件加载：79]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => '00047MC161-P03',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [2006]SQLSTATE[HY000] [2006] MySQL server has gone away[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-11-13T11:24:10+08:00 ] 127.0.0.1 GET /index/test_record/qualityshow/task_id/00047MC161-P01.html
+[ info ] hy.me/index/test_record/qualityshow/task_id/00047MC161-P01.html [运行时间：1.055624s][吞吐率：0.95req/s] [内存消耗：3,351.70kb] [文件加载：84]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => '00047MC161-P01',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\quality_show.html [ array (
+  0 => 'quality',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.215520s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.163884s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '00047MC161-P01' LIMIT 1 [ RunTime:0.143541s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '00047MC161-P01' [ RunTime:0.143478s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ error ] [0]类的属性不存在:app\index\model\QualityModel->person1Cost[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-13T11:43:16+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html [运行时间：1.161328s][吞吐率：0.86req/s] [内存消耗：3,522.34kb] [文件加载：89]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+  'drawing' => '00047MC161',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\index.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.230154s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.158261s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181107-02' LIMIT 1 [ RunTime:0.149536s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 31,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-02' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.150405s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 31,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `create_time` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [2]strpos() expects parameter 3 to be integer, string given[I:\Project\WebServer\www\project\Hy\runtime\temp\dfc7b0e785c6811e868f080158b5af41.php:110]

@@ -1,0 +1,1034 @@
+---------------------------------------------------------------
+[ 2018-11-18T09:33:34+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：2.436740s][吞吐率：0.41req/s] [内存消耗：2,887.57kb] [文件加载：77]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.833967s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.185906s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '邓素川'  AND `password` = 'admin' LIMIT 1 [ RunTime:0.191558s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `hy_administrators`  SET `login_number` = 156 , `update_time` = 1542504814  WHERE  `id` = 2 [ RunTime:0.126625s ]
+---------------------------------------------------------------
+[ 2018-11-18T09:33:35+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：0.754088s][吞吐率：1.33req/s] [内存消耗：2,887.90kb] [文件加载：77]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.185014s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.119289s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '邓素川'  AND `password` = 'admin' LIMIT 1 [ RunTime:0.114888s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `hy_administrators`  SET `login_number` = 157 , `update_time` = 1542504815  WHERE  `id` = 2 [ RunTime:0.121436s ]
+---------------------------------------------------------------
+[ 2018-11-18T09:33:41+08:00 ] 127.0.0.1 GET /index/order/order.html
+[ info ] hy.me/index/order/order.html [运行时间：2.265416s][吞吐率：0.44req/s] [内存消耗：3,590.48kb] [文件加载：89]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.176786s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order` [ RunTime:0.117871s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_order` LIMIT 1 [ RunTime:0.121259s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using index',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_order` ORDER BY `order_id` ASC LIMIT 0,25 [ RunTime:0.117533s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order_files` [ RunTime:0.117736s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_order_files` WHERE  `order_id` = 35 LIMIT 1 [ RunTime:0.118505s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.117121s ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 0 LIMIT 1 [ RunTime:0.116485s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:33:51+08:00 ] 127.0.0.1 GET /index/delivery/viewshow.html
+[ info ] hy.me/index/delivery/viewshow.html [运行时间：1.609769s][吞吐率：0.62req/s] [内存消耗：3,479.84kb] [文件加载：86]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.195597s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_delivery` [ RunTime:0.126912s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_delivery` LIMIT 1 [ RunTime:0.125538s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_delivery',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using index',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_delivery` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.125621s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_delivery',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.129193s ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.124477s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 12 LIMIT 1 [ RunTime:0.124628s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:02+08:00 ] 127.0.0.1 GET /index/current_task/intask/id/0.html
+[ info ] hy.me/index/current_task/intask/id/0.html [运行时间：8.349727s][吞吐率：0.12req/s] [内存消耗：3,647.38kb] [文件加载：96]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.176804s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_task` [ RunTime:0.115971s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_task` WHERE  `if_completr` = '0' LIMIT 1 [ RunTime:0.115517s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_task` WHERE  `if_completr` = '0' LIMIT 0,25 [ RunTime:0.115724s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order_detail` [ RunTime:0.116055s ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 378 LIMIT 1 [ RunTime:0.115716s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.121489s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` = 13328 LIMIT 1 [ RunTime:0.117728s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 378 LIMIT 1 [ RunTime:0.117048s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_name` FROM `hy_drawing_detial` WHERE  `id` = 13328 LIMIT 1 [ RunTime:0.115165s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_externa_or_internal_id` FROM `hy_order_detail` WHERE  `id` = 378 LIMIT 1 [ RunTime:0.117395s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_external` [ RunTime:0.117953s ]
+[ sql ] [ SQL ] SELECT `drawing_external_id` FROM `hy_drawing_external` WHERE  `id` = 166 LIMIT 1 [ RunTime:0.114701s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 378 LIMIT 1 [ RunTime:0.114125s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `material` FROM `hy_drawing_detial` WHERE  `id` = 13328 LIMIT 1 [ RunTime:0.114062s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_material` [ RunTime:0.115530s ]
+[ sql ] [ SQL ] SELECT `material_id` FROM `hy_material` WHERE  `id` = 0 LIMIT 1 [ RunTime:0.115892s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = '0-7W' LIMIT 1 [ RunTime:0.130707s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'drawing_ external_id',
+  'key' => 'drawing_ external_id',
+  'key_len' => '99',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_files` [ RunTime:0.116262s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13328 LIMIT 1 [ RunTime:0.114859s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13328 LIMIT 1 [ RunTime:0.115295s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13328 LIMIT 1 [ RunTime:0.115120s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.120792s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '0-7W-01' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.124158s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '0-7W-01' [ RunTime:0.129920s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.122286s ]
+[ sql ] [ SQL ] SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01' ORDER BY `process_id` DESC LIMIT 1 [ RunTime:0.115555s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.121333s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.117292s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 35 LIMIT 1 [ RunTime:0.115581s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01'  AND `process_id` = '0-7W-01-P01'  AND `fulfill` = 1 LIMIT 1 [ RunTime:0.116784s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01'  AND `process_id` = '0-7W-01-P01' [ RunTime:0.115585s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `task_qty` FROM `hy_product_task` WHERE  `id` = 62 LIMIT 1 [ RunTime:0.118106s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '0-7W-01-P02' LIMIT 1 [ RunTime:0.122561s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.114607s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01' ORDER BY `process_id` DESC LIMIT 1 [ RunTime:0.114738s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01'  AND `process_id` = '0-7W-01-P01' [ RunTime:0.115068s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `task_qty` FROM `hy_product_task` WHERE  `id` = 62 LIMIT 1 [ RunTime:0.115045s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.115919s ]
+[ sql ] [ SQL ] SELECT `id`,`eqpmt_id`,`eqpmt_name` FROM `hy_equipment` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.115165s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE',
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:07+08:00 ] 127.0.0.1 POST /index/Delivery/delete.html
+[ info ] hy.me/index/Delivery/delete.html [运行时间：1.042931s][吞吐率：0.96req/s] [内存消耗：3,068.14kb] [文件加载：79]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.189342s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_delivery` [ RunTime:0.126975s ]
+[ sql ] [ SQL ] DELETE FROM `hy_delivery` WHERE  `id` = 14 [ RunTime:0.130805s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_deliveryInfo` [ RunTime:0.127795s ]
+[ sql ] [ SQL ] DELETE FROM `hy_deliveryInfo` WHERE  `deliveryId` = 'S181107-01' [ RunTime:0.142671s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_deliver_order` [ RunTime:0.131941s ]
+[ sql ] [ SQL ] DELETE FROM `hy_deliver_order` WHERE  `deliverId` = 'S181107-01' [ RunTime:0.144227s ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:10+08:00 ] 127.0.0.1 POST /index/Delivery/delete.html
+[ info ] hy.me/index/Delivery/delete.html [运行时间：1.040836s][吞吐率：0.96req/s] [内存消耗：3,068.14kb] [文件加载：79]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.193649s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_delivery` [ RunTime:0.147399s ]
+[ sql ] [ SQL ] DELETE FROM `hy_delivery` WHERE  `id` = 13 [ RunTime:0.145921s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_deliveryInfo` [ RunTime:0.127660s ]
+[ sql ] [ SQL ] DELETE FROM `hy_deliveryInfo` WHERE  `deliveryId` = 'S181106-01' [ RunTime:0.134270s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_deliver_order` [ RunTime:0.127006s ]
+[ sql ] [ SQL ] DELETE FROM `hy_deliver_order` WHERE  `deliverId` = 'S181106-01' [ RunTime:0.128512s ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:14+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181116-01/drawing/0-7W-01.html
+[ info ] hy.me/index/production_records/index/task_id/TK181116-01/drawing/0-7W-01.html [运行时间：2.347626s][吞吐率：0.43req/s] [内存消耗：3,548.21kb] [文件加载：89]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.180483s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.118320s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01' LIMIT 1 [ RunTime:0.116830s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.121156s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_test_record` [ RunTime:0.120208s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `log_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.117344s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.116249s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.115776s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.115782s ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.119005s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.115916s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 35 LIMIT 1 [ RunTime:0.115353s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:17+08:00 ] 127.0.0.1 GET /index/production_records/addlog/task_id/TK181116-01/drawing/0-7W-01.html
+[ info ] hy.me/index/production_records/addlog/task_id/TK181116-01/drawing/0-7W-01.html [运行时间：1.510826s][吞吐率：0.66req/s] [内存消耗：3,785.45kb] [文件加载：85]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.189793s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.125789s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181118-01' LIMIT 1 [ RunTime:0.127831s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.125105s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_equipment` WHERE  `is_working` = '1' [ RunTime:0.126891s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 14,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.125204s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.125425s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:21+08:00 ] 127.0.0.1 GET /index/production_records/showprocess/drawing/0-7W-01.html
+[ info ] hy.me/index/production_records/showprocess/drawing/0-7W-01.html [运行时间：1.285867s][吞吐率：0.78req/s] [内存消耗：3,275.15kb] [文件加载：82]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.186396s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.126381s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '0-7W-01' [ RunTime:0.129923s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.124821s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 35 LIMIT 1 [ RunTime:0.122645s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.121412s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:23+08:00 ] 127.0.0.1 POST /index/production_records/getcount.html
+[ info ] hy.me/index/production_records/getcount.html [运行时间：0.976079s][吞吐率：1.02req/s] [内存消耗：3,111.88kb] [文件加载：80]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.183406s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.126397s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `process_id` = '0-7W-01-P02'  AND `task_id` = 'TK181116-01' [ RunTime:0.121893s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 32,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_task` [ RunTime:0.121751s ]
+[ sql ] [ SQL ] SELECT `task_qty` FROM `hy_product_task` WHERE  `task_id` = 'TK181116-01' LIMIT 1 [ RunTime:0.121301s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:24+08:00 ] 127.0.0.1 GET /index/production_records/showprocess/drawing/0-7W-01.html
+[ info ] hy.me/index/production_records/showprocess/drawing/0-7W-01.html [运行时间：1.260920s][吞吐率：0.79req/s] [内存消耗：3,137.33kb] [文件加载：80]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.188036s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.125365s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '0-7W-01' [ RunTime:0.133031s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.125002s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 35 LIMIT 1 [ RunTime:0.124190s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.125805s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:33+08:00 ] 127.0.0.1 POST /index/production_records/savelog.html
+[ info ] hy.me/index/production_records/savelog.html [运行时间：0.513314s][吞吐率：1.95req/s] [内存消耗：3,037.83kb] [文件加载：77]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.187026s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.123213s ]
+[ sql ] [ SQL ] INSERT INTO `hy_product_log` (`log_id` , `task_id` , `hr_id` , `complete_date` , `process_id` , `complete_qty` , `eqpmt_id` , `create_name` , `product_qty` , `quality_grade` , `cost` , `costUnit` , `remark` , `if_audit` , `fulfill` , `create_time` , `update_time`) VALUES ('PL-20181118-01' , 'TK181116-01' , '邓素川' , '2018-11-18' , '0-7W-01-P02' , '1' , '鼎泰02' , '邓素川' , '1' , '1' , 0 , '' , '' , '未审' , 0 , '1542504872' , '1542504872') [ RunTime:0.126134s ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:37+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181116-01/drawing/0-7W-01.html
+[ info ] hy.me/index/production_records/index/task_id/TK181116-01/drawing/0-7W-01.html [运行时间：3.200004s][吞吐率：0.31req/s] [内存消耗：3,338.24kb] [文件加载：87]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.177659s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.116695s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01' LIMIT 1 [ RunTime:0.116473s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181116-01' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.116377s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_test_record` [ RunTime:0.116976s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `log_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.115983s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.119731s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.117292s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.117767s ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '0-7W-01-P01' LIMIT 1 [ RunTime:0.119317s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.116250s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 35 LIMIT 1 [ RunTime:0.116541s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `log_id` = '0-7W-01-P02' LIMIT 1 [ RunTime:0.120544s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '0-7W-01-P02' LIMIT 1 [ RunTime:0.118757s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '0-7W-01-P02' LIMIT 1 [ RunTime:0.119526s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9256,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.116083s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:40+08:00 ] 127.0.0.1 GET /index/test_record/viewindex/task_id/PL-20181118-01.html
+[ info ] hy.me/index/test_record/viewindex/task_id/PL-20181118-01.html [运行时间：0.665693s][吞吐率：1.50req/s] [内存消耗：3,312.80kb] [文件加载：84]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.184014s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_test_record` [ RunTime:0.122557s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `log_id` = 'PL-20181118-01' [ RunTime:0.122284s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:42+08:00 ] 127.0.0.1 GET /index/test_record/addshow/id/PL-20181118-01.html
+[ info ] hy.me/index/test_record/addshow/id/PL-20181118-01.html [运行时间：0.628539s][吞吐率：1.59req/s] [内存消耗：3,277.70kb] [文件加载：82]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.171810s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_test_record` [ RunTime:0.113499s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `check_id` = 'PL-20181118-01-01' LIMIT 1 [ RunTime:0.112411s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-18T09:34:49+08:00 ] 127.0.0.1 GET /index/test_record/qualityshow/task_id/PL-20181118-01.html
+[ info ] hy.me/index/test_record/qualityshow/task_id/PL-20181118-01.html [运行时间：1.006067s][吞吐率：0.99req/s] [内存消耗：3,403.81kb] [文件加载：84]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.176059s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.116000s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = 'PL-20181118-01' LIMIT 1 [ RunTime:0.115552s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] INSERT INTO `hy_quality_control` (`log_id`) VALUES ('PL-20181118-01') [ RunTime:0.116236s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = 'PL-20181118-01' [ RunTime:0.115650s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]

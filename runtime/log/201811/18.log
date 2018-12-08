@@ -1,0 +1,93 @@
+---------------------------------------------------------------
+[ 2018-11-18T09:33:02+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.069444s][吞吐率：14.40req/s] [内存消耗：1,473.08kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-11-18T09:34:01+08:00 ] 127.0.0.1 GET /index/delivery/deliverydetails/deliverId/S181107-01/show/1.html
+[ info ] hy.me/index/delivery/deliverydetails/deliverId/S181107-01/show/1.html [运行时间：1.957320s][吞吐率：0.51req/s] [内存消耗：3,547.89kb] [文件加载：89]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/delivery/viewshow.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=29m74qea01t8od07aagklmtt6s; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'deliverId' => 'S181107-01',
+  'show' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\delivery\delivery-details.html [ array (
+  0 => 'deliveryId',
+  1 => 'orderDatailInfo',
+  2 => 'deliverOrderCount',
+  3 => 'show',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.191150s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_deliveryInfo` [ RunTime:0.130487s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_deliveryInfo` WHERE  `deliveryId` = 'S181107-01' ORDER BY `orderCode` ASC [ RunTime:0.123574s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_deliveryInfo',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_task` [ RunTime:0.121749s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_task` WHERE  `order_detial_id` = 229 [ RunTime:0.123374s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order_detail` [ RunTime:0.132920s ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `order_detail_code` = 'C181107-02-04' LIMIT 1 [ RunTime:0.123673s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 3,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.122871s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.125963s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_deliveryInfo` WHERE  `deliveryId` = :where_AND_deliveryId ORDER BY `orderCode` ASC [Using where; Using filesort]
+[ error ] [0]方法参数错误:id[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\Container.php:407]

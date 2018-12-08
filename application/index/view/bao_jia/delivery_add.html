@@ -1,0 +1,116 @@
+﻿{include file="public/header" /}
+<body>
+<div class="x-body">
+  <form class="layui-form">
+    <div class="layui-form-item">
+      <label class="layui-form-label">报价单编号</label>
+      <div class="layui-input-block" >
+        <input type="text" class="layui-input" value="{$quoteId}" disabled>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">摘要说明</label>
+      <div class="layui-input-block" >
+        <input type="text" class="layui-input" name="summary" value="">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">确认金额</label>
+      <div class="layui-input-block" >
+        <input type="text" class="layui-input" name="amount" value="0">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">客户简称</label>
+      <div class="layui-input-block">
+        <select name="clientName" lay-search="" >
+          <option value=""></option>
+          {volist name="client" id="list"}
+          <option value="{$list.client_abbreviation}">{$list.client_abbreviation}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">是否定额</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="ifPrice" lay-skin="switch" lay-text="是|否" checked>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">客户确认</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="determine" lay-skin="switch" lay-text="是|否">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="factory_date" class="layui-form-label">确认日期</label>
+      <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+        <input type="text" name="determineTime" class="layui-input" id="determineTime">
+      </div>
+      <script>
+          layui.use('laydate', function(){
+              var laydate = layui.laydate;
+
+              //执行一个laydate实例
+              laydate.render({
+                  elem: '#determineTime' //指定元素
+              });
+          });
+      </script>
+    </div>
+    <input type="hidden" class="layui-input" name="create_name" value="{$Think.session.user.user_name}">
+    <input type="hidden" class="layui-input" name="quoteId" value="{$quoteId}">
+    <div class="layui-form-item">
+      <label class="layui-form-label">备注</label>
+      <div class="layui-input-block" >
+        <input type="text" class="layui-input" name="remarks" value="">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">
+      </label>
+      <button class="layui-btn" lay-submit lay-filter="addId">
+        确认添加
+      </button>
+    </div>
+  </form>
+</div>
+<script>
+    $(function () {
+        layui.use(['form'], function(){
+            $ = layui.jquery;
+            var form = layui.form,layer = layui.layer;
+            //监听提交
+            form.on('submit(addId)', function(data){
+                if(data.field['ifPrice']){
+                    data.field['ifPrice']="1"
+                }else{
+                    data.field['ifPrice']="0"
+                }
+                if(data.field['determine']){
+                    data.field['determine']="1"
+                }else{
+                    data.field['determine']="0"
+                }
+                $.post("{:url('index/BaoJia/savequote')}",data.field,function(info){
+                    if (info) {
+                        layer.msg("添加成功", {time:1000,icon: 6},function () {
+                            window.parent.location.reload();  //刷新父级页面
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前弹出层
+                            parent.layer.close(index);
+                        });
+                    }else{
+                        layer.msg("添加失败", {time:1000,icon: 5});
+                    }
+                },'json');
+                return false;
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,2329 @@
+---------------------------------------------------------------
+[ 2018-11-12T15:29:33+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.084454s][吞吐率：11.84req/s] [内存消耗：1,469.58kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-11-12T16:57:37+08:00 ] 127.0.0.1 GET /index/production_records/addlog/task_id/TK181107-02/drawing/00047MC161.html
+[ info ] hy.me/index/production_records/addlog/task_id/TK181107-02/drawing/00047MC161.html [运行时间：2.079742s][吞吐率：0.48req/s] [内存消耗：3,493.62kb] [文件加载：88]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+  'drawing' => '00047MC161',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\add_log.html [ array (
+  0 => 'task_id',
+  1 => 'log_id',
+  2 => 'eqpmt',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.356704s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.217849s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' LIMIT 1 [ RunTime:0.186863s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-02' LIMIT 1 [ RunTime:0.160984s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-03' LIMIT 1 [ RunTime:0.125953s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.127572s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_equipment` WHERE  `is_working` = '1' [ RunTime:0.129101s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 14,
+  'extra' => 'Using where',
+) ]
+[ error ] [8]未定义变量: logList[I:\Project\WebServer\www\project\Hy\runtime\temp\d10ab992998d11a5d384c5debca460c0.php:139]
+---------------------------------------------------------------
+[ 2018-11-12T17:15:17+08:00 ] 127.0.0.1 GET /index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html
+[ info ] hy.me/index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html [运行时间：3.565681s][吞吐率：0.28req/s] [内存消耗：3,872.70kb] [文件加载：88]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'PL-20181112-01',
+  'drawing' => '00047MC161',
+  'task_id' => 'TK181107-02',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\edit_view.html [ array (
+  0 => 'productLog',
+  1 => 'task_id',
+  2 => 'log_id',
+  3 => 'eqpmt',
+  4 => 'client',
+  5 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.372768s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.193362s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' [ RunTime:0.200365s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' LIMIT 1 [ RunTime:0.219608s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-02' LIMIT 1 [ RunTime:0.214227s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-03' LIMIT 1 [ RunTime:0.184417s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.200385s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_equipment` WHERE  `is_working` = '1' [ RunTime:0.213255s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 14,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.213650s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.219538s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\ProductLog->id[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-12T17:15:28+08:00 ] 127.0.0.1 GET /index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html
+[ info ] hy.me/index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html [运行时间：2.236925s][吞吐率：0.45req/s] [内存消耗：3,872.54kb] [文件加载：88]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'PL-20181112-01',
+  'drawing' => '00047MC161',
+  'task_id' => 'TK181107-02',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\edit_view.html [ array (
+  0 => 'productLog',
+  1 => 'task_id',
+  2 => 'log_id',
+  3 => 'eqpmt',
+  4 => 'client',
+  5 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.193778s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.130849s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' [ RunTime:0.128508s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' LIMIT 1 [ RunTime:0.128420s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-02' LIMIT 1 [ RunTime:0.128186s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-03' LIMIT 1 [ RunTime:0.128448s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.140649s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_equipment` WHERE  `is_working` = '1' [ RunTime:0.129324s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 14,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.129817s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.129047s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\ProductLog->client_name[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-12T17:15:38+08:00 ] 127.0.0.1 GET /index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html
+[ info ] hy.me/index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html [运行时间：2.254110s][吞吐率：0.44req/s] [内存消耗：3,872.45kb] [文件加载：88]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'PL-20181112-01',
+  'drawing' => '00047MC161',
+  'task_id' => 'TK181107-02',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\edit_view.html [ array (
+  0 => 'productLog',
+  1 => 'task_id',
+  2 => 'log_id',
+  3 => 'eqpmt',
+  4 => 'client',
+  5 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.199458s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.134133s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' [ RunTime:0.132794s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' LIMIT 1 [ RunTime:0.131044s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-02' LIMIT 1 [ RunTime:0.132101s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-03' LIMIT 1 [ RunTime:0.130869s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.133112s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_equipment` WHERE  `is_working` = '1' [ RunTime:0.130998s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 14,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.132515s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.131539s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\EquipmentInfo->client_name[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-12T17:16:32+08:00 ] 127.0.0.1 GET /index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html
+[ info ] hy.me/index/production_records/edit/id/PL-20181112-01/drawing/00047MC161/task_id/TK181107-02.html [运行时间：2.377819s][吞吐率：0.42req/s] [内存消耗：3,872.30kb] [文件加载：88]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+  'id' => 'PL-20181112-01',
+  'drawing' => '00047MC161',
+  'task_id' => 'TK181107-02',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\edit_view.html [ array (
+  0 => 'productLog',
+  1 => 'task_id',
+  2 => 'log_id',
+  3 => 'eqpmt',
+  4 => 'client',
+  5 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.221520s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.139853s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' [ RunTime:0.137220s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-01' LIMIT 1 [ RunTime:0.137048s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-02' LIMIT 1 [ RunTime:0.137731s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '122',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `log_id` = 'PL-20181112-03' LIMIT 1 [ RunTime:0.136612s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.138385s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_equipment` WHERE  `is_working` = '1' [ RunTime:0.137477s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 14,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.139222s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_client` [ RunTime:0.138193s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 118,
+  'extra' => NULL,
+) ]
+[ error ] [0]类的属性不存在:app\index\model\EquipmentInfo->costUnit[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\model\concern\Attribute.php:506]
+---------------------------------------------------------------
+[ 2018-11-12T19:19:16+08:00 ] 127.0.0.1 GET /index/test_record/viewindex.html
+[ info ] hy.me/index/test_record/viewindex.html [运行时间：0.076137s][吞吐率：13.13req/s] [内存消耗：1,901.22kb] [文件加载：68]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:I:\Project\WebServer\www\project\Hy\application\index\view\test_record\view_index.html[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\view\driver\Think.php:86]
+---------------------------------------------------------------
+[ 2018-11-12T19:19:36+08:00 ] 127.0.0.1 GET /index/test_record/viewindex.html
+[ info ] hy.me/index/test_record/viewindex.html [运行时间：0.036644s][吞吐率：27.29req/s] [内存消耗：1,901.47kb] [文件加载：68]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:I:\Project\WebServer\www\project\Hy\application\index\view\test_record\view_index.html[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\view\driver\Think.php:86]
+---------------------------------------------------------------
+[ 2018-11-12T19:21:20+08:00 ] 127.0.0.1 GET /index/test_record/viewindex.html
+[ info ] hy.me/index/test_record/viewindex.html [运行时间：0.119993s][吞吐率：8.33req/s] [内存消耗：2,132.41kb] [文件加载：74]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\view_index.html [ array (
+) ]
+[ error ] [8]未定义变量: employeeInfoCount[I:\Project\WebServer\www\project\Hy\runtime\temp\26ce863650487ac32059f755326fb934.php:66]
+---------------------------------------------------------------
+[ 2018-11-12T19:23:11+08:00 ] 127.0.0.1 GET /index/test_record/viewindex.html
+[ info ] hy.me/index/test_record/viewindex.html [运行时间：0.032607s][吞吐率：30.67req/s] [内存消耗：2,049.29kb] [文件加载：72]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\view_index.html [ array (
+) ]
+[ error ] [8]未定义变量: employeeInfo[I:\Project\WebServer\www\project\Hy\runtime\temp\26ce863650487ac32059f755326fb934.php:66]
+---------------------------------------------------------------
+[ 2018-11-12T19:41:14+08:00 ] 127.0.0.1 GET /index/test_record/viewindex/task_id/TK181107-02.html
+[ info ] hy.me/index/test_record/viewindex/task_id/TK181107-02.html [运行时间：0.054718s][吞吐率：18.28req/s] [内存消耗：2,107.17kb] [文件加载：74]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=fvivpb79j23d84ihnotbfmq4ms; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541591229,1541593272,1541870201,1542007773; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542007921',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\view_index.html [ array (
+) ]
+[ error ] [8]未定义变量: deliveryCount[I:\Project\WebServer\www\project\Hy\runtime\temp\26ce863650487ac32059f755326fb934.php:65]
+---------------------------------------------------------------
+[ 2018-11-12T20:54:00+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.056215s][吞吐率：17.79req/s] [内存消耗：1,471.34kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-11-12T21:18:58+08:00 ] 127.0.0.1 GET /index/test_record/viewindex/task_id/TK181107-02.html
+[ info ] hy.me/index/test_record/viewindex/task_id/TK181107-02.html [运行时间：2.434583s][吞吐率：0.41req/s] [内存消耗：3,408.73kb] [文件加载：88]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\view_index.html [ array (
+  0 => 'id',
+  1 => 'testRecord',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:1.318140s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_test_record` [ RunTime:0.608565s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `log_id` = 'TK181107-02' [ RunTime:0.195672s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ error ] [8]未定义变量: info[I:\Project\WebServer\www\project\Hy\runtime\temp\26ce863650487ac32059f755326fb934.php:83]
+---------------------------------------------------------------
+[ 2018-11-12T22:14:01+08:00 ] 127.0.0.1 POST /index/TestRecord/delete.html
+[ info ] hy.me/index/TestRecord/delete.html [运行时间：0.046604s][吞吐率：21.46req/s] [内存消耗：1,756.84kb] [文件加载：66]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'origin' => 'http://hy.me',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'dnt' => '1',
+  'sec-metadata' => 'destination="", site=same-origin',
+  'referer' => 'http://hy.me/index/test_record/viewindex/task_id/TK181107-02.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ error ] [2]call_user_func() expects parameter 1 to be a valid callback, class 'app\index\controller\Error' does not have a method 'isLogin'[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\Controller.php:100]
+---------------------------------------------------------------
+[ 2018-11-12T22:14:27+08:00 ] 127.0.0.1 POST /index/TestRecord/delete.html
+[ info ] hy.me/index/TestRecord/delete.html [运行时间：0.024921s][吞吐率：40.13req/s] [内存消耗：1,756.84kb] [文件加载：66]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'origin' => 'http://hy.me',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'x-requested-with' => 'XMLHttpRequest',
+  'dnt' => '1',
+  'sec-metadata' => 'destination="", site=same-origin',
+  'referer' => 'http://hy.me/index/test_record/viewindex/task_id/TK181107-02.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ error ] [2]call_user_func() expects parameter 1 to be a valid callback, class 'app\index\controller\Error' does not have a method 'isLogin'[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\Controller.php:100]
+---------------------------------------------------------------
+[ 2018-11-12T22:19:45+08:00 ] 127.0.0.1 GET /index/test_record/editshow/id/2.html
+[ info ] hy.me/index/test_record/editshow/id/2.html [运行时间：0.050841s][吞吐率：19.67req/s] [内存消耗：2,061.09kb] [文件加载：72]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/test_record/viewindex/task_id/TK181107-02.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'id' => '2',
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\edit_show.html [ array (
+) ]
+[ error ] [8]未定义变量: check_id[I:\Project\WebServer\www\project\Hy\runtime\temp\5bd722db4dced45af2cce6a5de3ef72c.php:53]
+---------------------------------------------------------------
+[ 2018-11-12T22:20:05+08:00 ] 127.0.0.1 GET /index/test_record/editshow/id/2.html
+[ info ] hy.me/index/test_record/editshow/id/2.html [运行时间：0.045463s][吞吐率：22.00req/s] [内存消耗：1,917.14kb] [文件加载：70]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/test_record/viewindex/task_id/TK181107-02.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'id' => '2',
+)
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\edit_show.html [ array (
+) ]
+[ error ] [8]未定义变量: check_id[I:\Project\WebServer\www\project\Hy\runtime\temp\5bd722db4dced45af2cce6a5de3ef72c.php:53]
+---------------------------------------------------------------
+[ 2018-11-12T22:30:50+08:00 ] 127.0.0.1 POST /index/test_record/editsave.html
+[ info ] hy.me/index/test_record/editsave.html [运行时间：0.027349s][吞吐率：36.56req/s] [内存消耗：1,908.73kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://hy.me',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'dnt' => '1',
+  'sec-metadata' => 'destination="", site=same-origin',
+  'referer' => 'http://hy.me/index/test_record/editshow/id/2.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [8]未定义数组索引: id[I:\Project\WebServer\www\project\Hy\application\index\controller\TestRecord.php:61]
+---------------------------------------------------------------
+[ 2018-11-12T22:30:51+08:00 ] 127.0.0.1 POST /index/test_record/editsave.html
+[ info ] hy.me/index/test_record/editsave.html [运行时间：0.044618s][吞吐率：22.41req/s] [内存消耗：1,908.73kb] [文件加载：69]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://hy.me',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'dnt' => '1',
+  'sec-metadata' => 'destination="", site=same-origin',
+  'referer' => 'http://hy.me/index/test_record/editshow/id/2.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [8]未定义数组索引: id[I:\Project\WebServer\www\project\Hy\application\index\controller\TestRecord.php:61]
+---------------------------------------------------------------
+[ 2018-11-12T22:36:58+08:00 ] 127.0.0.1 GET /index/current_task/intask/id/1.html
+[ info ] hy.me/index/current_task/intask/id/1.html [运行时间：30.181464s][吞吐率：0.03req/s] [内存消耗：3,611.01kb] [文件加载：98]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\current_task\in-task.html [ array (
+  0 => 'productTaskInfo',
+  1 => 'oCount',
+  2 => 'ifCompletr',
+  3 => 'btnText',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.268577s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_task` [ RunTime:0.153366s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_task` WHERE  `if_completr` = '1' LIMIT 1 [ RunTime:0.150839s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_task` WHERE  `if_completr` = '1' LIMIT 0,25 [ RunTime:0.153386s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order_detail` [ RunTime:0.160948s ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.159808s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.172416s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` = 8194 LIMIT 1 [ RunTime:0.152854s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.154455s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_name` FROM `hy_drawing_detial` WHERE  `id` = 8194 LIMIT 1 [ RunTime:0.154421s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_externa_or_internal_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.150348s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_external` [ RunTime:0.204323s ]
+[ sql ] [ SQL ] SELECT `drawing_external_id` FROM `hy_drawing_external` WHERE  `id` = 141 LIMIT 1 [ RunTime:0.151042s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.150726s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `material` FROM `hy_drawing_detial` WHERE  `id` = 8194 LIMIT 1 [ RunTime:0.149966s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_material` [ RunTime:0.152949s ]
+[ sql ] [ SQL ] SELECT `material_id` FROM `hy_material` WHERE  `id` = 41 LIMIT 1 [ RunTime:0.151395s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_material',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = '00047MC322' LIMIT 1 [ RunTime:0.150999s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'drawing_ external_id',
+  'key' => 'drawing_ external_id',
+  'key_len' => '99',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_files` [ RunTime:0.217506s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8194 LIMIT 1 [ RunTime:0.153019s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8194 LIMIT 1 [ RunTime:0.151594s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8194 LIMIT 1 [ RunTime:0.151315s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.193974s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '00047MC322' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.151848s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '00047MC322' [ RunTime:0.158973s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.152993s ]
+[ sql ] [ SQL ] SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01' ORDER BY `process_id` DESC LIMIT 1 [ RunTime:0.150787s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` IS NULL LIMIT 1 [ RunTime:0.154022s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.157937s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.150888s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01'  AND `process_id` = '00047MC322-P00'  AND `fulfill` = 1 LIMIT 1 [ RunTime:0.151754s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01'  AND `process_id` = '00047MC322-P00' [ RunTime:0.151110s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `task_qty` FROM `hy_product_task` WHERE  `id` = 57 LIMIT 1 [ RunTime:0.151406s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '00047MC322-P01' LIMIT 1 [ RunTime:0.153156s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 34 LIMIT 1 [ RunTime:0.150806s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = 'P01' LIMIT 1 [ RunTime:0.155473s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.149832s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE',
+) ]
+[ sql ] [ SQL ] SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01' ORDER BY `process_id` DESC LIMIT 1 [ RunTime:0.158599s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01'  AND `process_id` = '00047MC322-P00' [ RunTime:0.152343s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `task_qty` FROM `hy_product_task` WHERE  `id` = 57 LIMIT 1 [ RunTime:0.152210s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_equipment` [ RunTime:0.152008s ]
+[ sql ] [ SQL ] SELECT `id`,`eqpmt_id`,`eqpmt_name` FROM `hy_equipment` WHERE  `id` = 4 LIMIT 1 [ RunTime:0.150586s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_equipment',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 369 LIMIT 1 [ RunTime:0.151611s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` = 8192 LIMIT 1 [ RunTime:0.151245s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 369 LIMIT 1 [ RunTime:0.153348s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_name` FROM `hy_drawing_detial` WHERE  `id` = 8192 LIMIT 1 [ RunTime:0.150000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_externa_or_internal_id` FROM `hy_order_detail` WHERE  `id` = 369 LIMIT 1 [ RunTime:0.150469s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_external_id` FROM `hy_drawing_external` WHERE  `id` = 139 LIMIT 1 [ RunTime:0.150688s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 369 LIMIT 1 [ RunTime:0.150243s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `material` FROM `hy_drawing_detial` WHERE  `id` = 8192 LIMIT 1 [ RunTime:0.151050s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `material_id` FROM `hy_material` WHERE  `id` = 13 LIMIT 1 [ RunTime:0.149584s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_material',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = '00-03' LIMIT 1 [ RunTime:0.150130s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'drawing_ external_id',
+  'key' => 'drawing_ external_id',
+  'key_len' => '99',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8192 LIMIT 1 [ RunTime:0.151955s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8192 LIMIT 1 [ RunTime:0.149755s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8192 LIMIT 1 [ RunTime:0.150536s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '00-03' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.159054s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '00-03' [ RunTime:0.158737s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = 'TK181112-04' ORDER BY `process_id` DESC LIMIT 1 [ RunTime:0.150407s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` IS NULL LIMIT 1 [ RunTime:0.152441s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.148962s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181112-04'  AND `process_id` = '00-03-P00'  AND `fulfill` = 1 LIMIT 1 [ RunTime:0.151689s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181112-04'  AND `process_id` = '00-03-P00' [ RunTime:0.150280s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `task_qty` FROM `hy_product_task` WHERE  `id` = 60 LIMIT 1 [ RunTime:0.160638s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '00-03-P01' LIMIT 1 [ RunTime:0.150360s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.149687s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = 'P01' LIMIT 1 [ RunTime:0.153363s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `process_id` DESC LIMIT 1  [Using where; Using filesort]
+[ warn ] SQL:SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `process_id` DESC LIMIT 1  [Using where; Using filesort]
+[ warn ] SQL:SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `process_id` DESC LIMIT 1  [Using where; Using filesort]
+[ error ] [1]Maximum execution time of 30 seconds exceeded[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\connector\Mysql.php:139]
+---------------------------------------------------------------
+[ 2018-11-12T22:37:06+08:00 ] 127.0.0.1 GET /index/current_task/intask/id/1.html
+[ info ] hy.me/index/current_task/intask/id/1.html [运行时间：30.031048s][吞吐率：0.03req/s] [内存消耗：3,481.78kb] [文件加载：97]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\current_task\in-task.html [ array (
+  0 => 'productTaskInfo',
+  1 => 'oCount',
+  2 => 'ifCompletr',
+  3 => 'btnText',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.224101s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_task` [ RunTime:0.169339s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_task` WHERE  `if_completr` = '1' LIMIT 1 [ RunTime:0.138726s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_task` WHERE  `if_completr` = '1' LIMIT 0,25 [ RunTime:0.143342s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_task',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order_detail` [ RunTime:0.139962s ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.138786s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.138521s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` = 8194 LIMIT 1 [ RunTime:0.137504s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.136867s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_name` FROM `hy_drawing_detial` WHERE  `id` = 8194 LIMIT 1 [ RunTime:0.136979s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_externa_or_internal_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.138276s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_external` [ RunTime:0.140882s ]
+[ sql ] [ SQL ] SELECT `drawing_external_id` FROM `hy_drawing_external` WHERE  `id` = 141 LIMIT 1 [ RunTime:0.138500s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `drawing_detail_id` FROM `hy_order_detail` WHERE  `id` = 373 LIMIT 1 [ RunTime:0.136908s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order_detail',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `material` FROM `hy_drawing_detial` WHERE  `id` = 8194 LIMIT 1 [ RunTime:0.136989s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_material` [ RunTime:0.138758s ]
+[ sql ] [ SQL ] SELECT `material_id` FROM `hy_material` WHERE  `id` = 41 LIMIT 1 [ RunTime:0.136785s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_material',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = '00047MC322' LIMIT 1 [ RunTime:0.137642s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'type' => 'const',
+  'possible_keys' => 'drawing_ external_id',
+  'key' => 'drawing_ external_id',
+  'key_len' => '99',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_files` [ RunTime:0.140416s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8194 LIMIT 1 [ RunTime:0.138154s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8194 LIMIT 1 [ RunTime:0.138028s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 8194 LIMIT 1 [ RunTime:0.139048s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.138258s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '00047MC322' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.138320s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'index',
+  'possible_keys' => NULL,
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_process` WHERE  `drawing_detial_id` = '00047MC322' [ RunTime:0.144377s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.139694s ]
+[ sql ] [ SQL ] SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01' ORDER BY `process_id` DESC LIMIT 1 [ RunTime:0.139966s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` IS NULL LIMIT 1 [ RunTime:0.140226s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9101,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.155948s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` IS NULL LIMIT 1 [ RunTime:0.137527s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01'  AND `process_id` = '00047MC322-P00'  AND `fulfill` = 1 LIMIT 1 [ RunTime:0.137299s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-01'  AND `process_id` = '00047MC322-P00' [ RunTime:0.137282s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT `process_id` FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `process_id` DESC LIMIT 1  [Using where; Using filesort]
+[ error ] [1]Maximum execution time of 30 seconds exceeded[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:673]
+---------------------------------------------------------------
+[ 2018-11-12T22:48:35+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-03/drawing/016-00013-200.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-03/drawing/016-00013-200.html [运行时间：1.978083s][吞吐率：0.51req/s] [内存消耗：3,532.54kb] [文件加载：89]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-03',
+  'drawing' => '016-00013-200',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\index.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.435482s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.287894s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181107-03' LIMIT 1 [ RunTime:0.286003s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-03' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.292088s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `create_time` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [2]Use of undefined constant ifCz - assumed 'ifCz' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\dfc7b0e785c6811e868f080158b5af41.php:111]
+---------------------------------------------------------------
+[ 2018-11-12T22:48:38+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-03/drawing/016-00013-200.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-03/drawing/016-00013-200.html [运行时间：0.945580s][吞吐率：1.06req/s] [内存消耗：3,362.99kb] [文件加载：87]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-03',
+  'drawing' => '016-00013-200',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\index.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.204063s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.133936s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181107-03' LIMIT 1 [ RunTime:0.133111s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-03' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.137045s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `create_time` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [2]Use of undefined constant ifCz - assumed 'ifCz' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\dfc7b0e785c6811e868f080158b5af41.php:111]
+---------------------------------------------------------------
+[ 2018-11-12T22:49:41+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-03/drawing/016-00013-200.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-03/drawing/016-00013-200.html [运行时间：1.117552s][吞吐率：0.89req/s] [内存消耗：3,363.27kb] [文件加载：87]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-03',
+  'drawing' => '016-00013-200',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\index.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.266496s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.168843s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181107-03' LIMIT 1 [ RunTime:0.160301s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-03' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.150107s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `create_time` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [2]Use of undefined constant ifCz - assumed 'ifCz' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\dfc7b0e785c6811e868f080158b5af41.php:111]
+---------------------------------------------------------------
+[ 2018-11-12T22:52:59+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html [运行时间：1.064562s][吞吐率：0.94req/s] [内存消耗：3,529.45kb] [文件加载：89]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+  'drawing' => '00047MC161',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\index.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.247703s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.150679s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181107-02' LIMIT 1 [ RunTime:0.146158s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-02' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.147945s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `create_time` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [2]Use of undefined constant process_id - assumed 'process_id' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\dfc7b0e785c6811e868f080158b5af41.php:111]
+---------------------------------------------------------------
+[ 2018-11-12T22:53:17+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html [运行时间：0.996794s][吞吐率：1.00req/s] [内存消耗：3,529.45kb] [文件加载：89]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+  'drawing' => '00047MC161',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\index.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.217907s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.163155s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `task_id` = 'TK181107-02' LIMIT 1 [ RunTime:0.132683s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `task_id` = 'TK181107-02' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.131883s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `task_id` = :where_AND_task_id ORDER BY `create_time` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [2]Use of undefined constant process_id - assumed 'process_id' (this will throw an Error in a future version of PHP)[I:\Project\WebServer\www\project\Hy\runtime\temp\dfc7b0e785c6811e868f080158b5af41.php:111]
+---------------------------------------------------------------
+[ 2018-11-12T23:52:57+08:00 ] 127.0.0.1 GET /index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html
+[ info ] hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html [运行时间：10.360337s][吞吐率：0.10req/s] [内存消耗：3,091.15kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="forced", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/current_task/intask/id/0.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => 'TK181107-02',
+  'drawing' => '00047MC161',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [2006]SQLSTATE[HY000] [2006] MySQL server has gone away[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-11-12T23:54:46+08:00 ] 127.0.0.1 GET /index/test_record/qualityshow/task_id/00047MC161-P03.html
+[ info ] hy.me/index/test_record/qualityshow/task_id/00047MC161-P03.html [运行时间：1.320377s][吞吐率：0.76req/s] [内存消耗：3,298.92kb] [文件加载：86]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/index/production_records/index/task_id/TK181107-02/drawing/00047MC161.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; Hm_lvt_b393d153aeb26b46e9431fabaf0f6190=1539675384; PHPSESSID=sgroe206p249si434su3k4vb7o; thinkphp_show_page_trace=0|0; Hm_lvt_5a0192f8207da980c77f112b59310c12=1541593272,1541870201,1542007773,1542027240; Hm_lpvt_5a0192f8207da980c77f112b59310c12=1542027249',
+)
+[ info ] [ PARAM ] array (
+  'task_id' => '00047MC161-P03',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\test_record\quality_show.html [ array (
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.402817s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.261497s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` IS NULL [ RunTime:0.290391s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ error ] [8]未定义变量: check_id[I:\Project\WebServer\www\project\Hy\runtime\temp\2448024cb9e37022098618092e89a19f.php:53]

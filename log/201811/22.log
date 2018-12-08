@@ -1,0 +1,19 @@
+---------------------------------------------------------------
+[ 2018-11-22T21:26:07+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：1.451292s][吞吐率：0.69req/s] [内存消耗：2,887.57kb] [文件加载：77]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.469818s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.202146s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '邓素川'  AND `password` = 'admin' LIMIT 1 [ RunTime:0.171395s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `hy_administrators`  SET `login_number` = 161 , `update_time` = 1542893166  WHERE  `id` = 2 [ RunTime:0.171118s ]
