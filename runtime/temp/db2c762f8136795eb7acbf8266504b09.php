@@ -1,5 +1,5 @@
-<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1531233487;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1529297217;}*/ ?>
-﻿<!doctype html>
+<?php /*a:2:{s:63:"D:\code\Hy\application\index\view\blueprint\blueprint-info.html";i:1541998774;s:52:"D:\code\Hy\application\index\view\public\header.html";i:1533941222;}*/ ?>
+﻿ <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,108 +50,128 @@
         <a href="">首页</a>
         <a href="">图纸管理</a>
         <a>
+
           <cite>图纸明细</cite>
         </a>
       </span>
-  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="/index/blueprint/blueprintInfo" title="刷新">
     <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 
 <div class="x-body" >
   <xblock>
-    <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <a class="layui-btn"  target="_blank" href="<?php echo url(); ?>"><i class="iconfont">&#xe718;</i> 框架页面</a>
 
     <div class="layui-input-inline">
       <!--<input type="tel" id="findText" lay-verify="required|phone" autocomplete="off" placeholder="请输入关键字..." class="layui-input">-->
       <form class="layui-form" action="<?php echo url('index/Blueprint/blueprintInfo'); ?>" method="post">
         <div class="layui-input-inline">
-          <select name="modules" lay-verify="required" lay-search="" id="findText">
-            <option value="">请输入关键字...</option>
+          <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+          <select name="id" lay-search="" >
+            <option value="">输入简称</option>
             <optgroup label="外图明细">
-              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
-              <option value="<?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></option>
-              <?php endforeach; endif; else: echo "" ;endif; ?>
-            </optgroup>
-
-            <optgroup label="公司编号">
-              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
-              <option value="<?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></option>
-              <?php endforeach; endif; else: echo "" ;endif; ?>
-            </optgroup>
-
-            <optgroup label="外图编号">
-              <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
-              <option value="<?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?>"><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></option>
+              <?php if(is_array($clientKeyInfo) || $clientKeyInfo instanceof \think\Collection || $clientKeyInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $clientKeyInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$clientKeyInfoList): $mod = ($i % 2 );++$i;?>
+              <option value="<?php echo htmlentities($clientKeyInfoList['id']); ?>"><?php echo htmlentities($clientKeyInfoList['client_abbreviation']); ?></option>
               <?php endforeach; endif; else: echo "" ;endif; ?>
             </optgroup>
           </select>
         </div>
-        <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach" id="find"><i class="layui-icon">&#xe615;</i></button>
+        <button type="submit" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
       </form>
     </div>
-
+      <span class="x-right" style="line-height:40px">共<?php echo htmlentities($blueprintInfoCount); ?>条 · 共<?php echo htmlentities(getInt($blueprintInfoCount/25)); ?>页</span>
     <script>
       $(function () {
-          $("#find").click(function () {
-              var findText = $("#findText").val();
-              if(findText.length > 1){
-                  window.location.href="<?php echo url('index/blueprint/blueprintInfo'); ?>";
-              }else{
-                  layer.msg('请输入查找的关键字!',{icon:0,time:2000});
-              }
-
+          $("input").click(function () {
+              $("input").val("");
           });
-      })
+          $("xblock").click(function () {
+              $("dd").val("");
+          });
+
+      });
     </script>
-    <!--<span class="x-right" style="line-height:40px">共：<?php echo htmlentities($blueprintInfoCount); ?>条数据</span>-->
   </xblock>
-  <!------------------------------------------------------------------------------------------------------------------->
   <div class="container-wrap">
     <div class="box-1">
       <table class="layui-table">
       <thead>
       <tr>
-        <th>
-          <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-        </th>
+        <!--<th>-->
+          <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
+        <!--</th>-->
+        <th>操作</th>
         <th>明细编号</th>
-        <th>公司编号</th>
+        <th>内图编号</th>
         <th>外图编号</th>
         <th>图纸名称</th>
         <th>材料</th>
+        <th>形状</th>
         <th>类型</th>
+        <th>版本</th>
         <th>客户</th>
         <th>批量</th>
-        <th>工费</th>
+        <th>图纸工艺</th>
+        <?php if(app('session')->get('user.is_price') !=0): ?>
+        <th>加工费</th>
         <th>报价</th>
         <th>实际价格</th>
-        <th>操作</th>
+        <?php endif; ?>
+        <th>是否作废</th>
       </tr>
       </thead>
       <tbody>
       <?php if(is_array($blueprintInfo) || $blueprintInfo instanceof \think\Collection || $blueprintInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $blueprintInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$blueprintInfoList): $mod = ($i % 2 );++$i;?>
       <tr>
-        <td>
-          <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='<?php echo htmlentities($blueprintInfoList['id']); ?>'><i class="layui-icon">&#xe605;</i></div>
-        </td>
-        <td><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['drawing_name']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['heat_treatment']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['drawing_type']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['client_id']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['if_batch']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['layout_qty']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['product_mfg_cost']); ?></td>
-        <td><?php echo htmlentities($blueprintInfoList['product_quotation']); ?></td>
+        <!--<td>-->
+          <!--<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='<?php echo htmlentities($blueprintInfoList['id']); ?>'><i class="layui-icon">&#xe605;</i></div>-->
+        <!--</td>-->
         <td class="td-manage">
-          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的所有信息','<?php echo url('index/blueprint/blueprintInfos',['id'=>$blueprintInfoList['drawing_detail_id']]); ?>',450)" href="javascript:;"><i class="layui-icon">详</i></a>
-          <a title="外" onclick="x_admin_show('外','http://php.me/[爱，就注定了一生的漂泊].刘墉.扫描版.pdf')" href="javascript:;"><i class="layui-icon">外</i></a>
-          <a title="内" onclick="x_admin_show('内','http://php.me/超越平凡的平面设计+版式设计原理.pdf')" href="javascript:;"><i class="layui-icon">内</i></a>
-          <a title="程" onclick="x_admin_show('程','http://php.me/微交互  细节设计成就卓越产品.pdf')" href="javascript:;"><i class="layui-icon">程</i></a>
-          <a title="工" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process'); ?>')" href="javascript:;"><i class="layui-icon">工</i></a>
+          <a title="详" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的所有信息','<?php echo url('index/blueprint/blueprintInfos',['id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
+          <a title="删除" onclick="delete_(this,'<?php echo htmlentities($blueprintInfoList['id']); ?>')" href="javascript:void(0);" >
+            <i  style="color:red;" class="layui-icon"></i>
+          </a>
         </td>
+        <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" ><span style="color: #1E9FFF"><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span></a></td>
+        <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></span> 的图纸明细','<?php echo url('index/blueprint/blueprintInfo',['codeId'=>$blueprintInfoList['drawing_internal_id'],'key'=>'internal']); ?>')" ><span style="color: #1E9FFF"><?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></span></a></td>
+        <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></span> 的图纸明细','<?php echo url('index/blueprint/blueprintInfo',['codeId'=>$blueprintInfoList['drawing_externa_id'],'key'=>'externa']); ?>')" ><span style="color: #1E9FFF"><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></span></a></td>
+        <td><?php echo htmlentities($blueprintInfoList['drawing_name']); ?></td>
+        <td><?php echo htmlentities(getMaterialType($blueprintInfoList['material'])); ?></td>
+        <td><?php echo htmlentities(getMateria($blueprintInfoList['material_type'])); ?></td>
+        <td><?php echo htmlentities($blueprintInfoList['drawing_type']); ?></td>
+        <td><?php echo htmlentities($blueprintInfoList['version']); ?></td>
+        <?php   $clienyname = getClientName($blueprintInfoList['client_id']);?>
+        <td> <a href="javascript:;" onclick="x_admin_show('<span class=\' layui-bg-blue\'><?php echo htmlentities($clienyname['clientName']); ?></span> 的图纸明细','<?php echo url('index/blueprint/blueprintInfo',['codeId'=>$clienyname['id'],'key'=>'clients']); ?>')" ><span style="color: #1E9FFF"> <?php  echo $clienyname['clientName'];  ?></span></a></td>
+        <td><?php echo !empty($blueprintInfoList['if_batch']) ? "是" : "否"; ?></td>
+        <td class="td-manage">
+          <?php if($blueprintInfoList['files_state']==0||$blueprintInfoList['drawing_externa_id']==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList['drawing_externa_id']])): ?><!-- 不继承或者外图继承无效 -->
+          <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的图纸文件',
+          '<?php echo url('index/blueprint/is_DrawingFiles',['id'=>$blueprintInfoList['id'],'key'=>'wai','drawing_num'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;">
+            <span class="layui-badge layui-bg-<?php echo widget('Widget/files_check',['id'=>$blueprintInfoList['id'],'tip'=>'abroad']); ?>">图</span></a>
+          <?php elseif($blueprintInfoList['files_state']==1): ?> <!-- 继承 -->
+          <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的图纸文件',
+          '<?php echo url('index/blueprint/is_outDrawing',['id'=>$blueprintInfoList['drawing_externa_id']]); ?>')" href="javascript:;"><span class="layui-badge layui-bg-green">图</span></a>
+          <?php endif; ?>
+          <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的3d模型文件',
+          '<?php echo url('index/blueprint/is_DrawingFiles',['id'=>$blueprintInfoList['id'],'key'=>'nei','drawing_num'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><span class="layui-badge layui-bg-<?php echo widget('Widget/files_check',['id'=>$blueprintInfoList['id'],'tip'=>'within']); ?>">3D</span></a>
+          <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的程序单文件',
+          '<?php echo url('index/blueprint/is_DrawingFiles',['id'=>$blueprintInfoList['id'],'key'=>'cheng','drawing_num'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><span class="layui-badge layui-bg-green layui-bg-<?php echo widget('Widget/files_check',['id'=>$blueprintInfoList['id'],'tip'=>'engineering']); ?>">程</span></a>
+
+          <?php if($blueprintInfoList['is_gongxu'] !=0): ?>
+          <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" ><span class="layui-badge layui-bg-green">工</span></a>
+          <?php else: ?>
+          <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" ><span  class="layui-badge layui-bg-blue">工</span></a>
+          <?php endif; ?>
+        </td>
+        <?php if(app('session')->get('user.is_price') !=0): ?>
+        <td>￥<?php echo htmlentities($blueprintInfoList['product_mfg_cost']); ?></td>
+        <td>￥<?php echo htmlentities($blueprintInfoList['product_quotation']); ?></td>
+        <td>￥<?php echo htmlentities($blueprintInfoList['product_real_price']); ?></td>
+        <?php endif; ?>
+        <td> <?php echo !empty($blueprintInfoList['if_discard']) ? '<span class="layui-badge">是</span>' : '<span class="layui-badge layui-bg-green">否</span>'; ?>  </td>
       </tr>
       <?php endforeach; endif; else: echo "" ;endif; ?>
       </tbody>
@@ -163,6 +183,22 @@
     <?php echo $blueprintInfo; ?>
   </div>
   <script>
+      /*删除*/
+      function delete_(obj,id){
+          layer.confirm('确认要删除吗？',function(index){
+              var url = "<?php echo url('/index/Blueprint/delete'); ?>";
+              var postData ={"id":id};
+              $.post(url,postData,function (result) {
+                  if(result === 1 ){
+                      $(obj).parents("tr").remove();
+                      layer.msg('已删除!',{icon:1,time:1000});
+                  }else {
+                      layer.alert("删除失败", {icon: 5});
+                  }
+              },"json");
+          });
+      }
+
       layui.use('laydate', function(){
           var laydate = layui.laydate;
 
@@ -187,13 +223,12 @@
       }
 
       function delAll (argument) {
-
           var data = tableCheck.getData();
 
           layer.confirm('确认要删除吗？',function(index){
               //捉到所有被选中的，发异步进行删除
               $.ajax({
-                  url:"/index/index/delall",
+                  url:"/index/Blueprint/DelAll",
                   type:"POST",
                   dataType:"json",
                   data:{
@@ -208,5 +243,7 @@
           });
       }
   </script>
+</div>
+
 </body>
 </html>
