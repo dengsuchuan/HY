@@ -26,6 +26,9 @@ use app\index\model\ProductProcess;
 use app\index\model\ProductLog;
 use app\index\model\Order;
 use app\index\model\DeliveryInfoModel;
+use app\index\model\Administrators;
+use app\index\model\Employee;
+
 // 应用公共文件
 //截取右边的展示内容
 function msubstr($content) {
@@ -426,4 +429,14 @@ function getSonghuo($order_detail_code){
         $quantity += $value['quantity'];
     }
     return $quantity;
+}
+function getUserName($user_id){
+    if (session('user.admin') == 'admin'){
+         $userNmae = Administrators::where(['id'=>$user_id])->value('admin_name');
+    }else{
+        $userNmae = Employee::where(['id'=>$user_id])->value('employee_name');
+    }
+    return $userNmae;
+    // 登陆类型
+
 }

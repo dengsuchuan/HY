@@ -181,6 +181,66 @@ class ProductionRecords extends Base
         }
     }
 
+    public function toExmine(){
+        $task_id = input('task_id');
+        $drawing = input('drawing');
+        $tag = input('tag');
+        if ($tag == 0){
+            $if_audit = '未审';
+        }else{
+            $if_audit = '已审';
+        }
+        $productLog = ProductLog::where(['if_audit'=>$if_audit])->order('hr_id', 'asc')->order('log_id','asc')->paginate(25);
+        $productLogCount = $productLog->total();
+        $this->view->assign([
+            'task_id'=>$task_id,
+            'productLog'=>$productLog,
+            'productLogCount'=>$productLogCount,
+            'drawing'=>$drawing,
+            'tag'    => $tag
+        ]);
+        return $this->fetch();
+    }
+    function shenhe(){
+        if(Request::isAjax()) {
+            $data = Request::post();
+            $info = ProductLog::where(['log_id'=>$data['id']])->update(['if_audit'=>'已审']);
+            if($info){
+                return json(1);
+            }else{
+                return json(0);
+            }
+        }
+    }
+    function xuxiao(){
+        $data = Request::post();
+        $info = ProductLog::where(['log_id'=>$data['id']])->update(['if_audit'=>'未审']);
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    function quxiaoAll(){
+        $data = Request::post();
+        $ids = $data['data'];
+        $info = ProductLog::where('log_id','in',$ids)->update(['if_audit'=>'未审']);
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
+    function sheheAll(){
+        $data = Request::post();
+        $ids = $data['data'];
+        $info = ProductLog::where('log_id','in',$ids)->update(['if_audit'=>'已审']);
+        if($info){
+            return json(1);
+        }else{
+            return json(0);
+        }
+    }
 }
 
 

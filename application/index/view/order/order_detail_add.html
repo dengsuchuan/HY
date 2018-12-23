@@ -41,14 +41,11 @@
         <hr>
         <br>
 
-        <div class="layui-inline">
-          <label class="layui-form-label">订单号</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" disabled value="{$orderCode}" autocomplete="off"  class="layui-input" name="ordercode">
+            <input type="hidden" disabled value="{$orderCode}" autocomplete="off"  class="layui-input" name="ordercode">
             <input type="hidden" disabled value="{$orderId}" name="order_id[]" autocomplete="off" class="layui-input">
             <input type="hidden" disabled value="{$orderId}" name="order" autocomplete="off" class="layui-input">
           </div>
-        </div>
         <div class="layui-inline">
           <label class="layui-form-label">订单数量</label>
           <div class="layui-input-inline" style="width: 100px;">
@@ -73,7 +70,7 @@
         <div class="layui-inline">
           <label class="layui-form-label">是否加工</label>
           <div class="layui-input-block">
-            <input type="checkbox" name="arrange[]" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
+            <input type="checkbox" checked name="arrange[]" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
           </div>
         </div>
 
@@ -109,9 +106,8 @@
 
         <div class="layui-inline">
           <label class="layui-form-label">交货日期</label>
-
           <div class="layui-inline"  style="width: 100px;"> <!-- 注意：这一层元素并不是必须的 -->
-            <input type="text" class="layui-input" name="date_delivery[]" id="data" lay-key="1">
+            <input type="text" value="{$delivery_time}" class="layui-input" name="date_delivery[]" id="data" lay-key="1">
           </div>
           <script>
               layui.use('laydate', function(){
@@ -124,18 +120,15 @@
               });
           </script>
         </div>
-        <div class="layui-inline">
-          <label class="layui-form-label">备料单编号</label>
           <div class="layui-input-inline" style="width: 100px;">
-            <input type="text" name="purchase_id[]" autocomplete="off" class="layui-input">
+            <input type="hidden" name="purchase_id[]" autocomplete="off" class="layui-input">
           </div>
-        </div>
         <div class="layui-inline">
           <label class="layui-form-label">材料来源</label>
           <div class="layui-input-inline" style="width: 100px;">
             <select name="material_source[]" >
               <option value="来料">来料</option>
-              <option value="外购">外购</option>
+              <option value="外购" selected>外购</option>
               <option value="自备">自备</option>
             </select>
           </div>
@@ -149,27 +142,17 @@
 
         {switch$a}
         {case 1}
-        <div class="layui-inline">
-          <label class="layui-form-label">所属内图编号</label>
           <div class="layui-input-inline" style="width: 300px;">
-            <input type="text" autocomplete="off" disabled name="drawing_externa_or_internal_id[]" value="{$info.drawing_internal_id}" class="layui-input">
+            <input type="hidden" autocomplete="off" disabled name="drawing_externa_or_internal_id[]" value="{$info.drawing_internal_id}" class="layui-input">
           </div>
-        </div>
         {/case}
         {case 0}
-        <div class="layui-inline">
-          <label class="layui-form-label">所属外图编号</label>
           <div class="layui-input-inline" style="width: 300px;">
-            <input type="text" autocomplete="off" disabled name="drawing_externa_or_internal_id[]" value="{$info.drawing_externa_id}" class="layui-input">
-
+            <input type="hidden" autocomplete="off" disabled name="drawing_externa_or_internal_id[]" value="{$info.drawing_externa_id}" class="layui-input">
           </div>
-        </div>
         {/case}
         {default /}default
         {/switch}
-
-
-
         <div class="layui-inline">
           <label class="layui-form-label">备注</label>
           <div class="layui-input-inline" style="width: 500px;">
