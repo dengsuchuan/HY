@@ -29,7 +29,65 @@ class Order extends Base
         'isLogin',
     ];
     public function order(){
-        $orderInfo = OrderMode::order('order_id asc')->paginate(25);
+        $tag = input('tag');
+        if($tag == 'select'){
+            $ifCompletr = intval(input('if_complete'));
+            // 直接按照 外图编号  或  图纸名称   搜索出含有该图号的订单列表。在未完订单界面只搜未完订单，在已完订单只搜已完订单。最好能部分输入就能搜而不需完整输入名称才匹配
+            // 1、 搜索图纸明细  下面的外面编号|图纸明细
+            $where = input('where');
+            $detial = BlueprintInfo::where('drawing_externa_id','like','%'.$where.'%')->whereOr('drawing_detail_id','like','%'.$where.'%')->whereOr('drawing_name','like','%'.$where.'%')->field('id')->select();
+            $detialIds = [];
+            foreach ($detial as $value){
+                $detialIds[] = $value['id'];
+            }
+            $orderDetail = OrderDetail::where('drawing_detail_id','in',$detialIds)->field('order_id')->select();
+            $orderDetailIds = [];
+
+            foreach ($orderDetail as $value){
+                $orderDetailIds[] = $value['order_id'];
+            }
+
+            $orderDetail =  array_unique($orderDetailIds);
+            if($ifCompletr){
+                $ifCompletr = 1;
+                $btnText = "未完";
+                $orderInfo = OrderMode::where('id','in',$orderDetail)->where(['if_complete'=>0])->order('order_id asc')->paginate(25);
+
+            }else{
+                $ifCompletr = 0;
+                $btnText = "已完";
+                $orderInfo = OrderMode::where('id','in',$orderDetail)->where(['if_complete'=>1])->order('order_id asc')->paginate(25);
+            }
+            $count =  $orderInfo->total();
+            $this->assign([
+                'ifCompletr'        => $ifCompletr,
+                'btnText'        => $btnText
+            ]);
+
+            $this->assign([
+                'orderInfo' =>  $orderInfo,
+                'count'    =>  $count
+            ]);
+            return $this->view->fetch('order');
+
+        }
+        $ifCompletr = intval(input('id'));
+
+        if($ifCompletr){
+            $ifCompletr = 0;
+            $btnText = "未完";
+            $orderInfo = OrderMode::where(['if_complete'=>1])->order('order_id asc')->paginate(25);
+        }else{
+            $ifCompletr = 1;
+            $btnText = "已完";
+            $orderInfo = OrderMode::where(['if_complete'=>0])->order('order_id asc')->paginate(25);
+        }
+        $this->assign([
+            'ifCompletr'        => $ifCompletr,
+            'btnText'        => $btnText
+        ]);
+
+
         $count =  $orderInfo->total();
         $this->assign([
             'orderInfo' =>  $orderInfo,

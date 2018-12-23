@@ -1,4 +1,13 @@
 ﻿ {include file="public/header" /}
+ <script>
+   function check() {
+       if($("#where").val() == ''){
+           layer.msg("请输入图号或者是图纸名称。。。");
+           return false;
+       }
+       return true;
+   }
+ </script>
   <body>
     <div class="x-nav">
       <span class="layui-breadcrumb">
@@ -17,9 +26,9 @@
           <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
           <button class="layui-btn" onclick="x_admin_show('添加订单','{:url(\'index/Order/addOrder\')}',600,600)"><i class="layui-icon"></i>添加</button>
           <div class="layui-input-inline">
-            <form class="layui-form" action="{:url('index/Blueprint/blueprintOutside')}" method="post">
+            <form class="layui-form" action="{:url('index/order/order',['tag'=>'select','if_complete'=>$ifCompletr])}" method="post" onsubmit="return check()">
               <div class="layui-input-inline">
-                <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
+                <input type="text" name="where" id="where" autocomplete="off" placeholder="请输入图号或者是图纸名称..." class="layui-input">
               </div>
               <div class="layui-input-inline">
                 <select name="id" lay-search="" >
@@ -38,7 +47,9 @@
             <table class="layui-table">
               <thead>
               <tr>
-                <th>操作</th>
+                <th>
+                  <a  href="{:url('index/order/order',['id'=>$ifCompletr])}" ><button class="layui-btn layui-btn-sm">{$btnText}</button></a>
+                </th>
                 <th>订单编号</th>
                 <th>订单内容</th>
                 <th>申请人</th>
