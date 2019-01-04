@@ -10,6 +10,8 @@ namespace app\index\controller;
 
 use app\index\common\controller\Base;
 use app\index\model\BlueprintInfo;
+use app\index\model\BlueprintOutside;
+use app\index\model\DrawingInternal;
 use app\index\model\Order;
 use app\index\model\OrderDetail;
 use app\index\model\QuotedMode;
@@ -100,10 +102,12 @@ class Quoted extends  Base{
         $quantity = $orderDetailInfo['order_qty'];
         //对应订单明细编号
         $orderStr = $orderDetailInfo['order_detail_code'];
+        $order_qty = $orderDetailInfo['order_qty'];
 
 
         //先拿到图纸明细的编号Id
         $drawing_detail_id = $orderDetailInfo['drawing_detail_id'];
+
 
         //获得内图编号
         $external=BlueprintInfo::where(['id'=>$drawing_detail_id])->value('drawing_internal_id');
@@ -111,9 +115,54 @@ class Quoted extends  Base{
         //获得外图编号
         $waiExternal = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('drawing_externa_id');
 
-        //$waiExternal= "$drawing_detail_id";
+
         //获得产品名称
         $drawingName = getDrawingName($drawing_detail_id);
+
+        //获得产品形状
+        $material_type = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('material_type');
+        $shape = getMateria($material_type);
+
+        $tempSize = "";
+        //判断形状，获得不同的尺寸
+        switch ($shape){
+            case "板":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
+                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness2_Dia");
+                $tempSize = ($length+5)." x ".($width+5)." x ".($thickness+5);
+                break;
+            case "棒":
+                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
+                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness_Dia");
+
+                $tempSize = $thickness." x ".$width;
+                break;
+            case "管":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
+                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness_Dia");
+
+                $tempSize = $thickness." x ".$width." x ".$length;
+                break;
+            case "槽钢":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
+                break;
+            case "轨道":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
+                break;
+            case "角钢":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
+                break;
+            case "矩管":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
+                break;
+        }
+
 
         //获得材料
         $materialId = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('material');
@@ -132,10 +181,12 @@ class Quoted extends  Base{
             "neitu_id"=>$external,
             "chanpin_name"=>$drawingName,
             "cailiao"=>$materialName,
-            "shuliang"=>$quantity
+            "shuliang"=>$quantity,
+            "xingzhuang"=>$shape,
+            "chicun"=>$tempSize,
+            "tuzhimingxiid"=>$drawing_detail_id,
+            "shuliang"=>$order_qty
         ];
-        //var_dump($array);
-
         QuotedMode::where(['quote_info_id'=>$deliveryInfoId,'order_info_id'=>$orderStr])->delete();
 
         $info = QuotedMode::create($array);

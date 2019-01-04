@@ -53,9 +53,9 @@
                 {volist name="quoted" id="quotedList"}
                 <tr>
                     <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的维修记录表-->
-                        <a title="编辑"onclick="x_admin_show('修改报价','')" href="javascript:;">
-                            <i style="color: green" class="layui-icon"></i>
-                        </a>
+                        <!--<a title="编辑"onclick="x_admin_show('修改报价','')" href="javascript:;">-->
+                            <!--<i style="color: green" class="layui-icon"></i>-->
+                        <!--</a>-->
                         <a title="删除" onclick="delete_(this,'{$quotedList.id}')" href="javascript:;">
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
@@ -67,7 +67,28 @@
                     <td>{$quotedList.chanpin_name}</td>
                     <td>{$quotedList.cailiao}</td>
                     <td>{$quotedList.xingzhuang}</td>
-                    <td>{$quotedList.tuzhigongyi}</td>
+                    <td>{$quotedList.chicun}</td>
+                    <?php $blueprintInfoList = getblueprintInfoList($quotedList['tuzhimingxiid']);?>
+                    <td class="td-manage">
+                        {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->
+                        <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;">
+                            <span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'abroad'])}">图</span></a>
+                        {elseif $blueprintInfoList.files_state==1} <!-- 继承 -->
+                        <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
+          '{:url(\'index/blueprint/is_outDrawing\',[\'id\'=>$blueprintInfoList.drawing_externa_id])}')" href="javascript:;"><span class="layui-badge layui-bg-green">图</span></a>
+                        {/if}
+                        <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的3d模型文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'within'])}">3D</span></a>
+                        <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-green layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'engineering'])}">程</span></a>
+
+                        {if $blueprintInfoList.is_gongxu !=0}
+                        <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span class="layui-badge layui-bg-green">工</span></a>
+                        {else}
+                        <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span  class="layui-badge layui-bg-blue">工</span></a>
+                        {/if}
+                    </td>
                     <td>{$quotedList.shuliang}</td>
                     <td>{$quotedList.danzhong}</td>
                     <td>{$quotedList.zongjia}</td>
@@ -85,6 +106,11 @@
                     <td>{$quotedList.chanpinzongjia}</td>
                     <td>{$quotedList.querendanjia}</td>
                     <td>{$quotedList.beizhu}</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
                 </tr>
                 {/volist}
                 </tbody>
