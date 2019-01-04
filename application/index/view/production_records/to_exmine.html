@@ -4,10 +4,7 @@
       <span class="layui-breadcrumb">
         <a href="">首页</a>
         <a href="">任务管理</a>
-        <a href="">在制任务</a>
-        <a>
-          <cite>{$task_id}的生产记录</cite>
-        </a>
+        <a href="">生产审核</a>
       </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="{:url()}" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
@@ -16,18 +13,31 @@
 <div class="x-body" >
     <xblock>
         <a class="layui-btn"  target="_blank" href="{:url()}"><i class="iconfont">&#xe718;</i> 框架页面</a>
-        <button class="layui-btn" id="addLog" onclick="x_admin_show('添加生产记录','{:url(\'index/ProductionRecords/addLog\',[\'task_id\'=>$task_id,\'drawing\'=>$drawing])}')"><i class="layui-icon"></i>添加生产记录</button>
         <span class="x-right" style="line-height:40px">共{$productLogCount}条 · 共{$productLogCount/25|getInt}页</span>
+        {if $tag == 0}
+        <button class="layui-btn layui-btn-sm" onclick="sheheAll()">批量审核</button>
+        {else}
+        <button class="layui-btn layui-btn-sm" onclick="quxiaoAll()">批量取消</button>
+        {/if}
     </xblock>
     <div class="container-wrap">
         <div class="box-1">
             <table class="layui-table">
                 <thead>
                 <tr>
+                    <th width="20px;">
+                        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+                    </th>
                     <!--<th>-->
                     <!--<div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>-->
                     <!--</th>-->
-                    <th>操作</th>
+                    <th>
+                        {if $tag == 0}
+                        <a href="{:url('index/ProductionRecords/toExmine',['tag'=>1])}"><button class="layui-btn layui-btn-sm">已审</button></a>
+                        {else}
+                        <a href="{:url('index/ProductionRecords/toExmine',['tag'=>0])}"><button class="layui-btn layui-btn-sm">未审</button></a>
+                        {/if}
+                    </th>
                     <!--<th>生产记录编号</th>-->
                     <th>序号</th>
                     <th>检验记录</th>
@@ -56,6 +66,9 @@
                 <tbody>
                 {volist name="$productLog" id="list"}
                 <tr>
+                    <td>
+                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$list.log_id}'><i class="layui-icon">&#xe605;</i></div>
+                    </td>
                     <td class="td-manage">
                         <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing,\'task_id\'=>$task_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
                         <a title="删除" onclick="delete_(this,'{$list.log_id}')" href="javascript:void(0);" >
@@ -122,7 +135,14 @@
                         </a>
                         {/if}
                     </td>
-                    <td>{$list.if_audit}</td>
+                    <td>
+                        {$list.if_audit}
+                        {if $list.if_audit == '未审'}
+                              <button class="layui-btn layui-btn-sm" onclick="shenhe('{$list.log_id}')">审核</button>
+                        {else}
+                             <button class="layui-btn layui-btn-sm"  onclick="quxiao('{$list.log_id}')">取消</button>
+                        {/if}
+                    </td>
                     <td>{$list.remark}</td>
                     <td>{$list.create_time}</td>
                     <td>{$list.create_name}</td>
@@ -139,6 +159,36 @@
         {$productLog|raw}
     </div>
     <script>
+        function shenhe(id) {
+            layer.confirm('确定要通过审核吗？',function(index){
+                var url = "{:url('index/ProductionRecords/shenhe')}";
+                var postData ={"id":id};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        location.reload();
+                        layer.msg('审核通过!',{icon:1,time:1000});
+                    }else {
+                        location.reload();
+                        layer.msg("操作失败", {icon:5,time:1000});
+                    }
+                },"json");
+            });
+        }
+        function quxiao(id) {
+            layer.confirm('确定要取消审核吗？',function(index){
+                var url = "{:url('index/ProductionRecords/xuxiao')}";
+                var postData ={"id":id};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        location.reload();
+                        layer.msg('审核通过!',{icon:1,time:1000});
+                    }else {
+                        location.reload();
+                        layer.msg("操作失败", {icon:5,time:1000});
+                    }
+                },"json");
+            });
+        }
         /*删除*/
         function delete_(obj,id){
             layer.confirm('确认要删除吗？',function(index){
@@ -192,7 +242,48 @@
                 layer.msg('正在加载中...', {time:500});
             })
         });
+        function quxiaoAll() {
+            var data = tableCheck.getData();
+            if (data == ''){
+                layer.msg('请选择需要取消审核的生产记录');
+                return false;
+            }
+            layer.confirm('确定将所有的生产记录都取消审核？',function(index){
+                var url = "{:url('index/ProductionRecords/quxiaoAll')}";
+                var postData ={"data":data};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        location.reload();
+                        layer.msg('取消审核成功!',{icon:1,time:1000});
+                    }else {
+                        location.reload();
+                        layer.msg("操作失败", {icon:5,time:1000});
+                    }
+                },"json");
+            });
 
+        }
+        function sheheAll() {
+            var data = tableCheck.getData();
+            if (data == ''){
+                layer.msg('请选择需要审核的生产记录');
+                return false;
+            }
+            layer.confirm('确定将所有的生产记录都审核？',function(index){
+                var url = "{:url('index/ProductionRecords/sheheAll')}";
+                var postData ={"data":data};
+                $.post(url,postData,function (result) {
+                    if(result === 1 ){
+                        location.reload();
+                        layer.msg('审核成功!',{icon:1,time:1000});
+                    }else {
+                        location.reload();
+                        layer.msg("操作失败", {icon:5,time:1000});
+                    }
+                },"json");
+            });
+
+        }
     </script>
 </div>
 

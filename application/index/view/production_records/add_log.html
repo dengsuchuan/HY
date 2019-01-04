@@ -17,7 +17,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">员工</label>
             <div class="layui-input-block" >
-                <input type="text" class="layui-input" name="hr_id" value="{$Think.session.user.user_name}" disabled >
+                <input type="hidden" class="layui-input" name="hr_id" value="{$Think.session.user.user_id}" disabled >
+                <input type="text" class="layui-input" name="hr_id_" value="{$Think.session.user.user_name}" disabled >
             </div>
         </div>
         <div class="layui-form-item">

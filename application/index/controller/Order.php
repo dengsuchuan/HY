@@ -494,12 +494,14 @@ class Order extends Base
                 return  $this->view->fetch('order_detail_add');
             }
         }
+        $delivery_time = OrderMode::where(['id'=>$orderId])->value('delivery_time');
         $this->assign([
             'orderId'        =>  $orderId,
             'orderCode'      =>  $orderCode,
             'blueprintInfo'  =>   $blueprintInfo,
             'type' =>$type,
-            'a'    => $a
+            'a'    => $a,
+            'delivery_time'    =>$delivery_time
         ]);
         return  $this->view->fetch('order_detail_add');
     }
