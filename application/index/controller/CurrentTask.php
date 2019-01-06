@@ -36,6 +36,14 @@ class CurrentTask extends Base
         ]);
         return $this->view->fetch('in-task');
     }
+    public function pinTsk(){
+        $id = input('id');
+        $productTaskInfo = ProductTask::where(['task_id'=>$id])->select();
+        $this->assign([
+            'productTaskInfo'   => $productTaskInfo
+        ]);
+        return $this->view->fetch('pin');
+    }
 
 //    public function selectTask(){
 //        if(Request::isPost()){

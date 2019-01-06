@@ -440,3 +440,11 @@ function getUserName($user_id){
     // 登陆类型
 
 }
+
+// 通过任务编号获取订单明细编号
+function productGetDrawingEetialCode($log_id){
+    $order_detial_id = ProductTask::where('task_id','=',$log_id)->value('order_detial_id');
+    $drawing_detail_id = OrderDetail::where(['id'=>$order_detial_id])->value('drawing_detail_id');
+    $drawing_detail = BlueprintInfo::where(['id'=>$drawing_detail_id])->find();
+    return $drawing_detail;
+}

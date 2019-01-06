@@ -39,23 +39,29 @@
                         {/if}
                     </th>
                     <!--<th>生产记录编号</th>-->
-                    <th>序号</th>
-                    <th>检验记录</th>
-                    <th>品管</th>
+                    <th>工序</th>
+                    <!--<th>检验记录</th>-->
+                    <!--<th>品管</th>-->
                     <th>类型</th>
                     <th>操作者</th>
                     <th>数量</th>
                     <th>完成日期</th>
                     <th>设备</th>
                     <!--<th>任务编号</th>-->
-                    <th>外协费用</th>
-                    <th>外协单位</th>
+                    <!--<th>外协费用</th>-->
+                    <!--<th>外协单位</th>-->
                     <th>合格数</th>
                     <th>质量等级</th>
-                    <th>检验员</th>
-                    <th>互检人</th>
-                    <th>品质放行</th>
-                    <th>生产管理审核</th>
+                    <!--<th>检验员</th>-->
+                    <!--<th>互检人</th>-->
+                    <!--<th>品质放行</th>-->
+                    <th>管理审核</th>
+                    <th>任务编号</th>
+                    <th>内图编号</th>
+                    <th>外图编号</th>
+                    <th>图纸名称</th>
+                    <th>批量</th>
+                    <th>工艺</th>
                     <th>备注</th>
                     <th>创建日期</th>
                     <th>创建人</th>
@@ -70,77 +76,105 @@
                         <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$list.log_id}'><i class="layui-icon">&#xe605;</i></div>
                     </td>
                     <td class="td-manage">
-                        <a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing,\'task_id\'=>$task_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>
-                        <a title="删除" onclick="delete_(this,'{$list.log_id}')" href="javascript:void(0);" >
-                            <i  style="color:red;" class="layui-icon"></i>
-                        </a>
+                        <!--<a title="修改" onclick="x_admin_show('修改 <span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 生产记录','{:url(\'index/ProductionRecords/edit\',[\'id\'=>$list.log_id,\'drawing\'=>$drawing,\'task_id\'=>$task_id])}')" href="javascript:;"><i style="color: green" class="layui-icon"></i></a>-->
+                        <!--<a title="删除" onclick="delete_(this,'{$list.log_id}')" href="javascript:void(0);" >-->
+                            <!--<i  style="color:red;" class="layui-icon"></i>-->
+                        <!--</a>-->
                     </td>
                     <td {$list.fulfill==0?'':'style="background:greenyellow"'}>{:substr($list['log_id'],-2)}</td>
-                    <td>
-                        <?php $ifczs = ifCz($list['process_id']);?>
-                        {if $ifczs}
-                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$list.log_id])}')" href="javascript:;">记录</a>
-                        {else}
-                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$list.log_id])}')" href="javascript:;">无</a>
-                        {/if}
-                    </td>
-                    <td>
-                        <?php $ifczs = ifPk($list['process_id']);?>
-                        {if $ifczs}
-                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的品管','{:url(\'index/TestRecord/qualityShow\',[\'task_id\'=>$list.log_id])}',500)" href="javascript:;">品管</a>
-                        {else}
-                        <a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的品管','{:url(\'index/TestRecord/qualityShow\',[\'task_id\'=>$list.log_id])}',500)" href="javascript:;">无</a>
-                        {/if}
-                    </td>
+                    <!--<td>-->
+                        <!--<?php $ifczs = ifCz($list['process_id']);?>-->
+                        <!--{if $ifczs}-->
+                        <!--<a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$list.log_id])}')" href="javascript:;">记录</a>-->
+                        <!--{else}-->
+                        <!--<a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的检验记录','{:url(\'index/TestRecord/viewIndex\',[\'task_id\'=>$list.log_id])}')" href="javascript:;">无</a>-->
+                        <!--{/if}-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<?php $ifczs = ifPk($list['process_id']);?>-->
+                        <!--{if $ifczs}-->
+                        <!--<a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的品管','{:url(\'index/TestRecord/qualityShow\',[\'task_id\'=>$list.log_id])}',500)" href="javascript:;">品管</a>-->
+                        <!--{else}-->
+                        <!--<a style="color: green" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$list.log_id}</span> 的品管','{:url(\'index/TestRecord/qualityShow\',[\'task_id\'=>$list.log_id])}',500)" href="javascript:;">无</a>-->
+                        <!--{/if}-->
+                    <!--</td>-->
                     <td>{$list.process_id|getGyType}</td>
                     <td>{$list.hr_id|getUserName}</td>
                     <td>{$list.complete_qty}</td>
                     <td>{$list.complete_date}</td>
                     <td>{$list.eqpmt_id}</td>
                     <!--<td>{$list.task_id}</td>-->
-                    <td>{$list.cost}</td>
-                    <td>{$list.costUnit}</td>
+                    <!--<td>{$list.cost}</td>-->
+                    <!--<td>{$list.costUnit}</td>-->
                     <td>{$list.product_qty}</td>
                     <td>{$list.quality_grade}</td>
-                    <td>
-                        {if $list.qc_inspector==""}
-                        <a title="检验签字" onclick="sign_('{$list.log_id}','qc_inspector_date','qc_inspector')" href="javascript:void(0);" >
-                            未签字
-                        </a>
-                        {else}
-                        <a title="取消检验签字" onclick="signDown_('{$list.log_id}','qc_inspector_date','qc_inspector')" href="javascript:void(0);" >
-                            {$list.qc_inspector} {$list.qc_inspector_date}
-                        </a>
-                        {/if}
-                    </td>
-                    <td>
-                        {if $list.other_checker==""}
-                        <a title="互检签字" onclick="sign_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >
-                            未签字
-                        </a>
-                        {else}
-                        <a title="取消互检签字" onclick="signDown_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >
-                            {$list.other_checker} {$list.other_checker_date}
-                        </a>
-                        {/if}
-                    </td>
-                    <td>
-                        {if $list.manege_name==""}
-                        <a title="品质放行" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
-                            未签字
-                        </a>
-                        {else}
-                        <a title="取消品质放行" onclick="signDown_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >
-                            {$list.manege_name} : {$list.manege_date}
-                        </a>
-                        {/if}
-                    </td>
+                    <!-- -->
+                    <!--<td>-->
+                        <!--{if $list.other_checker==""}-->
+                        <!--<a title="互检签字" onclick="sign_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >-->
+                            <!--未签字-->
+                        <!--</a>-->
+                        <!--{else}-->
+                        <!--<a title="取消互检签字" onclick="signDown_('{$list.log_id}','other_checker_date','other_checker')" href="javascript:void(0);" >-->
+                            <!--{$list.other_checker} {$list.other_checker_date}-->
+                        <!--</a>-->
+                        <!--{/if}-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--{if $list.manege_name==""}-->
+                        <!--<a title="品质放行" onclick="sign_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >-->
+                            <!--未签字-->
+                        <!--</a>-->
+                        <!--{else}-->
+                        <!--<a title="取消品质放行" onclick="signDown_('{$list.log_id}','manege_date','manege_name')" href="javascript:void(0);" >-->
+                            <!--{$list.manege_name} : {$list.manege_date}-->
+                        <!--</a>-->
+                        <!--{/if}-->
+                    <!--</td>-->
                     <td>
                         {$list.if_audit}
                         {if $list.if_audit == '未审'}
                               <button class="layui-btn layui-btn-sm" onclick="shenhe('{$list.log_id}')">审核</button>
                         {else}
                              <button class="layui-btn layui-btn-sm"  onclick="quxiao('{$list.log_id}')">取消</button>
+                        {/if}
+                    </td>
+                    <td><a href="javascript:;" style="color: #0000cc" onclick="x_admin_show('任务','{:url(\'index/CurrentTask/pinTsk\',[\'id\'=>$list.task_id])}')">{$list.task_id}</a></td>
+                    <td>
+                        <?php $blueprintInfoList = productGetDrawingEetialCode($list['task_id']); ?>
+                        {$blueprintInfoList.drawing_internal_id}
+                    </td>
+                    <td> {$blueprintInfoList.drawing_externa_id}</td>
+                    <td>{$blueprintInfoList.drawing_name}</td>
+                    <td>
+                        {if $blueprintInfoList.if_batch == 0}
+                        否
+                        {else}
+                        是
+                        {/if}
+                    </td>
+                    <td class="td-manage">
+                        {if $blueprintInfoList.files_state==0||$blueprintInfoList.drawing_externa_id==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList.drawing_externa_id])}<!-- 不继承或者外图继承无效 -->
+
+
+                        <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'wai\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;">
+                            <span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'abroad'])}">图</span></a>
+
+                        {elseif $blueprintInfoList.files_state==1} <!-- 继承 -->
+                        <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的图纸文件',
+          '{:url(\'index/blueprint/is_outDrawing\',[\'id\'=>$blueprintInfoList.drawing_externa_id])}')" href="javascript:;"><span class="layui-badge layui-bg-orange">图</span></a>
+                        {/if}
+
+                        <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的3d模型文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'nei\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'within'])}">3D</span></a>
+                        <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的程序单文件',
+          '{:url(\'index/blueprint/is_DrawingFiles\',[\'id\'=>$blueprintInfoList.id,\'key\'=>\'cheng\',\'drawing_num\'=>$blueprintInfoList.drawing_detail_id])}')" href="javascript:;"><span class="layui-badge layui-bg-{:widget('Widget/files_check',['id'=>$blueprintInfoList.id,'tip'=>'engineering'])}">程</span></a>
+                        {if $blueprintInfoList.is_gongxu !=0}
+                        <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span class="layui-badge layui-bg-green">工</span></a>
+                        {else}
+
+                        <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'>{$blueprintInfoList.drawing_detail_id}</span> 的工艺信息','{:url(\'index/blueprint/process\',[\'drawing_detail_id\'=>$blueprintInfoList.drawing_detail_id])}')" ><span  class="layui-badge layui-bg-blue">工</span></a>
                         {/if}
                     </td>
                     <td>{$list.remark}</td>
