@@ -1,0 +1,32 @@
+---------------------------------------------------------------
+[ 2018-12-16T11:56:38+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.112662s][吞吐率：8.88req/s] [内存消耗：1,478.55kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[ 2018-12-16T11:57:37+08:00 ] 127.0.0.1 GET /index/bao_jia/viewshow/action/0.html
+[ info ] hy.me/index/bao_jia/viewshow/action/0.html [运行时间：0.129928s][吞吐率：7.70req/s] [内存消耗：3,113.13kb] [文件加载：80]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => 'thinkphp_show_page_trace=0|0; _ga=GA1.2.1651485009.1544239621; __adroll_fpc=b1ec4367e1f1da661ebb5b37d1236d59; __ar_v4=%7CMIPKHDKO6ZFC3JPXUQX36B%3A20190007%3A1%7CWNJJ7ODREVA4FKGP3LLNTJ%3A20190007%3A1%7CRDDKD7S2VZAEVLPTQEK44N%3A20190007%3A1; PHPSESSID=40ho4ghmkv87bk92f1ufphgt8s; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'action' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)[I:\Project\WebServer\www\project\Hy\thinkphp\library\think\db\Connection.php:526]
+---------------------------------------------------------------
+[ 2018-12-16T23:02:49+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.205579s][吞吐率：4.86req/s] [内存消耗：1,478.54kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php

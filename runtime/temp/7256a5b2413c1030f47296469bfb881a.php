@@ -1,4 +1,4 @@
-<?php /*a:2:{s:84:"I:\Project\WebServer\www\project\Hy\application\index\view\current_task\in-task.html";i:1542033351;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
+<?php /*a:2:{s:84:"I:\Project\WebServer\www\project\Hy\application\index\view\current_task\in-task.html";i:1543068690;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿ <!doctype html>
 <html lang="en">
 <head>
@@ -97,7 +97,7 @@
               <?php endif; ?>
 
             </td>
-            <td><?php echo htmlentities($info['task_id']); ?></td>
+            <td><span style="cursor: pointer" onclick="x_admin_show('生产记录','<?php echo url('index/ProductionRecords/index',['task_id'=>$info['task_id'],'drawing'=>$blueprintInfoList['drawing_detail_id']]); ?>')"><?php echo htmlentities($info['task_id']); ?></span></td>
             <td>
               <a title="序号 <?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?>" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'> <?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></span> 的所有明细','<?php echo url('index/Blueprint/blueprintInfo', ['modules' => $blueprintInfoList['drawing_internal_id']]); ?>')" href="javascript:;"> <span style="color: #1E9FFF"> <?php echo htmlentities($blueprintInfoList['drawing_internal_id']); ?></span></a>
             </td>

@@ -1,0 +1,310 @@
+---------------------------------------------------------------
+[ 2019-01-05T22:54:33+08:00 ] 127.0.0.1 POST /index/login/adminhandlelogin.html
+[ info ] hy.me/index/login/adminhandlelogin.html [运行时间：0.217407s][吞吐率：4.60req/s] [内存消耗：2,893.10kb] [文件加载：77]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015293s ] mysql:host=127.0.0.1;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.014721s ]
+[ sql ] [ SQL ] SELECT `id`,`admin_code`,`admin_name`,`login_number` FROM `hy_administrators` WHERE  `admin_name` = '邓素川'  AND `password` = 'admin' LIMIT 1 [ RunTime:0.002926s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_administrators',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 4,
+  'filtered' => 25.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `hy_administrators`  SET `login_number` = 176 , `update_time` = 1546700073  WHERE  `id` = 2 [ RunTime:0.013500s ]
+---------------------------------------------------------------
+[ 2019-01-05T22:54:36+08:00 ] 127.0.0.1 GET /index/delivery/viewshow.html
+[ info ] hy.me/index/delivery/viewshow.html [运行时间：0.165899s][吞吐率：6.03req/s] [内存消耗：3,293.60kb] [文件加载：85]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011195s ] mysql:host=127.0.0.1;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_delivery` [ RunTime:0.002122s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_delivery` LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'Select tables optimized away',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_delivery` ORDER BY `create_time` DESC LIMIT 0,25 [ RunTime:0.000801s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_delivery',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 3,
+  'filtered' => 100.0,
+  'extra' => 'Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.001785s ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 30 LIMIT 1 [ RunTime:0.001400s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 9 LIMIT 1 [ RunTime:0.000356s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+---------------------------------------------------------------
+[ 2019-01-05T22:54:37+08:00 ] 127.0.0.1 GET /index/bao_jia/viewshow/action/0.html
+[ info ] hy.me/index/bao_jia/viewshow/action/0.html [运行时间：0.122909s][吞吐率：8.14req/s] [内存消耗：3,261.27kb] [文件加载：83]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001541s ] mysql:host=127.0.0.1;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quote` [ RunTime:0.002319s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_quote` WHERE  `determine` = '0' LIMIT 1 [ RunTime:0.001399s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quote` WHERE  `determine` = '0' ORDER BY `create_time` ASC LIMIT 0,25 [ RunTime:0.000650s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quote',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where; Using filesort',
+) ]
+---------------------------------------------------------------
+[ 2019-01-05T22:54:38+08:00 ] 127.0.0.1 GET /index/quoted/viewshow/quoteId/QT181208-01/show/1.html
+[ info ] hy.me/index/quoted/viewshow/quoteId/QT181208-01/show/1.html [运行时间：0.128793s][吞吐率：7.76req/s] [内存消耗：3,297.58kb] [文件加载：85]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011454s ] mysql:host=127.0.0.1;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quoted_price` [ RunTime:0.002210s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quoted_price` WHERE  `quote_info_id` LIKE '%QT181208-01%' [ RunTime:0.002253s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quoted_price',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'filtered' => 50.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_detial` [ RunTime:0.001819s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` = 13332 LIMIT 1 [ RunTime:0.000674s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_external` [ RunTime:0.002633s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = '0-7W' LIMIT 1 [ RunTime:0.001504s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'drawing_ external_id',
+  'key' => 'drawing_ external_id',
+  'key_len' => '99',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_drawing_files` [ RunTime:0.001505s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13332 LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13332 LIMIT 1 [ RunTime:0.000803s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13332 LIMIT 1 [ RunTime:0.000991s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_detial` WHERE  `id` = 13333 LIMIT 1 [ RunTime:0.001630s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_detial',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_external` WHERE  `drawing_external_id` = '0-7W' LIMIT 1 [ RunTime:0.000494s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_external',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'drawing_ external_id',
+  'key' => 'drawing_ external_id',
+  'key_len' => '99',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13333 LIMIT 1 [ RunTime:0.000359s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13333 LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_drawing_files` WHERE  `drawing_id` = 13333 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_drawing_files',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]

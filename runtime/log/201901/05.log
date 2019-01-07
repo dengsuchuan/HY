@@ -1,0 +1,4 @@
+---------------------------------------------------------------
+[ 2019-01-05T22:54:24+08:00 ] 127.0.0.1 GET /static/index/favicon.ico
+[ info ] hy.me/static/index/favicon.ico [运行时间：0.092439s][吞吐率：10.82req/s] [内存消耗：1,478.55kb] [文件加载：55]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php

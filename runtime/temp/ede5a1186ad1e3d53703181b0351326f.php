@@ -1,4 +1,4 @@
-<?php /*a:2:{s:81:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\process.html";i:1541478154;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1541478155;}*/ ?>
+<?php /*a:2:{s:81:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\process.html";i:1541478154;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿ <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta name="keywords" content="机械,过程管理,制造业">
     <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/index/css/font.css">
     <link rel="stylesheet" href="/static/index/css/xadmin.css">

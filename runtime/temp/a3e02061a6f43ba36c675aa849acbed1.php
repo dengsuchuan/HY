@@ -1,4 +1,4 @@
-<?php /*a:2:{s:79:"I:\Project\WebServer\www\project\Hy\application\index\view\quoted\viewshow.html";i:1544282289;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
+<?php /*a:2:{s:79:"I:\Project\WebServer\www\project\Hy\application\index\view\quoted\viewshow.html";i:1545559152;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
  <!doctype html>
 <html lang="en">
 <head>
@@ -98,9 +98,9 @@
                 <?php if(is_array($quoted) || $quoted instanceof \think\Collection || $quoted instanceof \think\Paginator): $i = 0; $__LIST__ = $quoted;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$quotedList): $mod = ($i % 2 );++$i;?>
                 <tr>
                     <td class="td-manage" width="50px;"><!-- 这里是设备管理里面某个设备的维修记录表-->
-                        <a title="编辑"onclick="x_admin_show('修改报价','')" href="javascript:;">
-                            <i style="color: green" class="layui-icon"></i>
-                        </a>
+                        <!--<a title="编辑"onclick="x_admin_show('修改报价','')" href="javascript:;">-->
+                            <!--<i style="color: green" class="layui-icon"></i>-->
+                        <!--</a>-->
                         <a title="删除" onclick="delete_(this,'<?php echo htmlentities($quotedList['id']); ?>')" href="javascript:;">
                             <i  style="color:red;" class="layui-icon"></i>
                         </a>
@@ -112,7 +112,28 @@
                     <td><?php echo htmlentities($quotedList['chanpin_name']); ?></td>
                     <td><?php echo htmlentities($quotedList['cailiao']); ?></td>
                     <td><?php echo htmlentities($quotedList['xingzhuang']); ?></td>
-                    <td><?php echo htmlentities($quotedList['tuzhigongyi']); ?></td>
+                    <td><?php echo htmlentities($quotedList['chicun']); ?></td>
+                    <?php $blueprintInfoList = getblueprintInfoList($quotedList['tuzhimingxiid']);?>
+                    <td class="td-manage">
+                        <?php if($blueprintInfoList['files_state']==0||$blueprintInfoList['drawing_externa_id']==""||!widget('Widget/drawing_check',['drawing_id'=>$blueprintInfoList['drawing_externa_id']])): ?><!-- 不继承或者外图继承无效 -->
+                        <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的图纸文件',
+          '<?php echo url('index/blueprint/is_DrawingFiles',['id'=>$blueprintInfoList['id'],'key'=>'wai','drawing_num'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;">
+                            <span class="layui-badge layui-bg-<?php echo widget('Widget/files_check',['id'=>$blueprintInfoList['id'],'tip'=>'abroad']); ?>">图</span></a>
+                        <?php elseif($blueprintInfoList['files_state']==1): ?> <!-- 继承 -->
+                        <a title="图纸" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的图纸文件',
+          '<?php echo url('index/blueprint/is_outDrawing',['id'=>$blueprintInfoList['drawing_externa_id']]); ?>')" href="javascript:;"><span class="layui-badge layui-bg-green">图</span></a>
+                        <?php endif; ?>
+                        <a title="模型" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的3d模型文件',
+          '<?php echo url('index/blueprint/is_DrawingFiles',['id'=>$blueprintInfoList['id'],'key'=>'nei','drawing_num'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><span class="layui-badge layui-bg-<?php echo widget('Widget/files_check',['id'=>$blueprintInfoList['id'],'tip'=>'within']); ?>">3D</span></a>
+                        <a title="程序单" onclick="x_admin_show('图纸明细 <span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的程序单文件',
+          '<?php echo url('index/blueprint/is_DrawingFiles',['id'=>$blueprintInfoList['id'],'key'=>'cheng','drawing_num'=>$blueprintInfoList['drawing_detail_id']]); ?>')" href="javascript:;"><span class="layui-badge layui-bg-green layui-bg-<?php echo widget('Widget/files_check',['id'=>$blueprintInfoList['id'],'tip'=>'engineering']); ?>">程</span></a>
+
+                        <?php if($blueprintInfoList['is_gongxu'] !=0): ?>
+                        <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" ><span class="layui-badge layui-bg-green">工</span></a>
+                        <?php else: ?>
+                        <a title="工"  href="javascript:;" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></span> 的工艺信息','<?php echo url('index/blueprint/process',['drawing_detail_id'=>$blueprintInfoList['drawing_detail_id']]); ?>')" ><span  class="layui-badge layui-bg-blue">工</span></a>
+                        <?php endif; ?>
+                    </td>
                     <td><?php echo htmlentities($quotedList['shuliang']); ?></td>
                     <td><?php echo htmlentities($quotedList['danzhong']); ?></td>
                     <td><?php echo htmlentities($quotedList['zongjia']); ?></td>
@@ -130,6 +151,11 @@
                     <td><?php echo htmlentities($quotedList['chanpinzongjia']); ?></td>
                     <td><?php echo htmlentities($quotedList['querendanjia']); ?></td>
                     <td><?php echo htmlentities($quotedList['beizhu']); ?></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
                 </tr>
                 <?php endforeach; endif; else: echo "" ;endif; ?>
                 </tbody>

@@ -1,4 +1,4 @@
-<?php /*a:2:{s:92:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\add-drawing-detial.html";i:1541513081;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1541478155;}*/ ?>
+<?php /*a:2:{s:92:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\add-drawing-detial.html";i:1545557044;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
  <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta name="keywords" content="机械,过程管理,制造业">
     <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/index/css/font.css">
     <link rel="stylesheet" href="/static/index/css/xadmin.css">
@@ -224,6 +224,13 @@
             </div>
         </div>
         <div id="materialDiv">
+            <div class="layui-form-item" id="thickness2">
+                <label class="layui-form-label">毛坯</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off"
+                           class="layui-input" id="thickness2Input">
+                </div>
+            </div>
             <div class="layui-form-item" id="thickness">
                 <label class="layui-form-label">厚度</label>
                 <div class="layui-input-inline">
@@ -386,6 +393,7 @@
         var materialSelectId;
 
         $("#thickness").hide(); //厚度
+        $("#thickness2").hide(); //厚度
         $("#length").hide();//长度
         $("#width").hide();//宽度
         $("#altitude").hide();//高度
@@ -400,6 +408,7 @@
             $("#addwebsql").hide();//保存按钮
 
             $("#thickness").hide(); //厚度
+            $("#thickness2").hide(); //厚度
             $("#length").hide();//长度
             $("#width").hide();//宽度
             $("#altitude").hide();//高度
@@ -416,6 +425,7 @@
         });
 
         $("#thickness").show(); //厚度
+        $("#thickness2").show(); //厚度
         $("#length").show();//长度
         $("#width").show();//宽度
         $("#addwebsql").hide();//保存按钮
@@ -443,6 +453,8 @@
             switch (materialSelect){
                 case 1:
                     $("#thickness").show(); //厚度
+                    $("#thickness > label").text("厚度");
+                    $("#thickness2").show(); //厚度
                     $("#length").show();//长度
                     $("#width").show();//宽度
                     $(".specialDiv").show();//保证
@@ -461,6 +473,7 @@
 
 
                     $("#thickness").hide(); //厚度
+                    $("#thickness2").hide(); //厚度
                     $("#altitude").hide();//高度
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
@@ -475,6 +488,7 @@
                     $("#altitude").hide();//高度
                     $("#width").hide();//宽度 ->腿宽
                     $("#thickness").hide(); //厚度 ->腰厚
+                    $("#thickness2").hide(); //厚度 ->腰厚
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
                     materialSelectId = 3;
@@ -482,6 +496,7 @@
                 case 4:
                     $("#length").show();//长度
                     $("#thickness").show(); //厚度 ->管厚
+                    $("#thickness2").show();
                     $("#thickness > label").text("管厚");
                     $("#width").show();//宽度 ->大径
                     $("#width > label").text("大径");
@@ -500,6 +515,7 @@
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
                     $("#thickness").hide(); //厚度
+                    $("#thickness2").hide(); //厚度
                     $("#width").hide();//宽度
                     $("#altitude").hide();//高度
                     materialSelectId = 5;
@@ -512,6 +528,7 @@
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
                     $("#thickness").hide(); //厚度
+                    $("#thickness2").hide(); //厚度
                     $("#width").hide();//宽度
                     $("#altitude").hide();//高度
                     materialSelectId = 6;
@@ -524,6 +541,7 @@
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
                     $("#thickness").hide(); //厚度
+                    $("#thickness2").hide(); //厚度
                     $("#width").hide();//宽度
                     $("#altitude").hide();//高度
                     materialSelectId = 7;
@@ -539,6 +557,7 @@
             materialSelectArray = [];
 
             var thickness = $("#thicknessInput").val();//厚度
+            var thickness2 = $("#thickness2Input").val();//厚度
             var lengths = $("#lengthInput").val();//长度
             var width = $("#widthInput").val();//宽度
             var altitude = $("#altitudeInput").val();//高度
@@ -556,10 +575,10 @@
 
             switch (materialSelectId){
                 case 1://板
-                    materialSelectArray["thickness_Dia"] = thickness;
                     materialSelectArray["length_dim"] = lengths;
                     materialSelectArray["width_dim"] = width;
                     materialSelectArray["thickness_Dia"] = thickness;
+                    materialSelectArray["thickness2_Dia"] = thickness2;
                     materialSelectArray["if_thickness"] = memoryThickness;
                     materialSelectArray["if_length"] = memoryLength;
                     materialSelectArray["if_width"] = memoryWidth;

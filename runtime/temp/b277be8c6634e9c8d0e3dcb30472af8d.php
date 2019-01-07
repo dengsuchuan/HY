@@ -1,4 +1,4 @@
-<?php /*a:2:{s:86:"I:\Project\WebServer\www\project\Hy\application\index\view\task\edit_product_task.html";i:1541478155;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1541478155;}*/ ?>
+<?php /*a:2:{s:86:"I:\Project\WebServer\www\project\Hy\application\index\view\task\edit_product_task.html";i:1542033351;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿  <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta name="keywords" content="机械,过程管理,制造业">
     <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/index/css/font.css">
     <link rel="stylesheet" href="/static/index/css/xadmin.css">
@@ -75,21 +75,35 @@
       </div>
     </div>
 
-    <div class="layui-form-item">
-      <label class="layui-form-label">设备编号</label>
-      <div class="layui-input-block">
-        <select name="eqpmt_id" lay-verify="required">
-          <option value=""></option>
-            <?php if(is_array($equipmentInfo) || $equipmentInfo instanceof \think\Collection || $equipmentInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $equipmentInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$info): $mod = ($i % 2 );++$i;?>
-            <option value="<?php echo htmlentities($info['id']); ?>"  <?php if($taskrow['eqpmt_id'] == $info['id']): ?> selected <?php endif; ?>><?php echo htmlentities($info['eqpmt_id']); ?>--<?php echo htmlentities($info['eqpmt_name']); ?> </option>
-            <?php endforeach; endif; else: echo "" ;endif; ?>
-          </select>
-      </div>
-    </div>
+    <!--<div class="layui-form-item">-->
+      <!--<label class="layui-form-label">设备编号</label>-->
+      <!--<div class="layui-input-block">-->
+        <!--<select name="eqpmt_id" lay-verify="required">-->
+          <!--<option value=""></option>-->
+            <!--<?php if(is_array($equipmentInfo) || $equipmentInfo instanceof \think\Collection || $equipmentInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $equipmentInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$info): $mod = ($i % 2 );++$i;?>-->
+            <!--<option value="<?php echo htmlentities($info['id']); ?>"  <?php if($taskrow['eqpmt_id'] == $info['id']): ?> selected <?php endif; ?>><?php echo htmlentities($info['eqpmt_id']); ?>&#45;&#45;<?php echo htmlentities($info['eqpmt_name']); ?> </option>-->
+            <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
+          <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
+
     <div class="layui-form-item layui-form-text">
       <label class="layui-form-label">备注</label>
       <div class="layui-input-block">
         <textarea class="layui-textarea"  id="remark" name="remark"><?php echo htmlentities($taskrow['remark']); ?></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_price" class="layui-form-label">创建人</label>
+      <div class="layui-input-inline">
+        <input type="text" id="create_name" name="create_name" disabled  lay-verify="required"  value="<?php echo htmlentities($taskrow['create_name']); ?>" autocomplete="off" class="layui-input"  >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="process_price" class="layui-form-label">修改人</label>
+      <div class="layui-input-inline">
+        <input type="text" disabled   lay-verify="required"  value="<?php echo htmlentities(app('session')->get('user.user_name')); ?>" autocomplete="off" class="layui-input"  >
+        <input type="hidden" id="modify_name" name="modify_name"  lay-verify="required"  value="<?php echo htmlentities(app('session')->get('user.user_name')); ?>" autocomplete="off" class="layui-input"  >
       </div>
     </div>
     <div class="layui-form-item">

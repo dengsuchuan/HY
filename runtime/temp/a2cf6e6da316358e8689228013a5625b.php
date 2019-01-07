@@ -1,4 +1,4 @@
-<?php /*a:2:{s:87:"I:\Project\WebServer\www\project\Hy\application\index\view\order\order_edit_detail.html";i:1541478155;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1541478155;}*/ ?>
+<?php /*a:2:{s:87:"I:\Project\WebServer\www\project\Hy\application\index\view\order\order_edit_detail.html";i:1542470187;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿  <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta name="keywords" content="机械,过程管理,制造业">
     <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/index/css/font.css">
     <link rel="stylesheet" href="/static/index/css/xadmin.css">
@@ -62,15 +62,22 @@
         <input type="text" id="plan_qty"  name="plan_qty" value="<?php echo htmlentities($ordeDetailRow['plan_qty']); ?>"  lay-verify="required" autocomplete="off" class="layui-input" >
       </div>
     </div>
-    <div class="layui-form-item">
-      <label for="arrange" class="layui-form-label">加工安排</label>
-        <div class="layui-input-inline" style="width: 120px;">
-          <select  name="arrange">
-            <option value="整体外协" <?php if($ordeDetailRow['arrange'] == '整体外协'): ?> selected <?php endif; ?>>整体外协</option>
-            <option value="自加工" <?php if($ordeDetailRow['arrange'] == '自加工'): ?> selected <?php endif; ?>>自加工</option>
-            <option value="标件不加工" <?php if($ordeDetailRow['arrange'] == '标件不加工'): ?> selected <?php endif; ?>>标件不加工</option>
-            <option value="外协完成" <?php if($ordeDetailRow['arrange'] == '外协完成'): ?> selected <?php endif; ?>>外协完成</option>
-          </select>
+    <!--<div class="layui-form-item">-->
+      <!--<label for="arrange" class="layui-form-label">加工安排</label>-->
+        <!--<div class="layui-input-inline" style="width: 120px;">-->
+          <!--<select  name="arrange">-->
+            <!--<option value="整体外协" <?php if($ordeDetailRow['arrange'] == '整体外协'): ?> selected <?php endif; ?>>整体外协</option>-->
+            <!--<option value="自加工" <?php if($ordeDetailRow['arrange'] == '自加工'): ?> selected <?php endif; ?>>自加工</option>-->
+            <!--<option value="标件不加工" <?php if($ordeDetailRow['arrange'] == '标件不加工'): ?> selected <?php endif; ?>>标件不加工</option>-->
+            <!--<option value="外协完成" <?php if($ordeDetailRow['arrange'] == '外协完成'): ?> selected <?php endif; ?>>外协完成</option>-->
+          <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="layui-inline">
+      <label class="layui-form-label">是否加工</label>
+      <div class="layui-input-block">
+        <input type="checkbox"   <?php if('是'==$ordeDetailRow['arrange']): ?>checked=""<?php endif; ?>   name="arrange" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>否</em><i></i></div>
       </div>
     </div>
     <div class="layui-form-item">

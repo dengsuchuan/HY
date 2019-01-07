@@ -1,4 +1,4 @@
-<?php /*a:2:{s:88:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1542007767;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
+<?php /*a:2:{s:88:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-info.html";i:1544351496;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿ <!doctype html>
 <html lang="en">
 <head>

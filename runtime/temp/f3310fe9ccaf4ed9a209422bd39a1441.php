@@ -1,4 +1,4 @@
-<?php /*a:5:{s:75:"I:\Project\WebServer\www\project\Hy\application\index\view\index\index.html";i:1541478155;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;s:74:"I:\Project\WebServer\www\project\Hy\application\index\view\public\top.html";i:1541478155;s:75:"I:\Project\WebServer\www\project\Hy\application\index\view\public\left.html";i:1544283005;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\footer.html";i:1541478155;}*/ ?>
+<?php /*a:5:{s:75:"I:\Project\WebServer\www\project\Hy\application\index\view\index\index.html";i:1541478155;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;s:74:"I:\Project\WebServer\www\project\Hy\application\index\view\public\top.html";i:1541478155;s:75:"I:\Project\WebServer\www\project\Hy\application\index\view\public\left.html";i:1546612694;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\footer.html";i:1541478155;}*/ ?>
 ﻿ <!doctype html>
 <html lang="en">
 <head>
@@ -303,6 +303,12 @@
                         <a _href="<?php echo url('index/CurrentTask/inTask',['id'=>0]); ?>">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>在制和已制</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="<?php echo url('index/ProductionRecords/toExmine',['tag'=>0]); ?>">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>生产审核</cite>
                         </a>
                     </li >
                     <!--<li>-->

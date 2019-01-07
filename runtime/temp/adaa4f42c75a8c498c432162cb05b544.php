@@ -1,4 +1,4 @@
-<?php /*a:2:{s:89:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-infos.html";i:1541513223;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1541478155;}*/ ?>
+<?php /*a:2:{s:89:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\blueprint-infos.html";i:1545557193;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿ <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta name="keywords" content="机械,过程管理,制造业">
     <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/index/css/font.css">
     <link rel="stylesheet" href="/static/index/css/xadmin.css">
@@ -155,6 +155,14 @@
                 </div>
             </div>
             <div style="border:1px #D8BFD8 solid;margin:10px 0 15px 0;padding:10px 10px 10px 0;box-shadow: 10px 10px 5px #888888;" id="specia">
+                <div class="layui-form-item" id="thickness2_Dia">
+                    <label class="layui-form-label">毛坯</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="thickness2_Dia" lay-verify="required"
+                               value="<?php echo htmlentities($blueprintInfo['thickness2_Dia']); ?>" placeholder="请输入"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
                 <div class="layui-form-item" id="thickness_Dia">
                     <label class="layui-form-label">厚度</label>
                     <div class="layui-input-inline">
@@ -338,6 +346,7 @@
                 case "1":
                     $(".specialDiv").show();//三个保存
                     $("#thickness_Dia").show();//厚度
+                    $("#thickness2_Dia").show();//厚度
                     $("#thickness_Dia > label").text("厚度");
                     $("#length_dim").show();//长度
                     $("#length_dim > label").text("长度");
@@ -358,6 +367,7 @@
 
                     $(".specialDiv").hide();//三个保存
                     $("#thickness_Dia").hide();//厚度
+                    $("#thickness2_Dia").hide();//厚度
                     $("#specifications").hide();//规格型号
                     $("#altitudeInput").hide();//高度
                     $("#sideLength1").hide();//边长1
@@ -370,6 +380,7 @@
 
 
                     $("#thickness_Dia").hide();//厚度
+                    $("#thickness2_Dia").hide();//厚度
                     $("#thickness_Dia > label").text("腰厚");
                     $("#width_dim").hide();//宽度
                     $("#width_dim > label").text("腿宽");
@@ -383,6 +394,7 @@
                     $("#length_dim").show();//长度
                     $("#length_dim > label").text("长度");
                     $("#thickness_Dia").show();//厚度
+                    $("#thickness2_Dia").show();//厚度
                     $("#thickness_Dia > label").text("管厚");
                     $("#width_dim").show();//宽度
                     $("#width_dim > label").text("大径");
@@ -400,6 +412,7 @@
 
 
                     $("#thickness_Dia").hide();//厚度
+                    $("#thickness2_Dia").hide();//厚度
                     $("#thickness_Dia > label").text("单位重量");
                     $("#width_dim").hide();//宽度
                     $("#altitudeInput").hide();//高度
@@ -415,6 +428,7 @@
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2
                     $("#thickness_Dia").hide();//厚度
+                    $("#thickness2_Dia").hide();//厚度
                     $("#width_dim").hide();//宽度
                     $("#altitudeInput").hide();//高度
                     $(".specialDiv").hide();//三个保存
@@ -425,6 +439,7 @@
                     $("#specifications").show();//规格型号
 
                     $("#thickness_Dia").hide();//厚度
+                    $("#thickness2_Dia").hide();//厚度
                     $("#thickness_Dia > label").text("厚度");
                     $("#sideLength1").hide();//边长1
                     $("#sideLength2").hide();//边长2

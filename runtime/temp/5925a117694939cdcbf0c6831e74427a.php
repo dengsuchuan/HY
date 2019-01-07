@@ -1,4 +1,4 @@
-<?php /*a:2:{s:76:"I:\Project\WebServer\www\project\Hy\application\index\view\task\in-task.html";i:1541587638;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1541478155;}*/ ?>
+<?php /*a:2:{s:76:"I:\Project\WebServer\www\project\Hy\application\index\view\task\in-task.html";i:1542033351;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿  <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-
+    <meta name="keywords" content="机械,过程管理,制造业">
     <link rel="shortcut icon" href="/static/index/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/index/css/font.css">
     <link rel="stylesheet" href="/static/index/css/xadmin.css">
@@ -75,7 +75,7 @@
             <th>任务编号</th>
             <th>产品图号</th>
             <th>产品名称</th>
-            <th>外来图号</th>
+            <!--<th>外来图号</th>-->
             <th>材料</th>
             <th>数量</th>
             <th>图纸工艺</th>
@@ -86,14 +86,15 @@
             <th>是否完成</th>
             <?php endif; ?>
             <th>要求日期</th>
-            <th>设备名称</th>
+            <!--<th>设备名称</th>-->
+            <!--<th>创建人</th>-->
+            <!--<th>创建时间</th>-->
             <th>备注</th>
             <th>操作</th>
             </tr>
         </thead>
         <tbody>
         <?php if(is_array($productTaskInfo) || $productTaskInfo instanceof \think\Collection || $productTaskInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $productTaskInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$info): $mod = ($i % 2 );++$i;$blueprintInfoList = getblueprintInfo($info['order_detial_id']);?>
-
         <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
@@ -101,7 +102,9 @@
             <td><?php echo htmlentities($info['task_id']); ?></td>
             <td><?php echo htmlentities($blueprintInfoList['drawing_detail_id']); ?></td>
             <td><?php echo htmlentities(getOrderDrawingName($info['order_detial_id'])); ?></td>
-            <td></td>
+
+            <!--<td> <a title="序号<?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?>" onclick="x_admin_show('<span class=\'layui-badge layui-bg-blue\'><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></span> 的所有明细','<?php echo url('index/Blueprint/blueprintInfo', ['modules' => $blueprintInfoList['drawing_externa_id']]); ?>')" href="javascript:;"><i class="layui-icon " style="color: #1E9FFF"><?php echo htmlentities($blueprintInfoList['drawing_externa_id']); ?></i></a></td>-->
+
             <td><?php echo htmlentities(getMaterialType($blueprintInfoList['material'])); ?></td>
             <td><?php echo htmlentities($info['task_qty']); ?></td>
             <td class="td-manage">
@@ -137,11 +140,13 @@
               <?php endif; ?>
             </td>
           <?php endif; ?>
-          <td></td>
-          <td>
-            <?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>
-             <?php echo htmlentities($equipmentInfo['eqpmt_name']); ?>
-          </td>
+          <td><a href=""></a></td>
+          <!--<td>-->
+            <!--&lt;!&ndash;<?php $equipmentInfo = getEquipmentInfo($info['eqpmt_id']);?>&ndash;&gt;-->
+             <!--&lt;!&ndash;<?php echo htmlentities($equipmentInfo['eqpmt_name']); ?>&ndash;&gt;-->
+          <!--</td>-->
+          <!--<td><?php echo htmlentities($info['create_name']); ?></td>-->
+          <!--<td><?php echo htmlentities($info['create_time']); ?></td>-->
           <td><?php echo htmlentities($info['remark']); ?></td>
             <td class="td-manage">
               <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','<?php echo url('index/Task/editTask',['id'=>$info['id']]); ?>',600,500)" ><i class="layui-icon">&#xe642;</i>编辑</button>
@@ -186,17 +191,17 @@
               <div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
             </div>
           </div>
-          <div class="layui-form-item">
-            <label class="layui-form-label">设备编号</label>
-            <div class="layui-input-block">
-              <select name="eqpmt_id" lay-verify="required">
-                <option value=""></option>
-                <?php if(is_array($euipmentInfo) || $euipmentInfo instanceof \think\Collection || $euipmentInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $euipmentInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$info): $mod = ($i % 2 );++$i;?>
-                <option value="<?php echo htmlentities($info['id']); ?>"><?php echo htmlentities($info['eqpmt_id']); ?>--<?php echo htmlentities($info['eqpmt_name']); ?></option>
-                <?php endforeach; endif; else: echo "" ;endif; ?>
-              </select>
-            </div>
-          </div>
+          <!--<div class="layui-form-item">-->
+            <!--<label class="layui-form-label">设备编号</label>-->
+            <!--<div class="layui-input-block">-->
+              <!--<select name="eqpmt_id" lay-verify="required">-->
+                <!--<option value=""></option>-->
+                <!--<?php if(is_array($euipmentInfo) || $euipmentInfo instanceof \think\Collection || $euipmentInfo instanceof \think\Paginator): $i = 0; $__LIST__ = $euipmentInfo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$info): $mod = ($i % 2 );++$i;?>-->
+                <!--<option value="<?php echo htmlentities($info['id']); ?>"><?php echo htmlentities($info['eqpmt_id']); ?>&#45;&#45;<?php echo htmlentities($info['eqpmt_name']); ?></option>-->
+                <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
+              <!--</select>-->
+            <!--</div>-->
+          <!--</div>-->
 
           <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>

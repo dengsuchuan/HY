@@ -1,4 +1,4 @@
-<?php /*a:2:{s:83:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\not-files.html";i:1541478154;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
+<?php /*a:2:{s:90:"I:\Project\WebServer\www\project\Hy\application\index\view\blueprint\outdrawing_files.html";i:1541478154;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
  <!doctype html>
 <html lang="en">
 <head>
@@ -46,6 +46,7 @@
 </head>
 <head>
 
+    <link rel="stylesheet" href="/static/index/pdf/jquery.touchPDF.css">
     <!-- 新 Bootstrap4 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
@@ -57,40 +58,60 @@
 
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- 预览pdf组件 -->
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+    <script src="/static/index/pdf/jquery.mousewheel.js"></script>
+    <script src="/static/index/pdf/jquery.panzoom.js"></script>
+    <script src="/static/index/pdf/jquery.touchPDF.js"></script>
+    <script src="/static/index/pdf/jquery.touchSwipe.js"></script>
+    <script src="/static/index/pdf/pdf.compatibility.js"></script>
+    <script src="/static/index/pdf/pdf.js"></script>
+    <script src="/static/index/pdf/pdf.worker.js"></script>
 </head>
 <body>
-<div class="jumbotron bg-light jumbotron-fluid">
-    <div class="container bg-light">
-        <h1>没有<?php echo htmlentities($key); ?>文件</h1>
-        <p>您可以在此界面上传您的<?php echo htmlentities($key); ?>文件</p>
-    </div>
+<?php if($type=='pdf'): ?>
+<div id="myPDF" class="col-12 bg-dark text-dark">
+
 </div>
-​
+<?php elseif($type=='jpg'): ?>
+<img src="<?php echo htmlentities($url); ?>" class="p-3" style="width: 100%;height:auto;margin:auto">
+<?php endif; ?>
 <div class="container bg-white">
     <form onsubmit="return false">
-        <p>选择<?php echo htmlentities($key); ?>文件:</p>
-        <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="filename">
-            <label class="custom-file-label" for="customFile" id="customFile_log">选择文件</label>
-        </div>
         <div class="mt-3">
-            <button type="button" onclick="UpFiles()" class="btn btn-primary">上传</button>
+            <?php if($state==1): ?>
+            <button type="button" onclick="DelFiles()" class="btn btn-danger">删除</button>
+            <?php endif; ?>
+            <a href="<?php echo htmlentities($url); ?>" download="外图<?php echo htmlentities($num); ?>的文件.<?php echo htmlentities($type); ?>"><button type="button"  class="btn btn-success">下载</button></a>
+            <?php if($type=='pdf'): ?>
+            <button type="button" onclick="window.location.href='<?php echo htmlentities($url); ?>'" class="btn btn-danger">直接打开</button>
+            <?php endif; ?>
         </div>
     </form>
 </div>
 </body>
 <script>
-    function UpFiles(){
-        var files = $("#customFile")[0].files[0];//获取文件
-        var formFile = new FormData();//文件对象
-        formFile.append('file',files);
+    <?php if($type=='pdf'): ?>
+    $(function() {
+        $("#myPDF").pdf({
+            source: "<?php echo htmlentities($url); ?>",
+            redrawOnWindowResize:true,
+            color:'black',
+            quality:1
+        });
+    });
+    <?php endif; ?>
+    function DelFiles() {
         $.ajax({
-            url:"<?php echo url('index/Blueprint/FileUpload',['drawing_id'=>$drawing_id,'tip'=>$tip]); ?>",
-            data:formFile,
-            type: "post",
-            dataType: "json",
-            processData: false,//用于对data参数进行序列化处理 这里必须false
-            contentType: false, //必须
+            url:"<?php echo url('index/Blueprint/DelOutDrawingFiles'); ?>",
+            type:'post',
+            dataType:'json',
+            data:{
+                id:"<?php echo htmlentities($id); ?>"
+            },
             success:function (res) {
                 if(res.state==500)
                 {
@@ -99,28 +120,14 @@
                 }
                 if(res.state==200)
                 {
-                    layer.msg(res.msg+',请稍后', {icon: 16,time: 2000},
-                    function () {
-                        window.parent.location.reload();  //刷新父级页面
-                        var index = parent.layer.getFrameIndex(window.name);
-                        //关闭当前弹出层
-                        parent.layer.close(index);
-                    });
+                    layer.msg(res.msg, {icon: 1,time: 1000},
+                        function () {
+                            location.reload();
+                        });
                     return;
                 }
             }
         })
     }
-    $("#customFile").change(function () {
-        $("#customFile_log").html($("#customFile")[0].files[0].name);
-        if(!/^[\S]+.(pdf|jpg)$/.test($("#customFile")[0].files[0].name))
-        {
-            layer.msg('请选择有效的图纸文件', {icon: 0,time: 2000},
-                function () {
-                    location.reload();
-                });
-            return;
-        }
-    });
 </script>
 </html>

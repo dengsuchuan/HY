@@ -1,4 +1,4 @@
-<?php /*a:2:{s:75:"I:\Project\WebServer\www\project\Hy\application\index\view\order\order.html";i:1541587638;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
+<?php /*a:2:{s:75:"I:\Project\WebServer\www\project\Hy\application\index\view\order\order.html";i:1545549729;s:77:"I:\Project\WebServer\www\project\Hy\application\index\view\public\header.html";i:1542108818;}*/ ?>
 ﻿  <!doctype html>
 <html lang="en">
 <head>
@@ -44,6 +44,15 @@
 
     </style>
 </head>
+ <script>
+   function check() {
+       if($("#where").val() == ''){
+           layer.msg("请输入图号或者是图纸名称。。。");
+           return false;
+       }
+       return true;
+   }
+ </script>
   <body>
     <div class="x-nav">
       <span class="layui-breadcrumb">
@@ -62,9 +71,9 @@
           <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
           <button class="layui-btn" onclick="x_admin_show('添加订单','<?php echo url('index/Order/addOrder'); ?>',600,600)"><i class="layui-icon"></i>添加</button>
           <div class="layui-input-inline">
-            <form class="layui-form" action="<?php echo url('index/Blueprint/blueprintOutside'); ?>" method="post">
+            <form class="layui-form" action="<?php echo url('index/order/order',['tag'=>'select','if_complete'=>$ifCompletr]); ?>" method="post" onsubmit="return check()">
               <div class="layui-input-inline">
-                <input type="text" name="modules" autocomplete="off" placeholder="请输入关键字..." class="layui-input">
+                <input type="text" name="where" id="where" autocomplete="off" placeholder="请输入图号或者是图纸名称..." class="layui-input">
               </div>
               <div class="layui-input-inline">
                 <select name="id" lay-search="" >
@@ -83,7 +92,9 @@
             <table class="layui-table">
               <thead>
               <tr>
-                <th>操作</th>
+                <th>
+                  <a  href="<?php echo url('index/order/order',['id'=>$ifCompletr]); ?>" ><button class="layui-btn layui-btn-sm"><?php echo htmlentities($btnText); ?></button></a>
+                </th>
                 <th>订单编号</th>
                 <th>订单内容</th>
                 <th>申请人</th>

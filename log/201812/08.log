@@ -43098,3 +43098,66 @@
   'rows' => 1,
   'extra' => 'Using where; Using filesort',
 ) ]
+---------------------------------------------------------------
+[ 2018-12-08T23:48:48+08:00 ] 127.0.0.1 GET /index/quoted/viewshow/quoteId/QT181208-01/show/1.html
+[ info ] hy.me/index/quoted/viewshow/quoteId/QT181208-01/show/1.html [运行时间：2.261062s][吞吐率：0.44req/s] [内存消耗：3,204.55kb] [文件加载：81]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.892349s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quoted_price` [ RunTime:0.730286s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quoted_price` WHERE  `quote_info_id` LIKE '%QT181208-01%' [ RunTime:0.283817s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quoted_price',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-12-08T23:48:53+08:00 ] 127.0.0.1 GET /index/quoted/selectorder/quoteId/QT181208-01.html
+[ info ] hy.me/index/quoted/selectorder/quoteId/QT181208-01.html [运行时间：3.886872s][吞吐率：0.26req/s] [内存消耗：3,254.34kb] [文件加载：84]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.426784s ] mysql:host=35.229.149.165;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_order` [ RunTime:0.302806s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_order` WHERE  `if_complete` = 0 LIMIT 1 [ RunTime:0.291974s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_order` WHERE  `if_complete` = 0 ORDER BY `order_id` ASC LIMIT 0,25 [ RunTime:0.285592s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_order',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_client` [ RunTime:0.631655s ]
+[ sql ] [ SQL ] SELECT `client_abbreviation` FROM `hy_client` WHERE  `id` = 14 LIMIT 1 [ RunTime:0.295470s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_client',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => NULL,
+) ]

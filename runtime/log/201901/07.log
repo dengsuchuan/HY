@@ -1,0 +1,144 @@
+---------------------------------------------------------------
+[ 2019-01-07T22:17:51+08:00 ] 127.0.0.1 GET /index/production_records/toexmine/tag/0.html
+[ info ] hy.me/index/production_records/toexmine/tag/0.html [运行时间：0.305042s][吞吐率：3.28req/s] [内存消耗：3,642.41kb] [文件加载：94]
+[ info ] [ LANG ] I:\Project\WebServer\www\project\Hy\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'hy.me',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+  'sec-metadata' => 'cause="user-activated", destination="nested-document", site="same-origin"',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://hy.me/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en-AS;q=0.8,en-US;q=0.7,en-AU;q=0.6,en-XA;q=0.5,en;q=0.4',
+  'cookie' => '_ga=GA1.2.1651485009.1544239621; __adroll_fpc=b1ec4367e1f1da661ebb5b37d1236d59; __ar_v4=%7CMIPKHDKO6ZFC3JPXUQX36B%3A20190007%3A1%7CWNJJ7ODREVA4FKGP3LLNTJ%3A20190007%3A1%7CRDDKD7S2VZAEVLPTQEK44N%3A20190007%3A1; PHPSESSID=0kfvh29ufuaklfn8gnjuo65seb; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'tag' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] I:\Project\WebServer\www\project\Hy\application\index\view\production_records\to_exmine.html [ array (
+  0 => 'task_id',
+  1 => 'productLog',
+  2 => 'productLogCount',
+  3 => 'drawing',
+  4 => 'tag',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.036798s ] mysql:host=127.0.0.1;dbname=hy_1flove_com;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_log` [ RunTime:0.025210s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `hy_product_log` WHERE  `if_audit` = '未审'  AND `create_time` BETWEEN '1543593600' AND '1548864000' LIMIT 1 [ RunTime:0.007172s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'filtered' => 3.0303030014038086,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `hy_product_log` WHERE  `if_audit` = '未审'  AND `create_time` BETWEEN '1543593600' AND '1548864000' ORDER BY `hr_id` ASC,`log_id` ASC LIMIT 0,25 [ RunTime:0.001881s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_log',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 33,
+  'filtered' => 3.0303030014038086,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_test_record` [ RunTime:0.002126s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_test_record` WHERE  `log_id` = '00-03-P02' LIMIT 1 [ RunTime:0.000497s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_test_record',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_quality_control` [ RunTime:0.002037s ]
+[ sql ] [ SQL ] SELECT * FROM `hy_quality_control` WHERE  `log_id` = '00-03-P02' LIMIT 1 [ RunTime:0.000527s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_quality_control',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 3,
+  'filtered' => 33.333335876464844,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_product_process` [ RunTime:0.001694s ]
+[ sql ] [ SQL ] SELECT `process_type` FROM `hy_product_process` WHERE  `process_id` = '00-03-P02' LIMIT 1 [ RunTime:0.000477s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_product_process',
+  'partitions' => NULL,
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 9084,
+  'filtered' => 10.0,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_process_type` [ RunTime:0.001644s ]
+[ sql ] [ SQL ] SELECT `process_name` FROM `hy_process_type` WHERE  `id` = 37 LIMIT 1 [ RunTime:0.000804s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'hy_process_type',
+  'partitions' => NULL,
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'filtered' => 100.0,
+  'extra' => NULL,
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `hy_administrators` [ RunTime:0.002072s ]
+[ sql ] [ SQL ] SELECT `admin_name` FROM `hy_administrators` WHERE  `id` = 0 LIMIT 1 [ RunTime:0.000790s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'partitions' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'filtered' => NULL,
+  'extra' => 'no matching row in const table',
+) ]
+[ warn ] SQL:SELECT * FROM `hy_product_log` WHERE  `if_audit` = :where_AND_if_audit  AND `create_time` BETWEEN :where_AND_create_time_between_1 AND :where_AND_create_time_between_2 ORDER BY `hr_id` ASC,`log_id` ASC LIMIT 0,25  [Using where; Using filesort]
+[ error ] [0]致命错误: Call to undefined function productGetDrawingEetialCode()[I:\Project\WebServer\www\project\Hy\runtime\temp\ea895e32ad6d167969fc827ab6497883.php:188]
