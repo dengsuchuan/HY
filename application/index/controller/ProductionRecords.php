@@ -182,6 +182,25 @@ class ProductionRecords extends Base
     }
 
     public function toExmine(){
+        $thismonth = date('m');
+        $thisyear = date('Y');
+        $startDay = $thisyear . '-' . $thismonth . '-1';
+        $endDay = $thisyear . '-' . $thismonth . '-' . date('t', strtotime($startDay));
+        $b_time = strtotime($startDay);//当前月的月初时间戳
+        $e_time = strtotime($endDay);//当前月的月末时间戳
+        $thismonth = date('m');
+        $thisyear = date('Y');
+        if ($thismonth == 1) {
+            $lastmonth = 12;
+            $lastyear = $thisyear - 1;
+        } else {$lastmonth = $thismonth - 1;
+        $lastyear = $thisyear;
+        }
+        $lastStartDay = $lastyear . '-' . $lastmonth . '-1';
+        $lastEndDay = $lastyear . '-' . $lastmonth . '-' . date('t', strtotime($lastStartDay));
+        $s_time = strtotime($lastStartDay);//上个月的月初时间戳
+//        $e_time = strtotime($lastEndDay);//上个月的月末时间戳
+
         $task_id = input('task_id');
         $drawing = input('drawing');
         $tag = input('tag');
@@ -190,7 +209,7 @@ class ProductionRecords extends Base
         }else{
             $if_audit = '已审';
         }
-        $productLog = ProductLog::where(['if_audit'=>$if_audit])->order('hr_id', 'asc')->order('log_id','asc')->paginate(25);
+        $productLog = ProductLog::where(['if_audit'=>$if_audit])->whereTime('create_time', 'between',[$s_time,$e_time])->order('hr_id', 'asc')->order('log_id','asc')->paginate(25);
         $productLogCount = $productLog->total();
         $this->view->assign([
             'task_id'=>$task_id,
