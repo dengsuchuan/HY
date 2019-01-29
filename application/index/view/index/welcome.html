@@ -97,7 +97,7 @@
                             <td>1.0.180420</td></tr>
                         <tr>
                             <th>服务器地址</th>
-                            <td>x.xuebingsi.com</td></tr>
+                            <td>{:$host = isset($_SERVER['HTTP_X_FORWARDED_HOST']) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '')}</td></tr>
                         <tr>
                             <th>操作系统</th>
                             <td>WINNT</td></tr>
