@@ -18,6 +18,7 @@ use app\index\model\QuotedMode;
 use app\index\model\QuotedOrderModel;
 use app\index\model\QuoteModel;
 use app\index\model\Material;
+use app\index\model\Section as SectionModel;
 use think\facade\Request;
 
 class Quoted extends  Base{
@@ -114,6 +115,8 @@ class Quoted extends  Base{
 
         //获得外图编号
         $waiExternal = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('drawing_externa_id');
+        //获得排料数量
+        $layout_qty = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('layout_qty');
 
 
         //获得产品名称
@@ -124,50 +127,78 @@ class Quoted extends  Base{
         $shape = getMateria($material_type);
 
         $tempSize = "";
-        //判断形状，获得不同的尺寸
-        switch ($shape){
-            case "板":
-                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
-                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
-                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness2_Dia");
-                $tempSize = ($length+5)." x ".($width+5)." x ".($thickness+5);
-                break;
-            case "棒":
-                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
-                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness_Dia");
-
-                $tempSize = $thickness." x ".$width;
-                break;
-            case "管":
-                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
-                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
-                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness_Dia");
-
-                $tempSize = $thickness." x ".$width." x ".$length;
-                break;
-            case "槽钢":
-                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
-                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
-                break;
-            case "轨道":
-                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
-                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
-                break;
-            case "角钢":
-                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
-                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
-                break;
-            case "矩管":
-                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
-                $tempSize =  BlueprintInfo::where("id",$drawing_detail_id)->value("specifications")." x ".$length;
-                break;
-        }
-
 
         //获得材料
         $materialId = BlueprintInfo::where(['id'=>$drawing_detail_id])->value('material');
         $materialName = Material::where(['id'=>$materialId])->value('material_id');
 
+        //获得材料的密度
+        $materialDensity = Material::where(['id'=>$materialId])->value('density');
+        //获得材料的价格
+        $materialPrice = Material::where(['id'=>$materialId])->value('material_price');
+
+        //判断形状，获得不同的尺寸  && 根据材料和形状，计算出单重
+        $maopijiage = 0;
+        switch ($shape){
+            case "板":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
+                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness2_Dia");
+                $tempSize = ($length+5)." x ".($width+5)." x ".($thickness);
+                $maopijiage = ($length+5)*($width+5)*$thickness*2 < 10?10:($length+5)*($width+5)*$thickness*2;
+                //计算单重
+                //长度  宽度  厚度  密度
+                $danzhong = ($length+5)*($width+5)*$thickness*$materialDensity/1000000;
+                //zongzhong  总重
+                break;
+            case "棒":
+                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
+                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness_Dia");
+                $tempSize = $thickness." x ".$width;
+
+                //直径  长度  密度
+                $danzhong = (3.14*($thickness/2)^2*$width*$materialDensity)/1000000;
+                break;
+            case "管":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $width = BlueprintInfo::where("id",$drawing_detail_id)->value("width_dim");
+                $thickness = BlueprintInfo::where("id",$drawing_detail_id)->value("thickness_Dia");
+                $tempSize = $thickness." x ".$width." x ".$length;
+                $danzhong = (3.14*(($width/2)^2-(($width-2*$thickness)/2)^2)*$length*$materialDensity)/1000000;
+                break;
+            case "槽钢":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $hjbStr = BlueprintInfo::where("id",$drawing_detail_id)->value("specifications");
+                $tempSize =  $hjbStr." x ".$length;
+                //通过横截面积获得具体的参数
+                $weight = SectionModel::where("spec",$hjbStr)->value("weight");
+                $danzhong = ($weight*$length*$materialDensity)/10000;
+                break;
+            case "轨道":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $hjbStr = BlueprintInfo::where("id",$drawing_detail_id)->value("specifications");
+                $tempSize =  $hjbStr." x ".$length;
+                //通过横截面积获得具体的参数
+                $weight = SectionModel::where("spec",$hjbStr)->value("weight");
+                $danzhong = ($weight*$length*$materialDensity)/10000;
+                break;
+            case "角钢":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $hjbStr = BlueprintInfo::where("id",$drawing_detail_id)->value("specifications");
+                $tempSize =  $hjbStr." x ".$length;
+                //通过横截面积获得具体的参数
+                $weight = SectionModel::where("spec",$hjbStr)->value("weight");
+                $danzhong = ($weight*$length*$materialDensity)/10000;
+                break;
+            case "矩管":
+                $length = BlueprintInfo::where("id",$drawing_detail_id)->value("length_dim");
+                $hjbStr = BlueprintInfo::where("id",$drawing_detail_id)->value("specifications");
+                $tempSize = $hjbStr." x ".$length;
+                //通过横截面积获得具体的参数
+                $weight = SectionModel::where("spec",$hjbStr)->value("weight");
+                $danzhong = ($weight*$length*$materialDensity)/10000;
+                break;
+        }
 
         //拿到订单数组
         $order_id = substr($orderStr, 0, -3);
@@ -185,7 +216,12 @@ class Quoted extends  Base{
             "xingzhuang"=>$shape,
             "chicun"=>$tempSize,
             "tuzhimingxiid"=>$drawing_detail_id,
-            "shuliang"=>$order_qty
+            "shuliang"=>$order_qty,
+            "danzhong"=>round($danzhong,2)/$layout_qty,
+            "zongzhong"=>((round($danzhong,2)/$layout_qty)*$order_qty),
+            "dancailiaofeiyon"=>((round($danzhong,2)/$layout_qty)*$materialPrice),
+            "zongcailiaofeiyon"=>((round($danzhong,2)/$layout_qty)*$order_qty)*$materialPrice,
+            "jingpijiagongfeiyon"=>$maopijiage
         ];
         QuotedMode::where(['quote_info_id'=>$deliveryInfoId,'order_info_id'=>$orderStr])->delete();
 

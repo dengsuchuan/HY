@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">内图编号</label>
+            <label class="layui-form-label"><span style="color:red">*</span>内图编号</label>
             <div class="layui-input-inline" id="customNumberDiv">
                 <input type="text" class="layui-input" id="customNumber"  placeholder="自定义编号">
             </div>
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">图纸名称</label>
+            <label class="layui-form-label"><span style="color:red">*</span>图纸名称</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input" value=" " id="drawing_external_name" >
             </div>
@@ -117,7 +117,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">材料类型</label>
+            <label class="layui-form-label"><span style="color:red">*</span>材料类型</label>
             <div class="layui-input-inline">
                 <div class="layui-input-inline">
                     <select name="material" lay-verify="required" lay-search="" id="findText">
@@ -136,7 +136,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">图纸类型</label>
+            <label class="layui-form-label"><span style="color:red">*</span>图纸类型</label>
             <div class="layui-input-inline">
                 <div class="layui-input-inline">
                     <select name="modules" lay-verify="required" lay-search="" id="drawing_type">
@@ -147,7 +147,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">客户简称</label>
+            <label class="layui-form-label"><span style="color:red">*</span>客户简称</label>
             <div class="layui-input-inline">
                 <select name="modules" lay-verify="required" lay-search="" id="client_id">
                     <option value>请选择</option>
@@ -168,7 +168,7 @@
             <label class="layui-form-label">材料形状</label>
             <div class="layui-input-block">
                 <div class="layui-input-inline">
-                    <select name="modules" lay-verify="required" lay-search="" lay-filter="materialSelect" id="materialSelect">
+                    <select name="modules" lay-search="" lay-filter="materialSelect" id="materialSelect">
                         {volist name="$materialShapeArray" id="shapeArrayList"}
                         <option value="{$shapeArrayList.id}">{$shapeArrayList.shape}</option>
                         {/volist}
@@ -180,16 +180,16 @@
         </div>
         <div id="materialDiv">
             <div class="layui-form-item" id="thickness2">
-                <label class="layui-form-label">毛坯</label>
+                <label class="layui-form-label">毛坯厚度</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off"
+                    <input type="text" name="username" placeholder="请输入" autocomplete="off"
                            class="layui-input" id="thickness2Input">
                 </div>
             </div>
             <div class="layui-form-item" id="thickness">
                 <label class="layui-form-label">厚度</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="thicknessInput">
+                    <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input" id="thicknessInput">
                 </div>
 
                 <div class="specialDiv">
@@ -200,7 +200,7 @@
             <div class="layui-form-item" id="length">
                 <label class="layui-form-label">长度</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="lengthInput">
+                    <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input" id="lengthInput">
                 </div>
 
                 <div class="specialDiv">
@@ -211,7 +211,7 @@
             <div class="layui-form-item" id="width">
                 <label class="layui-form-label">宽度</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="widthInput">
+                    <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input" id="widthInput">
                 </div>
 
                 <div class="specialDiv">
@@ -222,11 +222,11 @@
             <div class="layui-form-item" id="altitude">
                 <label class="layui-form-label">高度</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" id="altitudeInput">
+                    <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input" id="altitudeInput">
                 </div>
             </div>
             <div class="layui-form-item" id="specifications">
-                <label class="layui-form-label">截面积</label>
+                <label class="layui-form-label"><span style="color:red">*</span>截面积</label>
                 <div class="layui-input-inline">
                     <select lay-verify="required" lay-search="" name="material_type" lay-filter="channel_select" id="channel_select">
                         <option value="">查找规格</option>
@@ -241,20 +241,21 @@
             <div class="layui-form-item" id="sideLength1">
                 <label class="layui-form-label">边长1</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength1Input">
+                    <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input"
+                           id="sideLength1Input">
                 </div>
             </div>
             <div class="layui-form-item" id="sideLength2">
                 <label class="layui-form-label">边长2</label>
                 <div class="layui-input-inline">
-                    <input type="text" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength2Input">
+                    <input type="text" placeholder="请输入" autocomplete="off" class="layui-input"  id="sideLength2Input">
                 </div>
             </div>
             <input type="hidden" id="spec">
             <div class="layui-form-item" id="weight">
-                <label class="layui-form-label">重量</label>
+                <label class="layui-form-label">重量<span style="color:red">*</span></label>
                 <div class="layui-input-inline">
-                    <input type="text" name="weight" lay-verify="required" autocomplete="off" class="layui-input"  id="weightInput" disabled>
+                    <input type="text" name="weight"  autocomplete="off" class="layui-input"  id="weightInput" disabled>
                 </div>
             </div>
             <div class="layui-form-item" id="saveButton">
