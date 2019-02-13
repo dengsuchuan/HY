@@ -2,39 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458fd180-5110-4a62-90f9-1bd4f5ede172" name="Default" comment="报价明细">
-      <change beforePath="$PROJECT_DIR$/.idea/Hy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Hy.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/controller/Quoted.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/controller/Quoted.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/blueprint/add-drawing-detial.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/blueprint/add-drawing-detial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/blueprint/blueprint-infos.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/blueprint/blueprint-infos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/index/view/quoted/viewshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/index/view/quoted/viewshow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/log/201901/07.log" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/log/201901/07.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/0eaa84cc656ad7d26227caafd20cad1c.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/0eaa84cc656ad7d26227caafd20cad1c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/201812/08.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/201812/08.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/25bf2beee058bd21e9bece88d9f4360e.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/25bf2beee058bd21e9bece88d9f4360e.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/484c06d3a5a4a928ec1db1ed380e7818.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/484c06d3a5a4a928ec1db1ed380e7818.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/392fbaf4fcf44a0e3f75d263d3860c72.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/392fbaf4fcf44a0e3f75d263d3860c72.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/54a9a4cd0d2583d2d3d589a556c3a5b0.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/54a9a4cd0d2583d2d3d589a556c3a5b0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/5752a18389e52c6bc9db93b7ad9af7bc.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/5752a18389e52c6bc9db93b7ad9af7bc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/5925a117694939cdcbf0c6831e74427a.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/5925a117694939cdcbf0c6831e74427a.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/6356c233fc35945e7a838cba042be6c1.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/6356c233fc35945e7a838cba042be6c1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/8e020754aee021bde7e0d59bd075d370.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/8e020754aee021bde7e0d59bd075d370.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/8f91e61ae9fb3b5e93559e5f2e64da99.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/8f91e61ae9fb3b5e93559e5f2e64da99.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/97417a16f1ce6f8b4cf4226643b13092.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/97417a16f1ce6f8b4cf4226643b13092.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/7256a5b2413c1030f47296469bfb881a.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/7256a5b2413c1030f47296469bfb881a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/a2cf6e6da316358e8689228013a5625b.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/a2cf6e6da316358e8689228013a5625b.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/a3e02061a6f43ba36c675aa849acbed1.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/a3e02061a6f43ba36c675aa849acbed1.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/adaa4f42c75a8c498c432162cb05b544.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/adaa4f42c75a8c498c432162cb05b544.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/c29353a5e5bd12f21d2cae1e87a90dca.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/c29353a5e5bd12f21d2cae1e87a90dca.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/d11c4f2279025149dbff2f07dfb419b0.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/d11c4f2279025149dbff2f07dfb419b0.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/dc43ef0a052a40fa34767ac8290c2ad3.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/dc43ef0a052a40fa34767ac8290c2ad3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime/temp/b277be8c6634e9c8d0e3dcb30472af8d.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/b277be8c6634e9c8d0e3dcb30472af8d.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/deba2091e5edd4b225d2023df47a26f4.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/deba2091e5edd4b225d2023df47a26f4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/df69d163cab692be9d2872d65a9c7fbb.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/df69d163cab692be9d2872d65a9c7fbb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/e17120bb0fb7231153e5df1e2834b3f4.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/e17120bb0fb7231153e5df1e2834b3f4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/ea895e32ad6d167969fc827ab6497883.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/ea895e32ad6d167969fc827ab6497883.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/ea9dd974e76d2eb4e34e7d079b1f258e.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/ea9dd974e76d2eb4e34e7d079b1f258e.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/ede5a1186ad1e3d53703181b0351326f.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/ede5a1186ad1e3d53703181b0351326f.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/f25fc40e57824a1639d2191733ba2307.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/f25fc40e57824a1639d2191733ba2307.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runtime/temp/f3310fe9ccaf4ed9a209422bd39a1441.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/f3310fe9ccaf4ed9a209422bd39a1441.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/temp/f6a23b8b154414a596e9038a10de0bcc.php" beforeDir="false" afterPath="$PROJECT_DIR$/runtime/temp/f6a23b8b154414a596e9038a10de0bcc.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/phpoffice/phpexcel/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,51 +27,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Quoted.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/controller/Quoted.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3079">
-              <caret line="222" column="66" selection-start-line="222" selection-start-column="66" selection-end-line="222" selection-end-column="66" />
-              <folding>
-                <element signature="e#111#148#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add-drawing-detial.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/add-drawing-detial.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="182" column="52" selection-start-line="182" selection-start-column="48" selection-end-line="182" selection-end-column="52" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#5;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#7;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#8;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#5;n#div#11;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#label#0;n#div#8;n#div#11;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blueprint-infos.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/blueprint-infos.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="113" column="52" selection-start-line="113" selection-start-column="52" selection-end-line="113" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,6 +42,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>update</find>
+      <find>quoteI</find>
+      <find>id</find>
+      <find>Delivery</find>
+      <find>selectOrder</find>
+      <find>addNexus</find>
       <find>DeliveryOrderModel::</find>
       <find>deliveryId</find>
       <find>QuotedMode::</find>
@@ -123,12 +72,6 @@
       <find>$blueprintInfoList</find>
       <find>tempSize</find>
       <find>$blueprintInfoList.id</find>
-      <find>尺寸</find>
-      <find>mater</find>
-      <find>hy_mater</find>
-      <find>hy_material</find>
-      <find>hy_material_cross</find>
-      <find>lay-verify=&quot;required&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -138,7 +81,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -191,10 +134,10 @@
         <option value="$PROJECT_DIR$/application/index/view/blueprint/blueprint-info.html" />
         <option value="$PROJECT_DIR$/config/database.php" />
         <option value="$PROJECT_DIR$/application/common.php" />
-        <option value="$PROJECT_DIR$/application/index/view/quoted/viewshow.html" />
-        <option value="$PROJECT_DIR$/application/index/controller/Quoted.php" />
         <option value="$PROJECT_DIR$/application/index/view/blueprint/add-drawing-detial.html" />
         <option value="$PROJECT_DIR$/application/index/view/blueprint/blueprint-infos.html" />
+        <option value="$PROJECT_DIR$/application/index/view/quoted/viewshow.html" />
+        <option value="$PROJECT_DIR$/application/index/controller/Quoted.php" />
       </list>
     </option>
   </component>
@@ -214,13 +157,12 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-75" />
-    <option name="y" value="479" />
-    <option name="width" value="1833" />
-    <option name="height" value="820" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -234,47 +176,6 @@
               <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
               <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="blueprint" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Hy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Hy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="application" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="quoted" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -285,7 +186,6 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="/index/order/orderdetail&#9;FILE&#9;file://I:/Project/WebServer/www/project/Hy/application/index/view/order/order-detail-info.html" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yqrpt" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
@@ -296,6 +196,121 @@
       <recent name="I:\Project\WebServer\www\project\Hy\application\index\controller" />
       <recent name="I:\Project\WebServer\www\project\Hy\application\index\view\test_record" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/application/common.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/application/index/controller/CurrentTask.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/application/index/controller/ProductionRecords.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/application/index/view/blueprint/blueprint-info.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/application/index/view/production_records/to_exmine.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/application/index/view/current_task/pin.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -343,15 +358,7 @@
       <workItem from="1546338396375" duration="599000" />
       <workItem from="1546612604021" duration="174000" />
       <workItem from="1546700044097" duration="610000" />
-      <workItem from="1546870371519" duration="1380000" />
-      <workItem from="1546871780901" duration="1759000" />
-      <workItem from="1547348459317" duration="1203000" />
-      <workItem from="1548380383777" duration="63000" />
-      <workItem from="1548573484938" duration="5004000" />
-      <workItem from="1548637585428" duration="11000" />
-      <workItem from="1549175881559" duration="879000" />
-      <workItem from="1549967396471" duration="1000" />
-      <workItem from="1549967597154" duration="8441000" />
+      <workItem from="1546870371519" duration="727000" />
     </task>
     <task id="LOCAL-00001" summary="测试一下~">
       <created>1541479267624</created>
@@ -511,19 +518,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179048000" />
+    <option name="totallyTimeSpent" value="161034000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28747323" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21199143" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3280543" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32890365" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.8065611" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32918552" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32918552" />
@@ -564,10 +570,24 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/index/view/order/order-detail-info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5425">
+          <caret line="217" column="44" selection-start-line="217" selection-start-column="35" selection-end-line="217" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/public/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/test_record/quality_show.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6650">
@@ -710,10 +730,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/model/QuotedMode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/quote/viewshow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="76" column="9" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="76" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/model/QuotedOrderModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Material.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/model/QuoteModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -756,6 +804,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6161">
           <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/controller/Quote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="80" />
         </state>
       </provider>
     </entry>
@@ -805,69 +860,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="582">
           <caret line="429" selection-start-line="429" selection-end-line="429" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/order/order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2172">
-          <caret line="134" column="17" lean-forward="true" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/order/order-detail-info.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="217" column="44" selection-start-line="217" selection-start-column="35" selection-end-line="217" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/controller/Quote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/quote/viewshow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/model/QuotedOrderModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/model/QuoteModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/model/Section.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/model/QuotedMode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/model/Material.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -878,50 +876,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/quoted/viewshow.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/blueprint-infos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="93" column="46" selection-start-line="93" selection-start-column="46" selection-end-line="93" selection-end-column="46" />
+        <state relative-caret-position="298">
+          <caret line="401" column="38" selection-start-line="401" selection-start-column="24" selection-end-line="401" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/add-drawing-detial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="503" column="47" lean-forward="true" selection-start-line="503" selection-start-column="47" selection-end-line="503" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index/view/order/order.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2172">
+          <caret line="134" column="17" lean-forward="true" selection-start-line="134" selection-start-column="17" selection-end-line="134" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/blueprint-info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
+        <state relative-caret-position="50">
           <caret line="104" column="10" selection-start-line="104" selection-start-column="10" selection-end-line="121" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/index/controller/Quoted.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3079">
-          <caret line="222" column="66" selection-start-line="222" selection-start-column="66" selection-end-line="222" selection-end-column="66" />
-          <folding>
-            <element signature="e#111#148#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="400">
+          <caret line="198" column="5" selection-start-line="198" selection-start-column="5" selection-end-line="198" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/add-drawing-detial.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/quoted/viewshow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="182" column="52" selection-start-line="182" selection-start-column="48" selection-end-line="182" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#3;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#5;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#7;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#8;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#5;n#div#11;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#8;n#div#11;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="25">
+          <caret line="70" column="94" selection-start-line="70" selection-start-column="94" selection-end-line="70" selection-end-column="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/index/view/blueprint/blueprint-infos.html">
+    <entry file="file://$PROJECT_DIR$/application/index/view/order/order-detail-info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="113" column="52" selection-start-line="113" selection-start-column="52" selection-end-line="113" selection-end-column="52" />
+        <state relative-caret-position="25">
+          <caret line="217" column="44" selection-start-line="217" selection-start-column="35" selection-end-line="217" selection-end-column="44" />
         </state>
       </provider>
     </entry>
